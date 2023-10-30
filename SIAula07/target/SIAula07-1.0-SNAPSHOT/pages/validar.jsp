@@ -14,7 +14,7 @@
     <body>
         
         <%
-           String nome = request.getParameter("nome");
+           String nomecompleto = request.getParameter("nome");
            String login = request.getParameter("login");
            String senha = request.getParameter("senha");
            String tipo = request.getParameter("tipo");
