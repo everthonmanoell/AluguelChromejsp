@@ -30,19 +30,27 @@
         </div>
     </div>
 
-    <form class="borda-direita" action="pages/validar.jsp">
+    <form class="borda-direita" action="pages/LOGIN.jsp">
         <h1 class="titulo2">Login</h1>
         <div class="form-group">
-        <input type="text" class="form-control cpf1" id="CPF" aria-describedby="CPF" placeholder="CPF (apenas números)" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 11)" required>
+        <input type="text" name="cpf" class="form-control cpf1" id="CPF" aria-describedby="CPF" placeholder="CPF (apenas números)" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 11)" required>
         </div>
         <div class="form-group">
-            <input type="password" class="form-control senha1" id="exampleInputPassword1" placeholder="Senha" required>
+            <input type="password" name="senha" class="form-control senha1" id="exampleInputPassword1" placeholder="Senha" required>
         </div>
-        <a href="pages/validar.jsp"><button type="submit" class="btn btn-primary">Entrar</button></a>
+        
+        <%
+            String erro = request.getParameter("erro");
+            if(erro != null){
+                out.println("<spam>Login ou Senha errados!</spam><br>");
+            }
+        %>
+        
+        <button type="submit" class="btn btn-primary">Entrar</button></a>
     </form>
     <div class="form-group">
         <h1>Caso não seja cadastrado ainda clique aqui no botão abaixo.</h1>
-        <a href="pages/CADASTROCOORDENADOR.jsp"><button type="submit" class="btn btn-primary">Cadastrar</button></a>
+        <a href="pages/INICIALCADASTRO.jsp"><button type="submit" class="btn btn-primary">Cadastrar</button></a>
     </div>
 </body>
 

@@ -38,14 +38,14 @@
             <div class="titulo">
                 <a>CADASTRO DE COORDENADOR</a>
             </div>
-            <form action="validar.jps" method="post">
+            <form action="VALIDAR.jps" method="post">
                 <div class="fonteCoordenador">
                     <label for="nomecompleto" class="form-label"><a>NOME COMPLETO:</a></label>
                     <input type="text" class="form-control" id="nomecompleto" placeholder="" name="nomecompleto" required>
                     <label for="cpf" class="form-label"><a>CPF:</a></label>
-                    <input type="text" class="form-control cpf1" id="CPF" aria-describedby="CPF" placeholder="CPF" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 11)" required>
+                    <input type="text" name="cpf" class="form-control cpf1" id="CPF" aria-describedby="CPF" placeholder="CPF" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 11)" required>
                     <label for="password" class="form-label"><a>ESCOLHA UMA SENHA:</a></label>
-                    <input type="password" class="form-control" placeholder="Senha" id="password" required>
+                    <input type="password" name="senha" class="form-control" placeholder="Senha" id="password" required>
                     <input type="password" class="form-control" placeholder="Confirme Senha" id="confirm_password" required>
                     <br>
                     <div class="row justify-content-md-center">

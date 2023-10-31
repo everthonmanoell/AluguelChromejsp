@@ -34,14 +34,14 @@ public class ControleUsuario {
         this.usuarios.add(usuario);
     }
     
-    public String buscarUsuario(String cpf, String senha){
+    public boolean buscarUsuario(String cpf, String senha){
         
         for(Usuario u: this.usuarios){
             if(u.getCpf().equals(cpf) && (u.getSenha().equals(senha))){
                 return true;
             }
         }
-        return null;
+        return false;
     }
     
     public String listarUsuarios(){
