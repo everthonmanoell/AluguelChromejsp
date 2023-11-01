@@ -6,63 +6,42 @@ package usuario;
 
 /**
  *
- * @author ficr
+ * @author Everthon
  */
 public class Usuario {
-    private int id;
-    private String nome;
-    private String login;
+    private String nomecompleto;
+    private String cpf;
     private String senha;
-    private String tipo;
     
     
-    public Usuario(String nome, String login, String senha, String tipo){
-        this.id = 0;
-        this.nome = nome;
-        this.login = login;
-        this.senha = senha;
-        this.tipo = tipo;
-    }
-    
-    public String getNome(){
-        return this.nome;
-    }
-    
-    public void setNome(String nome){
-        this.nome = nome;
-    }
-    
-    public String getSenha(){
-        return this.senha;
-    }
-    
-    public void setSenha(String senha){
+    public Usuario(String nomecompleto, String cpf, String senha){
+        this.nomecompleto = nomecompleto;
+        this.cpf = cpf;
         this.senha = senha;
     }
 
-    public int getId() {
-        return id;
+    public String getNomecompleto() {
+        return nomecompleto;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setNomecompleto(String nomecompleto) {
+        this.nomecompleto = nomecompleto;
     }
 
-    public String getLogin() {
-        return login;
+    public String getCpf() {
+        return cpf;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
-    public String getTipo() {
-        return tipo;
+    public String getSenha() {
+        return senha;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
-    
     
 }

@@ -8,7 +8,7 @@ import java.util.LinkedList;
 
 /**
  *
- * @author ficr
+ * @author Everthon
  */
 public class ControleUsuario {
     private LinkedList<Usuario> usuarios;
@@ -34,20 +34,20 @@ public class ControleUsuario {
         this.usuarios.add(usuario);
     }
     
-    public String buscarUsuario(String login, String senha){
+    public boolean buscarUsuario(String cpf, String senha){
         
         for(Usuario u: this.usuarios){
-            if(u.getLogin().equals(login) && (u.getSenha().equals(senha))){
-                return u.getTipo();
+            if(u.getCpf().equals(cpf) && (u.getSenha().equals(senha))){
+                return true;
             }
         }
-        return null;
+        return false;
     }
     
     public String listarUsuarios(){
         String texto = "";
         for(Usuario u: this.usuarios){
-            texto = texto + "Nome: " + u.getNome() + "<br>";
+            texto = texto + "cpf: " + u.getCpf() + "<br>";
             texto = texto + "Senha: " + u.getSenha() + "<br>";
         }
         return texto;
