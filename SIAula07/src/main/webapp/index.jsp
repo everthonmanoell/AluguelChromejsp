@@ -18,7 +18,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Kanit:wght@100;400;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="css/login.css">
-    <title>Aluga ChromeBook</title>
+    <title>Login</title>
 </head>
 
 <body>
@@ -38,20 +38,17 @@
         <div class="form-group">
             <input type="password" name="senha" class="form-control senha1" id="exampleInputPassword1" placeholder="Senha" required>
         </div>
-        
+    
         <%
             String erro = request.getParameter("erro");
             if(erro != null){
                 out.println("<spam>Login ou Senha errados!</spam><br>");
             }
         %>
-        
+        <a href="pages/INICIALCADASTRO.jsp">Cadastre-se</a>
+    <br>
         <button type="submit" class="btn btn-primary">Entrar</button></a>
     </form>
-    <div class="form-group">
-        <h1>Caso não seja cadastrado ainda clique aqui no botão abaixo.</h1>
-        <a href="pages/INICIALCADASTRO.jsp"><button type="submit" class="btn btn-primary">Cadastrar</button></a>
-    </div>
 </body>
 
 </html>
