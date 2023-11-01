@@ -12,24 +12,19 @@
         <title>Projeto</title>
     </head>
     <body>
-        <h1>Recebendo dados!</h1>
+        
         <%
-       String login = request.getParameter("login");
+       String cpf = request.getParameter("cpf");
        
        String senha = request.getParameter("senha");
      
         
        ControleUsuario controle = ControleUsuario.getInstance();
-       String tipo = controle.buscarUsuario(login, senha);
-       if(tipo != null){
-           if(tipo.equals("adm")){
-                response.sendRedirect("homeAdm.jsp");
-           }else{
-                response.sendRedirect("home.jsp");
-           }
-           
-       }else{
-           response.sendRedirect("index.jsp?erro=true");
+       Boolean tipo = controle.buscarUsuario(cpf, senha);
+       if(tipo == true){
+                response.sendRedirect("pages/HOME.jsp");
+        }else{
+           response.sendRedirect("../index.jsp?erro=true");
        }
         
         %>
