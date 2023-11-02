@@ -18,17 +18,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Kanit:wght@100;400;700&display=swap" rel="stylesheet">
     <title>Aluguel</title>
 </head>
-
 <body class="topo">
     <div class="bordaDoTopo">
-        <div class="container-fluid">
-            <a href="HOME.html"><button class="botoesDoTopo">ÍNICIO</button></a>
-            <a href="CADASTRO.html"><button class="botoesDoTopo">CADASTRO</button></a>
-            <a href="ALUGUEL.html"><button class="botoesDoTopo">ALUGUEL</button></a>
-            <a href="DEVOLUCÃO.html"><button class="botoesDoTopo">DEVOLUÇÃO</button></a>
-            <a href="RELATORIO.html"><button class="botoesDoTopo">RELATÓRIO</button></a>
-            <a href="../LOGIN.html"><button class="power"><img src="../images/power.png" class="power"></button></a>
-            <a href="PERFIL.html"><button class="user"><img src="../images/user.png" class="user" style="height: 30px;"></button></a>
+        <div class="container-fluid">     
+            <a href="HOME.jsp"><button class="botoesDoTopo">ÍNICIO</button></a>
+            <a href="HOMECADASTRO.jsp"><button class="botoesDoTopo">CADASTRO</button></a>
+            <a href="ALUGUEL.jsp"><button class="botoesDoTopo">ALUGUEL</button></a>
+            <a href="DEVOLUCAO.jsp"><button class="botoesDoTopo">DEVOLUÇÃO</button></a>
+            <a href="RELATORIO.jsp"><button class="botoesDoTopo">RELATÓRIO</button></a>
+            <a href="SAIR.jsp"><button class="power"><img src="../images/power.png" class="power" style="height: 30px;"></button></a>
+            <a href="PERFIL.jsp"><button class="user"><img src="../images/user.png" class="user" style="height: 30px;"></button></a>
         </div>
     </div>
     <br><br><br><br>
@@ -37,6 +36,7 @@
                 <a>ALUGUEL DE CHROMEBOOK</a>
             </div>
             <form action="#">
+                <div class="fonteCoordenador">
                 <div class="mb-3 mt-3">
                     <label for="matricula" class="form-label"><a>Matrícula:</a></label>
                     <input type="text" class="form-control" id="matricula" placeholder="" name="matricula" required>
@@ -70,6 +70,7 @@
                     <button type="reset" class="BotaoSubmit">Cancelar</button>
                 </div>
             </form>
+        </div>
         </div>
     </div>
 </body>

@@ -23,16 +23,15 @@
 
 <body class="topo">
     <div class="bordaDoTopo">
-        <div class="container-fluid">
-            <a href="CADASTRO.html"><button class="botoesDoTopo">CADASTRO</button></a>
-            <a href="ALUGUEL.html"><button class="botoesDoTopo">ALUGUEL</button></a>
-            <a href="DEVOLUCÃO.html"><button class="botoesDoTopo">DEVOLUÇÃO</button></a>
-            <a href="RELATORIO.html"><button class="botoesDoTopo">RELATÓRIO</button></a>
-            <a href="../LOGIN.html"><button class="power"><img src="../images/power.png" class="power" style="height: 30px;"></button></a>
-            <a href="PERFIL.html"><button class="user"><img src="../images/user.png" class="user" style="height: 30px;"></button></a>
+        <div class="container-fluid">     
+            <a href="HOMECADASTRO.jsp"><button class="botoesDoTopo">CADASTRO</button></a>
+            <a href="ALUGUEL.jsp"><button class="botoesDoTopo">ALUGUEL</button></a>
+            <a href="DEVOLUCAO.jsp"><button class="botoesDoTopo">DEVOLUÇÃO</button></a>
+            <a href="RELATORIO.jsp"><button class="botoesDoTopo">RELATÓRIO</button></a>
+            <a href="SAIR.jsp"><button class="power"><img src="../images/power.png" class="power" style="height: 30px;"></button></a>
+            <a href="PERFIL.jsp"><button class="user"><img src="../images/user.png" class="user" style="height: 30px;"></button></a>
         </div>
     </div>
-
     <div class="container">
         <div class="middle">
             <h1>Bem vindo ao sistema de aluguel de Chromebook.</h1>

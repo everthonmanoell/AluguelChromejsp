@@ -47,7 +47,7 @@ body {
 
 .btn-primary {
     background-color: #003B95;
-    color: white; 
+    color: #ffffff; 
     font-size: 18px; 
     width: 50%;
     text-align: center; 
@@ -55,6 +55,7 @@ body {
     height: 40px;
     width: 100px;
     border: 1px;
+    text-decoration: none;
 }
 
 .btn-primary:hover {
@@ -64,7 +65,7 @@ body {
 
 a {
     text-decoration: none;
-    color: inherit;
+    font-size: 12px;
 }
 
 
