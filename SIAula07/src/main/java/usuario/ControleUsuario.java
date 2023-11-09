@@ -25,10 +25,6 @@ public class ControleUsuario {
         return instancia;
     }
     
-    /*public void adicionarUsuario(String nome, String senha){
-        Usuario usr = new Usuario(nome, senha);
-        this.usuarios.add(usr);
-    }*/
     
     public void adicionarUsuario(Usuario usuario){
         this.usuarios.add(usuario);
