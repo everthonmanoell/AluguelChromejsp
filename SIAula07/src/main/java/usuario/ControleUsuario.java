@@ -8,7 +8,7 @@ import java.util.LinkedList;
 
 /**
  *
- * @author ficr
+ * @author Everthon Manoel
  */
 public class ControleUsuario {
     private LinkedList<Usuario> usuarios;

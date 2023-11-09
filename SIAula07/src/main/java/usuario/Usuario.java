@@ -6,7 +6,7 @@ package usuario;
 
 /**
  *
- * @author ficr
+ * @author Everthon Manoel
  */
 public class Usuario {
     private String nomecompleto;
