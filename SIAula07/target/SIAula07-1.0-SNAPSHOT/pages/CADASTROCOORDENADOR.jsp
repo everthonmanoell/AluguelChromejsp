@@ -36,7 +36,7 @@
             <div class="titulo">
                 <a>CADASTRO DE COORDENADOR</a>
             </div>
-            <form action="#">
+            <form action="validarcadastro.jsp" method="post">
                 <div class="fonteCoordenador">
                     <label for="nomecompleto" class="form-label"><a>NOME COMPLETO:</a></label>
                     <input type="text" class="form-control" id="nomecompleto" placeholder="" name="nomecompleto" required>
