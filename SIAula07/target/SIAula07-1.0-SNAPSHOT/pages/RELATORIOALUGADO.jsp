@@ -1,21 +1,24 @@
+<%-- 
+    Document   : RELATORIO
+    Created on : 26 de out. de 2023, 09:37:58
+    Author     : evert
+--%>
+
+<div%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="../icons/css/boxicons.min.css" />
+    <link rel="stylesheet" type="text css" href="../icons/css/boxicons.min.css" />
     <link rel="stylesheet" type="text/css" href="../css/style.css" />
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter&family=Kanit:wght@100;400;700&display=swap"
-        rel="stylesheet">
-    <title>DEVOLUÇÃO</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&family=Kanit:wght@100;400;700&display=swap" rel="stylesheet">
+    <title>Relatório alugados</title>
 </head>
-<body class="topo">
     <div class="bordaDoTopo">
         <div class="container-fluid">     
             <a href="HOME.jsp"><button class="botoesDoTopo">ÍNICIO</button></a>
@@ -27,16 +30,30 @@
             <a href="PERFIL.jsp"><button class="user"><img src="../images/user.png" class="user" style="height: 30px;"></button></a>
         </div>
     </div>
-    <br><br><br><br>
+    <br><br>
+    </div>
+        <div class="containerRelatorio">
+            <div class="row justify-content-center">
+                <div class="fonteRelatorio">
+            <a href="RELATORIOALUNO.jsp"><button class="botoesDoRelatorio">ALUNOS</button></a>
+            <a href="RELATORIOCOORDENADOR.jsp"><button class="botoesDoRelatorio">COORDENADOR</button></a>
+            <a href="RELATORIOALUGADO.jsp"><button class="botoesDoRelatorio">ALUGADOS</button></a>
+            <a href="RELATORIOCHROMEBOOK.jsp"><button class="botoesDoRelatorio">CHORMEBOOK</button></a>
+            <a href=""><button class="botoesDoRelatorio">EMPTY</button></a>
+            <a href=""><button class="botoesDoRelatorio">EMPTY</button></a>
+                    </div>
+                </div>  
+            </div>
+        <br><br><br><br>
         <div class="container containerDevolucao">
             <div class="titulo">
-                <a>DEVOLUÇÃO</a>
+                <a>Relatorio Alugado</a>
             </div>
             <table class="table">
                     <thead>
                             <th scope="col"><input type="search" class="form-control rounded" placeholder="" aria-label="Search" aria-describedby="search-addon" style="width:500px; margin-left:200px "/></th>
                         <th scope="col"><button type="button" class="btn btn-outline-primary btn-sm">pesquisar</button></th>
-                        <th scope="col">TOTAL EM USO</th>
+                        <th scope="col">TOTAL ALUGADOS</th>
                         <th scope="col"><input class="form-control" type="text" id="totalemuso" name="totalemuso" style="width:100px" readonly></th>
             </table>
                 <table class="table table-sm">
@@ -45,11 +62,10 @@
                         <th scope="col">Nome Completo</th>
                         <th scope="col">Matricula</th>
                         <th scope="col">Tombamento</th>
-                        <th scope="col">Data aluguel</th>
-                        <th scope="col">Hora aluguel</th>
-                        <th scope="col">Data Entrega</th>
+                        <th scope="col">Hora Aluguel</th>
+                        <th scope="col">Data Aluguel</th>
                         <th scope="col">Hora Entrega</th>
-                        <th scope="col">Opções</th>
+                        <th scope="col">Data Entrega</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -57,12 +73,10 @@
                         <th scope="row"></th>
                         <td></td>
                         <td></td>
-                        <td></td>   
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td><button type="submit" class="btn btn-outline-primary btn-sm">Devolver</button></td>
-                        
+                        <td></td>
                       </tr>
                       <tr>
                         <th scope="row"></th>
@@ -72,7 +86,6 @@
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td><button type="submit" class="btn btn-outline-primary btn-sm">Devolver</button></td>
                       </tr>
                     </tbody>
                   </table>
@@ -81,14 +94,7 @@
             </div>
         </div>
     </div>
+    
 </body>
-
-</html>
-
-
-
-
-
-
 
 </html>

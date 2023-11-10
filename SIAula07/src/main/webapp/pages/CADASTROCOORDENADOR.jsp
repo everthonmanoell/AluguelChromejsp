@@ -47,7 +47,7 @@
                     <input type="password" name="senha2" class="form-control" placeholder="Confirme Senha" id="confirm_password" required style="margin-bottom: 10px">
                     <br>
                     <div class="row justify-content-md-center">
-                        <button type="submit" class="BotaoSubmit">SALVAR</button>
+                        <button type="submit" class="BotaoSubmit">Salvar</button>
                         <button type="reset" class="BotaoSubmit cancelar">Cancelar</button>
                     </div>
                 </div>
