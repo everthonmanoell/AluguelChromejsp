@@ -30,7 +30,9 @@
         </div>
     </div>
 
+
     <form class="borda-direita" action="pages/validarlogin.jsp">
+
         <h1 class="titulo2">Login</h1>
         <div class="form-group">
         <input type="text" name="cpf" class="form-control cpf1" id="CPF" aria-describedby="CPF" placeholder="CPF (apenas números)" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 11)" required>
