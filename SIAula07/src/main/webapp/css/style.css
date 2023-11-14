@@ -167,6 +167,7 @@ table {
 thead{
     border: 1px solid #ddd;
 }
+
 tr {
     text-align: left;
     padding:25px;
@@ -176,7 +177,7 @@ tr {
 
 .containerRelatorio {
     width: auto;
-    height: auto
+    height: auto;
     padding: 25px;
     border: 1px;
     border-radius: 10px;
