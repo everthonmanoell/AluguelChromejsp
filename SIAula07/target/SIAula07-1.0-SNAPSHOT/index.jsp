@@ -18,7 +18,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Kanit:wght@100;400;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="css/login.css">
-    <title>Login</title>
+    <title>Login</title> e
 </head>
 
 <body>

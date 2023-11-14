@@ -31,29 +31,32 @@
             <a href="PERFIL.jsp"><button class="user"><img src="../images/user.png" class="user" style="height: 30px;"></button></a>
         </div>
     </div>
-    <br><br> <br><br>
+    <br><br>
     </div>
-    <body>
-        <div class="container containerMeio">
+ 
+        <div class="containerRelatorio">
             <div class="titulo">
                 <a>RELATÓRIO</a>
             <div class="row justify-content-center">
-                <div class="fonteMeio">
-                    <div class="container-fluid">
-            <a href="HOME.html"><button class="botoesDoTopo">ÍNICIO</button></a>
-            <a href="CADASTRO.html"><button class="botoesDoTopo">CADASTRO</button></a>
-            <a href="ALUGUEL.html"><button class="botoesDoTopo">ALUGUEL</button></a>
-            <a href="DEVOLUCÃO.html"><button class="botoesDoTopo">DEVOLUÇÃO</button></a>
-            <a href="RELATORIO.html"><button class="botoesDoTopo">RELATÓRIO</button></a>
-            <a href="../LOGIN.html"><button class="power"><img src="../images/power.png" class="power" style="height: 30px;"></button></a>
-            <a href="PERFIL.html"><button class="user"><img src="../images/user.png" class="user" style="height: 30px;"></button></a>
-        </div>
-
+                <div class="fonteRelatorio">
+            <a href="RELATORIOALUNO.jsp"><button class="botoesDoRelatorio">ALUNOS</button></a>
+            <a href="RELATORIOCOORDENADOR.jsp"><button class="botoesDoRelatorio">COORDENADOR</button></a>
+            <a href="RELATORIOALUGADO.jsp"><button class="botoesDoRelatorio">ALUGADOS</button></a>
+            <a href="RELATORIOCHROMEBOOK.jsp"><button class="botoesDoRelatorio">CHORMEBOOK</button></a>
+            <a href=""><button class="botoesDoRelatorio">EMPTY</button></a>
+            <a href=""><button class="botoesDoRelatorio">EMPTY</button></a>
+                    </div>
                 </div>  
             </div>
         </div>
+   
+    <div class="container">
+        <div class="containerRelatorio" style="text-align: center">
+            <h1> Sistema de relatórios.</h1>
+            <p>Nesse sistema você pode obter todos os cadastro de alunos, coordenadores e o próprio Chromebook, além de poder observar o status e quem possui o Chromebook. Basta entrar nas abas específicas e escolher o que fazer.</p>
+        </div>
     </div>
-    </div>
+    
 </body>
 
 </html>

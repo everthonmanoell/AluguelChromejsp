@@ -13,7 +13,7 @@ body {
     background-image: url(../images/backg\ 2.png);
     background-position-x: center;
     background-size: cover;
-     text-decoration: none;
+    text-decoration: none;
 }
 .bordaDoTopo .botoesDoTopo {
     font-size: 20px;
@@ -145,10 +145,64 @@ a {
 .imgperfil {
     height: 20%;
     width: 20%;
+}  
+        
+.containerDevolucao {
+    width: auto;
+    height: auto;
+    padding: 25px;
+    border: 1px;
+    border-radius: 10px;
+    background-color: #ffffffc0;
+}
+table {
+    border-collapse: collapse;
+    border-spacing:0;    
+    text-align: center;
+     background:#fafafa ;
+    margin: 0 auto;
+    width: 80%;
 }
 
-  .mensagem-sucesso {
-            display: none;
-            color: green;
-            font-weight: bold;
-        }
+thead{
+    border: 1px solid #ddd;
+}
+
+tr {
+    text-align: left;
+    padding:25px;
+    border: 1px solid #ddd;
+    
+}
+
+.containerRelatorio {
+    width: auto;
+    height: auto;
+    padding: 25px;
+    border: 1px;
+    border-radius: 10px;
+    background-color: #ffffffc0;
+}
+
+.botoesDoRelatorio{
+    background-color: #003B95;
+    padding: 15px;
+    margin-left: 35px;
+    border: 1px ;
+    color: #ffffff;
+    border-radius: 5px;   
+}
+
+.botoesDoRelatorio:hover {
+    background-color: #003B95;
+    transition: all .55s;
+    transform: scale(0.9, 0.9);
+}
+
+.fonteRelatorio{
+    padding: 30px;
+    text-align: left;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
