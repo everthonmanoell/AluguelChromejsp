@@ -13,16 +13,20 @@
     </head>
     <body>
         <%
-           String nomecompleto = request.getParameter("nomecompleto");
-           String cpf = request.getParameter("cpf");
-           String senha = request.getParameter("senha");
+            
+           if(Sring id = request.getParameter("erro")!= null){
+                String nomecompleto = request.getParameter("nomecompleto");
+                String cpf = request.getParameter("cpf");
+                String senha = request.getParameter("senha");
 
-           Usuario usr = new Usuario(nomecompleto, cpf, senha);
+                 Usuario usr = new Usuario(nomecompleto, cpf, senha);
 
-           ControleUsuario controle = ControleUsuario.getInstance();
-           controle.adicionarUsuario(usr);
+                ControleUsuario controle = ControleUsuario.getInstance();
+                controle.adicionarUsuario(usr);
            
-           response.sendRedirect("../index.jsp");
+                response.sendRedirect("../index.jsp");
+
+        }
 
         %>
         
