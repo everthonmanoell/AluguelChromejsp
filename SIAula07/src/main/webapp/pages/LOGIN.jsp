@@ -22,7 +22,7 @@
        ControleUsuario controle = ControleUsuario.getInstance();
        Boolean tipo = controle.buscarUsuario(cpf, senha);
        if(tipo == true){
-                response.sendRedirect("pages/HOME.jsp");
+                response.sendRedirect("pages/home.jsp");
         }else{
            response.sendRedirect("../index.jsp?erro=true");
        }

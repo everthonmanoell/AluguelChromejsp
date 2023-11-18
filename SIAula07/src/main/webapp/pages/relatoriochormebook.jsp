@@ -17,17 +17,17 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Kanit:wght@100;400;700&display=swap" rel="stylesheet">
-    <title>Relatório alugados</title>
+    <title>Relatório Chromebook</title>
 </head>
     <div class="bordaDoTopo">
         <div class="container-fluid">     
-            <a href="HOME.jsp"><button class="botoesDoTopo">ÍNICIO</button></a>
-            <a href="HOMECADASTRO.jsp"><button class="botoesDoTopo">CADASTRO</button></a>
-            <a href="ALUGUEL.jsp"><button class="botoesDoTopo">ALUGUEL</button></a>
-            <a href="DEVOLUCAO.jsp"><button class="botoesDoTopo">DEVOLUÇÃO</button></a>
-            <a href="RELATORIO.jsp"><button class="botoesDoTopo">RELATÓRIO</button></a>
-            <a href="SAIR.jsp"><button class="power"><img src="../images/power.png" class="power" style="height: 30px;"></button></a>
-            <a href="PERFIL.jsp"><button class="user"><img src="../images/user.png" class="user" style="height: 30px;"></button></a>
+            <a href="home.jsp"><button class="botoesDoTopo">ÍNICIO</button></a>
+            <a href="homecadastro.jsp"><button class="botoesDoTopo">CADASTRO</button></a>
+            <a href="aluguel.jsp"><button class="botoesDoTopo">ALUGUEL</button></a>
+            <a href="devolucao.jsp"><button class="botoesDoTopo">DEVOLUÇÃO</button></a>
+            <a href="relatorio.jsp"><button class="botoesDoTopo">RELATÓRIO</button></a>
+            <a href="sair.jsp"><button class="power"><img src="../images/power.png" class="power" style="height: 30px;"></button></a>
+            <a href="perfil.jsp"><button class="user"><img src="../images/user.png" class="user" style="height: 30px;"></button></a>
         </div>
     </div>
     <br><br>
@@ -41,31 +41,26 @@
             <a href="RELATORIOCHROMEBOOK.jsp"><button class="botoesDoRelatorio">CHORMEBOOK</button></a>
             <a href=""><button class="botoesDoRelatorio">EMPTY</button></a>
             <a href=""><button class="botoesDoRelatorio">EMPTY</button></a>
-                    </div>
-                </div>  
             </div>
+        </div>
         <br><br><br><br>
         <div class="container containerDevolucao">
             <div class="titulo">
-                <a>Relatorio Alugado</a>
+                <a>Relatório Chromebook</a>
             </div>
             <table class="table">
                     <thead>
                             <th scope="col"><input type="search" class="form-control rounded" placeholder="" aria-label="Search" aria-describedby="search-addon" style="width:500px; margin-left:200px "/></th>
                         <th scope="col"><button type="button" class="btn btn-outline-primary btn-sm">pesquisar</button></th>
-                        <th scope="col">TOTAL ALUGADOS</th>
+                        <th scope="col">TOTAL CADASTRADOS</th>
                         <th scope="col"><input class="form-control" type="text" id="totalemuso" name="totalemuso" style="width:100px" readonly></th>
             </table>
                 <table class="table table-sm">
                     <thead>
                       <tr>
-                        <th scope="col">Nome Completo</th>
-                        <th scope="col">Matricula</th>
                         <th scope="col">Tombamento</th>
-                        <th scope="col">Hora Aluguel</th>
-                        <th scope="col">Data Aluguel</th>
-                        <th scope="col">Hora Entrega</th>
-                        <th scope="col">Data Entrega</th>
+                        <th scope="col">Situação</th>
+                        <th scope="col">Descrição</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -73,19 +68,13 @@
                         <th scope="row"></th>
                         <td></td>
                         <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><button type="submit" class="btn btn-outline-primary btn-sm">Alterar</button><button type="submit" class="btn btn-outline-primary btn-sm">Excluir</button></td>
                       </tr>
                       <tr>
                         <th scope="row"></th>
                         <td></td>
                         <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><button type="submit" class="btn btn-outline-primary btn-sm">Alterar</button><button type="submit" class="btn btn-outline-primary btn-sm">Excluir</button></td>
                       </tr>
                     </tbody>
                   </table>

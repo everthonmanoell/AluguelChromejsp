@@ -21,13 +21,13 @@
 </head>
     <div class="bordaDoTopo">
         <div class="container-fluid">     
-            <a href="HOME.jsp"><button class="botoesDoTopo">ÍNICIO</button></a>
-            <a href="HOMECADASTRO.jsp"><button class="botoesDoTopo">CADASTRO</button></a>
-            <a href="ALUGUEL.jsp"><button class="botoesDoTopo">ALUGUEL</button></a>
-            <a href="DEVOLUCAO.jsp"><button class="botoesDoTopo">DEVOLUÇÃO</button></a>
-            <a href="RELATORIO.jsp"><button class="botoesDoTopo">RELATÓRIO</button></a>
-            <a href="SAIR.jsp"><button class="power"><img src="../images/power.png" class="power" style="height: 30px;"></button></a>
-            <a href="PERFIL.jsp"><button class="user"><img src="../images/user.png" class="user" style="height: 30px;"></button></a>
+            <a href="home.jsp"><button class="botoesDoTopo">ÍNICIO</button></a>
+            <a href="homecadastro.jsp"><button class="botoesDoTopo">CADASTRO</button></a>
+            <a href="aluguel.jsp"><button class="botoesDoTopo">ALUGUEL</button></a>
+            <a href="devolucao.jsp"><button class="botoesDoTopo">DEVOLUÇÃO</button></a>
+            <a href="relatorio.jsp"><button class="botoesDoTopo">RELATÓRIO</button></a>
+            <a href="sair.jsp"><button class="power"><img src="../images/power.png" class="power" style="height: 30px;"></button></a>
+            <a href="perfil.jsp"><button class="user"><img src="../images/user.png" class="user" style="height: 30px;"></button></a>
         </div>
     </div>
     <br><br>
@@ -35,10 +35,10 @@
         <div class="containerRelatorio">
             <div class="row justify-content-center">
                 <div class="fonteRelatorio">
-            <a href="RELATORIOALUNO.jsp"><button class="botoesDoRelatorio">ALUNOS</button></a>
-            <a href="RELATORIOCOORDENADOR.jsp"><button class="botoesDoRelatorio">COORDENADOR</button></a>
-            <a href="RELATORIOALUGADO.jsp"><button class="botoesDoRelatorio">ALUGADOS</button></a>
-            <a href="RELATORIOCHROMEBOOK.jsp"><button class="botoesDoRelatorio">CHORMEBOOK</button></a>
+            <a href="relatorioaluno.jsp"><button class="botoesDoRelatorio">ALUNOS</button></a>
+            <a href="relatoriocoordenador.jsp"><button class="botoesDoRelatorio">COORDENADOR</button></a>
+            <a href="relatorioalugado.jsp"><button class="botoesDoRelatorio">ALUGADOS</button></a>
+            <a href="relatoriochormebook.jsp"><button class="botoesDoRelatorio">CHORMEBOOK</button></a>
             <a href=""><button class="botoesDoRelatorio">EMPTY</button></a>
             <a href=""><button class="botoesDoRelatorio">EMPTY</button></a>
                     </div>

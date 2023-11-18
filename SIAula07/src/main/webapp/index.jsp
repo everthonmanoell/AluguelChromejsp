@@ -47,7 +47,7 @@
                 out.println("<spam>Login ou Senha errados!</spam><br>");
             }
         %>
-        <a href="pages/INICIALCADASTRO.jsp">Cadastre-se</a>
+        <a href="pages/inicialcadastro.jsp">Cadastre-se</a>
     <br>
         <button type="submit" class="btn btn-primary">Entrar</button></a>
     </form>

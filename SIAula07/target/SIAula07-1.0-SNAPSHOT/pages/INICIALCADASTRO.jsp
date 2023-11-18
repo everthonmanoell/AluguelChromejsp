@@ -42,7 +42,6 @@
                     <label for="password" class="form-label"><a>ESCOLHA UMA SENHA:</a></label>
                     <input type="password" name="senha" class="form-control" placeholder="Senha" id="password"  required style="margin-bottom: 10px" >
                     <input type="password" name="senha2" class="form-control" placeholder="Confirme Senha" id="confirm_password" required style="margin-bottom: 10px">
-                    
                     <div class="row justify-content-md-center">
                         <button type="submit" class="BotaoSubmit">Cadastrar</button>
                         <button class="BotaoSubmit cancelar" onclick="window.location.href='../index.jsp'">Voltar</button>
