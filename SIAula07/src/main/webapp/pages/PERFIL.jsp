@@ -18,7 +18,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Kanit:wght@100;400;700&display=swap"
         rel="stylesheet">
-    <title>Perfil</title>
+    <title>PERFIL DO USÚARIO</title>
 </head>
     <div class="bordaDoTopo">
         <div class="container-fluid">     
@@ -61,7 +61,7 @@
                 </div>
 
                 <div class="row justify-content-md-center">
-                    <a href="perfilalterar.html"><button type="submit" class="BotaoSubmit">ALTERAR</a></button>
+                    <a href="perfilalterar.jsp"><button type="submit" class="BotaoSubmit">ALTERAR</a></button>
                     <button type="reset" class="BotaoSubmit cancelar">Cancelar</button>
                 </div>
             </form>
