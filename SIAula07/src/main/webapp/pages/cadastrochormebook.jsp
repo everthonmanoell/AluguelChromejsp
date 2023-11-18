@@ -26,7 +26,7 @@
             <a href="perfil.jsp"><button class="user"><img src="../images/user.png" class="user" style="height: 30px;"></button></a>
         </div>
     </div>
-    <br><br><br><br>
+    <br>
         <div class="container containerMeio">
             <div class="titulo">
                 <a>CADASTRO DE CHROMEBOOK</a>

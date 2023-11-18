@@ -16,7 +16,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Kanit:wght@100;400;700&display=swap" rel="stylesheet">
-    <title>Relatório Coordenador</title>
+    <title>RELATÓRIO DE COORDERNADORES</title>
 </head>
     <div class="bordaDoTopo">
         <div class="container-fluid">     
@@ -45,7 +45,7 @@
                 </div>  
         <div class="container containerDevolucao">
             <div class="titulo">
-                <a>Relatório Coordenador</a>
+                <a>RELATÓRIO DE COORDERNADORES</a>
             </div>
              </div>
             <table class="table">

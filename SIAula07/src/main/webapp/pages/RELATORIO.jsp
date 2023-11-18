@@ -16,7 +16,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Kanit:wght@100;400;700&display=swap" rel="stylesheet">
-    <title>RELATÓRIO</title>
+    <title>MENU DE RELATÓRIOS</title>
 </head>
   <div class="bordaDoTopo">
         <div class="container-fluid">     
@@ -42,10 +42,11 @@
             <a href=""><button class="botoesDoRelatorio">EMPTY</button></a>
                     </div>
             </div>  
-        <div class="containerRelatoriocentro" style="text-align: center; padding-bottom: 200px;">
+        <div class="containerRelatoriocentro" style="text-align: center; padding-bottom: 150px;">
             <br>
             <br>
-            <h1> Relatórios.</h1>
+            <br>
+            <h1> Menu de Relatórios.</h1>
             <p>Nesse sistema você pode obter todos os cadastro de alunos, coordenadores e o próprio Chromebook, além de poder observar o status e quem possui o Chromebook. Basta entrar nas abas específicas e escolher o que fazer.</p>
         </div>
     </div>

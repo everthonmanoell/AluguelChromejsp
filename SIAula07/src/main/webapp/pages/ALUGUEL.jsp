@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Kanit:wght@100;400;700&display=swap" rel="stylesheet">
-    <title>Aluguel</title>
+    <title>ALUGUEL DE CHROMEBOOK</title>
 </head>
 <body class="topo">
     <div class="bordaDoTopo">
@@ -24,7 +24,7 @@
             <a href="perfil.jsp"><button class="user"><img src="../images/user.png" class="user" style="height: 30px;"></button></a>
         </div>
     </div>
-    <br><br><br><br>
+    <br>
         <div class="container containerMeio">
             <div class="titulo">
                 <a>ALUGUEL DE CHROMEBOOK</a>

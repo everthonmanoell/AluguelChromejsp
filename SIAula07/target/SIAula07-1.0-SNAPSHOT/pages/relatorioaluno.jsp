@@ -17,7 +17,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Kanit:wght@100;400;700&display=swap" rel="stylesheet">
-    <title>Relatório Aluno</title>
+    <title>RELATÓRIO DE ALUNO</title>
 </head>
     <div class="bordaDoTopo">
         <div class="container-fluid">     
@@ -46,7 +46,7 @@
             </div>  
         <div class="container containerDevolucao">
             <div class="titulo">
-                <a>Relatório Aluno</a>
+                <a>RELATÓRIO DE ALUNOS </a>
             </div>
              </div>
             <table class="table">

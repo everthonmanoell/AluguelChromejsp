@@ -5,7 +5,6 @@
 --%>
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,7 +31,7 @@
             <a href="perfil.jsp"><button class="user"><img src="../images/user.png" class="user" style="height: 30px;"></button></a>
         </div>
     </div>
-    <br><br><br><br>
+    <br>
         <div class="container containerDevolucao">
             <div class="titulo">
                 <a>DEVOLUÇÃO</a>
