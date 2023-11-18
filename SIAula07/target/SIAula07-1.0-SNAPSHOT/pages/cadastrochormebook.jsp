@@ -1,9 +1,3 @@
-<%-- 
-    Document   : CADASTROCHROMEBOOK
-    Created on : 26 de out. de 2023, 09:35:51
-    Author     : evert
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="pt-br">

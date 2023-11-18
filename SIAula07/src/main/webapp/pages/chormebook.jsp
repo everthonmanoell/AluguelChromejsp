@@ -1,14 +1,12 @@
 <%-- 
     Document   : CHROMEBOOK
     Created on : 26 de out. de 2023, 09:36:24
-    Author     : evert
+    Author     : evertihiman
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -38,10 +36,6 @@
     </div>
     <div class="container containerBaixo">
         <div class="container containerMeio">
-
-
-
-
             <nav class="navbar bg-body-tertiary colorb">
                 <div class="container-fluid">
                     <a class="navbar-brand">RELATÓRIO</a>
@@ -71,8 +65,6 @@
                                 <td>#</td>
                                 <td>#</td>
                             </tr>
-
-                            <!-- Adicione mais linhas conforme necessário -->
                         </tbody>
                     </table>
 

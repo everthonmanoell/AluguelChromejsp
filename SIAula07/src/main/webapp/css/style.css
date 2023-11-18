@@ -1,12 +1,10 @@
 /*
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
 Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+    Document   : PERFIL
+    Created on : 18 de nov. de 2023, 00:37:09
+    Author     : felipe
 */
-/* 
-    Created on : 26 de out. de 2023, 09:16:04
-    Author     : evert
-*/
-
 body {
     background-color: #ffffff;
     font-family: 'Kanit', sans-serif;
@@ -17,7 +15,6 @@ body {
 }
 .bordaDoTopo .botoesDoTopo {
     font-size: 20px;
-    font-weight: bold;
     height: auto;
     margin: 5px;
 }
@@ -83,14 +80,12 @@ a {
     margin-top: 25px;
     text-align: center;
     font-size: 30px;
-    font-weight: bold;
 }
 
 .fonteMeio {
     padding: 30px;
     text-align: center;
     font-size: 20px;
-    font-weight: bold;
 }
 
 .botoesDoMeio {
@@ -99,7 +94,6 @@ a {
     font-weight: 400;
     font-size: 25px;
     padding: 5px;
-    font-weight: bold;
     height: 50px;
     width: 300px;
     border: 1px;
@@ -159,7 +153,8 @@ table {
     border-collapse: collapse;
     border-spacing:0;    
     text-align: center;
-     background:#fafafa ;
+    font-size: 20px;
+    background:#fafafa ;
     margin: 0 auto;
     width: 80%;
 }
@@ -171,8 +166,7 @@ thead{
 tr {
     text-align: left;
     padding:25px;
-    border: 1px solid #ddd;
-    
+    border: 1px solid #ddd;    
 }
 
 .containerRelatorio {
@@ -202,7 +196,6 @@ tr {
 .fonteRelatorio{
     padding: 30px;
     text-align: left;
-    font-size: 20px;
-    font-weight: bold;
+    font-size: 22px;
     text-align: center;
 }

@@ -1,9 +1,8 @@
 <%-- 
-    Document   : RELATORIO
-    Created on : 26 de out. de 2023, 09:37:58
-    Author     : evert
+    Document   : PERFIL
+    Created on : 18 de nov. de 2023, 00:37:09
+    Author     : felipe
 --%>
-
 <div%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -30,28 +29,28 @@
             <a href="perfil.jsp"><button class="user"><img src="../images/user.png" class="user" style="height: 30px;"></button></a>
         </div>
     </div>
-    <br><br>
+    <br>
     </div>
+    <div class="container">
         <div class="containerRelatorio">
             <div class="row justify-content-center">
                 <div class="fonteRelatorio">
-            <a href="RELATORIOALUNO.jsp"><button class="botoesDoRelatorio">ALUNOS</button></a>
-            <a href="RELATORIOCOORDENADOR.jsp"><button class="botoesDoRelatorio">COORDENADOR</button></a>
-            <a href="RELATORIOALUGADO.jsp"><button class="botoesDoRelatorio">ALUGADOS</button></a>
-            <a href="RELATORIOCHROMEBOOK.jsp"><button class="botoesDoRelatorio">CHORMEBOOK</button></a>
+            <a href="relatorioaluno.jsp"><button class="botoesDoRelatorio">ALUNOS</button></a>
+            <a href="relatoriocoordenador.jsp"><button class="botoesDoRelatorio">COORDENADOR</button></a>
+            <a href="relatorioalugado.jsp"><button class="botoesDoRelatorio">ALUGADOS</button></a>
+            <a href="relatoriochormebook.jsp"><button class="botoesDoRelatorio">CHORMEBOOK</button></a>
             <a href=""><button class="botoesDoRelatorio">EMPTY</button></a>
             <a href=""><button class="botoesDoRelatorio">EMPTY</button></a>
-            </div>
-        </div>
-        <br><br><br><br>
+                    </div>
+            </div>  
         <div class="container containerDevolucao">
             <div class="titulo">
                 <a>Relatório Chromebook</a>
-            </div>
+            </div> </div>
             <table class="table">
                     <thead>
                             <th scope="col"><input type="search" class="form-control rounded" placeholder="" aria-label="Search" aria-describedby="search-addon" style="width:500px; margin-left:200px "/></th>
-                        <th scope="col"><button type="button" class="btn btn-outline-primary btn-sm">pesquisar</button></th>
+                        <th scope="col"><button type="button" class="btn btn-secondary btn-sm">pesquisar</button></th>
                         <th scope="col">TOTAL CADASTRADOS</th>
                         <th scope="col"><input class="form-control" type="text" id="totalemuso" name="totalemuso" style="width:100px" readonly></th>
             </table>
@@ -61,6 +60,7 @@
                         <th scope="col">Tombamento</th>
                         <th scope="col">Situação</th>
                         <th scope="col">Descrição</th>
+                        <th scope="col">Opções</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -68,13 +68,13 @@
                         <th scope="row"></th>
                         <td></td>
                         <td></td>
-                        <td><button type="submit" class="btn btn-outline-primary btn-sm">Alterar</button><button type="submit" class="btn btn-outline-primary btn-sm">Excluir</button></td>
+                        <td><button type="submit" class="btn btn-outline-primary btn-sm">Alterar</button><button type="submit" class="btn btn-outline-danger btn-sm">Excluir</button></td>
                       </tr>
                       <tr>
                         <th scope="row"></th>
                         <td></td>
                         <td></td>
-                        <td><button type="submit" class="btn btn-outline-primary btn-sm">Alterar</button><button type="submit" class="btn btn-outline-primary btn-sm">Excluir</button></td>
+                        <td><button type="submit" class="btn btn-outline-primary btn-sm">Alterar</button><button type="submit" class="btn btn-outline-danger btn-sm">Excluir</button></td>
                       </tr>
                     </tbody>
                   </table>
