@@ -1,11 +1,13 @@
 <%-- 
     Document   : login
-    Created on : Sep 27, 2023, 6:45:41 PM
-    Author     : ficr
+    Created on : 1 de nov. de 2023, 23:29:08
+    Author     : felipe
 --%>
+
 <%@page import="usuario.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -22,7 +24,7 @@
        ControleUsuario controle = ControleUsuario.getInstance();
        Boolean tipo = controle.buscarUsuario(cpf, senha);
        if(tipo == true){
-                response.sendRedirect("pages/HOME.jsp");
+                response.sendRedirect("pages/home.jsp");
         }else{
            response.sendRedirect("../index.jsp?erro=true");
        }

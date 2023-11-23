@@ -1,13 +1,13 @@
 <%-- 
-    Document   : cadastrocoordenador
-    Created on : 26 de out. de 2023, 09:09:00
-    Author     : evert
+    Document   : inicialcadastro
+    Created on : 1 de nov. de 2023, 23:29:08
+    Author     : felipe
 --%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="pt-br">
 
+    
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -42,7 +42,6 @@
                     <label for="password" class="form-label"><a>ESCOLHA UMA SENHA:</a></label>
                     <input type="password" name="senha" class="form-control" placeholder="Senha" id="password"  required style="margin-bottom: 10px" >
                     <input type="password" name="senha2" class="form-control" placeholder="Confirme Senha" id="confirm_password" required style="margin-bottom: 10px">
-                    
                     <div class="row justify-content-md-center">
                         <button type="submit" class="BotaoSubmit">Cadastrar</button>
                         <button class="BotaoSubmit cancelar" onclick="window.location.href='../index.jsp'">Voltar</button>

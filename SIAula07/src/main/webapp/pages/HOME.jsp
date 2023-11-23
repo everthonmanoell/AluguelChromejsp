@@ -1,12 +1,13 @@
 <%-- 
-    Document   : HOME
-    Created on : 26 de out. de 2023, 09:36:53
-    Author     : evert
+    Document   : home
+    Created on : 1 de nov. de 2023, 23:29:08
+    Author     : felipe
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="pt-br">
+    
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -20,16 +21,15 @@
         rel="stylesheet">
     <title>HOME</title>
 </head>
-
 <body class="topo">
     <div class="bordaDoTopo">
         <div class="container-fluid">     
-            <a href="HOMECADASTRO.jsp"><button class="botoesDoTopo">CADASTRO</button></a>
-            <a href="ALUGUEL.jsp"><button class="botoesDoTopo">ALUGUEL</button></a>
-            <a href="DEVOLUCAO.jsp"><button class="botoesDoTopo">DEVOLUÇÃO</button></a>
-            <a href="RELATORIO.jsp"><button class="botoesDoTopo">RELATÓRIO</button></a>
-            <a href="SAIR.jsp"><button class="power"><img src="../images/power.png" class="power" style="height: 30px;"></button></a>
-            <a href="PERFIL.jsp"><button class="user"><img src="../images/user.png" class="user" style="height: 30px;"></button></a>
+            <a href="homecadastro.jsp"><button class="botoesDoTopo">CADASTRO</button></a>
+            <a href="aluguel.jsp"><button class="botoesDoTopo">ALUGUEL</button></a>
+            <a href="devolucao.jsp"><button class="botoesDoTopo">DEVOLUÇÃO</button></a>
+            <a href="relatorio.jsp"><button class="botoesDoTopo">RELATÓRIO</button></a>
+            <a href="sair.jsp"><button class="power"><img src="../images/power.png" class="power" style="height: 30px;"></button></a>
+            <a href="perfil.jsp"><button class="user"><img src="../images/user.png" class="user" style="height: 30px;"></button></a>
         </div>
     </div>
     <div class="container">
