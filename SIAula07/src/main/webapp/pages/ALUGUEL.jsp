@@ -28,6 +28,7 @@
         <div class="container containerMeio">
             <div class="titulo">
                 <a>ALUGUEL DE CHROMEBOOK</a>
+                
             </div>
             <form action="#">
                 <div class="fonteCoordenador">
