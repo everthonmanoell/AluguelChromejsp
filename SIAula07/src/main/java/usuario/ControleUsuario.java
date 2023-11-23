@@ -4,6 +4,7 @@
  */
 package usuario;
 
+
 import java.util.LinkedList;
 
 /**
@@ -30,10 +31,10 @@ public class ControleUsuario {
         this.usuarios.add(usuario);
     }
     
-    public boolean buscarUsuario(String cpf, String senha){
+    public boolean buscarUsuario(String matricula, String senha){
         
         for(Usuario u: this.usuarios){
-            if(u.getCpf().equals(cpf) && (u.getSenha().equals(senha))){
+            if(u.getMatricula().equals(matricula) && (u.getSenha().equals(senha))){
                 return true;
             }
         }
@@ -41,11 +42,12 @@ public class ControleUsuario {
     }
     
     public String listarUsuarios(){
-        String texto = "";
+        StringBuilder texto = new StringBuilder();
         for(Usuario u: this.usuarios){
-            texto = texto + "cpf: " + u.getCpf() + "<br>";
-            texto = texto + "Senha: " + u.getSenha() + "<br>";
+            texto.append("Matricula: ").append(u.getMatricula()).append("<br>");
+            texto.append("Senha: ").append(u.getSenha()).append("<br>");
         }
-        return texto;
+        return texto.toString();
     }
+
 }

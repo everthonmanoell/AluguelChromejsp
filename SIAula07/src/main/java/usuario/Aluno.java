@@ -13,13 +13,15 @@ public class Aluno {
     private String matricula;
     private String turno;
     private String periodo;
+    private String turma;
     
     
-    public Aluno (String nome, String matricula, String turno, String periodo){
+    public Aluno (String nome, String matricula, String turno, String periodo, String turma){
         this.nome = nome;
         this.matricula = matricula;
         this.turno = turno;
         this.periodo = periodo;
+        this.turma = turma;
     }
 
     public String getNome() {
@@ -52,6 +54,14 @@ public class Aluno {
 
     public void setPeriodo(String periodo) {
         this.periodo = periodo;
+    }
+    
+    public String getTurma(){
+        return turma;
+    }
+    
+    public void setTurma(String turma){
+        this.turma = turma;
     }
     
         

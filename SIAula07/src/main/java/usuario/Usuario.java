@@ -10,13 +10,13 @@ package usuario;
  */
 public class Usuario {
     private String nomecompleto;
-    private String cpf;
+    private String matricula;
     private String senha;
     
     
-    public Usuario(String nomecompleto, String cpf, String senha){
+    public Usuario(String nomecompleto, String matricula, String senha){
         this.nomecompleto = nomecompleto;
-        this.cpf = cpf;
+        this.matricula = matricula;
         this.senha = senha;
     }
 
@@ -28,12 +28,12 @@ public class Usuario {
         this.nomecompleto = nomecompleto;
     }
 
-    public String getCpf() {
-        return cpf;
+    public String getMatricula() {
+        return matricula;
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
     }
 
     public String getSenha() {

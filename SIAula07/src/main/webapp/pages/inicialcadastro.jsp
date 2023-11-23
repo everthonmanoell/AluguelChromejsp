@@ -37,7 +37,7 @@
                 <div class="fonteCoordenador">
                     <label for="nomecompleto" class="form-label"><a>NOME COMPLETO:</a></label>
                     <input type="text" class="form-control" id="nomecompleto" placeholder="Nome completo" name="nomecompleto" required>
-                    <label for="cpf" class="form-label"><a>CPF:</a></label>
+                    <label for="matricula" class="form-label"><a>Matricula:</a></label>
                     <input type="text" name="cpf" class="form-control cpf1" id="CPF" aria-describedby="CPF" placeholder="CPF" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 11)" required>
                     <label for="password" class="form-label"><a>ESCOLHA UMA SENHA:</a></label>
                     <input type="password" name="senha" class="form-control" placeholder="Senha" id="password"  required style="margin-bottom: 10px" >
