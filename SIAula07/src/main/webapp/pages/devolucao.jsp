@@ -18,16 +18,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Kanit:wght@100;400;700&display=swap"
         rel="stylesheet">
-    <title>DEVOLU«√O</title>
+    <title>DEVOLU√á√ÉO</title>
 </head>
 <body class="topo">
     <div class="bordaDoTopo">
         <div class="container-fluid">     
-            <a href="home.jsp"><button class="botoesDoTopo">ÕNICIO</button></a>
+            <a href="home.jsp"><button class="botoesDoTopo">√çNICIO</button></a>
             <a href="homecadastro.jsp"><button class="botoesDoTopo">CADASTRO</button></a>
             <a href="aluguel.jsp"><button class="botoesDoTopo">ALUGUEL</button></a>
-            <a href="devolucao.jsp"><button class="botoesDoTopo">DEVOLU«√O</button></a>
-            <a href="relatorio.jsp"><button class="botoesDoTopo">RELAT”RIO</button></a>
+            <a href="devolucao.jsp"><button class="botoesDoTopo">DEVOLU√á√ÉO</button></a>
+            <a href="relatorio.jsp"><button class="botoesDoTopo">RELAT√ìRIO</button></a>
             <a href="sair.jsp"><button class="power"><img src="../images/power.png" class="power" style="height: 30px;"></button></a>
             <a href="perfil.jsp"><button class="user"><img src="../images/user.png" class="user" style="height: 30px;"></button></a>
         </div>
@@ -35,7 +35,7 @@
     <br>
         <div class="container containerDevolucao">
             <div class="titulo">
-                <a>DEVOLU«√O</a>
+                <a>DEVOLU√á√ÉO</a>
             </div>
             <table class="table">
                     <thead>
@@ -54,7 +54,7 @@
                         <th scope="col">Hora aluguel</th>
                         <th scope="col">Data Entrega</th>
                         <th scope="col">Hora Entrega</th>
-                        <th scope="col">OpÁıes</th>
+                        <th scope="col">Op√ß√µes</th>
                       </tr>
                     </thead>
                     <tbody>
