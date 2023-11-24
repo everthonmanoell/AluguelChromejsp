@@ -17,10 +17,10 @@
             
            if(Sring id = request.getParameter("erro")!= null){
                 String nomecompleto = request.getParameter("nomecompleto");
-                String cpf = request.getParameter("cpf");
+                String cpf = request.getParameter("matricula");
                 String senha = request.getParameter("senha");
 
-                 Usuario usr = new Usuario(nomecompleto, cpf, senha);
+                 Usuario usr = new Usuario(nomecompleto, matricula, senha);
 
                 ControleUsuario controle = ControleUsuario.getInstance();
                 controle.adicionarUsuario(usr);
