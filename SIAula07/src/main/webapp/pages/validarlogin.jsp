@@ -14,19 +14,21 @@
 </head>
 <body>
     
+   
+    
     <%
-        String cpf = request.getParameter("matricula");
+        String matricula = request.getParameter("matricula");
         String senha = request.getParameter("senha");
-
-        ControleUsuario controle = ControleUsuario.getInstance();
-
-        if (controle.buscarUsuario(matricula, senha)) {
-            // Configura a variável de sessão após a autenticação bem-sucedida
-            
-            response.sendRedirect("HOME.jsp");
-        } else {
+     
+        
+       ControleUsuario controle = ControleUsuario.getInstance();
+    
+       if( controle.buscarUsuario(matricula, senha)){
+            response.sendRedirect("home.jsp");
+        }else{
             response.sendRedirect("../index.jsp?erro=true");
-        }
+       }
+        
     %>
 </body>
 </html>
