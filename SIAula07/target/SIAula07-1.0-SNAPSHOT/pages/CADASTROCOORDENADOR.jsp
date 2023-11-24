@@ -15,7 +15,9 @@
     <title>CADASTRO DE COORDENADOR</title>
 </head>
 <body class="topo">
-    <div class="bordaDoTopo">
+    <div class="bordaDoTopo" <% if (session.getAttribute("index") != null) { %>
+        style="display: none;"
+    <% } %>>
         <div class="container-fluid">     
             <a href="home.jsp"><button class="botoesDoTopo">ÍNICIO</button></a>
             <a href="homecadastro.jsp"><button class="botoesDoTopo">CADASTRO</button></a>
@@ -35,8 +37,8 @@
                 <div class="fonteCoordenador">
                     <label for="nomecompleto" class="form-label"><a>NOME COMPLETO:</a></label>
                     <input type="text" class="form-control" id="nomecompleto" placeholder="" name="nomecompleto" required>
-                    <label for="matricula" class="form-label"><a>Matrícula:</a></label>
-                    <input type="text" class="form-control cpf1" id="CPF" aria-describedby="CPF" placeholder="CPF" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 11)" required>
+                    <label for="matricula" class="form-label"><a>MATRÍCULA:</a></label>
+                    <input type="text" class="form-control cpf1" id="CPF" aria-describedby="CPF" placeholder="Ex: 400140004" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 11)" required>
                     <label for="password" class="form-label"><a>ESCOLHA UMA SENHA:</a></label>
                     <input type="password" name="senha" class="form-control" placeholder="Senha" id="password"  required style="margin-bottom: 10px" >
                     <input type="password" name="senha2" class="form-control" placeholder="Confirme Senha" id="confirm_password" required style="margin-bottom: 10px">

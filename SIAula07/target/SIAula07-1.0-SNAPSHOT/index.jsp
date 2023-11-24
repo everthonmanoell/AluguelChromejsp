@@ -35,7 +35,7 @@
 
         <h1 class="titulo2">Login</h1>
         <div class="form-group">
-        <input type="text" name="cpf" class="form-control cpf1" id="CPF" aria-describedby="CPF" placeholder="CPF (apenas números)" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 11)" required>
+        <input type="text" name="matricula" class="form-control cpf1" id="matricula" aria-describedby="Matricula" placeholder="Matrícula (apenas números)" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 11)" required>
         </div>
         <div class="form-group">
             <input type="password" name="senha" class="form-control senha1" id="exampleInputPassword1" placeholder="Senha" required>
@@ -46,6 +46,7 @@
             if(erro != null){
                 out.println("<spam>Login ou Senha errados!</spam><br>");
             }
+            
         %>
         <a href="pages/inicialcadastro.jsp">Cadastre-se</a>
     <br>
