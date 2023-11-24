@@ -1,7 +1,7 @@
 <%-- 
     Document   : PERFILALTERAR
     Created on : 26 de out. de 2023, 09:37:47
-    Author     : evert
+    Author     : Everthon Manoel
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

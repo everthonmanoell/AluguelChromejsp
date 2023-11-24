@@ -1,7 +1,7 @@
 <%-- 
-    Document   : login
+    Document   : validarlogin
     Created on : Sep 27, 2023, 6:45:41 PM
-    Author     : ficr
+    Author     : Everthon Manoel
 --%>
 
 <%@page import="usuario.*"%>
