@@ -35,7 +35,7 @@ public class Banco {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             return DriverManager.getConnection(
-                    "jdbc:mysql://localhost/aula", "root", "");
+                    "jdbc:mysql://localhost/aluguelchromebook", "root", "");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (ClassNotFoundException ex) {
@@ -49,7 +49,7 @@ public class Banco {
         String nomes = "";
         Connection conn = getConnection();
         try {
-            String consulta = "SELECT * FROM usuario";
+            String consulta = "SELECT * FROM chromebook";
 
             Statement stm = conn.createStatement();
             ResultSet resultado = stm.executeQuery(consulta);
