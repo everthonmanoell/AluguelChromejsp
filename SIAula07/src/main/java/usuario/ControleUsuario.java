@@ -12,12 +12,21 @@ import java.util.LinkedList;
  * @author Everthon Manoel
  */
 public class ControleUsuario {
+    
     private LinkedList<Usuario> usuarios;
+    private LinkedList<Aluno> alunos;
+    private LinkedList<Chromebook> chromebook;
+    
     private static ControleUsuario instancia = null;
+    
     
     private ControleUsuario(){
         this.usuarios = new LinkedList<Usuario>();
+        this.alunos = new LinkedList<Aluno>();
+        this.chromebook = new LinkedList<Chromebook>();
     }
+     
+    
     
     public static ControleUsuario getInstance(){
         if(instancia == null){
