@@ -72,7 +72,11 @@
                     <tbody>
                         
                     <%
-                    out.println(controle.listarDadosChromebook());
+                    if(controle.listarDadosChromebook() != null ){
+                        out.println(controle.listarDadosChromebook());
+                    }else{
+                        out.println("<p>Nenhum chromebook foi cadastrado! :( </p>");
+                    }
                     %>
                         
                      </tbody>

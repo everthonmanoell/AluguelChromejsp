@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="usuario.*"%>
 <!DOCTYPE html>
 <html lang="pt-br">
 

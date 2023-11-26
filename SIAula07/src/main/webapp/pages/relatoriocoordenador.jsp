@@ -3,7 +3,8 @@
     Created on : 18 de nov. de 2023, 00:37:09
     Author     : felipe
 --%>
-
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="usuario.*"%>
 <div%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -17,16 +18,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Kanit:wght@100;400;700&display=swap" rel="stylesheet">
-    <title>RelatÛrio de Coordenadores</title>
+    <title>Relat√≥rio de Coordenadores</title>
 </head>
     <div class="bordaDoTopo">
     <div class="bordaDoTopo">
         <div class="container-fluid">     
-            <a href="home.jsp"><button class="botoesDoTopo">ÕNICIO</button></a>
+            <a href="home.jsp"><button class="botoesDoTopo">√çNICIO</button></a>
             <a href="homecadastro.jsp"><button class="botoesDoTopo">CADASTRO</button></a>
             <a href="aluguel.jsp"><button class="botoesDoTopo">ALUGUEL</button></a>
-            <a href="devolucao.jsp"><button class="botoesDoTopo">DEVOLU«√O</button></a>
-            <a href="relatorio.jsp"><button class="botoesDoTopo">RELAT”RIO</button></a>
+            <a href="devolucao.jsp"><button class="botoesDoTopo">DEVOLU√á√ÉO</button></a>
+            <a href="relatorio.jsp"><button class="botoesDoTopo">RELAT√ìRIO</button></a>
             <a href="sair.jsp"><button class="power"><img src="../images/power.png" class="power" style="height: 30px;"></button></a>
             <a href="perfil.jsp"><button class="user"><img src="../images/user.png" class="user" style="height: 30px;"></button></a>
         </div>
@@ -46,7 +47,7 @@
                 </div>  
         <div class="container containerDevolucao">
             <div class="titulo">
-                <a>RELAT”RIO DE COORDERNADORES</a>
+                <a>RELAT√ìRIO DE COORDERNADORES</a>
             </div>
              </div>
             <table class="table">
