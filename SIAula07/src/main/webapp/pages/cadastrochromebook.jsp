@@ -1,3 +1,9 @@
+<%-- 
+    Document   : CHROMEBOOK
+    Created on : 26 de out. de 2023, 09:36:24
+    Author     : Everthon Manoel
+--%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -32,19 +38,19 @@
             <div class="titulo">
                 <a>CADASTRO DE CHROMEBOOK</a>
             </div>
-            <form action="#">
+            <form action="validarchromebook.jsp" method="post">
                 <div class="fonteCoordenador">
                     <label for="TOMBAMENTO" class="form-label"><a>TOMBAMENTO:</a></label>
-                    <input type="text" class="form-control" id="TOMBAMENTO" placeholder="" name="TOMBAMENTO" required>
+                    <input type="text" class="form-control" id="TOMBAMENTO" placeholder="" name="tombamento" required>
                     <label for="SITUACAO" class="form-label"><a>SITUAÇÃO:</a></label>
-                    <select class="form-select" id="SITUACAO" name="SITUACAO" required>
+                    <select class="form-select" id="SITUACAO" name="situacao" required>
                         <option></option>
                         <option value="1">INOPERANTE</option>
                         <option value="2">OPERANTE</option>
                     </select>
                     <label for="DESCRICAO" class="form-label"><a>DESCRIÇÃO:</a></label>
                     <textarea class="form-control" rows="2" maxlength="100" style="resize: none" id="DESCRICAO"
-                        name="DESCRICAO"></textarea>
+                        name="descricao"></textarea>
                     <br>
                     <div class="row justify-content-md-center">
                         <button type="submit" class="BotaoSubmit">Salvar</button>

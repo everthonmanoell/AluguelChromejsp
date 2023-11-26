@@ -1,3 +1,9 @@
+<%-- 
+    Document   : CHROMEBOOK
+    Created on : 26 de out. de 2023, 09:36:24
+    Author     : Everthon Manoel
+--%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -15,7 +21,7 @@
     <title>CADASTRO DE COORDENADOR</title>
 </head>
 <body class="topo">
-    <div class="bordaDoTopo">
+    <div class="bordaDoTopo" </div>
         <div class="container-fluid">     
             <a href="home.jsp"><button class="botoesDoTopo">ÍNICIO</button></a>
             <a href="homecadastro.jsp"><button class="botoesDoTopo">CADASTRO</button></a>
@@ -31,12 +37,12 @@
             <div class="titulo">
                 <a>CADASTRO DE COORDENADOR</a>
             </div>
-            <form action="validarcadastro.jsp?erro=true" method="post">
+            <form action="validarcadastro.jsp?cad=true" method="post">
                 <div class="fonteCoordenador">
                     <label for="nomecompleto" class="form-label"><a>NOME COMPLETO:</a></label>
-                    <input type="text" class="form-control" id="nomecompleto" placeholder="" name="nomecompleto" required>
-                    <label for="cpf" class="form-label"><a>CPF:</a></label>
-                    <input type="text" class="form-control cpf1" id="CPF" aria-describedby="CPF" placeholder="CPF" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 11)" required>
+                    <input type="text" class="form-control" id="nomecompleto" placeholder="Nome completo" name="nomecompleto" required>
+                    <label for="matricula" class="form-label"><a>Matricula:</a></label>
+                    <input type="text" name="matricula" class="form-control cpf1" id="CPF" aria-describedby="CPF" placeholder="CPF" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 11)" required>
                     <label for="password" class="form-label"><a>ESCOLHA UMA SENHA:</a></label>
                     <input type="password" name="senha" class="form-control" placeholder="Senha" id="password"  required style="margin-bottom: 10px" >
                     <input type="password" name="senha2" class="form-control" placeholder="Confirme Senha" id="confirm_password" required style="margin-bottom: 10px">

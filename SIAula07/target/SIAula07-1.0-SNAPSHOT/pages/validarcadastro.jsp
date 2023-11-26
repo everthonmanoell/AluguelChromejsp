@@ -13,22 +13,20 @@
         <title>JSP Page</title>
     </head>
     <body>
+        
         <%
-            
-           if(Sring id = request.getParameter("erro")!= null){
-                String nomecompleto = request.getParameter("nomecompleto");
-                String cpf = request.getParameter("cpf");
-                String senha = request.getParameter("senha");
 
-                 Usuario usr = new Usuario(nomecompleto, cpf, senha);
 
-                ControleUsuario controle = ControleUsuario.getInstance();
-                controle.adicionarUsuario(usr);
+           String nomecompleto = request.getParameter("nomecompleto");
+           String matricula = request.getParameter("matricula");
+           String senha = request.getParameter("senha");
+
+           Usuario usr = new Usuario(nomecompleto, matricula, senha);
+
+           ControleUsuario controle = ControleUsuario.getInstance();
+           controle.adicionarUsuario(usr);
            
-                response.sendRedirect("../index.jsp");
-
-        }
-
+           response.sendRedirect("../index.jsp");
         %>
         
     </body>

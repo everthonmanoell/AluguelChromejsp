@@ -4,6 +4,7 @@
  */
 package usuario;
 
+
 import java.util.LinkedList;
 
 /**
@@ -11,12 +12,21 @@ import java.util.LinkedList;
  * @author Everthon Manoel
  */
 public class ControleUsuario {
+    
     private LinkedList<Usuario> usuarios;
+    private LinkedList<Aluno> alunos;
+    private LinkedList<Chromebook> chromebook;
+    
     private static ControleUsuario instancia = null;
+    
     
     private ControleUsuario(){
         this.usuarios = new LinkedList<Usuario>();
+        this.alunos = new LinkedList<Aluno>();
+        this.chromebook = new LinkedList<Chromebook>();
     }
+     
+    
     
     public static ControleUsuario getInstance(){
         if(instancia == null){
@@ -30,10 +40,18 @@ public class ControleUsuario {
         this.usuarios.add(usuario);
     }
     
-    public boolean buscarUsuario(String cpf, String senha){
+    public void adicionarChromebook(Chromebook chromebook){
+        this.chromebook.add(chromebook);
+    }
+    
+    public void adicionarAluno(Aluno aluno){
+        this.alunos.add(aluno);
+    }
+    
+    public boolean buscarUsuario(String matricula, String senha){
         
         for(Usuario u: this.usuarios){
-            if(u.getCpf().equals(cpf) && (u.getSenha().equals(senha))){
+            if(u.getMatricula().equals(matricula) && (u.getSenha().equals(senha))){
                 return true;
             }
         }
@@ -41,11 +59,12 @@ public class ControleUsuario {
     }
     
     public String listarUsuarios(){
-        String texto = "";
+        StringBuilder texto = new StringBuilder();
         for(Usuario u: this.usuarios){
-            texto = texto + "cpf: " + u.getCpf() + "<br>";
-            texto = texto + "Senha: " + u.getSenha() + "<br>";
+            texto.append("Matricula: ").append(u.getMatricula()).append("<br>");
+            texto.append("Senha: ").append(u.getSenha()).append("<br>");
         }
-        return texto;
+        return texto.toString();
     }
+
 }

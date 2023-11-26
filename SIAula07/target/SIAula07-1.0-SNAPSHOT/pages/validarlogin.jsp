@@ -1,33 +1,34 @@
 <%-- 
-    Document   : login
+    Document   : validarlogin
     Created on : Sep 27, 2023, 6:45:41 PM
-    Author     : ficr
+    Author     : Everthon Manoel
 --%>
 
 <%@page import="usuario.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Projeto</title>
-    </head>
-    <body>
-        
-        <%
-       String cpf = request.getParameter("cpf");
-       
-       String senha = request.getParameter("senha");
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Projeto</title>
+</head>
+<body>
+    
+   
+    
+    <%
+        String matricula = request.getParameter("matricula");
+        String senha = request.getParameter("senha");
      
         
        ControleUsuario controle = ControleUsuario.getInstance();
     
-       if( controle.buscarUsuario(cpf, senha)){
-                response.sendRedirect("HOME.jsp");
+       if( controle.buscarUsuario(matricula, senha)){
+            response.sendRedirect("home.jsp");
         }else{
-           response.sendRedirect("../index.jsp?erro=true");
+            response.sendRedirect("../index.jsp?erro=true");
        }
         
-        %>
-    </body>
+    %>
+</body>
 </html>
