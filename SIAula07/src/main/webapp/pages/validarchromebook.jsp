@@ -18,10 +18,11 @@
         <%
            String tombamento = request.getParameter("tombamento");
            String situacao = request.getParameter("situacao");
+           String descricao = request.getParameter("descricao");
 
            if (tombamento != null && situacao != null) {
                // Crie um objeto Chromebook apenas se os parâmetros não forem nulos
-               Chromebook chromebook = new Chromebook(tombamento, situacao);
+               Chromebook chromebook = new Chromebook(tombamento, situacao, descricao);
 
                // Adicione o Chromebook ao controle de usuários (ou ao controle específico de Chromebooks, se houver)
                ControleUsuario controle = ControleUsuario.getInstance();

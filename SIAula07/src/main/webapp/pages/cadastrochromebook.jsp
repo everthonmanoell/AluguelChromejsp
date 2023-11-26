@@ -50,7 +50,7 @@
                     </select>
                     <label for="DESCRICAO" class="form-label"><a>DESCRIÇÃO:</a></label>
                     <textarea class="form-control" rows="2" maxlength="100" style="resize: none" id="DESCRICAO"
-                        name="DESCRICAO"></textarea>
+                        name="descricao"></textarea>
                     <br>
                     <div class="row justify-content-md-center">
                         <button type="submit" class="BotaoSubmit">Salvar</button>
