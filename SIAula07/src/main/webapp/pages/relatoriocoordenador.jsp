@@ -62,7 +62,7 @@
                         <th scope="col">Nome Completo</th>
                         <th scope="col">CPF</th>
                         <th scope="col">Senha</th>
-                        <th scope="col">Opções</th>
+                       
                       </tr>
                     </thead>
                     <tbody>

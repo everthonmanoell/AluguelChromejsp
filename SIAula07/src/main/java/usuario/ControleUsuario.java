@@ -66,5 +66,19 @@ public class ControleUsuario {
         }
         return texto.toString();
     }
+    
+    public String listarDadosChromebook(){
+        String texto = "";
+        for(Chromebook u: this.chromebook){
+            texto = texto + 
+                      "<tr>"
+                    + "<td>"+u.getTombamento()+"</td>"
+                    + "<td>"+u.getSituacao()+"</td>"
+                    + "<td>"+u.getDescricao()+"</td>"
+                    + "<td><a href=\"cadastrocoordenador.jsp?tombamento="+ u.getTombamento()+ "\" class=\"btn btn-outline-primary btn-sm\">Alterar</a><a href=\"#\" class=\"btn btn-outline-danger btn-sm\">Excluir</a></td>"
+                    + "</tr>";
+        }
+        return texto;
+    }    
 
 }

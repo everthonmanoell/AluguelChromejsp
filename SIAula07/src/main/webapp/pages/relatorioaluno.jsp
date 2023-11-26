@@ -57,10 +57,10 @@
                     <thead>
                       <tr>
                         <th scope="col">Nome Completo</th>
-                        <th scope="col">Matrícula</th>
+                        <th scope="col">Matr�cula</th>
                         <th scope="col">Turno</th>
-                        <th scope="col">Período</th>
-                        <th scope="col">Opções</th>
+                        <th scope="col">Per�odo</th>
+                        
                         
                       </tr>
                     </thead>
