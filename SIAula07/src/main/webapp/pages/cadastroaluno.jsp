@@ -65,7 +65,7 @@
                         <option value="10">10º PERÍODO</option>
                     </select>
                     <div class="row justify-content-md-center">
-                        <button type="submit" class="BotaoSubmit">Salvar</button>
+                        <button type="submit" class="BotaoSubmit" onclick="alert('O Aluno foi adicionado com sucesso!');">Salvar</button>
                         <button type="reset" class="BotaoSubmit cancelar">Cancelar</button>
                     </div>
                 </div>
