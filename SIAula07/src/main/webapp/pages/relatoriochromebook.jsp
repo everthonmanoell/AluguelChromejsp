@@ -17,7 +17,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Kanit:wght@100;400;700&display=swap" rel="stylesheet">
-    <title>RELATÓRIO DE CHROMEBOOK</title>
+    <title>Relatório de Chromebook</title>
 </head>
     <div class="bordaDoTopo">
         <div class="container-fluid">     
@@ -38,7 +38,7 @@
                 <div class="fonteRelatorio">
                     <a href="relatorioaluno.jsp"><button class="botoesDoRelatorio">ALUNOS</button></a>
                     <a href="relatoriocoordenador.jsp"><button class="botoesDoRelatorio">COORDENADOR</button></a>
-                    <a href="relatoriochormebook.jsp"><button class="botoesDoRelatorio">CHORMEBOOK</button></a>
+                    <a href="relatoriochromebook.jsp"><button class="botoesDoRelatorio">CHORMEBOOK</button></a>
                 </div>
             </div>  
         <div class="container containerDevolucao">
