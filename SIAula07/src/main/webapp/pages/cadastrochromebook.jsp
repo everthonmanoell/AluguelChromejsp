@@ -69,15 +69,21 @@
                 <textarea class="form-control" rows="2" maxlength="100" style="resize: none" id="DESCRICAO"
                     name="descricao"><%if(tombamento!=null){out.print(usr.getDescricao());}%></textarea>
                 <br>
-                <div class="row justify-content-md-center">
-                    <button type="submit" class="BotaoSubmit" <%if(tombamento!=null){out.print("onclick=\"alert('O ChromeBook foi alterado com sucesso!');\"");}else{out.print("onclick=\"alert('O ChromeBook foi adicionado com sucesso!');\"");}%>>
-                        <%if(tombamento!=null){out.print("Salvar");}else{out.print("Cadastrar");}%>
-                    </button>
-                    <button type="reset" class="BotaoSubmit cancelar">Cancelar</button>
-                </div>
+                <button type="submit" class="BotaoSubmit" 
+                    <% if(tombamento != null){out.print("onclick=\"exibirMensagem('O ChromeBook foi alterado com sucesso!');\"");}
+                       else{out.print("onclick=\"exibirMensagem('O ChromeBook foi adicionado com sucesso!');\"");}%>>
+                    <%if(tombamento!=null){out.print("Salvar");}else{out.print("Cadastrar");}%>
+                </button>
+                <script>
+                    function exibirMensagem(mensagem) {
+                        alert(mensagem);
+                    }
+                </script>
+
             </div>
         </form>
     </div>
-</body>
 
 </html>
+
+</body>

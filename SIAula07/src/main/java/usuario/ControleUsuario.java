@@ -48,16 +48,9 @@ public class ControleUsuario {
         this.alunos.add(aluno);
     }
     
-    public boolean buscarUsuario(String matricula, String senha){
-        
-        for(Usuario u: this.usuarios){
-            if(u.getMatricula().equals(matricula) && (u.getSenha().equals(senha))){
-                return true;
-            }
-        }
-        return false;
-    }
+
     
+    //--------------- CHROMEBOOK-------------------------//
     public Chromebook getChromebook(String tombamento) {
         for (Chromebook c : this.chromebook) {
             if (c.getTombamento().equals(tombamento)) {
@@ -67,26 +60,20 @@ public class ControleUsuario {
         return null;
     }
     
-        public void alterarChromebook(String tombamento, String situacao, String descricao){
-        for(Chromebook u: this.chromebook){
-            if(u.getTombamento().equals(tombamento)){
-                u.setTombamento(tombamento);
-                u.setSituacao(situacao);
-                u.setDescricao(descricao);
-            }
+        
+        public void alterarChromebook(String tombamento, String situacao, String descricao) {
+        for (Chromebook c : this.chromebook) {
+            if (c.getTombamento().equals(tombamento)) {
+                
+                c.setSituacao(situacao);
+                c.setDescricao(descricao);
+                break; // interrompe o loop após encontrar o Chromebook correspondente
         }
     }
-    
-    public String listarUsuarios(){
-        StringBuilder texto = new StringBuilder();
-        for(Usuario u: this.usuarios){
-            texto.append("Matricula: ").append(u.getMatricula()).append("<br>");
-            texto.append("Senha: ").append(u.getSenha()).append("<br>");
-        }
-        return texto.toString();
-    }
-    
-    public String listarDadosChromebook(){
+}
+
+        
+        public String listarDadosChromebook(){
         String texto = "";
         for(Chromebook u: this.chromebook){
             texto = texto + 
@@ -98,6 +85,35 @@ public class ControleUsuario {
                     + "</tr>";
         }
         return texto;
-    }    
+    } 
+        
+    //----------------------------------------------------------------//
+        
+        
+        
+    //--------------- USUARIO / COORDENADOR -------------------------//
+    
+    public String listarUsuarios(){
+        StringBuilder texto = new StringBuilder();
+        for(Usuario u: this.usuarios){
+            texto.append("Matricula: ").append(u.getMatricula()).append("<br>");
+            texto.append("Senha: ").append(u.getSenha()).append("<br>");
+        }
+        return texto.toString();
+    }
+    
+        public boolean buscarUsuario(String matricula, String senha){
+        
+        for(Usuario u: this.usuarios){
+            if(u.getMatricula().equals(matricula) && (u.getSenha().equals(senha))){
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    //----------------------------------------------------------------//
+    
+   
 
 }

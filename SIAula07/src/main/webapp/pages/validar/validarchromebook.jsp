@@ -15,25 +15,29 @@
         <title>JSP Page</title>
     </head>
     <body>
+
+        
+        
         <%
-           String tombamento = request.getParameter("tombamento");
-           String situacao = request.getParameter("situacao");
-           String descricao = request.getParameter("descricao");
+            String tombamento = request.getParameter("tombamento");
+            String situacao = request.getParameter("situacao");
+            String descricao = request.getParameter("descricao");
+            String op = request.getParameter("op");
 
-           if (tombamento != null && situacao != null) {
-               // Crie um objeto Chromebook apenas se os parâmetros não forem nulos
-               Chromebook chromebook = new Chromebook(tombamento, situacao, descricao);
+            ControleUsuario controle = ControleUsuario.getInstance();
 
-               // Adicione o Chromebook ao controle de usuários (ou ao controle específico de Chromebooks, se houver)
-               ControleUsuario controle = ControleUsuario.getInstance();
-               controle.adicionarChromebook(chromebook);
-
-               response.sendRedirect("../cadastrochromebook.jsp");
-           } else {
-               // Caso os parâmetros sejam nulos, você pode redirecionar para uma página de erro ou fazer algo adequado.
-               response.sendRedirect("../../error.jsp");
-           }
+            if (op != null) {
+                controle.alterarChromebook(tombamento, situacao, descricao);
+                response.sendRedirect("../relatoriochromebook.jsp");
+            } else if (tombamento != null && situacao != null){
+                Chromebook chromebook = new Chromebook(tombamento, situacao, descricao);
+                controle.adicionarChromebook(chromebook);
+                response.sendRedirect("../cadastrochromebook.jsp");
+            } else {
+                response.sendRedirect("../../error.jsp");
+            }
         %>
+
     </body>
 </html>
 
