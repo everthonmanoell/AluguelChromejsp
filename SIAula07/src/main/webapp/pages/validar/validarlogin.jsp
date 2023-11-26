@@ -24,9 +24,9 @@
        ControleUsuario controle = ControleUsuario.getInstance();
     
        if( controle.buscarUsuario(matricula, senha)){
-            response.sendRedirect("home.jsp");
+            response.sendRedirect("../home.jsp");
         }else{
-            response.sendRedirect("../index.jsp?erro=true");
+            response.sendRedirect("../../index.jsp?erro=true");
        }
         
     %>

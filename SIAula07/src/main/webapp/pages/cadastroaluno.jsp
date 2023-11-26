@@ -37,7 +37,7 @@
             <div class="titulo">
                 <a>CADASTRO DE ALUNO</a>
             </div>
-            <form action="validaraluno.jsp">
+            <form action="validar/validaraluno.jsp">
                 <div class="fonteCoordenador">
                     <label for="nomecompleto" class="form-label"><a>NOME COMPLETO:</a></label>
                     <input type="text" class="form-control" id="nomecompleto" placeholder="" name="nome" required>

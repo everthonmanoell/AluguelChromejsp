@@ -26,7 +26,7 @@
 
                ControleUsuario controle = ControleUsuario.getInstance();
                controle.adicionarUsuario(usr);
-               response.sendRedirect("../index.jsp");
+               response.sendRedirect("../../index.jsp");
            } else {
                String nomecompleto = request.getParameter("nomecompleto");
                String matricula = request.getParameter("matricula");
@@ -36,7 +36,7 @@
 
                ControleUsuario controle = ControleUsuario.getInstance();
                controle.adicionarUsuario(usr);
-               response.sendRedirect("cadastrocoordenador.jsp");
+               response.sendRedirect("../cadastrocoordenador.jsp");
            }
         %>
         

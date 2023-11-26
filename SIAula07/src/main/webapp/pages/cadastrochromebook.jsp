@@ -38,7 +38,7 @@
             <div class="titulo">
                 <a>CADASTRO DE CHROMEBOOK</a>
             </div>
-            <form action="validarchromebook.jsp" method="post">
+            <form action="validar/validarchromebook.jsp" method="post">
                 <div class="fonteCoordenador">
                     <label for="TOMBAMENTO" class="form-label"><a>TOMBAMENTO:</a></label>
                     <input type="text" class="form-control" id="TOMBAMENTO" placeholder="" name="tombamento" required>

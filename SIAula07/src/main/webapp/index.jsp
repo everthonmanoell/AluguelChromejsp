@@ -31,7 +31,7 @@
     </div>
 
 
-    <form class="borda-direita" action="pages/validarlogin.jsp">
+    <form class="borda-direita" action="pages/validar/validarlogin.jsp">
 
         <h1 class="titulo2">Login</h1>
         <div class="form-group">
