@@ -58,6 +58,25 @@ public class ControleUsuario {
         return false;
     }
     
+    public Chromebook getChromebook(String tombamento) {
+        for (Chromebook c : this.chromebook) {
+            if (c.getTombamento().equals(tombamento)) {
+                return c;
+            }
+        }
+        return null;
+    }
+    
+        public void alterarChromebook(String tombamento, String situacao, String descricao){
+        for(Chromebook u: this.chromebook){
+            if(u.getTombamento().equals(tombamento)){
+                u.setTombamento(tombamento);
+                u.setSituacao(situacao);
+                u.setDescricao(descricao);
+            }
+        }
+    }
+    
     public String listarUsuarios(){
         StringBuilder texto = new StringBuilder();
         for(Usuario u: this.usuarios){
@@ -75,7 +94,7 @@ public class ControleUsuario {
                     + "<td>"+u.getTombamento()+"</td>"
                     + "<td>"+u.getSituacao()+"</td>"
                     + "<td>"+u.getDescricao()+"</td>"
-                    + "<td><a href=\"cadastrocoordenador.jsp?tombamento="+ u.getTombamento()+ "\" class=\"btn btn-outline-primary btn-sm\">Alterar</a><a href=\"#\" class=\"btn btn-outline-danger btn-sm\">Excluir</a></td>"
+                    + "<td><a href=\"cadastrochromebook.jsp?tombamento="+ u.getTombamento()+ "\" class=\"btn btn-outline-primary btn-sm\">Alterar</a><a href=\"#\" class=\"btn btn-outline-danger btn-sm\">Excluir</a></td>"
                     + "</tr>";
         }
         return texto;

@@ -9,7 +9,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
-    
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,6 +21,7 @@
         rel="stylesheet">
     <title>CADASTRO DE CHROMEBOOK</title>
 </head>
+
 <body class="topo">
     <div class="bordaDoTopo">
         <div class="container-fluid">     
@@ -35,48 +35,49 @@
         </div>
     </div>
     <br>
-        <div class="container containerMeio">
-            <div class="titulo">
-                <p>
+    <div class="container containerMeio">
+        <div class="titulo">
+            <p>
+                
                 <%
                     String tombamento = request.getParameter("tombamento");
                     String situacao = request.getParameter("situacao");
                     ControleUsuario controle = ControleUsuario.getInstance();
                     Chromebook usr = null;
-                    if(tombamento != null){
-                        out.println("Editando o usuario");
-                        usr = controle.getUsuario(tombamento);
-                    }else{
-                        out.println("Cadastro usuario");
+                    if(tombamento != null) {
+                        out.println("Editando Chromebook");
+                        usr = controle.getChromebook(tombamento);
+                    } else {
+                        out.println("Cadastro Chromebook");
+                        usr = new Chromebook("", "", ""); // Substitua pelos valores apropriados
                     }
-
-                
                 %>
-                </p>
-            </div>
-            <form action="validar/validarchromebook.jsp<%if(tombamento!=null){out.print("?op=E");}%>" method="post">
-                <div class="fonteCoordenador">
-                    <label for="TOMBAMENTO" class="form-label"><a>TOMBAMENTO:</a></label>
-                    <input type="text" value="<%if(tombamento!=null){out.print(usr.getTombamento());}%>" class="form-control" id="TOMBAMENTO" placeholder="" name="tombamento" required>
-                    <label for="SITUACAO"  class="form-label"><a>SITUAÇÃO:</a></label>
-                    <select class="form-select"  id="SITUACAO" name="situacao" required>
-                        <option></option>
-                        <option value="Inoperante" <%if((tombamento!=null) && (usr.getSituacao() .equals(Inoperante)){out.print("selected");}%> >INOPERANTE</option>
-                        <option value="Operante" <%if((tombamento!=null) && (usr.getSituacao().equals(Operante)){out.print("selected");}%> >OPERANTE</option>
-                    </select>
-                    <label for="DESCRICAO" class="form-label"><a>DESCRIÇÃO:</a></label>
-                    <textarea class="form-control" rows="2" maxlength="100" style="resize: none" id="DESCRICAO"
-                        name="descricao" value="<%if(tombamento!=null){out.print(usr.getDescricao());}%>" ></textarea>
-                    <br>
-                    <div class="row justify-content-md-center">
-                        <button type="submit" class="BotaoSubmit" <%if(tombamento!=null){out.print("onclick=\"alert('O ChromeBook foi adicionado com sucesso!');\"");}else{out.print("onclick=\"alert('O ChromeBook foi alterado com sucesso!');\"");}%> >
-    <%if(tombamento!=null){out.print("Salvar");}else{out.print("Cadastrar")}%>
-                        <button type="reset" class="BotaoSubmit cancelar">Cancelar</button>
-                    </div>
-                </div>
-            </form>
+
+            </p>
         </div>
+        <form action="validar/validarchromebook.jsp<%if(tombamento!=null){out.print("?op=E");}%>" method="post">
+            <div class="fonteCoordenador">
+                <label for="TOMBAMENTO" class="form-label"><a>TOMBAMENTO:</a></label>
+                <input type="text" value="<%if(tombamento!=null){out.print(usr.getTombamento());}%>" class="form-control" id="TOMBAMENTO" placeholder="" name="tombamento" required>
+                <label for="SITUACAO"  class="form-label"><a>SITUAÇÃO:</a></label>
+                <select class="form-select"  id="SITUACAO" name="situacao" required>
+                    <option></option>
+                    <option value="Inoperante" <%if((tombamento!=null) && (usr.getSituacao().equals("Inoperante"))){out.print("selected");}%>>INOPERANTE</option>
+                    <option value="Operante" <%if((tombamento!=null) && (usr.getSituacao().equals("Operante"))){out.print("selected");}%>>OPERANTE</option>
+                </select>
+                <label for="DESCRICAO" class="form-label"><a>DESCRIÇÃO:</a></label>
+                <textarea class="form-control" rows="2" maxlength="100" style="resize: none" id="DESCRICAO"
+                    name="descricao"><%if(tombamento!=null){out.print(usr.getDescricao());}%></textarea>
+                <br>
+                <div class="row justify-content-md-center">
+                    <button type="submit" class="BotaoSubmit" <%if(tombamento!=null){out.print("onclick=\"alert('O ChromeBook foi alterado com sucesso!');\"");}else{out.print("onclick=\"alert('O ChromeBook foi adicionado com sucesso!');\"");}%>>
+                        <%if(tombamento!=null){out.print("Salvar");}else{out.print("Cadastrar");}%>
+                    </button>
+                    <button type="reset" class="BotaoSubmit cancelar">Cancelar</button>
+                </div>
+            </div>
+        </form>
     </div>
 </body>
-</html>
 
+</html>
