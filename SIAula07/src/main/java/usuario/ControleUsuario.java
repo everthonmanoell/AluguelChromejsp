@@ -40,6 +40,14 @@ public class ControleUsuario {
         this.usuarios.add(usuario);
     }
     
+    public void adicionarChromebook(Chromebook chromebook){
+        this.chromebook.add(chromebook);
+    }
+    
+    public void adicionarAluno(Aluno aluno){
+        this.alunos.add(aluno);
+    }
+    
     public boolean buscarUsuario(String matricula, String senha){
         
         for(Usuario u: this.usuarios){

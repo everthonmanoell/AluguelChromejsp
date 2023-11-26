@@ -38,7 +38,7 @@
             <div class="row justify-content-center">
                 <div class="fonteMeio">
                     <a href="cadastrocoordenador.jsp"><button class="botoesDoMeio">COORDENADOR</button></a><br>
-                    <a href="cadastrochormebook.jsp"><button class="botoesDoMeio">CHROMEBOOK</button></a><br>
+                    <a href="cadastrochromebook.jsp"><button class="botoesDoMeio">CHROMEBOOK</button></a><br>
                     <a href="cadastroaluno.jsp"><button class="botoesDoMeio">ALUNO</button></a><br>
                 </div>
             </div>

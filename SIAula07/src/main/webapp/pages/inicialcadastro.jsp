@@ -38,7 +38,7 @@
                     <label for="nomecompleto" class="form-label"><a>NOME COMPLETO:</a></label>
                     <input type="text" class="form-control" id="nomecompleto" placeholder="Nome completo" name="nomecompleto" required>
                     <label for="matricula" class="form-label"><a>Matricula:</a></label>
-                    <input type="text" name="matricula" class="form-control cpf1" id="matricula" aria-describedby="CPF" placeholder="Ex: 4040040" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 11)" required>
+                    <input type="text" name="matricula" class="form-control cpf1" id="matricula" aria-describedby="CPF"  required>
                     <label for="password" class="form-label"><a>ESCOLHA UMA SENHA:</a></label>
                     <input type="password" name="senha" class="form-control" placeholder="Senha" id="password"  required style="margin-bottom: 10px" >
                     <input type="password" name="senha2" class="form-control" placeholder="Confirme Senha" id="confirm_password" required style="margin-bottom: 10px">

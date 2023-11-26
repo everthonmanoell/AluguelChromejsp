@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Document   : validarcadastro
     Created on : 1 de nov. de 2023, 21:15:11
     Author     : jose.serafim
@@ -15,18 +15,29 @@
     <body>
         
         <%
-
-
-           String nomecompleto = request.getParameter("nomecompleto");
-           String matricula = request.getParameter("matricula");
-           String senha = request.getParameter("senha");
-
-           Usuario usr = new Usuario(nomecompleto, matricula, senha);
-
-           ControleUsuario controle = ControleUsuario.getInstance();
-           controle.adicionarUsuario(usr);
+           String cad = request.getParameter("cad");
            
-           response.sendRedirect("../index.jsp");
+           if(cad == null) {
+               String nomecompleto = request.getParameter("nomecompleto");
+               String matricula = request.getParameter("matricula");
+               String senha = request.getParameter("senha");
+
+               Usuario usr = new Usuario(nomecompleto, matricula, senha);
+
+               ControleUsuario controle = ControleUsuario.getInstance();
+               controle.adicionarUsuario(usr);
+               response.sendRedirect("../index.jsp");
+           } else {
+               String nomecompleto = request.getParameter("nomecompleto");
+               String matricula = request.getParameter("matricula");
+               String senha = request.getParameter("senha");
+
+               Usuario usr = new Usuario(nomecompleto, matricula, senha);
+
+               ControleUsuario controle = ControleUsuario.getInstance();
+               controle.adicionarUsuario(usr);
+               response.sendRedirect("cadastrocoordenador.jsp");
+           }
         %>
         
     </body>

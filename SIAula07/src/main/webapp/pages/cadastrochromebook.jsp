@@ -38,12 +38,12 @@
             <div class="titulo">
                 <a>CADASTRO DE CHROMEBOOK</a>
             </div>
-            <form action="#">
+            <form action="validarchromebook.jsp" method="post">
                 <div class="fonteCoordenador">
                     <label for="TOMBAMENTO" class="form-label"><a>TOMBAMENTO:</a></label>
-                    <input type="text" class="form-control" id="TOMBAMENTO" placeholder="" name="TOMBAMENTO" required>
+                    <input type="text" class="form-control" id="TOMBAMENTO" placeholder="" name="tombamento" required>
                     <label for="SITUACAO" class="form-label"><a>SITUAÇÃO:</a></label>
-                    <select class="form-select" id="SITUACAO" name="SITUACAO" required>
+                    <select class="form-select" id="SITUACAO" name="situacao" required>
                         <option></option>
                         <option value="1">INOPERANTE</option>
                         <option value="2">OPERANTE</option>

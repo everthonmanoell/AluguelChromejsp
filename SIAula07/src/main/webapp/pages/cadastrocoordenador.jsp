@@ -21,9 +21,7 @@
     <title>CADASTRO DE COORDENADOR</title>
 </head>
 <body class="topo">
-    <div class="bordaDoTopo" <% if (session.getAttribute("index") != null) { %>
-        style="display: none;"
-    <% } %>>
+    <div class="bordaDoTopo" </div>
         <div class="container-fluid">     
             <a href="home.jsp"><button class="botoesDoTopo">ÍNICIO</button></a>
             <a href="homecadastro.jsp"><button class="botoesDoTopo">CADASTRO</button></a>
@@ -39,7 +37,7 @@
             <div class="titulo">
                 <a>CADASTRO DE COORDENADOR</a>
             </div>
-            <form action="validarcadastro.jsp?erro=true" method="post">
+            <form action="validarcadastro.jsp?cad=true" method="post">
                 <div class="fonteCoordenador">
                     <label for="nomecompleto" class="form-label"><a>NOME COMPLETO:</a></label>
                     <input type="text" class="form-control" id="nomecompleto" placeholder="Nome completo" name="nomecompleto" required>
