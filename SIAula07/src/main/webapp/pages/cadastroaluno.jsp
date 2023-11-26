@@ -37,21 +37,21 @@
             <div class="titulo">
                 <a>CADASTRO DE ALUNO</a>
             </div>
-            <form action="#">
+            <form action="validaraluno.jsp">
                 <div class="fonteCoordenador">
                     <label for="nomecompleto" class="form-label"><a>NOME COMPLETO:</a></label>
-                    <input type="text" class="form-control" id="nomecompleto" placeholder="" name="nomecompleto" required>
+                    <input type="text" class="form-control" id="nomecompleto" placeholder="" name="nome" required>
                     <label for="matricula" class="form-label"><a>MATRÍCULA:</a></label>
                     <input type="text" maxlength="11" class="form-control" id="cpf" placeholder="Máx. 11 caracteres" name="matricula" required>
                     <label for="TURNO" class="form-label"><a>TURNO:</a></label>
-                    <select class="form-select" id="TURNO" name="TURNO" required>
+                    <select class="form-select" id="TURNO" name="turno" required>
                         <option></option>
                         <option value="MANHA">MANHÃ</option>
                         <option value="TARDE">TARDE</option>
                         <option value="NOITE">NOITE</option>
                     </select>
                     <label for="PERIODO" class="form-label"><a>PERÍODO:</a></label>
-                    <select class="form-select" id="PERIODO" name="PERIODO" required>
+                    <select class="form-select" id="PERIODO" name="periodo" required>
                         <option></option>
                         <option value="1">1º PERÍODO</option>
                         <option value="2">2º PERÍODO</option>
@@ -64,6 +64,19 @@
                         <option value="9">9º PERÍODO</option>
                         <option value="10">10º PERÍODO</option>
                     </select>
+                    
+                    <label for="TURMA" class="form-label"><a>TURMA:</a></label>
+                    <select class="form-select" id="TURMA" name="turma" required>
+                        <option value="" selected disable> Selecione uma opção</option>
+                        <option value="a" select>Não tenho</option>
+                        <option value="a">A</option>
+                        <option value="b">B</option>
+                        <option value="c">C</option>
+                        <option value="d">D</option>
+                        <option value="e">E</option>
+                        <option value="f">F</option>
+                    </select>
+                    
                     <div class="row justify-content-md-center">
                         <button type="submit" class="BotaoSubmit" onclick="alert('O Aluno foi adicionado com sucesso!');">Salvar</button>
                         <button type="reset" class="BotaoSubmit cancelar">Cancelar</button>
