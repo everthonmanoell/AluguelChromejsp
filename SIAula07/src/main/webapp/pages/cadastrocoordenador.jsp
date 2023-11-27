@@ -22,7 +22,7 @@
     <title>CADASTRO DE COORDENADOR</title>
 </head>
 <body class="topo">
-    <div class="bordaDoTopo" </div>
+    <div class="bordaDoTopo"<div>
         <div class="container-fluid">     
             <a href="home.jsp"><button class="botoesDoTopo">ÍNICIO</button></a>
             <a href="homecadastro.jsp"><button class="botoesDoTopo">CADASTRO</button></a>
@@ -36,24 +36,57 @@
     <br>
         <div class="container containerMeio">
             <div class="titulo">
-                <a>CADASTRO DE COORDENADOR</a>
+                <p>
+                    
+                <%
+                    String id = request.getParameter("id");   
+                    String nomecompleto = request.getParameter("nomecompleto");
+                    String matricula = request.getParameter("matricula");
+                    String senha = request.getParameter("senha");
+                    ControleUsuario controle = ControleUsuario.getInstance();
+                    Usuario usr = null;
+
+                    if (id != null && !id.isEmpty()) {
+                        out.println("Editando Coordenador");
+                        usr = controle.getUsuario(id);
+                    } else {
+                        out.println("Cadastro Coordenador");
+                        // Ajuste na chamada do construtor:
+                        usr = new Usuario("", "", "", ""); // Substitua pelos valores apropriados
+                    }
+                %>   
+                    
+                </p>
             </div>
-            <form action="validar/validarcadastro.jsp?cad=true" method="post">
+            <form action="validar/validarcadastro.jsp<%if(id!=null){out.print("?id=" + usr.getId());}else{out.print("?cad=true");}%>" method="post">
+                
                 <div class="fonteCoordenador">
                     
-                    <label for="id" class="form-label"><a>ID:</a></label>
-                    <input type="text" class="form-control" id="id" placeholder="Id" name="id" required>
+                    
+                    <% if (id != null) { %>
+                        <label for="ID" class="form-label"><a>ID:</a></label>
+                        <input type="text" value="<% out.print(usr.getId()); %>"  class="form-control" id="ID" placeholder="" name="id" readonly required>
+                    <% } else { %>
+                        <label for="ID" class="form-label"><a>ID:</a></label>
+                        <input type="text" value="" class="form-control" id="ID" placeholder="" name="id" required>
+                    <% } %>
                     
                     <label for="nomecompleto" class="form-label"><a>NOME COMPLETO:</a></label>
-                    <input type="text" class="form-control" id="nomecompleto" placeholder="Nome completo" name="nomecompleto" required>
+                    <input type="text" value="<%if(id!=null){out.print(usr.getNomecompleto());}%>" class="form-control" id="nomecompleto" placeholder="Nome completo" name="nomecompleto" required>
+                    
                     <label for="matricula" class="form-label"><a>Matricula:</a></label>
-                    <input type="text" name="matricula" class="form-control cpf1" id="CPF" aria-describedby="CPF" placeholder="Matricula" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 11)" required>
+                    <input type="text" value="<%if(id!=null){out.print(usr.getMatricula());}%>" name="matricula" class="form-control cpf1" id="CPF" aria-describedby="CPF" placeholder="Matricula"  required>
+                    
                     <label for="password" class="form-label"><a>ESCOLHA UMA SENHA:</a></label>
-                    <input type="password" name="senha" class="form-control" placeholder="Senha" id="password"  required style="margin-bottom: 10px" >
-                    <input type="password" name="senha2" class="form-control" placeholder="Confirme Senha" id="confirm_password" required style="margin-bottom: 10px">
+                    
+                    <input type="password" value="<%if(id!=null){out.print(usr.getSenha());}%>" name="senha" class="form-control" placeholder="Senha" id="password"  required style="margin-bottom: 10px" >
+                    <input type="password" value="<%if(id!=null){out.print(usr.getSenha());}%>" name="senha2" class="form-control" placeholder="Confirme Senha" id="confirm_password" required style="margin-bottom: 10px">
                     <br>
                     <div class="row justify-content-md-center">
-                        <button type="submit" class="BotaoSubmit" onclick="alert('O Coordenador foi adicionado com sucesso!');">Salvar</button>
+                        <button type="submit" class="BotaoSubmit" <% if (id != null) {out.print("onclick=\"exibirMensagem('O Coordenador foi alterado com sucesso!');\"");} else {out.print("onclick=\"exibirMensagem('O Coordenador foi adicionado com sucesso!');\"");} %>>
+                            <% if(id != null){out.print("Salvar");} else {out.print("Cadastrar");} %>
+                        </button>
+
                         <button type="reset" class="BotaoSubmit cancelar">Cancelar</button>
                     </div>
                 </div>

@@ -96,7 +96,14 @@ public class ControleUsuario {
     //--------------- USUARIO / COORDENADOR -------------------------//
         
         
-        
+    public Usuario getUsuario(String id) {
+        for (Usuario c : this.usuarios) {
+            if (c.getId().equals(id)) {
+                return c;
+            }
+        }
+        return null;
+    }
         
         
     public String listarDadosUsuario(){
@@ -112,6 +119,19 @@ public class ControleUsuario {
         }
         return texto;
     }
+    
+    
+    public void alterarUsuario(String id, String nomecompleto, String matricula, String senha) {
+        for (Usuario c : this.usuarios) {
+                if (String.valueOf(c.getId()).equals(id)) {
+                    
+                    c.setNomecompleto(nomecompleto);
+                    c.setMatricula(matricula);
+                    c.setSenha(senha);
+                    break; // interrompe o loop após encontrar o Chromebook correspondente
+                }
+            }
+        }
     
     public String listarUsuarios(){
         StringBuilder texto = new StringBuilder();

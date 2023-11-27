@@ -89,6 +89,7 @@
                        else{out.print("onclick=\"exibirMensagem('O ChromeBook foi adicionado com sucesso!');\"");}%>>
                     <%if(id!=null){out.print("Salvar");}else{out.print("Cadastrar");}%>
                 </button>
+                <button type="reset" class="BotaoSubmit cancelar">Cancelar</button>
                 <script>
                     function exibirMensagem(mensagem) {
                         alert(mensagem);
