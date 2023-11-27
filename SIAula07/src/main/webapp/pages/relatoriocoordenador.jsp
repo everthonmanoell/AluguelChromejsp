@@ -50,6 +50,12 @@
                 <a>RELATÓRIO DE COORDERNADORES</a>
             </div>
              </div>
+            
+        <%
+            ControleUsuario controle = ControleUsuario.getInstance();
+        %>
+            
+            
             <table class="table">
                     <thead>
                             <th scope="col"><input type="search" class="form-control rounded" placeholder="" aria-label="Search" aria-describedby="search-addon" style="width:500px; margin-left:200px "/></th>
@@ -60,25 +66,19 @@
                 <table class="table table-sm">
                     <thead>
                       <tr>
-                        <th scope="col">Nome Completo</th>
-                        <th scope="col">CPF</th>
-                        <th scope="col">Senha</th>
-                       
+                        <th scope="col">Id</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Matrícula</th>                      
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <th scope="row"></th>
-                        <td></td>
-                        <td></td>
-                        <td><button type="submit" class="btn btn-outline-primary btn-sm">Alterar</button><button type="submit" class="btn btn-outline-danger btn-sm">Excluir</button></td>
-                      </tr>
-                      <tr>
-                        <th scope="row"></th>
-                        <td></td>
-                        <td></td>
-                        <td><button type="submit" class="btn btn-outline-primary btn-sm">Alterar</button><button type="submit" class="btn btn-outline-danger btn-sm">Excluir</button></td>
-                      </tr>
+                        <%
+                            if(controle.listarDadosUsuario() != null ){
+                                out.println(controle.listarDadosUsuario());
+                            }else{
+                                out.println("<p>Nenhum chromebook foi cadastrado! :( </p>");
+                            }
+                        %>
                     </tbody>
                   </table>
 

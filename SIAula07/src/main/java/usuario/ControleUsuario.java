@@ -94,6 +94,24 @@ public class ControleUsuario {
         
         
     //--------------- USUARIO / COORDENADOR -------------------------//
+        
+        
+        
+        
+        
+    public String listarDadosUsuario(){
+        String texto = "";
+        for(Usuario u: this.usuarios){
+            texto = texto + 
+                      "<tr>"
+                    + "<td>"+u.getId()+"</td>"
+                    + "<td>"+u.getNomecompleto()+"</td>"
+                    + "<td>"+u.getMatricula()+"</td>"
+                    + "<td><a href=\"cadastrocoordenador.jsp?id="+ u.getId()+ "\" class=\"btn btn-outline-primary btn-sm\">Alterar</a><a href=\"#\" class=\"btn btn-outline-danger btn-sm\">Excluir</a></td>"
+                    + "</tr>";
+        }
+        return texto;
+    }
     
     public String listarUsuarios(){
         StringBuilder texto = new StringBuilder();

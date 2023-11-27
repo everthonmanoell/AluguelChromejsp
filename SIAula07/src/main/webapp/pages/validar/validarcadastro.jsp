@@ -18,21 +18,23 @@
            String cad = request.getParameter("cad");
            
            if(cad == null) {
+               String id = request.getParameter("id");
                String nomecompleto = request.getParameter("nomecompleto");
                String matricula = request.getParameter("matricula");
                String senha = request.getParameter("senha");
 
-               Usuario usr = new Usuario(nomecompleto, matricula, senha);
+               Usuario usr = new Usuario(id, nomecompleto, matricula, senha);
 
                ControleUsuario controle = ControleUsuario.getInstance();
                controle.adicionarUsuario(usr);
                response.sendRedirect("../../index.jsp");
            } else {
+               String id = request.getParameter("id");
                String nomecompleto = request.getParameter("nomecompleto");
                String matricula = request.getParameter("matricula");
                String senha = request.getParameter("senha");
 
-               Usuario usr = new Usuario(nomecompleto, matricula, senha);
+               Usuario usr = new Usuario(id, nomecompleto, matricula, senha);
 
                ControleUsuario controle = ControleUsuario.getInstance();
                controle.adicionarUsuario(usr);
