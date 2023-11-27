@@ -64,7 +64,7 @@
             <div class="fonteCoordenador">
                 <% if (id != null) { %>
                     <label for="ID" class="form-label"><a>ID:</a></label>
-                    <input type="text" value="<% out.print(usr.getId()); %>" class="form-control" id="ID" placeholder="" name="id" required>
+                    <input type="text" value="<% out.print(usr.getId()); %>" class="form-control" id="ID" placeholder="" name="id" readonly required>
                 <% } else { %>
                     <label for="ID" class="form-label"><a>ID:</a></label>
                     <input type="text" value="" class="form-control" id="ID" placeholder="" name="id" required>
