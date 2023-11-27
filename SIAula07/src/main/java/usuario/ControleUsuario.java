@@ -104,8 +104,7 @@ public class ControleUsuario {
         return texto.toString();
     }
     
-        public boolean buscarUsuario(String matricula, String senha){
-        
+        public boolean buscarUsuario(String matricula, String senha){        
         for(Usuario u: this.usuarios){
             if(u.getMatricula().equals(matricula) && (u.getSenha().equals(senha))){
                 return true;
