@@ -37,10 +37,14 @@
            } else if (id != null) {
                controle.alterarUsuario(id, nomecompleto, matricula, senha);
                response.sendRedirect("../relatoriocoordenador.jsp");
+           } else if (cad == null){
+                Usuario usr = new Usuario(id, nomecompleto, matricula, senha);
+                controle.adicionarUsuario(usr);
+                response.sendRedirect("../../index.jsp");
            } else {
-               response.sendRedirect("../../error.jsp");
+                response.sendRedirect("../../error.jsp");
            }
-        %>
+        %> 
         
     </body>
 </html>
