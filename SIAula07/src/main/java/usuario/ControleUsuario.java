@@ -84,11 +84,26 @@ public class ControleUsuario {
                         + "<td>"+u.getTombamento()+"</td>"
                         + "<td>"+u.getSituacao()+"</td>"
                         + "<td>"+u.getDescricao()+"</td>"
-                        + "<td><a href=\"cadastrochromebook.jsp?id="+ u.getId()+ "\" class=\"btn btn-outline-primary btn-sm\">Alterar</a><a href=\"#\" class=\"btn btn-outline-danger btn-sm\">Excluir</a></td>"
-                    + "</tr>";
+                        + "<td><a href=\"cadastrochromebook.jsp?id="+ u.getId()+ "\" class=\"btn btn-outline-primary btn-sm\">Alterar</a>"
+                        + "<a href=\"validar/excluirchromebook.jsp?id=" + u.getId() + "\" class=\"btn btn-outline-danger btn-sm\" onclick=\"return confirm('Tem certeza que deseja excluir?')\">Excluir</a>\n" +
+"</td>"                 + "</tr>";
         }
         return texto;
-    }    
+    }
+        
+        
+        public void excluirChromebook(String id) {
+            for (Chromebook c : this.chromebook) {
+                if (c.getId().equals(id)) {
+                    this.chromebook.remove(c);
+                    
+                    break;
+                }
+            }
+
+
+        }
+
     
  
     //------------------------------------------------------//   
