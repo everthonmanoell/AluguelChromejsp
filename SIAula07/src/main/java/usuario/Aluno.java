@@ -9,6 +9,7 @@ package usuario;
  * @author evert
  */
 public class Aluno {
+    private String id;
     private String nome;
     private String matricula;
     private String turno;
@@ -16,7 +17,8 @@ public class Aluno {
     private String turma;
     
     
-    public Aluno (String nome, String matricula, String turno, String periodo, String turma){
+    public Aluno (String id, String nome, String matricula, String turno, String periodo, String turma){
+        this.id = id;
         this.nome = nome;
         this.matricula = matricula;
         this.turno = turno;
@@ -24,6 +26,14 @@ public class Aluno {
         this.turma = turma;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+    
     public String getNome() {
         return nome;
     }

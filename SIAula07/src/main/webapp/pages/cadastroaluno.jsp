@@ -22,6 +22,7 @@
         rel="stylesheet">
     <title>CADASTRO DE ALUNO</title>
 </head>
+<body>
     <div class="bordaDoTopo">
         <div class="container-fluid">     
             <a href="home.jsp"><button class="botoesDoTopo">ÍNICIO</button></a>
@@ -36,52 +37,100 @@
     <br>
         <div class="container containerMeio">
             <div class="titulo">
-                <a>CADASTRO DE ALUNO</a>
+                <p>
+                    
+                    <%
+                        String id = request.getParameter("id");
+                        String nome = request.getParameter("nome");
+                        String matricula = request.getParameter("matricula");
+                        String turno = request.getParameter("turno");
+                        String periodo = request.getParameter("periodo");
+                        String turma = request.getParameter("turma");
+                        
+                        
+                        ControleUsuario controle = ControleUsuario.getInstance();
+                        Aluno usr = null;
+
+                        if (id != null) {
+                            out.println("Editando Cadastro do Aluno");
+                            usr = controle.getAluno(id);
+                        } else {
+                            out.println("Cadastro do Aluno");
+                            // Ajuste na chamada do construtor:
+                            usr = new Aluno("", "", "", "", "", ""); // Substitua pelos valores apropriados
+                        }
+                    %>
+                    
+                </p>
             </div>
-            <form action="validar/validaraluno.jsp">
+                <form action="validar/validaraluno.jsp<% if (id != null) { out.print("?id=" + usr.getId()); } else { out.print("?op=true"); } %>" method="post">
+
                 <div class="fonteCoordenador">
-                    <label for="nomecompleto" class="form-label"><a>NOME COMPLETO:</a></label>
-                    <input type="text" class="form-control" id="nomecompleto" placeholder="" name="nome" required>
-                    <label for="matricula" class="form-label"><a>MATRÍCULA:</a></label>
-                    <input type="text" maxlength="11" class="form-control" id="cpf" placeholder="Máx. 11 caracteres" name="matricula" required>
-                    <label for="TURNO" class="form-label"><a>TURNO:</a></label>
+                    
+                    <% if (id != null) { %>
+                        <label for="ID" class="form-label"><a>ID:</a></label>
+                        <input type="text" value="<% out.print(usr.getId()); %>" class="form-control" id="ID" placeholder="" name="id" readonly required>
+                    <% } else { %>
+                        <label for="ID" class="form-label"><a>ID:</a></label>
+                        <input type="text" value="" class="form-control" id="ID" placeholder="" name="id" required>
+                    <% } %>
+
+                    
+                    <label for="nomecompleto" class="form-label">NOME COMPLETO:</label>
+                    <input type="text" value="<%if(id!=null){out.print(usr.getNome());}%>" class="form-control" id="nomecompleto" placeholder="" name="nome" required>
+                    
+                    <label for="matricula" class="form-label">MATRÍCULA:</label>
+                    <input type="text" value="<%if(id!=null){out.print(usr.getMatricula());}%>" maxlength="11" class="form-control" id="cpf" placeholder="Máx. 11 caracteres" name="matricula" required>
+                    
+                    <label for="TURNO" class="form-label">TURNO:</label>
                     <select class="form-select" id="TURNO" name="turno" required>
                         <option></option>
-                        <option value="MANHA">MANHÃ</option>
-                        <option value="TARDE">TARDE</option>
-                        <option value="NOITE">NOITE</option>
+                        <option value="manha" <%if((id!=null) && (usr.getTurno().equals("manha"))){out.print("selected");}%> >MANHÃ</option>
+                        <option value="tarde" <%if((id!=null) && (usr.getTurno().equals("tarde"))){out.print("selected");}%> >TARDE</option>
+                        <option value="noite" <%if((id!=null) && (usr.getTurno().equals("noite"))){out.print("selected");}%> >NOITE</option>
                     </select>
-                    <label for="PERIODO" class="form-label"><a>PERÍODO:</a></label>
+                    
+
+                    
+                    <label for="PERIODO" class="form-label">PERÍODO:</label>
                     <select class="form-select" id="PERIODO" name="periodo" required>
                         <option></option>
-                        <option value="1">1º PERÍODO</option>
-                        <option value="2">2º PERÍODO</option>
-                        <option value="3">3º PERÍODO</option>
-                        <option value="4">4º PERÍODO</option>
-                        <option value="5">5º PERÍODO</option>
-                        <option value="6">6º PERÍODO</option>
-                        <option value="7">7º PERÍODO</option>
-                        <option value="8">8º PERÍODO</option>
-                        <option value="9">9º PERÍODO</option>
-                        <option value="10">10º PERÍODO</option>
+                        <option value="1" <%if((id!=null) && (usr.getPeriodo().equals("1"))){out.print("selected");}%>  >1º PERÍODO</option>
+                        <option value="2" <%if((id!=null) && (usr.getPeriodo().equals("2"))){out.print("selected");}%>  >2º PERÍODO</option>
+                        <option value="3" <%if((id!=null) && (usr.getPeriodo().equals("3"))){out.print("selected");}%>  >3º PERÍODO</option>
+                        <option value="4" <%if((id!=null) && (usr.getPeriodo().equals("4"))){out.print("selected");}%>  >4º PERÍODO</option>
+                        <option value="5" <%if((id!=null) && (usr.getPeriodo().equals("5"))){out.print("selected");}%>  >5º PERÍODO</option>
+                        <option value="6" <%if((id!=null) && (usr.getPeriodo().equals("6"))){out.print("selected");}%>  >6º PERÍODO</option>
+                        <option value="7" <%if((id!=null) && (usr.getPeriodo().equals("7"))){out.print("selected");}%>  >7º PERÍODO</option>
+                        <option value="8" <%if((id!=null) && (usr.getPeriodo().equals("8"))){out.print("selected");}%>  >8º PERÍODO</option>
+                        <option value="9" <%if((id!=null) && (usr.getPeriodo().equals("9"))){out.print("selected");}%>  >9º PERÍODO</option>
+                        <option value="10"<%if((id!=null) && (usr.getPeriodo().equals("10"))){out.print("selected");}%> >10º PERÍODO</option>
+                    </select>
+
+                    
+                    <label for="TURMA" class="form-label">TURMA:</label>
+                    <select class="form-select" id="TURMA" name="turma" required>
+                        <option value="" selected disable onlyread> Selecione uma opção</option>
+                        <option value="a" >Não tenho</option>
+                        <option value="a"  <%if((id!=null) && (usr.getTurma().equals("a"))){out.print("selected");}%> >A</option>
+                        <option value="b"  <%if((id!=null) && (usr.getTurma().equals("b"))){out.print("selected");}%> >B</option>
+                        <option value="c"  <%if((id!=null) && (usr.getTurma().equals("c"))){out.print("selected");}%> >C</option>
+                        <option value="d"  <%if((id!=null) && (usr.getTurma().equals("d"))){out.print("selected");}%> >D</option>
+                        <option value="e"  <%if((id!=null) && (usr.getTurma().equals("e"))){out.print("selected");}%> >E</option>
+                        <option value="f"  <%if((id!=null) && (usr.getTurma().equals("f"))){out.print("selected");}%> >F</option>
                     </select>
                     
-                    <label for="TURMA" class="form-label"><a>TURMA:</a></label>
-                    <select class="form-select" id="TURMA" name="turma" required>
-                        <option value="" selected disable> Selecione uma opção</option>
-                        <option value="a" select>Não tenho</option>
-                        <option value="a">A</option>
-                        <option value="b">B</option>
-                        <option value="c">C</option>
-                        <option value="d">D</option>
-                        <option value="e">E</option>
-                        <option value="f">F</option>
-                    </select>
+   
+
                     
                     <div class="row justify-content-md-center">
-                        <button type="submit" class="BotaoSubmit" onclick="alert('O Aluno foi adicionado com sucesso!');">Salvar</button>
+                        <button type="submit" class="BotaoSubmit" 
+                            <%= id != null ? "onclick=\"exibirMensagem('O cadastro do Aluno foi alterado com sucesso!');\"" : "onclick=\"exibirMensagem('O Aluno foi adicionado com sucesso!');\"" %>>
+                            <%= id != null ? "Salvar" : "Cadastrar" %>
+                        </button>
                         <button type="reset" class="BotaoSubmit cancelar">Cancelar</button>
                     </div>
+                       
                 </div>
             </form>
         </div>

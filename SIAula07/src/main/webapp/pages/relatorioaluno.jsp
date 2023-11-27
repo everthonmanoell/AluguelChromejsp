@@ -48,6 +48,12 @@
                 <a>RELATÓRIO DE ALUNOS </a>
             </div>
              </div>
+        
+        
+        
+        <%
+            ControleUsuario controle = ControleUsuario.getInstance();
+        %>
             <table class="table">
                     <thead>
                             <th scope="col"><input type="search" class="form-control rounded" placeholder="" aria-label="Search" aria-describedby="search-addon" style="width:500px; margin-left:200px "/></th>
@@ -58,29 +64,27 @@
                 <table class="table table-sm">
                     <thead>
                       <tr>
+                        <th scope="col">ID</th>
                         <th scope="col">Nome Completo</th>
                         <th scope="col">Matrícula</th>
                         <th scope="col">Turno</th>
                         <th scope="col">Período</th>
+                        <th scope="col">Turma</th>
                         
                         
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <th scope="row"></th>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td><button type="submit" class="btn btn-outline-primary btn-sm">Alterar</button><button type="submit" class="btn btn-outline-danger btn-sm">Excluir</button></td>
-                      </tr>
-                      <tr>
-                        <th scope="row"></th>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td><button type="submit" class="btn btn-outline-primary btn-sm cancelar">Alterar</button><button type="submit" class="btn btn-outline-danger btn-sm">Excluir</button></td>
-                      </tr>
+                        <%
+                           if(controle.listarDadosAluno() != null){
+                                out.println(controle.listarDadosAluno());
+                           }else{
+                                out.println("Aluno não cadastrado");
+                           } 
+                            
+
+                        %>
+
                     </tbody>
                   </table>
 

@@ -83,7 +83,8 @@
                     <input type="password" value="<%if(id!=null){out.print(usr.getSenha());}%>" name="senha2" class="form-control" placeholder="Confirme Senha" id="confirm_password" required style="margin-bottom: 10px">
                     <br>
                     <div class="row justify-content-md-center">
-                        <button type="submit" class="BotaoSubmit" <% if (id != null) {out.print("onclick=\"exibirMensagem('O Coordenador foi alterado com sucesso!');\"");} else {out.print("onclick=\"exibirMensagem('O Coordenador foi adicionado com sucesso!');\"");} %>>
+                        <button type="submit" class="BotaoSubmit" 
+                            <% if (id != null) {out.print("onclick=\"exibirMensagem('O Coordenador foi alterado com sucesso!');\"");} else {out.print("onclick=\"exibirMensagem('O Coordenador foi adicionado com sucesso!');\"");} %>>
                             <% if(id != null){out.print("Salvar");} else {out.print("Cadastrar");} %>
                         </button>
 

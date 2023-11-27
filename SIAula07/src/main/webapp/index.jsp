@@ -35,7 +35,7 @@
 
         <h1 class="titulo2">Login</h1>
         <div class="form-group">
-        <input type="text" name="matricula" class="form-control cpf1" id="matricula" aria-describedby="Matricula" placeholder="Matrícula" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 11)" required>
+        <input type="text" name="matricula" class="form-control cpf1" id="matricula" aria-describedby="Matricula" placeholder="Matrícula"  required>
         </div>
         <div class="form-group">
             <input type="password" name="senha" class="form-control senha1" id="exampleInputPassword1" placeholder="Senha" required>

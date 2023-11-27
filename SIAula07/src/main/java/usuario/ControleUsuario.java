@@ -48,9 +48,10 @@ public class ControleUsuario {
         this.alunos.add(aluno);
     }
     
-
+    
     
     //--------------- CHROMEBOOK-------------------------//
+    
     public Chromebook getChromebook(String id) {
         for (Chromebook c : this.chromebook) {
             if (c.getId().equals(id)) {
@@ -78,12 +79,60 @@ public class ControleUsuario {
         String texto = "";
         for(Chromebook u: this.chromebook){
             texto = texto + 
-                      "<tr>"
-                    + "<td>"+u.getId()+"</td>"
-                    + "<td>"+u.getTombamento()+"</td>"
-                    + "<td>"+u.getSituacao()+"</td>"
-                    + "<td>"+u.getDescricao()+"</td>"
-                    + "<td><a href=\"cadastrochromebook.jsp?id="+ u.getId()+ "\" class=\"btn btn-outline-primary btn-sm\">Alterar</a><a href=\"#\" class=\"btn btn-outline-danger btn-sm\">Excluir</a></td>"
+                    "<tr>"
+                        + "<td>"+u.getId()+"</td>"
+                        + "<td>"+u.getTombamento()+"</td>"
+                        + "<td>"+u.getSituacao()+"</td>"
+                        + "<td>"+u.getDescricao()+"</td>"
+                        + "<td><a href=\"cadastrochromebook.jsp?id="+ u.getId()+ "\" class=\"btn btn-outline-primary btn-sm\">Alterar</a><a href=\"#\" class=\"btn btn-outline-danger btn-sm\">Excluir</a></td>"
+                    + "</tr>";
+        }
+        return texto;
+    }    
+    
+ 
+    //------------------------------------------------------//   
+    
+    
+    
+    //------------------ ALUNO -------------------------//
+    public Aluno getAluno(String id) {
+        for (Aluno c : this.alunos) {
+            if (c.getId().equals(id)) {
+                return c;
+            }
+        }
+        return null;
+    }
+    
+        
+        public void alterarAluno(String id, String nome, String matricula, String turno, String periodo, String turma) {
+            for (Aluno c : this.alunos) {
+                if (String.valueOf(c.getId()).equals(id)) {
+                    c.setNome(nome);
+                    c.setMatricula(matricula);
+                    c.setTurno(turno);
+                    c.setPeriodo(periodo);
+                    c.setTurma(turma);
+                    break; // interrompe o loop após encontrar o Chromebook correspondente
+                }
+            }
+        }
+
+
+        
+        public String listarDadosAluno(){
+        String texto = "";
+        for(Aluno u: this.alunos){
+            texto = texto + 
+                    "<tr>"
+                        + "<td>"+u.getId()+"</td>"
+                        + "<td>"+u.getNome()+"</td>"
+                        + "<td>"+u.getMatricula()+"</td>"
+                        + "<td>"+u.getTurno()+"</td>"
+                        + "<td>"+u.getPeriodo()+"</td>"
+                        + "<td>"+u.getTurma()+"</td>"
+                        + "<td><a href=\"cadastroaluno.jsp?id="+ u.getId() + "\" class=\"btn btn-outline-primary btn-sm\">Alterar</a><a href=\"#\" class=\"btn btn-outline-danger btn-sm\">Excluir</a></td>"
                     + "</tr>";
         }
         return texto;
@@ -110,11 +159,11 @@ public class ControleUsuario {
         String texto = "";
         for(Usuario u: this.usuarios){
             texto = texto + 
-                      "<tr>"
-                    + "<td>"+u.getId()+"</td>"
-                    + "<td>"+u.getNomecompleto()+"</td>"
-                    + "<td>"+u.getMatricula()+"</td>"
-                    + "<td><a href=\"cadastrocoordenador.jsp?id="+ u.getId()+ "\" class=\"btn btn-outline-primary btn-sm\">Alterar</a><a href=\"#\" class=\"btn btn-outline-danger btn-sm\">Excluir</a></td>"
+                    "<tr>"
+                        + "<td>"+u.getId()+"</td>"
+                        + "<td>"+u.getNomecompleto()+"</td>"
+                        + "<td>"+u.getMatricula()+"</td>"
+                        + "<td><a href=\"cadastrocoordenador.jsp?id="+ u.getId()+ "\" class=\"btn btn-outline-primary btn-sm\">Alterar</a><a href=\"#\" class=\"btn btn-outline-danger btn-sm\">Excluir</a></td>"
                     + "</tr>";
         }
         return texto;
