@@ -9,15 +9,25 @@ package usuario;
  * @author evert
  */
 public class Chromebook {
+    private String id;
     private String tombamento;
     private String situacao;
     private String descricao;
     
     
-    public Chromebook (String tombamento, String situacao, String descricao){
+    public Chromebook (String id, String tombamento, String situacao, String descricao){
+        this.id = id;
         this.tombamento = tombamento;
         this.situacao = situacao;
         this.descricao = descricao;
+    }
+    
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
         
     public String getTombamento() {

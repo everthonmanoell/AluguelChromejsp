@@ -63,6 +63,7 @@
                 <table class="table table-sm">
                     <thead>
                       <tr>
+                        <th scope="col">Id</th>
                         <th scope="col">Tombamento</th>
                         <th scope="col">Situação</th>
                         <th scope="col">Descrição</th>

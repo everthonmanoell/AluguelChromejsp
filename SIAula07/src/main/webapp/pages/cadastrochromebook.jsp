@@ -40,39 +40,54 @@
             <p>
                 
                 <%
+                    String id = request.getParameter("id");   
                     String tombamento = request.getParameter("tombamento");
                     String situacao = request.getParameter("situacao");
                     ControleUsuario controle = ControleUsuario.getInstance();
                     Chromebook usr = null;
-                    if(tombamento != null) {
+
+                    if (id != null && !id.isEmpty()) {
                         out.println("Editando Chromebook");
-                        usr = controle.getChromebook(tombamento);
+                        usr = controle.getChromebook(id);
                     } else {
                         out.println("Cadastro Chromebook");
-                        usr = new Chromebook("", "", ""); // Substitua pelos valores apropriados
+                        // Ajuste na chamada do construtor:
+                        usr = new Chromebook("", "", "", ""); // Substitua pelos valores apropriados
                     }
                 %>
 
+
+
             </p>
         </div>
-        <form action="validar/validarchromebook.jsp<%if(tombamento!=null){out.print("?op=E");}%>" method="post">
+        <form action="validar/validarchromebook.jsp<%if(id!=null){out.print("?op=E");}%>" method="post">
             <div class="fonteCoordenador">
+                <% if (id != null) { %>
+                    <label for="ID" class="form-label"><a>ID:</a></label>
+                    <input type="text" value="<% out.print(usr.getId()); %>" class="form-control" id="ID" placeholder="" name="id" required>
+                <% } else { %>
+                    <label for="ID" class="form-label"><a>ID:</a></label>
+                    <input type="text" value="" class="form-control" id="ID" placeholder="" name="id" required>
+                <% } %>
+
+                
+                
                 <label for="TOMBAMENTO" class="form-label"><a>TOMBAMENTO:</a></label>
-                <input type="text" value="<%if(tombamento!=null){out.print(usr.getTombamento());}%>" class="form-control" id="TOMBAMENTO" placeholder="" name="tombamento" required>
+                <input type="text" value="<%if(id!=null){out.print(usr.getTombamento());}%>" class="form-control" id="TOMBAMENTO" placeholder="" name="tombamento" required>
                 <label for="SITUACAO"  class="form-label"><a>SITUAÇÃO:</a></label>
                 <select class="form-select"  id="SITUACAO" name="situacao" required>
                     <option></option>
-                    <option value="Inoperante" <%if((tombamento!=null) && (usr.getSituacao().equals("Inoperante"))){out.print("selected");}%>>INOPERANTE</option>
-                    <option value="Operante" <%if((tombamento!=null) && (usr.getSituacao().equals("Operante"))){out.print("selected");}%>>OPERANTE</option>
+                    <option value="Inoperante" <%if((id!=null) && (usr.getSituacao().equals("Inoperante"))){out.print("selected");}%>>INOPERANTE</option>
+                    <option value="Operante" <%if((id!=null) && (usr.getSituacao().equals("Operante"))){out.print("selected");}%>>OPERANTE</option>
                 </select>
                 <label for="DESCRICAO" class="form-label"><a>DESCRIÇÃO:</a></label>
                 <textarea class="form-control" rows="2" maxlength="100" style="resize: none" id="DESCRICAO"
-                    name="descricao"><%if(tombamento!=null){out.print(usr.getDescricao());}%></textarea>
+                    name="descricao"><%if(id!=null){out.print(usr.getDescricao());}%></textarea>
                 <br>
                 <button type="submit" class="BotaoSubmit" 
-                    <% if(tombamento != null){out.print("onclick=\"exibirMensagem('O ChromeBook foi alterado com sucesso!');\"");}
+                    <% if(id != null){out.print("onclick=\"exibirMensagem('O ChromeBook foi alterado com sucesso!');\"");}
                        else{out.print("onclick=\"exibirMensagem('O ChromeBook foi adicionado com sucesso!');\"");}%>>
-                    <%if(tombamento!=null){out.print("Salvar");}else{out.print("Cadastrar");}%>
+                    <%if(id!=null){out.print("Salvar");}else{out.print("Cadastrar");}%>
                 </button>
                 <script>
                     function exibirMensagem(mensagem) {

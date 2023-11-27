@@ -19,6 +19,7 @@
         
         
         <%
+            String id = request.getParameter("id");
             String tombamento = request.getParameter("tombamento");
             String situacao = request.getParameter("situacao");
             String descricao = request.getParameter("descricao");
@@ -27,10 +28,10 @@
             ControleUsuario controle = ControleUsuario.getInstance();
 
             if (op != null) {
-                controle.alterarChromebook(tombamento, situacao, descricao);
+                controle.alterarChromebook(id, tombamento, situacao, descricao);
                 response.sendRedirect("../relatoriochromebook.jsp");
             } else if (tombamento != null && situacao != null){
-                Chromebook chromebook = new Chromebook(tombamento, situacao, descricao);
+                Chromebook chromebook = new Chromebook(id, tombamento, situacao, descricao);
                 controle.adicionarChromebook(chromebook);
                 response.sendRedirect("../cadastrochromebook.jsp");
             } else {

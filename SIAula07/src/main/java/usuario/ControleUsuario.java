@@ -51,9 +51,9 @@ public class ControleUsuario {
 
     
     //--------------- CHROMEBOOK-------------------------//
-    public Chromebook getChromebook(String tombamento) {
+    public Chromebook getChromebook(String id) {
         for (Chromebook c : this.chromebook) {
-            if (c.getTombamento().equals(tombamento)) {
+            if (c.getId().equals(id)) {
                 return c;
             }
         }
@@ -61,16 +61,17 @@ public class ControleUsuario {
     }
     
         
-        public void alterarChromebook(String tombamento, String situacao, String descricao) {
-        for (Chromebook c : this.chromebook) {
-            if (c.getTombamento().equals(tombamento)) {
-                
-                c.setSituacao(situacao);
-                c.setDescricao(descricao);
-                break; // interrompe o loop após encontrar o Chromebook correspondente
+        public void alterarChromebook(String id, String tombamento, String situacao, String descricao) {
+            for (Chromebook c : this.chromebook) {
+                if (String.valueOf(c.getId()).equals(id)) {
+                    c.setTombamento(tombamento);
+                    c.setSituacao(situacao);
+                    c.setDescricao(descricao);
+                    break; // interrompe o loop após encontrar o Chromebook correspondente
+                }
+            }
         }
-    }
-}
+
 
         
         public String listarDadosChromebook(){
@@ -78,10 +79,11 @@ public class ControleUsuario {
         for(Chromebook u: this.chromebook){
             texto = texto + 
                       "<tr>"
+                    + "<td>"+u.getId()+"</td>"
                     + "<td>"+u.getTombamento()+"</td>"
                     + "<td>"+u.getSituacao()+"</td>"
                     + "<td>"+u.getDescricao()+"</td>"
-                    + "<td><a href=\"cadastrochromebook.jsp?tombamento="+ u.getTombamento()+ "\" class=\"btn btn-outline-primary btn-sm\">Alterar</a><a href=\"#\" class=\"btn btn-outline-danger btn-sm\">Excluir</a></td>"
+                    + "<td><a href=\"cadastrochromebook.jsp?id="+ u.getId()+ "\" class=\"btn btn-outline-primary btn-sm\">Alterar</a><a href=\"#\" class=\"btn btn-outline-danger btn-sm\">Excluir</a></td>"
                     + "</tr>";
         }
         return texto;
