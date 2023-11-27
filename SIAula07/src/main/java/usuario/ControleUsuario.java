@@ -191,7 +191,8 @@ public class ControleUsuario {
                         + "<td>"+u.getId()+"</td>"
                         + "<td>"+u.getNomecompleto()+"</td>"
                         + "<td>"+u.getMatricula()+"</td>"
-                        + "<td><a href=\"cadastrocoordenador.jsp?id="+ u.getId()+ "\" class=\"btn btn-outline-primary btn-sm\">Alterar</a><a href=\"#\" class=\"btn btn-outline-danger btn-sm\">Excluir</a></td>"
+                        + "<td><a href=\"cadastrocoordenador.jsp?id="+ u.getId()+ "\" class=\"btn btn-outline-primary btn-sm\">Alterar</a>"
+                        + "<a href=\"validar/excluircoordenador.jsp?id=" + u.getId() + "\" class=\"btn btn-outline-danger btn-sm\" onclick=\"return confirm('Tem certeza que deseja excluir?')\">Excluir</a>\n" 
                     + "</tr>";
         }
         return texto;
@@ -227,6 +228,19 @@ public class ControleUsuario {
         }
         return false;
     }
+        
+        
+            public void excluirUsuario(String id) {
+            for (Usuario c : this.usuarios) {
+                if (c.getId().equals(id)) {
+                    this.usuarios.remove(c);
+                    
+                    break;
+                }
+            }
+
+
+        }
     
     //----------------------------------------------------------------//
     
