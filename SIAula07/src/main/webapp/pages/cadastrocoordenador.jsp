@@ -89,6 +89,11 @@
                         </button>
 
                         <button type="reset" class="BotaoSubmit cancelar">Cancelar</button>
+                        <script>
+                            function exibirMensagem(mensagem) {
+                            alert(mensagem);
+                            }
+                        </script>
                     </div>
                 </div>
             </form>

@@ -125,10 +125,16 @@
                     
                     <div class="row justify-content-md-center">
                         <button type="submit" class="BotaoSubmit" 
-                            <%= id != null ? "onclick=\"exibirMensagem('O cadastro do Aluno foi alterado com sucesso!');\"" : "onclick=\"exibirMensagem('O Aluno foi adicionado com sucesso!');\"" %>>
-                            <%= id != null ? "Salvar" : "Cadastrar" %>
+                            <% if(id != null){out.print("onclick=\"exibirMensagem('O Cadastro do Aluno foi alterado com sucesso!');\"");}
+                                else{out.print("onclick=\"exibirMensagem('O cadastro do Aluno foi adicionado com sucesso!');\"");}%>>
+                            <%if(id!=null){out.print("Salvar");}else{out.print("Cadastrar");}%>
                         </button>
                         <button type="reset" class="BotaoSubmit cancelar">Cancelar</button>
+                         <script>
+                            function exibirMensagem(mensagem) {
+                            alert(mensagem);
+                            }
+                        </script>
                     </div>
                        
                 </div>
