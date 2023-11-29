@@ -9,7 +9,9 @@ package usuario;
  * @author evert
  */
 public class Aluguel {
-
+    
+    private Aluno aluno;
+    
     private String matricula;
     private String tombamento;
     private String situacaochromebook;

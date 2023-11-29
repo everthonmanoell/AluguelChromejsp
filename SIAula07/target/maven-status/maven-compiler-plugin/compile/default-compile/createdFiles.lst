@@ -6,5 +6,6 @@ usuario\Banco.class
 usuario\ControleUsuario.class
 usuario\Aluguel.class
 usuario\Aluno.class
+usuario\ControleAluguel.class
 usuario\ControleChromebook.class
 usuario\Usuario.class
