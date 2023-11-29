@@ -1,24 +1,20 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package usuario;
 
 import java.util.LinkedList;
 
 /**
- *
- * @author evert
+ * Everthon
  */
 public class ControleAluguel {
 
-    private LinkedList<Aluguel> aluguel;
-    
-     private static ControleAluguel instancia = null;
+    private LinkedList<Aluguel> alugueis;
+    private ControleUsuario controleUsuario;
+
+    private static ControleAluguel instancia = null;
 
     private ControleAluguel() {
-        this.aluguel = new LinkedList<Aluguel>();
-
+        this.alugueis = new LinkedList<Aluguel>();
+        this.controleUsuario = ControleUsuario.getInstance();
     }
 
     public static ControleAluguel getInstance() {
@@ -28,8 +24,29 @@ public class ControleAluguel {
         return instancia;
     }
 
-    public void adicionarAlgueul(Aluguel aluguel) {
-        this.aluguel.add(aluguel);
+    public void adicionarAluguel(Aluguel aluguel) {
+        this.alugueis.add(aluguel);
     }
+
+    // Métodos para acessar e manipular a classe ControleUsuario
+    public void adicionarUsuario(Usuario usuario) {
+        this.controleUsuario.adicionarUsuario(usuario);
+    }
+
+    public void adicionarChromebook(Chromebook chromebook) {
+        this.controleUsuario.adicionarChromebook(chromebook);
+    }
+
+    public void adicionarAluno(Aluno aluno) {
+        this.controleUsuario.adicionarAluno(aluno);
+    }
+
+    public Usuario getUsuario(String id) {
+        return this.controleUsuario.getUsuario(id);
+    }
+
+
+
+    // ... outros métodos conforme necessário
 
 }
