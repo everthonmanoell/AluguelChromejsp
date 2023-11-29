@@ -4,6 +4,7 @@ usuario\Chromebook.class
 com\mycompany\siaula07\resources\JakartaEE10Resource.class
 usuario\Banco.class
 usuario\ControleUsuario.class
+usuario\Aluguel.class
 usuario\Aluno.class
 usuario\ControleChromebook.class
 usuario\Usuario.class

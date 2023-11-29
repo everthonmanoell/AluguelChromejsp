@@ -43,6 +43,79 @@ public class ControleUsuario {
         this.alunos.add(aluno);
     }
 
+    //--------------- USUARIO / COORDENADOR -------------------------//
+    public Usuario getUsuario(String id) {
+        for (Usuario c : this.usuarios) {
+            if (c.getId().equals(id)) {
+                return c;
+            }
+        }
+        return null;
+    }
+
+    public String listarDadosUsuario() {
+        String texto = "";
+        for (Usuario u : this.usuarios) {
+            texto = texto
+                    + "<tr>"
+                    + "<td>" + u.getId() + "</td>"
+                    + "<td>" + u.getNomecompleto() + "</td>"
+                    + "<td>" + u.getMatricula() + "</td>"
+                    + "<td><a href=\"cadastrocoordenador.jsp?id=" + u.getId() + "\" class=\"btn btn-outline-primary btn-sm\">Alterar</a>"
+                    + "<a href=\"validar/excluircoordenador.jsp?id=" + u.getId() + "\" class=\"btn btn-outline-danger btn-sm\" onclick=\"return confirm('Tem certeza que deseja excluir?')\">Excluir</a>\n"
+                    + "</tr>";
+        }
+        return texto;
+    }
+
+    public void alterarUsuario(String id, String nomecompleto, String matricula, String senha) {
+        for (Usuario c : this.usuarios) {
+            if (String.valueOf(c.getId()).equals(id)) {
+
+                c.setNomecompleto(nomecompleto);
+                c.setMatricula(matricula);
+                c.setSenha(senha);
+                break; // interrompe o loop após encontrar o Chromebook correspondente
+            }
+        }
+    }
+
+    public String listarUsuarios() {
+        StringBuilder texto = new StringBuilder();
+        for (Usuario u : this.usuarios) {
+            texto.append("Matricula: ").append(u.getMatricula()).append("<br>");
+            texto.append("Senha: ").append(u.getSenha()).append("<br>");
+        }
+        return texto.toString();
+    }
+
+    public boolean buscarUsuario(String matricula, String senha) {
+        for (Usuario u : this.usuarios) {
+            if (u.getMatricula().equals(matricula) && (u.getSenha().equals(senha))) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void excluirUsuario(String id) {
+        for (Usuario c : this.usuarios) {
+            if (c.getId().equals(id)) {
+                this.usuarios.remove(c);
+
+                break;
+            }
+        }
+
+    }
+
+    public String contarUsuario() {
+
+        return this.usuarios.size() + "";
+
+    }
+
+    //----------------------------------------------------------------//
     //--------------- CHROMEBOOK-------------------------//
     public Chromebook getChromebook(String id) {
         for (Chromebook c : this.chromebook) {
@@ -153,79 +226,6 @@ public class ControleUsuario {
     public String contarAluno() {
 
         return this.alunos.size() + "";
-
-    }
-
-    //----------------------------------------------------------------//
-    //--------------- USUARIO / COORDENADOR -------------------------//
-    public Usuario getUsuario(String id) {
-        for (Usuario c : this.usuarios) {
-            if (c.getId().equals(id)) {
-                return c;
-            }
-        }
-        return null;
-    }
-
-    public String listarDadosUsuario() {
-        String texto = "";
-        for (Usuario u : this.usuarios) {
-            texto = texto
-                    + "<tr>"
-                    + "<td>" + u.getId() + "</td>"
-                    + "<td>" + u.getNomecompleto() + "</td>"
-                    + "<td>" + u.getMatricula() + "</td>"
-                    + "<td><a href=\"cadastrocoordenador.jsp?id=" + u.getId() + "\" class=\"btn btn-outline-primary btn-sm\">Alterar</a>"
-                    + "<a href=\"validar/excluircoordenador.jsp?id=" + u.getId() + "\" class=\"btn btn-outline-danger btn-sm\" onclick=\"return confirm('Tem certeza que deseja excluir?')\">Excluir</a>\n"
-                    + "</tr>";
-        }
-        return texto;
-    }
-
-    public void alterarUsuario(String id, String nomecompleto, String matricula, String senha) {
-        for (Usuario c : this.usuarios) {
-            if (String.valueOf(c.getId()).equals(id)) {
-
-                c.setNomecompleto(nomecompleto);
-                c.setMatricula(matricula);
-                c.setSenha(senha);
-                break; // interrompe o loop após encontrar o Chromebook correspondente
-            }
-        }
-    }
-
-    public String listarUsuarios() {
-        StringBuilder texto = new StringBuilder();
-        for (Usuario u : this.usuarios) {
-            texto.append("Matricula: ").append(u.getMatricula()).append("<br>");
-            texto.append("Senha: ").append(u.getSenha()).append("<br>");
-        }
-        return texto.toString();
-    }
-
-    public boolean buscarUsuario(String matricula, String senha) {
-        for (Usuario u : this.usuarios) {
-            if (u.getMatricula().equals(matricula) && (u.getSenha().equals(senha))) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public void excluirUsuario(String id) {
-        for (Usuario c : this.usuarios) {
-            if (c.getId().equals(id)) {
-                this.usuarios.remove(c);
-
-                break;
-            }
-        }
-
-    }
-
-    public String contarUsuario() {
-
-        return this.usuarios.size() + "";
 
     }
 
