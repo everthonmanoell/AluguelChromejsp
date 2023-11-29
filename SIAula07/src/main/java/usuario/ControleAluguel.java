@@ -61,13 +61,13 @@ public class ControleAluguel {
     public void adicionarInformacoesAluguel(String idAluguel, String idUsuario, String idAluno, String idChromebook,
             String situacaoChromebook, String id, String dataAluguel, String horaInicio, String horaTermino) {
 
-        Usuario usuario = this.controleUsuario.getUsuario(idUsuario);
-        Aluno aluno = this.controleUsuario.getAluno(idAluno);
-        Chromebook chromebook = this.controleUsuario.getChromebook(idChromebook);
+        String usuario = this.controleUsuario.getIdUsuario(idUsuario);
+        String aluno = this.controleUsuario.getIdAluno(idAluno);
+        String chromebook = this.controleUsuario.getIdChromebook(idChromebook);
 
-        if (usuario != null && aluno != null && chromebook != null) {
+        if (usuario .equals(idUsuario)  && aluno != null && chromebook != null) {
            
-            Aluguel novoAluguel = new Aluguel(usuario.getMatricula(), chromebook.getTombamento(), situacaoChromebook,
+            Aluguel novoAluguel = new Aluguel(idAluguel, idUsuario, idChromebook,
                     id, dataAluguel, horaInicio, horaTermino);
 
             this.alugueis.add(novoAluguel);
@@ -75,6 +75,9 @@ public class ControleAluguel {
             System.out.println("Usuário, aluno ou Chromebook não encontrado.");
         }
     }
+    
+    
+    
     
     //----------------------------------------------------------------------
 

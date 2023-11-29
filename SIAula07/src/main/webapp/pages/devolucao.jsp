@@ -49,6 +49,7 @@
                 <table class="table table-sm">
                     <thead>
                       <tr>
+                        <th scope="col">ID</th>
                         <th scope="col">Nome</th>
                         <th scope="col">Matricula</th>
                         <th scope="col">Tombamento</th>

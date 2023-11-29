@@ -53,6 +53,15 @@ public class ControleUsuario {
         return null;
     }
 
+    public String getIdUsuario(String id) {
+        for (Usuario c : this.usuarios) {
+            if (c.getId().equals(id)) {
+                return id;
+            }
+        }
+        return null;
+    }
+
     public String listarDadosUsuario() {
         String texto = "";
         for (Usuario u : this.usuarios) {
@@ -126,6 +135,15 @@ public class ControleUsuario {
         return null;
     }
 
+    public String getIdChromebook(String id) {
+        for (Chromebook c : this.chromebook) {
+            if (c.getId().equals(id)) {
+                return id;
+            }
+        }
+        return null;
+    }
+
     public void alterarChromebook(String id, String tombamento, String situacao, String descricao) {
         for (Chromebook c : this.chromebook) {
             if (String.valueOf(c.getId()).equals(id)) {
@@ -181,6 +199,15 @@ public class ControleUsuario {
         return null;
     }
 
+    public String getIdAluno(String id) {
+        for (Aluno c : this.alunos) {
+            if (c.getId().equals(id)) {
+                return id;
+            }
+        }
+        return null;
+    }
+
     public void alterarAluno(String id, String nome, String matricula, String turno, String periodo, String turma) {
         for (Aluno c : this.alunos) {
             if (String.valueOf(c.getId()).equals(id)) {
@@ -199,14 +226,14 @@ public class ControleUsuario {
         for (Aluno u : this.alunos) {
             texto = texto
                     + "<tr>"
-                    + "<td>" + u.getId() + "</td>"
-                    + "<td>" + u.getNome() + "</td>"
-                    + "<td>" + u.getMatricula() + "</td>"
-                    + "<td>" + u.getTurno() + "</td>"
-                    + "<td>" + u.getPeriodo() + "</td>"
-                    + "<td>" + u.getTurma() + "</td>"
-                    + "<td><a href=\"cadastroaluno.jsp?id=" + u.getId() + "\" class=\"btn btn-outline-primary btn-sm\">Alterar</a>"
-                    + "<a href=\"validar/excluirchromebook.jsp?id=" + u.getId() + "\" class=\"btn btn-outline-danger btn-sm\" onclick=\"return confirm('Tem certeza que deseja excluir?')\">Excluir</a>\n"
+                        + "<td>" + u.getId() + "</td>"
+                        + "<td>" + u.getNome() + "</td>"
+                        + "<td>" + u.getMatricula() + "</td>"
+                        + "<td>" + u.getTurno() + "</td>"
+                        + "<td>" + u.getPeriodo() + "</td>"
+                        + "<td>" + u.getTurma() + "</td>"
+                        + "<td><a href=\"cadastroaluno.jsp?id=" + u.getId() + "\" class=\"btn btn-outline-primary btn-sm\">Alterar</a>"
+                        + "<a href=\"validar/excluirchromebook.jsp?id=" + u.getId() + "\" class=\"btn btn-outline-danger btn-sm\" onclick=\"return confirm('Tem certeza que deseja excluir?')\">Excluir</a>\n"
                     + "</tr>";
         }
         return texto;
