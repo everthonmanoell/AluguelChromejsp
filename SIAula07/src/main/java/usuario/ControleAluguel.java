@@ -6,6 +6,7 @@ import java.util.LinkedList;
  * Everthon
  */
 public class ControleAluguel {
+    //----------------------------------------------------------------------
 
     private LinkedList<Aluguel> alugueis;
     private ControleUsuario controleUsuario;
@@ -27,7 +28,12 @@ public class ControleAluguel {
     public void adicionarAluguel(Aluguel aluguel) {
         this.alugueis.add(aluguel);
     }
+    //----------------------------------------------------------------------
 
+    
+    
+    
+    //----------------------------------------------------------------------
     // Métodos para acessar e manipular a classe ControleUsuario
     public void adicionarUsuario(Usuario usuario) {
         this.controleUsuario.adicionarUsuario(usuario);
@@ -44,9 +50,32 @@ public class ControleAluguel {
     public Usuario getUsuario(String id) {
         return this.controleUsuario.getUsuario(id);
     }
+    //----------------------------------------------------------------------
 
 
+    
+    
+    //----------------------------------------------------------------------
+    // Método para buscar informações e adicionar ao aluguel
+    
+    public void adicionarInformacoesAluguel(String idAluguel, String idUsuario, String idAluno, String idChromebook,
+            String situacaoChromebook, String id, String dataAluguel, String horaInicio, String horaTermino) {
 
-    // ... outros métodos conforme necessário
+        Usuario usuario = this.controleUsuario.getUsuario(idUsuario);
+        Aluno aluno = this.controleUsuario.getAluno(idAluno);
+        Chromebook chromebook = this.controleUsuario.getChromebook(idChromebook);
+
+        if (usuario != null && aluno != null && chromebook != null) {
+           
+            Aluguel novoAluguel = new Aluguel(usuario.getMatricula(), chromebook.getTombamento(), situacaoChromebook,
+                    id, dataAluguel, horaInicio, horaTermino);
+
+            this.alugueis.add(novoAluguel);
+        } else {
+            System.out.println("Usuário, aluno ou Chromebook não encontrado.");
+        }
+    }
+    
+    //----------------------------------------------------------------------
 
 }

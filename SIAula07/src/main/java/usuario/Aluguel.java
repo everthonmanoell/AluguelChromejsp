@@ -9,9 +9,8 @@ package usuario;
  * @author evert
  */
 public class Aluguel {
-    
-    private Aluno aluno;
-    
+
+    private String id;
     private String matricula;
     private String tombamento;
     private String situacaochromebook;
@@ -19,8 +18,9 @@ public class Aluguel {
     private String horainicio;
     private String horatermino;
 
-    public Aluguel(String matricula, String tombamento, String situacaochromebook, String dataalguel, String horainicio, String horatermino) {
-
+    public Aluguel(String id, String matricula, String tombamento, String situacaochromebook, String dataalguel, String horainicio, String horatermino) {
+        
+        this.id = id;
         this.matricula = matricula;
         this.tombamento = tombamento;
         this.situacaochromebook = situacaochromebook;
@@ -29,6 +29,21 @@ public class Aluguel {
         this.horatermino = horatermino;
 
     }
+    
+        /**
+     * @return the id
+     */
+    public String getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(String id) {
+        this.id = id;
+    }
+
 
     /**
      * @return the matricula
@@ -113,5 +128,6 @@ public class Aluguel {
     public void setHoratermino(String horatermino) {
         this.horatermino = horatermino;
     }
+
 
 }
