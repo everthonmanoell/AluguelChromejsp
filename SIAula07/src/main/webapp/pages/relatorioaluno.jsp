@@ -38,7 +38,7 @@
                 <div class="fonteRelatorio">
                 <a href="relatorioaluno.jsp"><button class="botoesDoRelatorio" id="alunos">ALUNOS</button></a>
                 <a href="relatoriocoordenador.jsp"><button class="botoesDoRelatorio" id="coordenador">COORDENADOR</button></a>
-                <a href="relatoriochromebook.jsp"><button class="botoesDoRelatorio" id="chormebook">CHORMEBOOK</button></a>
+                <a href="relatoriochromebook.jsp"><button class="botoesDoRelatorio" id="chromebook">CHROMEBOOK</button></a>
                 <a href="relatorioaluguel.jsp"><button class="botoesDoRelatorio" id="alugados">ALUGADOS</button></a>
                 </div>
             </div> 
