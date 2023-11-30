@@ -62,6 +62,7 @@ public class ControleAluguel {
                         + "<td>" + u.getSituacaochromebook() + "</td>"
                         + "<td>" + u.getDataalguel() + "</td>"
                         + "<td>" + u.getHorainicio() + "</td>"
+                        + "<td>" + u.getDatatermino() + "</td>"
                         + "<td><a href=\"alugel.jsp?id=" + u.getId() + "\" class=\"btn btn-outline-primary btn-sm\">Devolver</a>"
                         + "</tr>";
             }
