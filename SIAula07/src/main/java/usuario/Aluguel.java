@@ -10,6 +10,8 @@ package usuario;
  */
 public class Aluguel {
 
+
+
     private String id;
     private String matricula;
     private String tombamento;
@@ -17,8 +19,9 @@ public class Aluguel {
     private String dataalguel;
     private String horainicio;
     private String horatermino;
+    private String datatermino;
 
-    public Aluguel(String id, String matricula, String tombamento, String situacaochromebook, String dataalguel, String horainicio, String horatermino) {
+    public Aluguel(String id, String matricula, String tombamento, String situacaochromebook, String dataalguel, String horainicio, String horatermino, String datatermino) {
         
         this.id = id;
         this.matricula = matricula;
@@ -27,6 +30,7 @@ public class Aluguel {
         this.dataalguel = dataalguel;
         this.horainicio = horainicio;
         this.horatermino = horatermino;
+        this.datatermino = datatermino;
 
     }
     
@@ -127,6 +131,20 @@ public class Aluguel {
      */
     public void setHoratermino(String horatermino) {
         this.horatermino = horatermino;
+    }
+    
+        /**
+     * @return the datatermino
+     */
+    public String getDatatermino() {
+        return datatermino;
+    }
+
+    /**
+     * @param datatermino the datatermino to set
+     */
+    public void setDatatermino(String datatermino) {
+        this.datatermino = datatermino;
     }
 
 
