@@ -29,22 +29,40 @@
             <a href="perfil.jsp"><button class="user"><img src="../images/user.png" class="user" style="height: 30px;"></button></a>
        </div>
     </div>
-    <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        var currentPage = window.location.pathname;
 
-        var buttonCadastro = document.getElementById("aluguel");
-        var buttonLink = buttonCadastro.closest("a").getAttribute("href");
-
-        if (currentPage.endsWith(buttonLink)) {
-            buttonCadastro.classList.add("pressionado");
-        }
-    });
-</script>
     <br>
         <div class="container containerMeio">
             <div class="titulo">
-                <a>ALUGUEL DE CHROMEBOOK</a>
+                <p>
+
+                    <%
+                        String id = request.getParameter("id");
+                        String matriculaCoordenador = request.getParameter("matriculaCoordenador");
+                        String matriculaAluno = request.getParameter("matriculaAluno");
+                        String tombamento = request.getParameter("tombamento");
+                        String situacaochromebook = request.getParameter("situacaochromebook");
+                        String dataaluguel = request.getParameter("dataaluguel");
+                        String horainicio = request.getParameter("horainicio");
+                        String datatermino = request.getParameter("datatermino");
+                        String horatermino = request.getParameter("horatermino");
+                        
+
+
+                        ControleAluguel controle = ControleAluguel.getInstance();
+                        Aluguel usr = null;
+
+                        if (id != null) {
+                            out.println("Devolução de Chromebook");
+                            usr = controle.getAluguel(id);
+                        } else {
+                            out.println("Aluguel de Chromebook");
+                            // Ajuste na chamada do construtor:
+                            usr = new Aluguel("", "", "", "", "", ""); // Substitua pelos valores apropriados
+                        }
+                    %>
+
+
+                </p>
 
             </div>
             <form action="validar/validaraluguel.jsp" method="post">
@@ -107,5 +125,18 @@
         </div>
     </div>
 </div>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var currentPage = window.location.pathname;
+
+        var buttonCadastro = document.getElementById("aluguel");
+        var buttonLink = buttonCadastro.closest("a").getAttribute("href");
+
+        if (currentPage.endsWith(buttonLink)) {
+            buttonCadastro.classList.add("pressionado");
+        }
+    });
+</script>
 </body>
 </html>

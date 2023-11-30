@@ -31,6 +31,16 @@ public class ControleAluguel {
     //----------------------------------------------------------------------
 
     //----------------------------------------------------------------------
+    public Aluguel getAluguel(String id) {
+        for (Aluguel c : this.alugueis) {
+            if (c.getId().equals(id)) {
+                return c;
+            }
+        }
+        return null;
+    }
+    
+    
     // Método para buscar informações e adicionar ao aluguel
     public void adicionarAluguel(String idAluguel, String matriculaUsuario, String idMatricula, String tombamento,
             String situacaoChromebook, String dataAluguel, String horaInicio, String horaTermino, String dataTermino) {
@@ -49,6 +59,19 @@ public class ControleAluguel {
             System.out.println("Usuário, aluno ou Chromebook não encontrado.");
         }*/
 
+    }
+    
+    public void alterarAluguel (String idAluguel, String situacaoChromebook,String horaTermino, String dataTermino){
+                for (Aluguel c : this.alugueis) {
+            if (String.valueOf(c.getId()).equals(idAluguel)) {
+
+                c.setSituacaoChromebook(situacaoChromebook);
+                c.setHoraTermino(horaTermino);
+                c.setDataTermino(dataTermino);
+                break; // interrompe o loop após encontrar o Chromebook correspondente
+            }
+        }
+    
     }
 
     public String listarDadosAlugueis() {
