@@ -13,6 +13,7 @@
     <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="../icons/css/boxicons.min.css" />
     <link rel="stylesheet" type="text/css" href="../css/style.css" />
+    <link rel="stylesheet" href="js/send.js">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Kanit:wght@100;400;700&display=swap" rel="stylesheet">
@@ -54,10 +55,10 @@
             
             <table class="table">
                     <thead>
-                            <th scope="col"><input type="search" class="form-control rounded" placeholder="" aria-label="Search" aria-describedby="search-addon" style="width:500px; margin-left:200px "/></th>
-                        <th scope="col"><button type="button" class="btn btn-secondary btn-sm">pesquisar</button></th>
+                            <th scope="col"><input type="search" class="form-control rounded" placeholder="Pesquisar" aria-label="Search" aria-describedby="search-addon" style="width:500px; margin-left:200px " id="send"/></th>
+                        <th scope="col"><button type="button" class="btn btn-primary btn-sm" id="send">pesquisar</button></th>
                         <th scope="col">TOTAL CADASTRADOS</th>
-                        <th scope="col"><p class="form-control" type="text" id="totalemuso" style="width:50px"><%out.print(controle.contarChromebook());%></p></th>
+                        <th scope="col" id="totalemuso" style="width:50px"><%out.print(controle.contarChromebook());%></th>
             </table>
                 <table class="table table-sm">
                     <thead>
