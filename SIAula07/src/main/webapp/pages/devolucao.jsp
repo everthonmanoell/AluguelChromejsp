@@ -53,9 +53,10 @@
                 <thead>
                     <tr>
                         <th scope="col">ID</th>
-                        <th scope="col">Nome</th>
-                        <th scope="col">Matricula</th>
+                        <th scope="col">M. Coordenador</th>
+                        <th scope="col">M. Aluno</th>
                         <th scope="col">Tombamento</th>
+                        <th scope="col">Situação Chromebook</th>
                         <th scope="col">Data aluguel</th>
                         <th scope="col">Hora aluguel</th>
                         <th scope="col"></th>

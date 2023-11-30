@@ -46,9 +46,15 @@
                     </div> 
 
                     <div class="mb-3 mt-3">
-                        <label for="matricula" class="form-label"><a>Matrícula:</a></label>
-                        <input type="text" class="form-control" id="matricula" placeholder="" name="matricula" required>
+                        <label for="matricula" class="form-label"><a>Matrícula do Coordenador:</a></label>
+                        <input type="text" class="form-control" id="matricula" placeholder="" name="matriculaCoordenador" required>
                     </div>
+                    
+                    <div class="mb-3 mt-3">
+                        <label for="matricula" class="form-label"><a>Matrícula do Aluno:</a></label>
+                        <input type="text" class="form-control" id="matricula" placeholder="" name="matriculaAluno" required>
+                    </div>
+                    
                     <div class="mb-3 mt-3">
                         <label for="tombamento" class="form-label"><a>Tombamento:</a></label>
                         <input type="text" class="form-control" id="tombamento" placeholder="" name="tombamento" required>

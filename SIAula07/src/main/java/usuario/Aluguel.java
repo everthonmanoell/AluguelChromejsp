@@ -13,41 +13,44 @@ public class Aluguel {
 
 
     private String id;
-    private String matricula;
+    private String matriculaUsuario;
+    private String matricula;    
     private String tombamento;
-    private String situacaochromebook;
-    private String dataalguel;
-    private String horainicio;
-    private String horatermino;
-    private String datatermino;
+    private String situacaoChromebook;
+    private String dataAluguel;
+    private String horaInicio;
+    private String dataTermino;
+    private String horaTermino;
+    
 
-    public Aluguel(String id, String matricula, String tombamento, String situacaochromebook, String dataalguel, String horainicio, String horatermino, String datatermino) {
+    public Aluguel(String id, String matriculaUsuario, String matricula, String tombamento, String situacaoChromebook, String dataAluguel, String horaInicio, String dataTermino ,String horaTermino ) {
         
         this.id = id;
+        this.matriculaUsuario = matriculaUsuario;
         this.matricula = matricula;
         this.tombamento = tombamento;
-        this.situacaochromebook = situacaochromebook;
-        this.dataalguel = dataalguel;
-        this.horainicio = horainicio;
-        this.horatermino = horatermino;
-        this.datatermino = datatermino;
+        this.situacaoChromebook = situacaoChromebook;
+        this.dataAluguel = dataAluguel;
+        this.horaInicio = horaInicio;
+        this.dataTermino = dataTermino;
+        this.horaTermino = horaTermino;
+        
 
     }
-    
-        /**
+
+    /*
      * @return the id
      */
     public String getId() {
         return id;
     }
 
-    /**
+    /*
      * @param id the id to set
      */
     public void setId(String id) {
         this.id = id;
     }
-
 
     /**
      * @return the matricula
@@ -56,96 +59,111 @@ public class Aluguel {
         return matricula;
     }
 
-    /**
+    /*
      * @param matricula the matricula to set
      */
     public void setMatricula(String matricula) {
         this.matricula = matricula;
     }
 
-    /**
+    /*
+     * @return the idMatriculaUsuario
+     */
+    public String getMatriculaUsuario() {
+        return matriculaUsuario;
+    }
+
+    /*
+     * @param idMatriculaUsuario the idMatriculaUsuario to set
+     */
+    public void setMatriculaUsuario(String matriculaUsuario) {
+        this.matriculaUsuario = matriculaUsuario;
+    }
+
+    /*
      * @return the tombamento
      */
     public String getTombamento() {
         return tombamento;
     }
 
-    /**
+    /*
      * @param tombamento the tombamento to set
      */
     public void setTombamento(String tombamento) {
         this.tombamento = tombamento;
     }
 
-    /**
-     * @return the situacaochromebook
+    /*
+     * @return the situacaoChromebook
      */
-    public String getSituacaochromebook() {
-        return situacaochromebook;
+    public String getSituacaoChromebook() {
+        return situacaoChromebook;
+    }
+
+    /*
+     * @param situacaoChromebook the situacaoChromebook to set
+     */
+    public void setSituacaoChromebook(String situacaoChromebook) {
+        this.situacaoChromebook = situacaoChromebook;
+    }
+
+    /*
+     * @return the dataAluguel
+     */
+    public String getDataAluguel() {
+        return dataAluguel;
+    }
+
+    /*
+     * @param dataAluguel the dataAluguel to set
+     */
+    public void setDataAluguel(String dataAluguel) {
+        this.dataAluguel = dataAluguel;
     }
 
     /**
-     * @param situacaochromebook the situacaochromebook to set
+     * @return the horaInicio
      */
-    public void setSituacaochromebook(String situacaochromebook) {
-        this.situacaochromebook = situacaochromebook;
+    public String getHoraInicio() {
+        return horaInicio;
     }
 
-    /**
-     * @return the dataalguel
+    /*
+     * @param horaInicio the horaInicio to set
      */
-    public String getDataalguel() {
-        return dataalguel;
+    public void setHoraInicio(String horaInicio) {
+        this.horaInicio = horaInicio;
     }
 
-    /**
-     * @param dataalguel the dataalguel to set
+    /*
+     * @return the horaTermino
      */
-    public void setDataalguel(String dataalguel) {
-        this.dataalguel = dataalguel;
+    public String getHoraTermino() {
+        return horaTermino;
     }
 
-    /**
-     * @return the horainicio
+    /*
+     * @param horaTermino the horaTermino to set
      */
-    public String getHorainicio() {
-        return horainicio;
+    public void setHoraTermino(String horaTermino) {
+        this.horaTermino = horaTermino;
     }
 
-    /**
-     * @param horainicio the horainicio to set
+    /*
+     * @return the dataTermino
      */
-    public void setHorainicio(String horainicio) {
-        this.horainicio = horainicio;
+    public String getDataTermino() {
+        return dataTermino;
     }
 
-    /**
-     * @return the horatermino
+    /*
+     * @param dataTermino the dataTermino to set
      */
-    public String getHoratermino() {
-        return horatermino;
+    public void setDataTermino(String dataTermino) {
+        this.dataTermino = dataTermino;
     }
 
-    /**
-     * @param horatermino the horatermino to set
-     */
-    public void setHoratermino(String horatermino) {
-        this.horatermino = horatermino;
-    }
     
-        /**
-     * @return the datatermino
-     */
-    public String getDatatermino() {
-        return datatermino;
-    }
-
-    /**
-     * @param datatermino the datatermino to set
-     */
-    public void setDatatermino(String datatermino) {
-        this.datatermino = datatermino;
-    }
-
-
+    
 }

@@ -32,37 +32,37 @@ public class ControleAluguel {
 
     //----------------------------------------------------------------------
     // Método para buscar informações e adicionar ao aluguel
-    public void adicionarAluguel(String idAluguel, String idUsuario, String idAluno, String idChromebook,
-            String situacaoChromebook, String id, String dataAluguel, String horaInicio, String horaTermino, String dataTermino) {
+    public void adicionarAluguel(String idAluguel, String matriculaUsuario, String idMatricula, String tombamento,
+            String situacaoChromebook, String dataAluguel, String horaInicio, String horaTermino, String dataTermino) {
 
-        String usuario = this.controleUsuario.getIdUsuario(idUsuario);
-        String aluno = this.controleUsuario.getIdAluno(idAluno);
-        String chromebook = this.controleUsuario.getIdChromebook(idChromebook);
+        String usuario = this.controleUsuario.getMatriculaUsuario(matriculaUsuario);
+        String aluno = this.controleUsuario.getMatriculaAluno(idMatricula);
+        String chromebook = this.controleUsuario.getTombamento(tombamento);
 
-        if (usuario.equals(idUsuario) && (aluno.equals(idAluno)) && (chromebook.equals(idChromebook))) {
+        //if (usuario.equals(matriculaUsuario) && (aluno.equals(idMatricula)) && (chromebook.equals(tombamento))) {
 
-            Aluguel novoAluguel = new Aluguel(idAluguel, idUsuario, idChromebook,
-                    id, dataAluguel, horaInicio, horaTermino, dataTermino);
+            Aluguel novoAluguel = new Aluguel(idAluguel, matriculaUsuario, idMatricula,
+                    tombamento, situacaoChromebook, dataAluguel, horaInicio, horaTermino, dataTermino);
 
             this.alugueis.add(novoAluguel);
-        } else {
+        /*} else {
             System.out.println("Usuário, aluno ou Chromebook não encontrado.");
-        }
+        }*/
 
     }
 
     public String listarDadosAlugueis() {
         String texto = "";
         for (Aluguel u : this.alugueis) {
-            if (u.getDatatermino() != null && !u.getDatatermino().equals("")) {
+            if (u.getDataTermino() == null || u.getDataTermino().isEmpty()) {
                 texto += "<tr>"
                         + "<td>" + u.getId() + "</td>"
+                        + "<td>" + u.getMatriculaUsuario() + "</td>"
                         + "<td>" + u.getMatricula() + "</td>"
                         + "<td>" + u.getTombamento() + "</td>"
-                        + "<td>" + u.getSituacaochromebook() + "</td>"
-                        + "<td>" + u.getDataalguel() + "</td>"
-                        + "<td>" + u.getHorainicio() + "</td>"
-                        + "<td>" + u.getDatatermino() + "</td>"
+                        + "<td>" + u.getSituacaoChromebook() + "</td>"
+                        + "<td>" + u.getDataAluguel() + "</td>"
+                        + "<td>" + u.getHoraInicio() + "</td>"
                         + "<td><a href=\"alugel.jsp?id=" + u.getId() + "\" class=\"btn btn-outline-primary btn-sm\">Devolver</a>"
                         + "</tr>";
             }

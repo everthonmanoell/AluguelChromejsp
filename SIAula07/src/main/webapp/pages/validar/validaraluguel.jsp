@@ -25,7 +25,8 @@
             ControleAluguel controle = ControleAluguel.getInstance();
     
             if (id != null) {
-                String matricula = request.getParameter("matricula");
+                String matriculaCoordenador = request.getParameter("matriculaCoordenador");
+                String matriculaAluno = request.getParameter("matriculaAluno");
                 String tombamento = request.getParameter("tombamento");
                 String situacaochromebook = request.getParameter("situacaochromebook");
                 String dataaluguel = request.getParameter("dataaluguel");
@@ -33,7 +34,7 @@
                 String datatermino = request.getParameter("datatermino");
                 String horatermino = request.getParameter("horatermino");
 
-                Aluguel aluguel = new Aluguel(id, matricula, tombamento, situacaochromebook, dataaluguel, horainicio, datatermino, horatermino);
+                Aluguel aluguel = new Aluguel(id, matriculaCoordenador, matriculaAluno, tombamento, situacaochromebook, dataaluguel, horainicio, datatermino, horatermino);
                 controle.adicionarAluguel(aluguel);
                 response.sendRedirect("../aluguel.jsp");
             } else {
