@@ -63,7 +63,7 @@ public class Banco {
         } catch (SQLException ex) {
             System.out.println("Não conseguiu consultar os dados de Aluna.");
         } finally {
-            ;//conexao.desconectar(conn);
+            //conexao.desconectar(conn);
         }
         return nomes;
     }

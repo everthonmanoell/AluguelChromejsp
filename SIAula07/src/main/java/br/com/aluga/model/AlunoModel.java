@@ -1,14 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package usuario;
+package br.com.aluga.model;
 
-/**
- *
- * @author evert
- */
-public class Aluno {
+public class AlunoModel {
     private String id;
     private String nome;
     private String matricula;
@@ -16,16 +8,6 @@ public class Aluno {
     private String periodo;
     private String turma;
     
-    
-    public Aluno (String id, String nome, String matricula, String turno, String periodo, String turma){
-        this.id = id;
-        this.nome = nome;
-        this.matricula = matricula;
-        this.turno = turno;
-        this.periodo = periodo;
-        this.turma = turma;
-    }   
-
     public String getId() {
         return id;
     }
@@ -74,6 +56,5 @@ public class Aluno {
         this.turma = turma;
     }
     
-        
-    
+ 
 }
