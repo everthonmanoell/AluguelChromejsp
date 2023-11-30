@@ -35,12 +35,24 @@
             <div class="row justify-content-center">
                 <div class="fonteRelatorio">
                 <div class="fonteRelatorio">
-                    <a href="relatorioaluno.jsp"><button class="botoesDoRelatorio">ALUNOS</button></a>
-                    <a href="relatoriocoordenador.jsp"><button class="botoesDoRelatorio">COORDENADOR</button></a>
-                    <a href="relatoriochromebook.jsp"><button class="botoesDoRelatorio">CHORMEBOOK</button></a>                    
-                    <a href="relatorioaluguel.jsp"><button class="botoesDoRelatorio">ALUGADOS</button></a>
+                <a href="relatorioaluno.jsp"><button class="botoesDoRelatorio" id="alunos">ALUNOS</button></a>
+                <a href="relatoriocoordenador.jsp"><button class="botoesDoRelatorio" id="coordenador">COORDENADOR</button></a>
+                <a href="relatoriochromebook.jsp"><button class="botoesDoRelatorio" id="chormebook">CHORMEBOOK</button></a>
+                <a href="relatorioaluguel.jsp"><button class="botoesDoRelatorio" id="alugados">ALUGADOS</button></a>
                 </div>
                     </div>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var currentPage = window.location.pathname;
+
+        var buttonCadastro = document.getElementById("coordenador");
+        var buttonLink = buttonCadastro.closest("a").getAttribute("href");
+
+        if (currentPage.endsWith(buttonLink)) {
+            buttonCadastro.classList.add("pressionado");
+        }
+    });
+</script>
                 </div>  
         <div class="container containerDevolucao">
             <div class="titulo">
@@ -55,7 +67,7 @@
             
             <table class="table">
                     <thead>
-                            <th scope="col"><input type="search" class="form-control rounded" placeholder="" aria-label="Search" aria-describedby="search-addon" style="width:500px; margin-left:200px " id="send"/>
+                            <th scope="col"><input type="search" class="form-control rounded" placeholder="Pesquisar" aria-label="Search" aria-describedby="search-addon" style="width:500px; margin-left:200px " id="send"/>
                         <th scope="col"><button type="button" class="btn btn-primary btn-sm" id="send">pesquisar</button></th>
                         <th scope="col">TOTAL CADASTRADOS</th>
                         <th scope="col" id="totalemuso" style="width:50px"><%out.print(controle.contarUsuario());%></th>

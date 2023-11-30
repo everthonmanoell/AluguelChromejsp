@@ -37,12 +37,24 @@
         <div class="containerRelatorio">
             <div class="row justify-content-center">
                 <div class="fonteRelatorio">
-                    <a href="relatorioaluno.jsp"><button class="botoesDoRelatorio">ALUNOS</button></a>
-                    <a href="relatoriocoordenador.jsp"><button class="botoesDoRelatorio">COORDENADOR</button></a>
-                    <a href="relatoriochromebook.jsp"><button class="botoesDoRelatorio">CHORMEBOOK</button></a>                    
+                <a href="relatorioaluno.jsp"><button class="botoesDoRelatorio" id="alunos">ALUNOS</button></a>
+                <a href="relatoriocoordenador.jsp"><button class="botoesDoRelatorio" id="coordenador">COORDENADOR</button></a>
+                <a href="relatoriochromebook.jsp"><button class="botoesDoRelatorio" id="chromebook">CHROMEBOOK</button></a>
                 <a href="relatorioaluguel.jsp"><button class="botoesDoRelatorio" id="alugados">ALUGADOS</button></a>
                 </div>
             </div>  
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var currentPage = window.location.pathname;
+
+        var buttonCadastro = document.getElementById("chromebook");
+        var buttonLink = buttonCadastro.closest("a").getAttribute("href");
+
+        if (currentPage.endsWith(buttonLink)) {
+            buttonCadastro.classList.add("pressionado");
+        }
+    });
+</script>
         <div class="container containerDevolucao">
             <div class="titulo">
                 <a>RELATÓRIO DE CHROMEBOOK </a>
