@@ -29,7 +29,6 @@
        </div>
     </div>
     <br>
-    </div>
     <div class="container">
         <div class="containerRelatorio">
             <div class="row justify-content-center">
@@ -39,8 +38,7 @@
                 <a href="relatoriochromebook.jsp"><button class="botoesDoRelatorio" id="chromebook">CHROMEBOOK</button></a>
                 <a href="relatorioaluguel.jsp"><button class="botoesDoRelatorio" id="alugados">ALUGADOS</button></a>
                 </div>
-            </div> 
-            </div>          
+            </div>      
     <script>
     document.addEventListener("DOMContentLoaded", function() {
         var currentPage = window.location.pathname;
