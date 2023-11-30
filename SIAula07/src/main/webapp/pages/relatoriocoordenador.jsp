@@ -40,7 +40,7 @@
                 <a href="relatoriochromebook.jsp"><button class="botoesDoRelatorio" id="chromebook">CHROMEBOOK</button></a>
                 <a href="relatorioaluguel.jsp"><button class="botoesDoRelatorio" id="alugados">ALUGADOS</button></a>
                 </div>
-                    </div>
+            </div>
     <script>
     document.addEventListener("DOMContentLoaded", function() {
         var currentPage = window.location.pathname;
@@ -53,12 +53,12 @@
         }
     });
 </script>
-                </div>  
+
         <div class="container containerDevolucao">
             <div class="titulo">
                 <a>RELATÓRIO DE COORDERNADORES</a>
             </div>
-             </div>
+        </div>
             
         <%
             ControleUsuario controle = ControleUsuario.getInstance();
@@ -90,12 +90,9 @@
                         %>
                     </tbody>
                   </table>
-
                 </div>
             </div>
         </div>
-    </div>
-    
+    </div>   
 </body>
-
 </html>
