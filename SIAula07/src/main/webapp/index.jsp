@@ -3,16 +3,15 @@
     Created on : 30 de out. de 2023, 12:06:16
     Author     : jose.serafim
 --%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" />
     <link rel="stylesheet" type="text css" href="../icons/css/boxicons.min.css" />
+    <link rel="stylesheet" href="js/send.js">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Kanit:wght@100;400;700&display=swap"
@@ -20,7 +19,6 @@
     <link rel="stylesheet" href="css/login.css">
     <title>Login</title>
 </head>
-
 <body>
     <div class="borda-esquerda">
         <div class="container-esquerda">
@@ -50,7 +48,7 @@
         %>
         <a href="pages/inicialcadastro.jsp">Cadastre-se</a>
     <br>
-        <button type="submit" class="btn btn-primary">Entrar</button></a>
+        <button type="submit" class="btn btn-primary" value="enviar" id="send">Entrar</button></a>
     </form>
 </body>
 

@@ -3,14 +3,12 @@
     Created on : 1 de nov. de 2023, 23:29:08
     Author     : felipe
 --%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="usuario.*"%>
 <!DOCTYPE html>
 <html lang="pt-br">
-    
 <head>
-    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="../icons/css/boxicons.min.css" />
@@ -23,14 +21,26 @@
     <div class="bordaDoTopo">
         <div class="container-fluid">     
             <a href="home.jsp"><button class="botoesDoTopo">ÍNICIO</button></a>
-            <a href="homecadastro.jsp"><button class="botoesDoTopo">CADASTRO</button></a>
-            <a href="aluguel.jsp"><button class="botoesDoTopo">ALUGUEL</button></a>
-            <a href="devolucao.jsp"><button class="botoesDoTopo">DEVOLUÇÃO</button></a>
-            <a href="relatorio.jsp"><button class="botoesDoTopo">RELATÓRIO</button></a>
+            <a href="homecadastro.jsp"><button class="botoesDoTopo" id="cadastro">CADASTRO</button></a>
+            <a href="aluguel.jsp"><button class="botoesDoTopo" id="aluguel">ALUGUEL</button></a>
+            <a href="devolucao.jsp"><button class="botoesDoTopo" id="devolucao">DEVOLUÇÃO</button></a>
+            <a href="relatorio.jsp"><button class="botoesDoTopo" id="relatorio">RELATÓRIO</button></a>
             <a href="sair.jsp"><button class="power"><img src="../images/power.png" class="power" style="height: 30px;"></button></a>
             <a href="perfil.jsp"><button class="user"><img src="../images/user.png" class="user" style="height: 30px;"></button></a>
-        </div>
+       </div>
     </div>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var currentPage = window.location.pathname;
+
+        var buttonCadastro = document.getElementById("cadastro");
+        var buttonLink = buttonCadastro.closest("a").getAttribute("href");
+
+        if (currentPage.endsWith(buttonLink)) {
+            buttonCadastro.classList.add("pressionado");
+        }
+    });
+</script>
     <br><br><br><br>
         <div class="container containerMeio">
             <div class="titulo">

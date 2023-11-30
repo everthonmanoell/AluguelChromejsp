@@ -4,40 +4,44 @@
     Author     : Ev
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="usuario.*"%>
-<%@page import="usuario.ControleAluguel"%>
 <!DOCTYPE html>
 <html lang="pt-br">
-    <%ControleAluguel controle = ControleAluguel.getInstance();%>
-   
-    
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" />
-        <link rel="stylesheet" type="text/css" href="../icons/css/boxicons.min.css" />
-        <link rel="stylesheet" type="text/css" href="../css/style.css" />
-        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Inter&family=Kanit:wght@100;400;700&display=swap"
-              rel="stylesheet">
-        <title>DEVOLUÇÃOO</title>
-    </head>
-    <body class="topo">
-        <div class="bordaDoTopo">
-            <div class="container-fluid">     
-                <a href="home.jsp"><button class="botoesDoTopo">INICIO</button></a>
-                <a href="homecadastro.jsp"><button class="botoesDoTopo">CADASTRO</button></a>
-                <a href="aluguel.jsp"><button class="botoesDoTopo">ALUGUEL</button></a>
-                <a href="devolucao.jsp"><button class="botoesDoTopo">DEVOLUÇÃO</button></a>
-                <a href="relatorio.jsp"><button class="botoesDoTopo">RELATÓRIO</button></a>
-                <a href="sair.jsp"><button class="power"><img src="../images/power.png" class="power" style="height: 30px;"></button></a>
-                <a href="perfil.jsp"><button class="user"><img src="../images/user.png" class="user" style="height: 30px;"></button></a>
-            </div>
-        </div>
-        <br>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../icons/css/boxicons.min.css" />
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&family=Kanit:wght@100;400;700&display=swap" rel="stylesheet">
+    <title>DEVOLUÇÃO</title>
+</head>
+    <div class="bordaDoTopo">
+        <div class="container-fluid">     
+            <a href="home.jsp"><button class="botoesDoTopo">ÍNICIO</button></a>
+            <a href="homecadastro.jsp"><button class="botoesDoTopo" id="cadastro">CADASTRO</button></a>
+            <a href="aluguel.jsp"><button class="botoesDoTopo" id="aluguel">ALUGUEL</button></a>
+            <a href="devolucao.jsp"><button class="botoesDoTopo" id="devolucao">DEVOLUÇÃO</button></a>
+            <a href="relatorio.jsp"><button class="botoesDoTopo" id="relatorio">RELATÓRIO</button></a>
+            <a href="sair.jsp"><button class="power"><img src="../images/power.png" class="power" style="height: 30px;"></button></a>
+            <a href="perfil.jsp"><button class="user"><img src="../images/user.png" class="user" style="height: 30px;"></button></a>
+       </div>
+    </div>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var currentPage = window.location.pathname;
+
+        var buttonCadastro = document.getElementById("devolucao");
+        var buttonLink = buttonCadastro.closest("a").getAttribute("href");
+
+        if (currentPage.endsWith(buttonLink)) {
+            buttonCadastro.classList.add("pressionado");
+        }
+    });
+</script>
+    <br>
         <div class="container containerDevolucao">
             <div class="titulo">
                 <a>DEVOLUÇÃO</a>

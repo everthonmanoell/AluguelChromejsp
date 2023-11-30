@@ -29,17 +29,28 @@ a {
 }
 
 .botoesDoTopo {
+    border-radius: 5px; 
     background-color: #003c9562;
     padding: 10px;
     border: 1px ;
-    color: #ffffff;
+    color: #ffffff; 
 }
 
 .botoesDoTopo:hover {
+    border-radius: 5px; 
     background-color: rgba(253, 253, 253, 0.205);
     transition: all .55s;
     transform: scale(0.9, 0.9);
 }
+
+.botoesDoTopo.pressionado {
+    border: 1px ;
+    color: #ddd;
+    background-color: #0ca7fe;
+    color:#ffffff;
+    border-radius: 5px; 
+}
+
 .user, .power {
     margin: 6px;
     clip-path: circle();
@@ -56,6 +67,11 @@ a {
 
 .power {
     background-color: rgba(255, 0, 0, 0.8);
+}
+.power:hover {    
+    background-color: rgba(255, 0, 0, 0.8);
+    transition: all .55s;
+    transform: scale(0.9, 0.9);
 }
 
 .middle {
@@ -98,6 +114,7 @@ a {
     width: 300px;
     border: 1px;
     color: #ffffff;
+    border-radius: 5px; 
 }
 
 .botoesDoMeio:hover {
@@ -192,6 +209,16 @@ tr {
     transition: all .55s;
     transform: scale(0.9, 0.9);
 }
+
+
+.botoesDoRelatorio.pressionado {
+    border: 1px ;
+    color: #ddd;
+    background-color: #0ca7fe;
+    color:#ffffff;
+    border-radius: 5px; 
+}
+
 
 .fonteRelatorio{
     padding: 30px;
