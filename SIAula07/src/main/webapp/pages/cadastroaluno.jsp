@@ -121,7 +121,7 @@
                         <option value="e"  <%if((id!=null) && (usr.getTurma().equals("e"))){out.print("selected");}%> >E</option>
                         <option value="f"  <%if((id!=null) && (usr.getTurma().equals("f"))){out.print("selected");}%> >F</option>
                     </select>
-                    
+                    <br>
    
 
                     

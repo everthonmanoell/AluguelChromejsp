@@ -73,7 +73,7 @@
                         <th scope="col"><input type="search" class="form-control rounded" placeholder="Pesquisar" aria-label="Search" aria-describedby="search-addon" style="width:500px; margin-left:200px" id="send"/></th>
                         <th scope="col"><button type="button" class="btn btn-primary btn-sm" id="send">pesquisar</button></th> 
                         <th scope="col">TOTAL CADASTRADOS</th>
-                        <th scope="col"><p class="form-control" type="text" id="totalemuso" style="width:50px"><%out.print(controle.contarAluno());%></p></th>
+                        <th scope="col" id="totalemuso" style="width:50px"><%out.print(controle.contarAluno());%></th>
             </table>
                 <table class="table table-sm">
                     <thead>
