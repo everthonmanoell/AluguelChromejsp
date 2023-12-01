@@ -27,7 +27,6 @@
             <a href="devolucao.jsp"><button class="botoesDoTopo" id="devolucao">DEVOLUÇÃO</button></a>
             <a href="relatorio.jsp"><button class="botoesDoTopo pressionado" id="relatorio">RELATÓRIO</button></a>
             <a href="sair.jsp"><button class="power"><img src="../images/power.png" class="power" style="height: 30px;"></button></a>
-            <a href="perfil.jsp"><button class="user"><img src="../images/user.png" class="user" style="height: 30px;"></button></a>
        </div>
     </div>
     <br>
@@ -57,15 +56,15 @@
                 <table class="table table-striped table-sm table-hover">
                     <thead>
                       <tr>
-                        <th scope="col">Id</th>
-                        <th scope="col">Matrícula</th>
-                        <th scope="col">Tombamento</th>     
-                        <th scope="col">Situação Chromebook</th> 
-                        <th scope="col">Data de Aluguel</th> 
-                        <th scope="col">Situação Chromebook</th> 
-                        <th scope="col">Hora início</th> 
-                        <th scope="col">Hora término</th> 
-                        <th scope="col">Data de Aluguel</th> 
+                        <th scope="col"  class="tabela">Id</th>
+                        <th scope="col"  class="tabela">Matrícula</th>
+                        <th scope="col"  class="tabela">Tombamento</th>     
+                        <th scope="col"  class="tabela">Situação Chromebook</th> 
+                        <th scope="col"  class="tabela">Data de Aluguel</th> 
+                        <th scope="col"  class="tabela">Situação Chromebook</th> 
+                        <th scope="col"  class="tabela">Hora início</th> 
+                        <th scope="col"  class="tabela">Hora término</th> 
+                        <th scope="col"  class="tabela">Data de Aluguel</th> 
                       </tr>
                     </thead>
                     <tbody>

@@ -30,7 +30,6 @@
             <a href="devolucao.jsp"><button class="botoesDoTopo" id="devolucao">DEVOLUÇÃO</button></a>
             <a href="relatorio.jsp"><button class="botoesDoTopo" id="relatorio">RELATÓRIO</button></a>
             <a href="sair.jsp"><button class="power"><img src="../images/power.png" class="power" style="height: 30px;"></button></a>
-            <a href="perfil.jsp"><button class="user"><img src="../images/user.png" class="user" style="height: 30px;"></button></a>
        </div>
     </div>
 
@@ -54,22 +53,21 @@
             <br>
             <table class="table">
                         <th scope="col"><input type="search" class="form-control w-255" placeholder="Pesquisar" id="pesquisar">
-                        <th scope="col"><button onclick="searchData()" class="btn btn-primary"><i class='bx bx-search'></i></i></th></th></button>
-                        
+                        <th scope="col"><button onclick="searchData()" class="btn btn-primary"><i class='bx bx-search'></i></i></th></th></button>                        
                         <th scope="col" id="totalemuso" style="auto; float:inline-end;">TOTAL CADASTRADOS: <% out.print(controle.contarAlugueis());%></th>
             </table>
             </main>
                 <table class="table table-striped table-sm table-hover">
                 <thead>
                     <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">M. Coordenador</th>
-                        <th scope="col">M. Aluno</th>
-                        <th scope="col">Tombamento</th>
-                        <th scope="col">Situação Chromebook</th>
-                        <th scope="col">Data aluguel</th>
-                        <th scope="col">Hora aluguel</th>
-                        <th scope="col"></th>
+                        <th scope="col" class="tabela">ID</th>
+                        <th scope="col" class="tabela">M. Coordenador</th>
+                        <th scope="col" class="tabela">M. Aluno</th>
+                        <th scope="col" class="tabela">Tombamento</th>
+                        <th scope="col" class="tabela">Situação Chromebook</th>
+                        <th scope="col" class="tabela">Data aluguel</th>
+                        <th scope="col" class="tabela">Hora aluguel</th>
+                        <th scope="col" class="tabela"></th>
                     </tr>
                 </thead>
                 <tbody>

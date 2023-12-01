@@ -84,7 +84,7 @@ a {
     background-color: #ffffffc0;
 }
 
-.containerMeio {
+.tableMeio {
     padding: 25px;
     border: 1px;
     border-radius: 10px;
@@ -176,20 +176,26 @@ table {
     width: 80%;
 }
 
+
 thead{
     border: 1px solid #ddd;
 }
+.tabela{
+    font-weight: bold;
+    font-size: 20px;
+    letter-spacing: 1px;
+   
+}
+td{
+    font-size: 15px;
+}
 
-tr {
+.tabela,td {
     text-align: left;
-    padding:25px;
-    border: 1px solid #ddd;    
+    padding:2px;
+    border: 1px solid #ddd;
 }
-#th{
-    border-left: 1px solid #b6d4fe;
-    border-right: 1px solid #b6d4fe;
-    
-}
+
 
 .containerRelatorio {
     width: auto;
@@ -231,3 +237,10 @@ tr {
     font-size: 22px;
     text-align: center;
 }
+  input[disabled][readonly].form-control {
+        border: 1px solid #6c757d;  
+    }
+    
+  .form-control {
+        border: 1px solid #ddd;  
+    }
