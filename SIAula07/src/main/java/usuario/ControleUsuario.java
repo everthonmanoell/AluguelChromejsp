@@ -90,13 +90,24 @@ public class ControleUsuario {
         for (Usuario c : this.usuarios) {
             if (id != null && id.equals(String.valueOf(c.getId()))) {
 
-
                 c.setNomecompleto(nomecompleto);
                 c.setMatricula(matricula);
                 c.setSenha(senha);
                 break; // interrompe o loop após encontrar o Chromebook correspondente
             }
         }
+    }
+
+    public void excluirUsuario(String id) {
+        for (Usuario c : this.usuarios) {
+            if (c.getId() != null && c.getId().equals(id)) {
+
+                this.usuarios.remove(c);
+
+                break;
+            }
+        }
+
     }
 
     public String listarUsuarios() {
@@ -115,18 +126,6 @@ public class ControleUsuario {
             }
         }
         return false;
-    }
-
-    public void excluirUsuario(String id) {
-        for (Usuario c : this.usuarios) {
-            if (c.getId() != null && c.getId().equals(id)) {
-
-                this.usuarios.remove(c);
-
-                break;
-            }
-        }
-
     }
 
     public String contarUsuario() {
