@@ -1,1 +1,16 @@
+br\com\aluga\model\AlunoModel.class
+usuario\ControleAluno.class
+br\com\aluga\view\Aluno.class
 usuario\Chromebook.class
+com\mycompany\siaula07\resources\JakartaEE10Resource.class
+usuario\Aluguel.class
+br\com\aluga\dao\AlunoDAO.class
+usuario\Usuario.class
+br\com\aluga\controller\ValidaAluno.class
+br\com\aluga\model\Conexao.class
+com\mycompany\siaula07\JakartaRestConfiguration.class
+usuario\Banco.class
+usuario\ControleUsuario.class
+usuario\Aluno.class
+usuario\ControleAluguel.class
+usuario\ControleChromebook.class

@@ -11,17 +11,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class DAOAluno {
+public class AlunoDAO {
     
-    public List<DAOAluno> getAllAlunos() throws SQLException{
+    public static List<AlunoModel> getAllAlunos() throws SQLException{
+        List<AlunoModel> lista = new ArrayList<>();
         Connection con = null;
         Conexao conexao = new Conexao();
         PreparedStatement ps;
         ResultSet rs;
         String sql = "select * from aluno";
-        List lista = new ArrayList();
+        
         try {
-            con = conexao.getConnection();
+            con = Conexao.getConnection();
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery(sql);
             while(rs.next()){
@@ -40,5 +41,30 @@ public class DAOAluno {
             conexao.desligarConexao(con);
         }
         return lista;
+    }
+    public static int contarAlunos() throws SQLException {
+        Connection con = null;
+        Conexao conexao = new Conexao();
+        PreparedStatement ps;
+        ResultSet rs;
+        String sql = "select * from aluno";
+        int i = 0;
+         
+        try {
+            con = Conexao.getConnection();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery(sql);
+            while(rs.next()){
+               i++;
+            } 
+        }
+        catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        finally {
+            conexao.desligarConexao(con);
+        }
+        return i;
+
     }
 }

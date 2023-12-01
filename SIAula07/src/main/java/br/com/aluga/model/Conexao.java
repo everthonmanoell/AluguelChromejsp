@@ -14,7 +14,7 @@ public class Conexao {
         this.conn = getConnection();
     }
     
-    public Connection getConnection() {
+    public static Connection getConnection() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             return DriverManager.getConnection(
