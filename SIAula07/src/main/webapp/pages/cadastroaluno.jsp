@@ -6,6 +6,8 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="usuario.*"%>
+<%@page import="br.com.aluga.dao.*"%>
+<%@page import="br.com.aluga.model.*"%>
 <!DOCTYPE html>
 <html lang="pt-br">
 

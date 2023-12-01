@@ -83,6 +83,9 @@
                             <<td>${alunoModel.getTurno()}</td>
                             <<td>${alunoModel.getPeriodo()}</td>
                             <<td>${alunoModel.getTurma()}</td>
+                            <<td><a href="cadastroaluno.jsp?${alunoModel.getId()}?${alunoModel.getNome()}?${alunoModel.getMatricula()}?${alunoModel.getTurno()}?${alunoModel.getPeriodo()}?${alunoModel.getTurma()}">Editar</a></td>
+                            <<td><a href="excluiraluno.jsp?${alunoModel.getId()}?${alunoModel.getNome()}?${alunoModel.getMatricula()}?${alunoModel.getTurno()}?${alunoModel.getPeriodo()}?${alunoModel.getTurma()}">Excluir</a></td>
+                            
                         </tr>
                     </c:forEach>
 
