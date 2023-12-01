@@ -50,7 +50,7 @@
                     <thead>
                         <th scope="col"><input type="search" class="form-control rounded" placeholder="Pesquisar" aria-label="Search" aria-describedby="search-addon" style="width:500px; margin-left:200px "/></th>
                         <th scope="col"><button type="button" class="btn btn-outline-primary btn-sm">pesquisar</button></th>
-                        <th scope="col">TOTAL EM USO</th>
+                        <th scope="col">TOTAL ALUGADOS</th>
                         <th scope="col" id="totalemuso" style="width:50px"> <%out.print(controle.contarAlugados());%> </th>
             </table>
                 <table class="table table-sm">
@@ -68,6 +68,14 @@
                       </tr>
                     </thead>
                     <tbody>
+                    <%
+                    if(controle.listarDadosAlugados() != null ){
+                        out.println(controle.listarDadosAlugados());
+                    }else{
+                        out.println("<p>Nenhum chromebook foi cadastrado! :( </p>");
+                    }
+                    %>
+                        
                     </tbody>
                   </table>
                 </div>

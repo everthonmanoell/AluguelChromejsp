@@ -112,6 +112,27 @@ public class ControleAluguel {
         return this.alugueis.size() + "";
 
     }
+        
+        
+        public String listarDadosAlugados() {
+        String texto = "";
+        for (Aluguel u : this.alugueis) {
+            
+                texto += "<tr>"
+                        + "<td>" + u.getId() + "</td>"
+                        + "<td>" + u.getMatriculaUsuario() + "</td>"
+                        + "<td>" + u.getMatricula() + "</td>"
+                        + "<td>" + u.getTombamento() + "</td>"
+                        + "<td>" + u.getSituacaoChromebook() + "</td>"
+                        + "<td>" + u.getDataAluguel() + "</td>"
+                        + "<td>" + u.getHoraInicio() + "</td>"
+                        + "<td>" + u.getHoraTermino() + "</td>"
+                        + "<td>" + u.getDataTermino() + "</td>"
+                        + "</tr>";
+            
+        }
+        return texto;
+    }
 
 //----------------------------------------------------------------------
 }
