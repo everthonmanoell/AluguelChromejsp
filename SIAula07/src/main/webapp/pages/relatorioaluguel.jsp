@@ -45,15 +45,16 @@
             <div class="titulo">
                 <a>RELATÓRIO DE ALUGUEL</a>
             </div>
-             </div>
+             </div>   
+            <main>
             <table class="table">
-                    <thead>
-                        <th scope="col"><input type="search" class="form-control rounded" placeholder="Pesquisar" aria-label="Search" aria-describedby="search-addon" style="width:500px; margin-left:200px "/></th>
-                        <th scope="col"><button type="button" class="btn btn-outline-primary btn-sm">pesquisar</button></th>
-                        <th scope="col">TOTAL ALUGADOS</th>
-                        <th scope="col" id="totalemuso" style="width:50px"> <%out.print(controle.contarAlugados());%> </th>
+                        <th scope="col"><input type="search" class="form-control w-255" placeholder="Pesquisar" id="pesquisar">
+                        <th scope="col"><button onclick="searchData()" class="btn btn-primary"><i class='bx bx-search'></i></i></th></th></button>
+                        
+                        <th scope="col" id="totalemuso" style="auto; float:inline-end;">TOTAL CADASTRADOS: <%out.print(controle.contarAlugados());%></th>
             </table>
-                <table class="table table-sm">
+            </main>
+                <table class="table table-striped table-sm table-hover">
                     <thead>
                       <tr>
                         <th scope="col">Id</th>
