@@ -32,7 +32,6 @@
             <a href="sair.jsp"><button class="power"><img src="../images/power.png" class="power" style="height: 30px;"></button></a>
        </div>
     </div>
-
     <script>
     document.addEventListener("DOMContentLoaded", function() {
         var currentPage = window.location.pathname;

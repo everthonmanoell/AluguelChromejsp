@@ -174,17 +174,17 @@ table {
     background:#fafafa ;
     margin: 0 auto;
     width: 80%;
+    
 }
-
 
 thead{
     border: 1px solid #ddd;
 }
+
 .tabela{
-    font-weight: bold;
-    font-size: 20px;
+    font-weight: normal;
+    font-size: 18px;
     letter-spacing: 1px;
-   
 }
 td{
     font-size: 15px;
