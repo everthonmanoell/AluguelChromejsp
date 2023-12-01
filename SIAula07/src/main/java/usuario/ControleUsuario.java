@@ -261,7 +261,7 @@ public class ControleUsuario {
                     + "<td>" + u.getPeriodo() + "</td>"
                     + "<td>" + u.getTurma() + "</td>"
                     + "<td><a href=\"cadastroaluno.jsp?id=" + u.getId() + "\" class=\"btn btn-outline-primary btn-sm\">Alterar</a>"
-                    + "<a href=\"validar/excluirchromebook.jsp?id=" + u.getId() + "\" class=\"btn btn-outline-danger btn-sm\" onclick=\"return confirm('Tem certeza que deseja excluir?')\">Excluir</a>\n"
+                    + "<a href=\"validar/excluiraluno.jsp?id=" + u.getId() + "\" class=\"btn btn-outline-danger btn-sm\" onclick=\"return confirm('Tem certeza que deseja excluir?')\">Excluir</a>\n"
                     + "</tr>";
         }
         return texto;
