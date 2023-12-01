@@ -39,18 +39,6 @@
                 <a href="relatorioaluguel.jsp"><button class="botoesDoRelatorio" id="alugados">ALUGADOS</button></a>
                 </div>
             </div>      
-    <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        var currentPage = window.location.pathname;
-
-        var buttonCadastro = document.getElementById("alugados");
-        var buttonLink = buttonCadastro.closest("a").getAttribute("href");
-
-        if (currentPage.endsWith(buttonLink)) {
-            buttonCadastro.classList.add("pressionado");
-        }
-    });
-</script>
         <div class="container containerDevolucao">
             <div class="titulo">
                 <a>RELATÓRIO DE ALUGUEL</a>
@@ -84,5 +72,17 @@
             </div>
         </div>
     </div>
+     <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var currentPage = window.location.pathname;
+
+        var buttonCadastro = document.getElementById("alugados");
+        var buttonLink = buttonCadastro.closest("a").getAttribute("href");
+
+        if (currentPage.endsWith(buttonLink)) {
+            buttonCadastro.classList.add("pressionado");
+        }
+    });
+</script>
 </body>
 </html>

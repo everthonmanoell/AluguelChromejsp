@@ -42,18 +42,6 @@
                 </div>
             </div>  
         
-    <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        var currentPage = window.location.pathname;
-
-        var buttonCadastro = document.getElementById("alunos");
-        var buttonLink = buttonCadastro.closest("a").getAttribute("href");
-
-        if (currentPage.endsWith(buttonLink)) {
-            buttonCadastro.classList.add("pressionado");
-        }
-    });
-</script>
    
         <div class="container containerDevolucao">
             <div class="titulo">
@@ -86,7 +74,7 @@
                         
                       </tr>
                     </thead>
-                    <tbody>
+                    
                         <%
                            if(controle.listarDadosAluno() != null){
                                 out.println(controle.listarDadosAluno());
@@ -97,14 +85,23 @@
 
                         %>
 
-                    </tbody>
+                    
                   </table>
-
                 </div>
             </div>
         </div>
-    </div>
-    
-</body>
+    </div>    
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var currentPage = window.location.pathname;
 
+        var buttonCadastro = document.getElementById("alunos");
+        var buttonLink = buttonCadastro.closest("a").getAttribute("href");
+
+        if (currentPage.endsWith(buttonLink)) {
+            buttonCadastro.classList.add("pressionado");
+        }
+    });
+</script>
+</body>
 </html>
