@@ -88,7 +88,8 @@ public class ControleUsuario {
 
     public void alterarUsuario(String id, String nomecompleto, String matricula, String senha) {
         for (Usuario c : this.usuarios) {
-            if (String.valueOf(c.getId()).equals(id)) {
+            if (id != null && id.equals(String.valueOf(c.getId()))) {
+
 
                 c.setNomecompleto(nomecompleto);
                 c.setMatricula(matricula);
@@ -118,7 +119,8 @@ public class ControleUsuario {
 
     public void excluirUsuario(String id) {
         for (Usuario c : this.usuarios) {
-            if (c.getId().equals(id)) {
+            if (c.getId() != null && c.getId().equals(id)) {
+
                 this.usuarios.remove(c);
 
                 break;
