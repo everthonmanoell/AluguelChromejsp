@@ -104,13 +104,13 @@
                         <input type="time" value="<%if(id!=null){out.print(usr.getHoraInicio());}%> <%if(id!=null){out.print("readonly");}%> class="form-control" id="hora" placeholder="" name="horainicio" required>
                     </div>
 
-                    <div class="mb-3 mt-3">
+                    <div class="mb-3 mt-3" <% if (id == null || id.isEmpty()) { out.print("id=''"); } else { out.print("style='visibility: hidden;'"); } %> >
                         <label for="datatermino" class="form-label"><a>Data término:</a></label>
                         <input type="date" value="<%if(id!=null){out.print(usr.getDataTermino());}%>  class="form-control" id="datatermino" placeholder="" name="datatermino" >
                     </div>
 
 
-                    <div class="mb-3 mt-3">
+                    <div class="mb-3 mt-3" <% if (id == null || id.isEmpty()) { out.print("id=''"); } else { out.print("style='visibility: hidden;'"); } %> >
                         <label for="termino" class="form-label"><a>Hora término:</a></label>
                         <input type="time" value="<%if(id!=null){out.print(usr.getHoraTermino());}%> class="form-control" id="termino" placeholder="" name="horatermino" >
                     </div>
@@ -118,8 +118,20 @@
 
 
                     <div class="row justify-content-md-center">
-                        <button type="submit" class="BotaoSubmit">Alugar</button>
+                        <button type="submit" class="BotaoSubmit" 
+                            <% if(id != null){out.print("onclick=\"exibirMensagem('O devolução foi efetuada com sucesso!');\"");}
+                                else{out.print("onclick=\"exibirMensagem('O Aluguel foi adicionado com sucesso!');\"");}%>>
+                            <%if(id!=null){out.print("Devolver");}else{out.print("Alugar");}%>
+                        </button>
                         <button type="reset" class="BotaoSubmit">Cancelar</button>
+                        
+                        
+                        
+                        <script>
+                            function exibirMensagem(mensagem) {
+                            alert(mensagem);
+                            }
+                        </script>
                     </div>
             </form>
         </div>
