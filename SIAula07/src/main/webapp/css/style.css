@@ -185,6 +185,11 @@ tr {
     padding:25px;
     border: 1px solid #ddd;    
 }
+#th{
+    border-left: 1px solid #b6d4fe;
+    border-right: 1px solid #b6d4fe;
+    
+}
 
 .containerRelatorio {
     width: auto;
