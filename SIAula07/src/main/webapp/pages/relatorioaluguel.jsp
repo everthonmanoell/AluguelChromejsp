@@ -29,7 +29,6 @@
        </div>
     </div>
     <br>
-    </div>
     <div class="container">
         <div class="containerRelatorio">
             <div class="row justify-content-center">
@@ -39,20 +38,7 @@
                 <a href="relatoriochromebook.jsp"><button class="botoesDoRelatorio" id="chromebook">CHROMEBOOK</button></a>
                 <a href="relatorioaluguel.jsp"><button class="botoesDoRelatorio" id="alugados">ALUGADOS</button></a>
                 </div>
-            </div> 
-            </div>          
-    <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        var currentPage = window.location.pathname;
-
-        var buttonCadastro = document.getElementById("alugados");
-        var buttonLink = buttonCadastro.closest("a").getAttribute("href");
-
-        if (currentPage.endsWith(buttonLink)) {
-            buttonCadastro.classList.add("pressionado");
-        }
-    });
-</script>
+            </div>      
         <div class="container containerDevolucao">
             <div class="titulo">
                 <a>RELATÓRIO DE ALUGUEL</a>
@@ -86,5 +72,17 @@
             </div>
         </div>
     </div>
+     <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var currentPage = window.location.pathname;
+
+        var buttonCadastro = document.getElementById("alugados");
+        var buttonLink = buttonCadastro.closest("a").getAttribute("href");
+
+        if (currentPage.endsWith(buttonLink)) {
+            buttonCadastro.classList.add("pressionado");
+        }
+    });
+</script>
 </body>
 </html>

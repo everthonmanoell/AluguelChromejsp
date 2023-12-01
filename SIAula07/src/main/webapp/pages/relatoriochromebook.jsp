@@ -31,8 +31,6 @@
        </div>
     </div>
     <br>
-    </div>
-    </div>
     <div class="container">
         <div class="containerRelatorio">
             <div class="row justify-content-center">
@@ -55,6 +53,7 @@
         }
     });
 </script>
+
         <div class="container containerDevolucao">
             <div class="titulo">
                 <a>RELATÓRIO DE CHROMEBOOK </a>
@@ -92,15 +91,11 @@
                     }
                     %>
                         
-                     </tbody>
-                     
+                     </tbody>                     
                   </table>
-
                 </div>
             </div>
         </div>
-    </div>
-    
+    </div>    
 </body>
-
 </html>

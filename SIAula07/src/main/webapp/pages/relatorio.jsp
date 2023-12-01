@@ -16,7 +16,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Kanit:wght@100;400;700&display=swap" rel="stylesheet">
-    <title>MENU DE RELATÓRIOS</title>
+    <title>Menu de relatórios</title>
 </head>
     <div class="bordaDoTopo">
         <div class="container-fluid">     
@@ -29,19 +29,6 @@
             <a href="perfil.jsp"><button class="user"><img src="../images/user.png" class="user" style="height: 30px;"></button></a>
        </div>
     </div>
-
-    <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        var currentPage = window.location.pathname;
-
-        var buttonCadastro = document.getElementById("relatorio");
-        var buttonLink = buttonCadastro.closest("a").getAttribute("href");
-
-        if (currentPage.endsWith(buttonLink)) {
-            buttonCadastro.classList.add("pressionado");
-        }
-    });
-</script>
 <br>
     <div class="container">
         <div class="containerRelatorio">
@@ -61,5 +48,18 @@
             <p>Nesse sistema você pode obter todos os cadastro de alunos, coordenadores e o próprio Chromebook, além de poder observar o status e quem possui o Chromebook. Basta entrar nas abas específicas e escolher o que fazer.</p>
         </div>
     </div>
+        
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var currentPage = window.location.pathname;
+
+        var buttonCadastro = document.getElementById("relatorio");
+        var buttonLink = buttonCadastro.closest("a").getAttribute("href");
+
+        if (currentPage.endsWith(buttonLink)) {
+            buttonCadastro.classList.add("pressionado");
+        }
+    });
+</script>
 </body>
 </html>

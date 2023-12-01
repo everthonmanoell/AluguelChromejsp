@@ -31,7 +31,6 @@
        </div>
     </div>
     <br>
-    </div>
     <div class="container">
         <div class="containerRelatorio">
             <div class="row justify-content-center">
@@ -41,21 +40,8 @@
                 <a href="relatoriochromebook.jsp"><button class="botoesDoRelatorio" id="chromebook">CHROMEBOOK</button></a>
                 <a href="relatorioaluguel.jsp"><button class="botoesDoRelatorio" id="alugados">ALUGADOS</button></a>
                 </div>
-            </div> 
             </div>  
         
-    <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        var currentPage = window.location.pathname;
-
-        var buttonCadastro = document.getElementById("alunos");
-        var buttonLink = buttonCadastro.closest("a").getAttribute("href");
-
-        if (currentPage.endsWith(buttonLink)) {
-            buttonCadastro.classList.add("pressionado");
-        }
-    });
-</script>
    
         <div class="container containerDevolucao">
             <div class="titulo">
@@ -88,7 +74,7 @@
                         
                       </tr>
                     </thead>
-                    <tbody>
+                    
                         <%
                            if(controle.listarDadosAluno() != null){
                                 out.println(controle.listarDadosAluno());
@@ -99,14 +85,23 @@
 
                         %>
 
-                    </tbody>
+                    
                   </table>
-
                 </div>
             </div>
         </div>
-    </div>
-    
-</body>
+    </div>    
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var currentPage = window.location.pathname;
 
+        var buttonCadastro = document.getElementById("alunos");
+        var buttonLink = buttonCadastro.closest("a").getAttribute("href");
+
+        if (currentPage.endsWith(buttonLink)) {
+            buttonCadastro.classList.add("pressionado");
+        }
+    });
+</script>
+</body>
 </html>
