@@ -57,7 +57,7 @@
                         } else {
                             out.println("Aluguel de Chromebook");
                             // Ajuste na chamada do construtor:
-                            usr = new Aluguel("", "", "", "", "", ""); // Substitua pelos valores apropriados
+                            usr = new Aluguel("", "", "", "", "", "", "", "", ""); // Substitua pelos valores apropriados
                         }
                     %>
 
@@ -70,22 +70,22 @@
 
                     <div class="mb-3 mt-3">
                         <label for="id" class="form-label"><a>ID:</a></label>
-                        <input type="text" class="form-control" id="id" placeholder="" name="id" required>
+                        <input type="text" value="<%if(id!=null){out.print(usr.getId());}%> <%if(id!=null){out.print("readonly");}%> class="form-control" id="id" placeholder="" name="id" required>
                     </div> 
 
                     <div class="mb-3 mt-3">
                         <label for="matricula" class="form-label"><a>Matrícula do Coordenador:</a></label>
-                        <input type="text" class="form-control" id="matricula" placeholder="" name="matriculaCoordenador" required>
+                        <input type="text" value="<%if(id!=null){out.print(usr.getMatriculaUsuario());}%> <%if(id!=null){out.print("readonly");}%> class="form-control" id="matricula" placeholder="" name="matriculaCoordenador" required>
                     </div>
                     
                     <div class="mb-3 mt-3">
                         <label for="matricula" class="form-label"><a>Matrícula do Aluno:</a></label>
-                        <input type="text" class="form-control" id="matricula" placeholder="" name="matriculaAluno" required>
+                        <input type="text" value="<%if(id!=null){out.print(usr.getMatricula());}%> <%if(id!=null){out.print("readonly");}%> class="form-control" id="matricula" placeholder="" name="matriculaAluno" required>
                     </div>
                     
                     <div class="mb-3 mt-3">
                         <label for="tombamento" class="form-label"><a>Tombamento:</a></label>
-                        <input type="text" class="form-control" id="tombamento" placeholder="" name="tombamento" required>
+                        <input type="text" value="<%if(id!=null){out.print(usr.getTombamento());}%> <%if(id!=null){out.print("readonly");}%> class="form-control" id="tombamento" placeholder="" name="tombamento" required>
                     </div>
                     <div class="mb-3 mt-3">
                         <label for="sit-chro" class="form-label"><a>Situação Chromebook:</a></label>
@@ -97,22 +97,22 @@
                     </div>
                     <div class="mb-3 mt-3">
                         <label for="datalugu" class="form-label"><a>Data de Aluguel:</a></label>
-                        <input type="date" class="form-control" id="datalugu" placeholder="" name="dataaluguel" required>
+                        <input type="date" value="<%if(id!=null){out.print(usr.getDataAluguel());}%> <%if(id!=null){out.print("readonly");}%> class="form-control" id="datalugu" placeholder="" name="dataaluguel" required>
                     </div>
                     <div class="mb-3 mt-3">
                         <label for="hora" class="form-label"><a>Hora início:</a></label>
-                        <input type="time" class="form-control" id="hora" placeholder="" name="horainicio" required>
+                        <input type="time" value="<%if(id!=null){out.print(usr.getHoraInicio());}%> <%if(id!=null){out.print("readonly");}%> class="form-control" id="hora" placeholder="" name="horainicio" required>
                     </div>
 
                     <div class="mb-3 mt-3">
                         <label for="datatermino" class="form-label"><a>Data término:</a></label>
-                        <input type="date" class="form-control" id="datatermino" placeholder="" name="datatermino" >
+                        <input type="date" value="<%if(id!=null){out.print(usr.getDataTermino());}%>  class="form-control" id="datatermino" placeholder="" name="datatermino" >
                     </div>
 
 
                     <div class="mb-3 mt-3">
                         <label for="termino" class="form-label"><a>Hora término:</a></label>
-                        <input type="time" class="form-control" id="termino" placeholder="" name="horatermino" >
+                        <input type="time" value="<%if(id!=null){out.print(usr.getHoraTermino());}%> class="form-control" id="termino" placeholder="" name="horatermino" >
                     </div>
 
 
