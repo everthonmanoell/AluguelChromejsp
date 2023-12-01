@@ -57,7 +57,7 @@
                 <th scope="col"><input type="search" class="form-control rounded" placeholder="" aria-label="Search" aria-describedby="search-addon" style="width:500px; margin-left:200px " id="send"/></th>
                 <th scope="col"><button type="button" class="btn btn-outline-primary btn-sm" id="send">pesquisar</button></th>
                 <th scope="col">TOTAL EM USO</th>
-                <th scope="col" id="totalemuso" name="totalemuso" style="width:100px" readonly></th>
+                <th scope="col" id="totalemuso" name="totalemuso" style="width:100px" readonly> <% out.print(controle.contarAlugueis());%></th>
             </table>
             <table class="table table-sm">
                 <thead>

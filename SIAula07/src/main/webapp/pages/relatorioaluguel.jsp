@@ -17,6 +17,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Kanit:wght@100;400;700&display=swap" rel="stylesheet">
     <title>Relatório de Aluguel</title>
 </head>
+<% ControleAluguel controle = ControleAluguel.getInstance();  %>
+
     <div class="bordaDoTopo">
         <div class="container-fluid">     
             <a href="home.jsp"><button class="botoesDoTopo">ÍNICIO</button></a>
@@ -49,7 +51,7 @@
                         <th scope="col"><input type="search" class="form-control rounded" placeholder="Pesquisar" aria-label="Search" aria-describedby="search-addon" style="width:500px; margin-left:200px "/></th>
                         <th scope="col"><button type="button" class="btn btn-outline-primary btn-sm">pesquisar</button></th>
                         <th scope="col">TOTAL EM USO</th>
-                        <th scope="col" id="totalemuso" style="width:50px"></th>
+                        <th scope="col" id="totalemuso" style="width:50px"> <%out.print(controle.contarAlugados());%> </th>
             </table>
                 <table class="table table-sm">
                     <thead>

@@ -86,11 +86,31 @@ public class ControleAluguel {
                         + "<td>" + u.getSituacaoChromebook() + "</td>"
                         + "<td>" + u.getDataAluguel() + "</td>"
                         + "<td>" + u.getHoraInicio() + "</td>"
-                        + "<td><a href=\"alugel.jsp?id=" + u.getId() + "\" class=\"btn btn-outline-primary btn-sm\">Devolver</a>"
+                        + "<td><a href=\"aluguel.jsp?id=" + u.getId() + "\" class=\"btn btn-outline-primary btn-sm\">Devolver</a>"
                         + "</tr>";
             }
         }
         return texto;
+    }
+    
+    
+        
+        
+    public int contarAlugueis() {
+            int contador = 0;
+            for (Aluguel u : this.alugueis) {
+                if (u.getDataTermino() == null || u.getDataTermino().isEmpty()) {
+                    contador++;
+                }
+            }
+        return contador;
+    }
+    
+    
+        public String contarAlugados() {
+
+        return this.alugueis.size() + "";
+
     }
 
 //----------------------------------------------------------------------
