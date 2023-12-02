@@ -1,22 +1,26 @@
 <%-- 
-    Document   : HOMECADASTRO
+    Document   : devolucao
     Created on : 1 de nov. de 2023, 23:29:08
-    Author     : felipe
+    Author     : Ev
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="usuario.*"%>
+<%@page import="usuario.ControleAluguel"%>
 <!DOCTYPE html>
 <html lang="pt-br">
+    <%ControleAluguel controle = ControleAluguel.getInstance();%>
+   
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="../icons/css/boxicons.min.css" />
     <link rel="stylesheet" type="text/css" href="../css/style.css" />
+    <link rel="stylesheet" href="js/send.js">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Kanit:wght@100;400;700&display=swap" rel="stylesheet">
-    <title>QUAL O TIPO DE CADASTRO</title>
+    <title>DEVOLUÇÃO</title>
 </head>
     <div class="bordaDoTopo">
         <div class="container-fluid">     
@@ -32,7 +36,7 @@
     document.addEventListener("DOMContentLoaded", function() {
         var currentPage = window.location.pathname;
 
-        var buttonCadastro = document.getElementById("cadastro");
+        var buttonCadastro = document.getElementById("devolucao");
         var buttonLink = buttonCadastro.closest("a").getAttribute("href");
 
         if (currentPage.endsWith(buttonLink)) {
@@ -40,19 +44,44 @@
         }
     });
 </script>
-    <br><br><br><br>
-        <div class="container containerMeio">
+    <br>
+        <div class="container containerDevolucao">
             <div class="titulo">
-                <a>QUAL O TIPO DE CADASTRO?</a>
+                <a>DEVOLUÇÃO</a>
             </div>
-            <div class="row justify-content-center">
-                <div class="fonteMeio">
-                    <a href="cadastrocoordenador.jsp"><button class="botoesDoMeio">COORDENADOR</button></a><br>
-                    <a href="cadastrochromebook.jsp"><button class="botoesDoMeio">CHROMEBOOK</button></a><br>
-                    <a href="cadastroaluno.jsp"><button class="botoesDoMeio">ALUNO</button></a><br>
-                </div>
-            </div>
+            <br>
+            <table class="table">
+                        <th scope="col"><input type="search" class="form-control w-255" placeholder="Pesquisar" id="pesquisar">
+                        <th scope="col"><button onclick="searchData()" class="btn btn-primary"><i class='bx bx-search'></i></i></th></th></button>                        
+                        <th scope="col" id="totalemuso" style=" float:inline-end;">TOTAL CADASTRADOS: <% out.print(controle.contarAlugueis());%></th>
+            </table>
+            </main>
+                <table class="table table-striped table-sm table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col" class="tabela">ID</th>
+                        <th scope="col" class="tabela">M. Coordenador</th>
+                        <th scope="col" class="tabela">M. Aluno</th>
+                        <th scope="col" class="tabela">Tombamento</th>
+                        <th scope="col" class="tabela">Situação Chromebook</th>
+                        <th scope="col" class="tabela">Data aluguel</th>
+                        <th scope="col" class="tabela">Hora aluguel</th>
+                        <th scope="col" class="tabela"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <%out.println(controle.listarDadosAlugueis());%>
+                        
+
+                    </tr>
+
+                </tbody>
+            </table>
+
         </div>
     </div>
+</div>
+</div>
 </body>
 </html>

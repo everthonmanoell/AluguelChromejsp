@@ -4,6 +4,7 @@
     Author     : felipe
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="usuario.*"%>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -33,8 +34,11 @@
                 <a>CADASTRO DE COORDENADOR</a>
             </div>
 
-            <form action="validarcadastro.jsp" method="post">
+            <form action="validar/validarcadastro.jsp" method="post">
                 <div class="fonteCoordenador">
+                    
+                    <label for="ID" class="form-label"><a>ID:</a></label>
+                    <input type="text" value="" class="form-control" id="ID" placeholder="" name="iniid" required>
                     <label for="nomecompleto" class="form-label"><a>NOME COMPLETO:</a></label>
                     <input type="text" class="form-control" id="nomecompleto" placeholder="Nome completo" name="nomecompleto" required>
                     <label for="matricula" class="form-label"><a>Matricula:</a></label>
@@ -43,7 +47,7 @@
                     <input type="password" name="senha" class="form-control" placeholder="Senha" id="password"  required style="margin-bottom: 10px" >
                     <input type="password" name="senha2" class="form-control" placeholder="Confirme Senha" id="confirm_password" required style="margin-bottom: 10px">
                     <div class="row justify-content-md-center">
-                        <button type="submit" class="BotaoSubmit">Cadastrar</button>
+                        <button type="submit" class="BotaoSubmit" onclick="alert('O Coordenador foi adicionado com sucesso!');">Cadastrar</button>
                         <button class="BotaoSubmit cancelar" onclick="window.location.href='../index.jsp'">Voltar</button>
                         
                     </div>

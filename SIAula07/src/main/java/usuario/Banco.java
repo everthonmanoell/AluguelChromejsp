@@ -36,10 +36,10 @@ public class Banco {
             Class.forName("com.mysql.jdbc.Driver");
             return DriverManager.getConnection(
                     "jdbc:mysql://localhost/aluguelchromebook", "root", "");
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Banco.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
         return null;
     }
