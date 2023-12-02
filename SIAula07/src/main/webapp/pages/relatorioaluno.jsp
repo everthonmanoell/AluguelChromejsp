@@ -27,7 +27,6 @@
             <a href="devolucao.jsp"><button class="botoesDoTopo" id="devolucao">DEVOLUÇÃO</button></a>
             <a href="relatorio.jsp"><button class="botoesDoTopo pressionado" id="relatorio">RELATÓRIO</button></a>            
             <a href="sair.jsp"><button class="power"><img src="../images/power.png" class="power" style="height: 30px;"></button></a>
-            <a href="perfil.jsp"><button class="user"><img src="../images/user.png" class="user" style="height: 30px;"></button></a>
        </div>
     </div>
     <br>
@@ -54,24 +53,24 @@
         <%
             ControleUsuario controle = ControleUsuario.getInstance();
         %>
+            
+            <main>
             <table class="table">
-                    <thead>
-                        <th scope="col"><input type="search" class="form-control rounded" placeholder="Pesquisar" aria-label="Search" aria-describedby="search-addon" style="width:500px; margin-left:200px" id="send"/></th>
-                        <th scope="col"><button type="button" class="btn btn-primary btn-sm" id="send">pesquisar</button></th> 
-                        <th scope="col">TOTAL CADASTRADOS</th>
-                        <th scope="col" id="totalemuso" style="width:50px"><%out.print(controle.contarAluno());%></th>
+                        <th scope="col"><input type="search" class="form-control w-255" placeholder="Pesquisar" id="pesquisar">
+                        <th scope="col"><button onclick="searchData()" class="btn btn-primary"><i class='bx bx-search'></i></i></th></th></button>
+                        
+                        <th scope="col" id="totalemuso" style=" float:inline-end;">TOTAL CADASTRADOS: <%out.print(controle.contarAluno());%></th>
             </table>
-                <table class="table table-sm">
+            </main>
+                <table class="table table-striped table-sm table-hover">
                     <thead>
                       <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Nome Completo</th>
-                        <th scope="col">Matrícula</th>
-                        <th scope="col">Turno</th>
-                        <th scope="col">Período</th>
-                        <th scope="col">Turma</th>
-                        
-                        
+                        <th scope="col" class="tabela">ID</th>
+                        <th scope="col" class="tabela">Nome Completo</th>
+                        <th scope="col" class="tabela">Matrícula</th>
+                        <th scope="col" class="tabela">Turno</th>
+                        <th scope="col" class="tabela">Período</th>
+                        <th scope="col" class="tabela">Turma</th>
                       </tr>
                     </thead>
                     

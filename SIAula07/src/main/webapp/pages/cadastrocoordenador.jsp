@@ -19,14 +19,13 @@
     <title>CADASTRO DE COORDENADOR</title>
 </head>
     <div class="bordaDoTopo">
-        <div class="container-fluid">     
-            <a href="home.jsp"><button class="botoesDoTopo">ÍNICIO</button></a>
+        <div class="container-fluid">  
+            <a href="home.jsp"><button class="botoesDoTopo">ÍNICIO</button></a>           
             <a href="homecadastro.jsp"><button class="botoesDoTopo pressionado" id="cadastro">CADASTRO</button></a>
             <a href="aluguel.jsp"><button class="botoesDoTopo" id="aluguel">ALUGUEL</button></a>
             <a href="devolucao.jsp"><button class="botoesDoTopo" id="devolucao">DEVOLUÇÃO</button></a>
             <a href="relatorio.jsp"><button class="botoesDoTopo" id="relatorio">RELATÓRIO</button></a>
             <a href="sair.jsp"><button class="power"><img src="../images/power.png" class="power" style="height: 30px;"></button></a>
-            <a href="perfil.jsp"><button class="user"><img src="../images/user.png" class="user" style="height: 30px;"></button></a>
        </div>
     </div>
     <br>
@@ -61,7 +60,7 @@
                     
                     <% if (id != null) { %>
                         <label for="ID" class="form-label"><a>ID:</a></label>
-                        <input type="text" value="<% out.print(usr.getId()); %>"  class="form-control" id="ID" placeholder="" name="id" readonly required>
+                        <input type="text" value="<% out.print(usr.getId()); %>"  class="form-control input" id="ID" placeholder="" name="id" style="background-color: gray;" readonly>
                     <% } else { %>
                         <label for="ID" class="form-label"><a>ID:</a></label>
                         <input type="text" value="" class="form-control" id="ID" placeholder="" name="id" required>
@@ -71,8 +70,7 @@
                     <input type="text" value="<%if(id!=null){out.print(usr.getNomecompleto());}%>" class="form-control" id="nomecompleto" placeholder="Nome completo" name="nomecompleto" required>
                     
                     <label for="matricula" class="form-label"><a>Matricula:</a></label>
-                    <input type="text" value="<%if(id!=null){out.print(usr.getMatricula());}%>" name="matricula" class="form-control cpf1" id="CPF" aria-describedby="CPF" placeholder="Matricula"  required>
-                    
+                    <input type="text" value="<%if(id!=null){out.print(usr.getMatricula());}%>" name="matricula" class="form-control" id="CPF" aria-describedby="CPF" placeholder="Matricula">
                     <label for="password" class="form-label"><a>ESCOLHA UMA SENHA:</a></label>
                     
                     <input type="password" value="<%if(id!=null){out.print(usr.getSenha());}%>" name="senha" class="form-control" placeholder="Senha" id="password"  required style="margin-bottom: 10px" >

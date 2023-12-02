@@ -26,7 +26,6 @@
             <a href="devolucao.jsp"><button class="botoesDoTopo" id="devolucao">DEVOLUÇÃO</button></a>
             <a href="relatorio.jsp"><button class="botoesDoTopo" id="relatorio">RELATÓRIO</button></a>
             <a href="sair.jsp"><button class="power"><img src="../images/power.png" class="power" style="height: 30px;"></button></a>
-            <a href="perfil.jsp"><button class="user"><img src="../images/user.png" class="user" style="height: 30px;"></button></a>
        </div>
     </div>
     <br> 
@@ -59,7 +58,7 @@
             <div class="fonteCoordenador">
                 <% if (id != null) { %>
                     <label for="ID" class="form-label"><a>ID:</a></label>
-                    <input type="text" value="<% out.print(usr.getId()); %>" class="form-control" id="ID" placeholder="" name="id" readonly required>
+                    <input type="text" value="<% out.print(usr.getId()); %>" class="form-control input" id="ID" placeholder="" name="id" readonly>
                 <% } else { %>
                     <label for="ID" class="form-label"><a>ID:</a></label>
                     <input type="text" value="" class="form-control" id="ID" placeholder="" name="id" required>
@@ -68,12 +67,12 @@
                 
                 
                 <label for="TOMBAMENTO" class="form-label"><a>TOMBAMENTO:</a></label>
-                <input type="text" value="<%if(id!=null){out.print(usr.getTombamento());}%>" class="form-control" id="TOMBAMENTO" placeholder="" name="tombamento" required>
+                <input type="text" value="<%if(id!=null){out.print(usr.getTombamento());}%>" class="form-control" id="TOMBAMENTO" placeholder="" name="tombamento">
                 <label for="SITUACAO"  class="form-label"><a>SITUAÇÃO:</a></label>
                 <select class="form-select"  id="SITUACAO" name="situacao" required>
                     <option></option>
-                    <option value="Inoperante" <%if((id!=null) && (usr.getSituacao().equals("Inoperante"))){out.print("selected");}%>>INOPERANTE</option>
-                    <option value="Operante" <%if((id!=null) && (usr.getSituacao().equals("Operante"))){out.print("selected");}%>>OPERANTE</option>
+                      <option value="Operante" <%if((id!=null) && (usr.getSituacao().equals("Operante"))){out.print("selected");}%>>OPERANTE</option>
+                      <option value="Inoperante" <%if((id!=null) && (usr.getSituacao().equals("Inoperante"))){out.print("selected");}%>>INOPERANTE</option>
                 </select>
                 <label for="DESCRICAO" class="form-label"><a>DESCRIÇÃO:</a></label>
                 <textarea class="form-control" rows="2" maxlength="100" style="resize: none" id="DESCRICAO"

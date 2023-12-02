@@ -174,22 +174,36 @@ table {
     background:#fafafa ;
     margin: 0 auto;
     width: 80%;
+    
 }
 
 thead{
     border: 1px solid #ddd;
 }
 
-tr {
+.input{
+      color: #777; /* Cor do texto cinza */
+      background-color: #eee; /* Cor de fundo cinza claro */
+      border: 1px solid #ddd; /* Borda cinza claro */
+      padding: 8px; /* Espaçamento interno */
+    }
+
+
+.tabela{
+    font-weight: normal;
+    font-size: 18px;
+    letter-spacing: 1px;
+}
+td{
+    font-size: 15px;
+}
+
+.tabela,td {
     text-align: left;
-    padding:25px;
-    border: 1px solid #ddd;    
+    padding:2px;
+    border: 1px solid #ddd;
 }
-#th{
-    border-left: 1px solid #b6d4fe;
-    border-right: 1px solid #b6d4fe;
-    
-}
+
 
 .containerRelatorio {
     width: auto;
@@ -231,3 +245,10 @@ tr {
     font-size: 22px;
     text-align: center;
 }
+  input[disabled][readonly].form-control {
+        border: 1px solid #6c757d;  
+    }
+    
+  .form-control {
+        border: 1px solid #ddd;  
+    }

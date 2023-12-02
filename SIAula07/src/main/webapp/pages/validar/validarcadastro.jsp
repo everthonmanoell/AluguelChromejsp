@@ -19,7 +19,7 @@
         <%
            // Parâmetros para comparação de onde vem o cadastro 
            String cad = request.getParameter("cad");
-          
+           String iniid = request.getParameter("iniid");
            
            // Parâmetros do cadastro coordenador
            String id = request.getParameter("id");
@@ -30,21 +30,22 @@
            // Instanciamento de objeto de ControleUsuario        
            ControleUsuario controle = ControleUsuario.getInstance();
            
-           if (cad != null) {
+           
+           if (iniid != null){
+                Usuario usr = new Usuario(iniid, nomecompleto, matricula, senha);
+                controle.adicionarUsuario(usr);
+                response.sendRedirect("../../index.jsp");
+            }else if (cad != null) {
                Usuario usr = new Usuario(id, nomecompleto, matricula, senha);
                controle.adicionarUsuario(usr);
                response.sendRedirect("../cadastrocoordenador.jsp");
            } else if (id != null) {
                controle.alterarUsuario(id, nomecompleto, matricula, senha);
                response.sendRedirect("../relatoriocoordenador.jsp");
-           } else if (cad == null){
-                Usuario usr = new Usuario(id, nomecompleto, matricula, senha);
-                controle.adicionarUsuario(usr);
-                response.sendRedirect("../../index.jsp");
            } else {
                 response.sendRedirect("../../error.jsp");
            }
-        %> 
+        %>
         
     </body>
 </html>

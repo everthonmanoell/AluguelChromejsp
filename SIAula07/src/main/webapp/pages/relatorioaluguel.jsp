@@ -27,7 +27,6 @@
             <a href="devolucao.jsp"><button class="botoesDoTopo" id="devolucao">DEVOLUÇÃO</button></a>
             <a href="relatorio.jsp"><button class="botoesDoTopo pressionado" id="relatorio">RELATÓRIO</button></a>
             <a href="sair.jsp"><button class="power"><img src="../images/power.png" class="power" style="height: 30px;"></button></a>
-            <a href="perfil.jsp"><button class="user"><img src="../images/user.png" class="user" style="height: 30px;"></button></a>
        </div>
     </div>
     <br>
@@ -45,26 +44,27 @@
             <div class="titulo">
                 <a>RELATÓRIO DE ALUGUEL</a>
             </div>
-             </div>
+             </div>   
+            <main>
             <table class="table">
-                    <thead>
-                        <th scope="col"><input type="search" class="form-control rounded" placeholder="Pesquisar" aria-label="Search" aria-describedby="search-addon" style="width:500px; margin-left:200px "/></th>
-                        <th scope="col"><button type="button" class="btn btn-outline-primary btn-sm">pesquisar</button></th>
-                        <th scope="col">TOTAL ALUGADOS</th>
-                        <th scope="col" id="totalemuso" style="width:50px"> <%out.print(controle.contarAlugados());%> </th>
+                        <th scope="col"><input type="search" class="form-control w-255" placeholder="Pesquisar" id="pesquisar">
+                        <th scope="col"><button onclick="searchData()" class="btn btn-primary"><i class='bx bx-search'></i></i></th></th></button>
+                        
+                        <th scope="col" id="totalemuso" style=" float:inline-end;">TOTAL CADASTRADOS: <%out.print(controle.contarAlugados());%></th>
             </table>
-                <table class="table table-sm">
+            </main>
+                <table class="table table-striped table-sm table-hover">
                     <thead>
                       <tr>
-                        <th scope="col">Id</th>
-                        <th scope="col">Matrícula</th>
-                        <th scope="col">Tombamento</th>     
-                        <th scope="col">Situação Chromebook</th> 
-                        <th scope="col">Data de Aluguel</th> 
-                        <th scope="col">Situação Chromebook</th> 
-                        <th scope="col">Hora início</th> 
-                        <th scope="col">Hora término</th> 
-                        <th scope="col">Data de Aluguel</th> 
+                        <th scope="col"  class="tabela">Id</th>
+                        <th scope="col"  class="tabela">Matrícula</th>
+                        <th scope="col"  class="tabela">Tombamento</th>     
+                        <th scope="col"  class="tabela">Situação Chromebook</th> 
+                        <th scope="col"  class="tabela">Data de Aluguel</th> 
+                        <th scope="col"  class="tabela">Situação Chromebook</th> 
+                        <th scope="col"  class="tabela">Hora início</th> 
+                        <th scope="col"  class="tabela">Hora término</th> 
+                        <th scope="col"  class="tabela">Data de Aluguel</th> 
                       </tr>
                     </thead>
                     <tbody>
