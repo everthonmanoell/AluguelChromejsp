@@ -181,6 +181,14 @@ thead{
     border: 1px solid #ddd;
 }
 
+.input{
+      color: #777; /* Cor do texto cinza */
+      background-color: #eee; /* Cor de fundo cinza claro */
+      border: 1px solid #ddd; /* Borda cinza claro */
+      padding: 8px; /* Espaçamento interno */
+    }
+
+
 .tabela{
     font-weight: normal;
     font-size: 18px;

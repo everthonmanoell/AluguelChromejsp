@@ -58,7 +58,7 @@
                         <th scope="col"><input type="search" class="form-control w-255" placeholder="Pesquisar" id="pesquisar">
                         <th scope="col"><button onclick="searchData()" class="btn btn-primary"><i class='bx bx-search'></i></i></th></th></button>
                         
-                        <th scope="col" id="totalemuso" style="auto; float:inline-end;">TOTAL CADASTRADOS: <%out.print(controle.contarUsuario());%></th>
+                        <th scope="col" id="totalemuso" style=" float:inline-end;">TOTAL CADASTRADOS: <%out.print(controle.contarUsuario());%></th>
             </table>
             </main>            
             <table class="table table-striped table-sm table-hover">

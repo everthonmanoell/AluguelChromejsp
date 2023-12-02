@@ -70,7 +70,7 @@
                     
                     <% if (id != null) { %>
                         <label for="ID" class="form-label"><a>ID:</a></label>
-                        <input type="text" value="<% out.print(usr.getId()); %>" class="form-control" id="ID" placeholder="" name="id" disabled readonly>
+                        <input type="text" value="<% out.print(usr.getId()); %>" class="form-control input" id="ID" placeholder="" name="id" readonly>
                     <% } else { %>
                         <label for="ID" class="form-label"><a>ID:</a></label>
                         <input type="text" value="" class="form-control" id="ID" placeholder="" name="id" required>
@@ -81,7 +81,7 @@
                     <input type="text" value="<%if(id!=null){out.print(usr.getNome());}%>" class="form-control" id="nomecompleto" placeholder="" name="nome" required>
                     
                     <label for="matricula" class="form-label">MATRÍCULA:</label>
-                    <input type="text" value="<%if(id!=null){out.print(usr.getMatricula());}%>" maxlength="11" class="form-control" id="cpf" placeholder="Máx. 11 caracteres" name="matricula" required>
+                    <input type="text" value="<%if(id!=null){out.print(usr.getMatricula());}%>" maxlength="11" class="form-control" id="cpf" placeholder="" name="matricula" required>
                     
                     <label for="TURNO" class="form-label">TURNO:</label>
                     <select class="form-select" id="TURNO" name="turno" required>
