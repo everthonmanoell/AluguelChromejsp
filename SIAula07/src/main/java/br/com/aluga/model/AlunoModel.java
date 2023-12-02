@@ -1,18 +1,18 @@
 package br.com.aluga.model;
 
 public class AlunoModel {
-    private String id;
+    private int id;
     private String nome;
     private String matricula;
     private String turno;
     private String periodo;
     private String turma;
     
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
     

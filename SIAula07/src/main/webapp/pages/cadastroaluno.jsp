@@ -42,24 +42,18 @@
                 <p>
                     
                     <%
-                        String id = request.getParameter("id");
-                        String nome = request.getParameter("nome");
-                        String matricula = request.getParameter("matricula");
-                        String turno = request.getParameter("turno");
-                        String periodo = request.getParameter("periodo");
-                        String turma = request.getParameter("turma");
+                        String id = request.getParameter("id");                    
                         
-                        
-                        ControleUsuario controle = ControleUsuario.getInstance();
-                        Aluno usr = null;
+                        AlunoModel alunoModel = AlunoDAO.getAlunoById(Interger.parseInt(id);
+                        AlunoModel alunoModel = null;
 
                         if (id != null) {
                             out.println("Editando Cadastro do Aluno");
-                            usr = controle.getAluno(id);
+                            alunoModel = AlunoDAO.getAlunoById(Interger.parseInt(id));
                         } else {
                             out.println("Cadastro do Aluno");
                             // Ajuste na chamada do construtor:
-                            usr = new Aluno("", "", "", "", "", ""); // Substitua pelos valores apropriados
+                            alunoModel = new AlunoModel("", "", "", "", "", ""); // Substitua pelos valores apropriados
                         }
                     %>
                     

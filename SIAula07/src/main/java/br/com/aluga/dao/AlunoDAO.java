@@ -1,8 +1,7 @@
 
 package br.com.aluga.dao;
 
-import br.com.aluga.model.Conexao;
-import br.com.aluga.model.AlunoModel;
+import br.com.aluga.model.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -27,7 +26,7 @@ public class AlunoDAO {
             rs = ps.executeQuery(sql);
             while(rs.next()){
                 AlunoModel alunoModel = new AlunoModel();
-                alunoModel.setId(rs.getString("id"));
+                alunoModel.setId(rs.getInt("id"));
                 alunoModel.setNome(rs.getString("nome"));
                 alunoModel.setMatricula(rs.getString("matricula"));
                 alunoModel.setTurno(rs.getString("turno"));
@@ -42,29 +41,34 @@ public class AlunoDAO {
         }
         return lista;
     }
-    public static int contarAlunos() throws SQLException {
+    
+    public static AlunoModel getAlunoById(int id){
+        AlunoModel alunoModel = null;
+        
         Connection con = null;
         Conexao conexao = new Conexao();
         PreparedStatement ps;
         ResultSet rs;
-        String sql = "select * from aluno";
-        int i = 0;
-         
+        String sql = "select * from aluno where id=?";
+        
         try {
             con = Conexao.getConnection();
             ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
             rs = ps.executeQuery(sql);
             while(rs.next()){
-               i++;
-            } 
+                alunoModel = new AlunoModel();
+                alunoModel.setId(rs.getInt("id"));
+                alunoModel.setNome(rs.getString("nome"));
+                alunoModel.setMatricula(rs.getString("matricula"));
+                alunoModel.setTurno(rs.getString("turno"));
+                alunoModel.setPeriodo(rs.getString("periodo"));
+                alunoModel.setTurma(rs.getString("turma"));
+                
+            }
+        } catch (SQLException e) {
         }
-        catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-        finally {
-            conexao.desligarConexao(con);
-        }
-        return i;
-
+        return alunoModel;
+        
     }
 }
