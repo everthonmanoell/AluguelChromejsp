@@ -4,7 +4,9 @@
     Author     : felipe
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="usuario.*"%><!DOCTYPE html>
+<%@page import="control.*"%>
+<%@page import="model.*"%>
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">

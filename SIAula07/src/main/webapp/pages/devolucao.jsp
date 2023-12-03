@@ -4,8 +4,8 @@
     Author     : Ev
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="usuario.*"%>
-<%@page import="usuario.ControleAluguel"%>
+<%@page import="control.*"%>
+<%@page import="model.*"%>
 <!DOCTYPE html>
 <html lang="pt-br">
     <%ControleAluguel controle = ControleAluguel.getInstance();%>

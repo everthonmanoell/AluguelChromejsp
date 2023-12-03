@@ -5,7 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="usuario.*"%>
+<%@page import="control.*"%>
+<%@page import="model.*"%>
 
 
 <!DOCTYPE html>
@@ -18,7 +19,7 @@
 
 
 
-        <%@page import="usuario.ControleAluguel"%>
+        
 
         <%
                 ControleAluguel controle = ControleAluguel.getInstance();
