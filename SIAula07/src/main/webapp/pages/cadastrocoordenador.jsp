@@ -4,7 +4,8 @@
     Author     : Everthon Manoel
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="usuario.*"%>
+<%@page import="control.*"%>
+<%@page import="model.*"%>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>

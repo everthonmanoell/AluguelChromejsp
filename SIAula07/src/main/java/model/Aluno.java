@@ -4,8 +4,6 @@
  */
 package model;
 
-import usuario.*;
-
 /**
  *
  * @author evert
