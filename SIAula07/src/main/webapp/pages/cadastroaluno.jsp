@@ -10,7 +10,8 @@
     Author     : felipe
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="usuario.*"%>
+<%@page import="control.*"%>
+<%@page import="model.*"%>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -49,7 +50,7 @@
                         String turma = request.getParameter("turma");
                         
                         
-                        ControleUsuario controle = ControleUsuario.getInstance();
+                        ControleAluno controle = ControleAluno.getInstance();
                         Aluno usr = null;
 
                         if (id != null) {

@@ -16,8 +16,6 @@ public class ControleUsuario {
 
     private LinkedList<Usuario> usuarios;
     
-    private LinkedList<Chromebook> chromebook;
-
     private static ControleUsuario instancia = null;
 
     private ControleUsuario() {

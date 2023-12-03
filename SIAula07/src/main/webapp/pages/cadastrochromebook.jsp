@@ -4,7 +4,8 @@
     Author     : Everthon Manoel
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="usuario.*"%>
+<%@page import="control.*"%>
+<%@page import="model.*"%>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -37,7 +38,7 @@
                     String id = request.getParameter("id");   
                     String tombamento = request.getParameter("tombamento");
                     String situacao = request.getParameter("situacao");
-                    ControleUsuario controle = ControleUsuario.getInstance();
+                    ControleChromebook controle = ControleChromebook.getInstance();
                     Chromebook usr = null;
 
                     if (id != null && !id.isEmpty()) {
