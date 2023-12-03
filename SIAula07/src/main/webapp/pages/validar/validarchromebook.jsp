@@ -5,8 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="usuario.*"%>
-<%@page import="usuario.ControleUsuario"%>
+<%@page import="control.*"%>
+<%@page import="model.*"%>
 
 <!DOCTYPE html>
 <html>
@@ -25,7 +25,7 @@
             String descricao = request.getParameter("descricao");
             String op = request.getParameter("op");
 
-            ControleUsuario controle = ControleUsuario.getInstance();
+            ControleChromebook controle = ControleChromebook.getInstance();
 
             if (op != null) {
                 controle.alterarChromebook(id, tombamento, situacao, descricao);

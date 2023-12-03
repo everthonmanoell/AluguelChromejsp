@@ -3,7 +3,8 @@
     Created on : 18 de nov. de 2023, 00:37:09
     Author     : felipe
 --%>
-<%@page import="usuario.*"%>
+<%@page import="control.*"%>
+<%@page import="model.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -60,7 +61,7 @@
         </div>
             
         <%
-            ControleUsuario controle = ControleUsuario.getInstance();
+            ControleChromebook controle = ControleChromebook.getInstance();
         %>
              <main>
             <table class="table">
