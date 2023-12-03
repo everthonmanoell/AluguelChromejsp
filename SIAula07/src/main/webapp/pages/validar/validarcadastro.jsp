@@ -33,7 +33,7 @@
            ControleBancoUsuario banco = ControleBancoUsuario.getInstance(); 
            
            
-           if (iniid != null){
+           if (iniid != null || cad != null){
                 /*Usuario usr = new Usuario(iniid, nomecompleto, matricula, senha);
                 controle.adicionarUsuario(usr);*/
                 

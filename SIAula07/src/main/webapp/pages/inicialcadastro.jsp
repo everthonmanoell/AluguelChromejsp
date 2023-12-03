@@ -35,11 +35,10 @@
                 <a>CADASTRO DE COORDENADOR</a>
             </div>
 
-            <form action="validar/validarcadastro.jsp" method="post">
+            <form action="validar/validarcadastro.jsp?iniid=true" method="post">
                 <div class="fonteCoordenador">
                     
-                    <label for="ID" class="form-label"><a>ID:</a></label>
-                    <input type="text" value="" class="form-control" id="ID" placeholder="" name="iniid" required>
+
                     <label for="nomecompleto" class="form-label"><a>NOME COMPLETO:</a></label>
                     <input type="text" class="form-control" id="nomecompleto" placeholder="Nome completo" name="nomecompleto" required>
                     <label for="matricula" class="form-label"><a>Matricula:</a></label>

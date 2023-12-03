@@ -52,12 +52,12 @@ public class ControleBancoUsuario {
             ResultSet resultado = stm.executeQuery(consulta);
 
             while (resultado.next()) {
-                usuario = new Usuario();
-                usuario.setId(resultado.getInt("id"));
-                usuario.setNome(resultado.getString("nome"));
-                usuario.setLogin(resultado.getString("login"));
-                usuario.setSenha(resultado.getString("senha"));
-                usuario.setTipo(resultado.getString("tipo"));
+                usuario = new Usuario(
+                    resultado.getString("matricula"),
+                    resultado.getString("nome"),
+                    resultado.getString("senha")
+                );
+                usuario.setId(resultado.getString("id"));
                 
                 // Adiciona cada usuário à lista
                 usuarios.add(usuario);
@@ -67,6 +67,73 @@ public class ControleBancoUsuario {
         }
         return usuarios;
     }*/
+    
+    
+        public String listarDadosUsuarios() {
+        String texto = "";
+
+        try {
+            String consulta = "SELECT * FROM coordenador";
+            Statement stm = conn.createStatement();
+            ResultSet resultado = stm.executeQuery(consulta);
+
+            while (resultado.next()) {
+                Usuario usuario = new Usuario(
+                    resultado.getString("matricula"),
+                    resultado.getString("nome"),
+                    resultado.getString("senha")
+                );
+                usuario.setId(resultado.getString("id"));
+
+                texto = texto
+                    + "<tr>"
+                    + "<td>" + usuario.getId() + "</td>"
+                    + "<td>" + usuario.getNomecompleto() + "</td>"
+                    + "<td>" + usuario.getMatricula() + "</td>"
+                    + "<td>"
+                    + "<a href=\"cadastrocoordenador.jsp?id=" + usuario.getId() + "\" class=\"btn btn-outline-primary btn-sm\">Alterar</a>"
+                    + "<a href=\"validar/excluircoordenador.jsp?id=" + usuario.getId() + "\" class=\"btn btn-outline-danger btn-sm\" onclick=\"return confirm('Tem certeza que deseja excluir?')\">Excluir</a>\n"
+                    + "</td>"
+                    + "</tr>";
+            }
+
+            stm.close();
+        } catch (SQLException ex) {
+            System.out.println("Não conseguiu consultar os dados dos coordenadores.");
+        }
+
+        return texto;
+    }
+        
+    
+
+        public int listarQuantidadeUsuarios() {
+        int qtd = 0;
+
+        try {
+            String consulta = "SELECT * FROM coordenador";
+            Statement stm = conn.createStatement();
+            ResultSet resultado = stm.executeQuery(consulta);
+
+            while (resultado.next()) {
+                Usuario usuario = new Usuario(
+                    resultado.getString("matricula"),
+                    resultado.getString("nome"),
+                    resultado.getString("senha")
+                );
+                usuario.setId(resultado.getString("id"));
+
+                qtd++;
+            }
+
+            stm.close();
+        } catch (SQLException ex) {
+            System.out.println("Não conseguiu consultar os dados dos coordenadores.");
+        }
+
+        return qtd;
+    }
+
     
     
     public boolean consultarUsuario(String matricula, String senha) {
@@ -81,7 +148,7 @@ public class ControleBancoUsuario {
             ResultSet resultado = stmt.executeQuery();
 
             if (resultado.next()) {
-                // Fornecer os argumentos ao criar a instância
+                
                 usuario = new Usuario(
                     resultado.getString("matricula"),
                     resultado.getString("nome"),
@@ -89,7 +156,7 @@ public class ControleBancoUsuario {
                 );
                 usuario.setId(resultado.getString("id"));
 
-                // Verificar se a senha fornecida corresponde à senha do usuário
+                
                 if (senha.equals(usuario.getSenha())) {
                     stmt.close();
                     return true;
