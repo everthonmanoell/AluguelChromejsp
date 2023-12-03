@@ -1,5 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="usuario.*"%>
+<%@page import="control.*"%>
+<%@page import="model.*"%>
 
 <!DOCTYPE html>
 <html>
@@ -17,7 +18,7 @@
         String turma = request.getParameter("turma");
         String op = request.getParameter("op");
 
-        ControleUsuario controle = ControleUsuario.getInstance();
+        ControleAluno controle = ControleAluno.getInstance();
 
         if (op != null) {
             // Adicionar novo aluno
