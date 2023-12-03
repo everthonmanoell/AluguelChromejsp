@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 28/11/2023 às 12:54
+-- Tempo de geração: 03/12/2023 às 19:11
 -- Versão do servidor: 10.4.28-MariaDB
 -- Versão do PHP: 8.0.28
 
@@ -28,27 +28,13 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `aluno` (
-  `matricula_aluno` varchar(255) NOT NULL,
-  `nome` varchar(255) NOT NULL,
-  `curso` varchar(255) NOT NULL,
-  `periodo` int(11) NOT NULL,
-  `turno` varchar(255) NOT NULL,
+  `id` int(11) NOT NULL,
+  `matricula` varchar(50) NOT NULL,
+  `nome` varchar(50) NOT NULL,
+  `curso` varchar(30) NOT NULL,
+  `periodo` char(1) NOT NULL,
+  `turno` varchar(10) NOT NULL,
   `turma` char(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Estrutura para tabela `checa`
---
-
-CREATE TABLE `checa` (
-  `id` int(255) NOT NULL,
-  `data_hora` datetime NOT NULL,
-  `descricao` varchar(255) DEFAULT NULL,
-  `situacao` varchar(255) NOT NULL,
-  `fk_chromebook_tombamento` int(11) NOT NULL,
-  `fk_id_coordenador` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -58,8 +44,10 @@ CREATE TABLE `checa` (
 --
 
 CREATE TABLE `chromebook` (
-  `tombamento` int(11) NOT NULL,
-  `situacao` varchar(255) NOT NULL
+  `id` int(11) NOT NULL,
+  `tombamento` varchar(50) NOT NULL,
+  `situacao` varchar(15) NOT NULL,
+  `descricao` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -69,9 +57,10 @@ CREATE TABLE `chromebook` (
 --
 
 CREATE TABLE `coordenador` (
-  `matricula_coordenador` varchar(255) NOT NULL,
-  `nome` varchar(255) NOT NULL,
-  `senha` varchar(255) NOT NULL
+  `id` int(11) NOT NULL,
+  `matricula` varchar(50) NOT NULL,
+  `nome` varchar(50) NOT NULL,
+  `senha` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -81,12 +70,12 @@ CREATE TABLE `coordenador` (
 --
 
 CREATE TABLE `registro` (
-  `id_registro` int(11) NOT NULL,
-  `multa` double NOT NULL,
-  `data_hora` datetime NOT NULL,
-  `fk_aluno_matricula` varchar(255) NOT NULL,
-  `fk_chromebook_tombamento` int(11) NOT NULL,
-  `fk_id_coordenador` varchar(255) NOT NULL
+  `id` int(11) NOT NULL,
+  `id_aluno` int(11) NOT NULL,
+  `id_chromebook` int(11) NOT NULL,
+  `id_coordenador` int(11) NOT NULL,
+  `data` date NOT NULL,
+  `hora` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -97,71 +86,68 @@ CREATE TABLE `registro` (
 -- Índices de tabela `aluno`
 --
 ALTER TABLE `aluno`
-  ADD PRIMARY KEY (`matricula_aluno`);
-
---
--- Índices de tabela `checa`
---
-ALTER TABLE `checa`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_id_coordenador` (`fk_id_coordenador`),
-  ADD KEY `fk_chromebook_tombamento` (`fk_chromebook_tombamento`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Índices de tabela `chromebook`
 --
 ALTER TABLE `chromebook`
-  ADD PRIMARY KEY (`tombamento`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Índices de tabela `coordenador`
 --
 ALTER TABLE `coordenador`
-  ADD PRIMARY KEY (`matricula_coordenador`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Índices de tabela `registro`
 --
 ALTER TABLE `registro`
-  ADD PRIMARY KEY (`id_registro`),
-  ADD KEY `fk_matricula_aluno` (`fk_aluno_matricula`),
-  ADD KEY `fk_id_coordenador_fk` (`fk_id_coordenador`),
-  ADD KEY `fk_chromebook_tombamento_fk` (`fk_chromebook_tombamento`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_id_aluno` (`id_aluno`),
+  ADD KEY `fk_id_chromebook` (`id_chromebook`),
+  ADD KEY `fk_id_coordenador` (`id_coordenador`);
 
 --
 -- AUTO_INCREMENT para tabelas despejadas
 --
 
 --
--- AUTO_INCREMENT de tabela `checa`
+-- AUTO_INCREMENT de tabela `aluno`
 --
-ALTER TABLE `checa`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `aluno`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `chromebook`
+--
+ALTER TABLE `chromebook`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `coordenador`
+--
+ALTER TABLE `coordenador`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `registro`
 --
 ALTER TABLE `registro`
-  MODIFY `id_registro` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restrições para tabelas despejadas
 --
 
 --
--- Restrições para tabelas `checa`
---
-ALTER TABLE `checa`
-  ADD CONSTRAINT `fk_chromebook_tombamento` FOREIGN KEY (`fk_chromebook_tombamento`) REFERENCES `chromebook` (`tombamento`),
-  ADD CONSTRAINT `fk_id_coordenador` FOREIGN KEY (`fk_id_coordenador`) REFERENCES `coordenador` (`matricula_coordenador`);
-
---
 -- Restrições para tabelas `registro`
 --
 ALTER TABLE `registro`
-  ADD CONSTRAINT `fk_chromebook_tombamento_fk` FOREIGN KEY (`fk_chromebook_tombamento`) REFERENCES `chromebook` (`tombamento`),
-  ADD CONSTRAINT `fk_id_coordenador_fk` FOREIGN KEY (`fk_id_coordenador`) REFERENCES `coordenador` (`matricula_coordenador`),
-  ADD CONSTRAINT `fk_matricula_aluno` FOREIGN KEY (`fk_aluno_matricula`) REFERENCES `aluno` (`matricula_aluno`);
+  ADD CONSTRAINT `fk_id_aluno` FOREIGN KEY (`id_aluno`) REFERENCES `aluno` (`id`),
+  ADD CONSTRAINT `fk_id_chromebook` FOREIGN KEY (`id_chromebook`) REFERENCES `chromebook` (`id`),
+  ADD CONSTRAINT `fk_id_coordenador` FOREIGN KEY (`id_coordenador`) REFERENCES `coordenador` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

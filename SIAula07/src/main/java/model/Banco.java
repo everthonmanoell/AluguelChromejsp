@@ -10,12 +10,14 @@ package model;
  */
 
 
-import usuario.*;
+import control.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -23,7 +25,7 @@ import java.util.logging.Logger;
  *
  * @author root
  */
-public class Banco {
+/*public class Banco {
 
     private Connection con;
 
@@ -36,36 +38,82 @@ public class Banco {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             return DriverManager.getConnection(
-                    "jdbc:mysql://localhost/aluguelchromebook", "root", "");
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Banco.class.getName()).log(Level.SEVERE, null, ex);
+                    "jdbc:mysql://localhost/banco_si", "root", "");
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Banco.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
 
-    public String consulta() {
-        //Conexao conexao = new Conexao();
-        String nomes = "";
+    public LinkedList<Usuario> consulta() {
+        LinkedList<Usuario> usuarios = new LinkedList<Usuario>();
+        Usuario usuario;
         Connection conn = getConnection();
         try {
-            String consulta = "SELECT * FROM chromebook";
+            String consulta = "SELECT * FROM usuario";
 
             Statement stm = conn.createStatement();
             ResultSet resultado = stm.executeQuery(consulta);
 
             while (resultado.next()) {
-                //System.out.print(resultado.getLong("login"));
-                //System.out.print(" - " + resultado.getString("login"));
-                //System.out.print(" - " + resultado.getString("senha") + "\n");
-                nomes = resultado.getString("login") +" "+  resultado.getString("senha");
+                usuario = new Usuario();
+                usuario.setId(resultado.getInt("id"));
+                usuario.setNome(resultado.getString("nome"));
+                usuario.setLogin(resultado.getString("login"));
+                usuario.setSenha(resultado.getString("senha"));
+                usuario.setTipo(resultado.getString("tipo"));
             }
         } catch (SQLException ex) {
             System.out.println("Não conseguiu consultar os dados de Aluna.");
-        } finally {
-            ;//conexao.desconectar(conn);
         }
-        return nomes;
+        return usuarios;
     }
-}
+
+    public void adicionar(Usuario usuario) {
+        String sql = "insert into usuario "
+                + "(nome,login,senha,tipo)"
+                + " values (?,?,?,?)";
+        try {
+            PreparedStatement stmt = con.prepareStatement(sql);
+
+            stmt.setString(1, usuario.getNome());
+            stmt.setString(2, usuario.getLogin());
+            stmt.setString(3, usuario.getSenha());
+            stmt.setString(4, usuario.getTipo());
+            stmt.execute();
+            stmt.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void alterar(Usuario usuario) {
+        String sql = "update usuario set nome=?, login=?, senha=?,"
+                + "tipo=? where id=?";
+        try {
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setString(1, usuario.getNome());
+            stmt.setString(2, usuario.getLogin());
+            stmt.setString(3, usuario.getSenha());
+            stmt.setString(4, usuario.getTipo());
+            stmt.setInt(5, usuario.getId());
+            stmt.execute();
+            stmt.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void remover(Usuario usuario) {
+        try {
+            PreparedStatement stmt = con.prepareStatement("delete from usuario where id=?");
+            stmt.setLong(1, usuario.getId());
+            stmt.execute();
+            stmt.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+}*/

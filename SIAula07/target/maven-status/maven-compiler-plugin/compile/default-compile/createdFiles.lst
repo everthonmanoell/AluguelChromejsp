@@ -13,7 +13,6 @@ control\ControleChromebook.class
 model\Aluno.class
 usuario\Banco.class
 usuario\ControleUsuario.class
-model\Banco.class
 model\Chromebook.class
 usuario\Aluno.class
 usuario\ControleAluguel.class
