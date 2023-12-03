@@ -17,12 +17,13 @@ public class Usuario {
     private String senha;
     
     
-    public Usuario(String id, String nomecompleto, String matricula, String senha){
-        this.id = id;
+    public Usuario( String matricula, String nomecompleto, String senha){
+        
         this.nomecompleto = nomecompleto;
         this.matricula = matricula;
         this.senha = senha;
     }
+
     
     public String getId() {
     return id;

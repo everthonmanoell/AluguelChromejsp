@@ -17,3 +17,5 @@ model\Chromebook.class
 usuario\Aluno.class
 usuario\ControleAluguel.class
 usuario\ControleChromebook.class
+control\ControleBancoUsuario.class
+model\Conexao.class

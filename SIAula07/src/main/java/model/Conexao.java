@@ -25,11 +25,11 @@ import java.util.logging.Logger;
  *
  * @author root
  */
-/*public class Banco {
+public class Conexao {
 
     private Connection con;
 
-    public Banco() {
+    public Conexao() {
         this.con = getConnection();
         System.out.println("OK");
     }
@@ -38,16 +38,18 @@ import java.util.logging.Logger;
         try {
             Class.forName("com.mysql.jdbc.Driver");
             return DriverManager.getConnection(
-                    "jdbc:mysql://localhost/banco_si", "root", "");
+                    "jdbc:mysql://localhost/aluguelchromebook", "root", "");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Banco.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
 
-    public LinkedList<Usuario> consulta() {
+    /* ------------- Conexao Usuario --------------------*/
+    
+    /*public LinkedList<Usuario> consulta() {
         LinkedList<Usuario> usuarios = new LinkedList<Usuario>();
         Usuario usuario;
         Connection conn = getConnection();
@@ -64,6 +66,9 @@ import java.util.logging.Logger;
                 usuario.setLogin(resultado.getString("login"));
                 usuario.setSenha(resultado.getString("senha"));
                 usuario.setTipo(resultado.getString("tipo"));
+                
+                // Adiciona cada usuário à lista
+                usuarios.add(usuario);
             }
         } catch (SQLException ex) {
             System.out.println("Não conseguiu consultar os dados de Aluna.");
@@ -72,16 +77,15 @@ import java.util.logging.Logger;
     }
 
     public void adicionar(Usuario usuario) {
-        String sql = "insert into usuario "
-                + "(nome,login,senha,tipo)"
-                + " values (?,?,?,?)";
+        String sql = "insert into coordenador "
+                + "(matricula,nome,senha)"
+                + " values (?,?,?)";
         try {
             PreparedStatement stmt = con.prepareStatement(sql);
 
-            stmt.setString(1, usuario.getNome());
-            stmt.setString(2, usuario.getLogin());
+            stmt.setString(1, usuario.getMatricula());
+            stmt.setString(2, usuario.getNomecompleto());
             stmt.setString(3, usuario.getSenha());
-            stmt.setString(4, usuario.getTipo());
             stmt.execute();
             stmt.close();
         } catch (SQLException e) {
@@ -115,5 +119,8 @@ import java.util.logging.Logger;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-    }
-}*/
+    }*/
+    
+    
+    /*-------------------------------------------------------*/
+}

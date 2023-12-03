@@ -30,20 +30,25 @@
              
            // Instanciamento de objeto de ControleUsuario        
            ControleUsuario controle = ControleUsuario.getInstance();
+           ControleBancoUsuario banco = ControleBancoUsuario.getInstance(); 
            
            
            if (iniid != null){
-                Usuario usr = new Usuario(iniid, nomecompleto, matricula, senha);
-                controle.adicionarUsuario(usr);
+                /*Usuario usr = new Usuario(iniid, nomecompleto, matricula, senha);
+                controle.adicionarUsuario(usr);*/
+                
+                Usuario us = new Usuario(matricula, nomecompleto, senha);
+                banco.adicionar(us);
+                
                 response.sendRedirect("../../index.jsp");
-            }else if (cad != null) {
+            }/*else if (cad != null) {
                Usuario usr = new Usuario(id, nomecompleto, matricula, senha);
                controle.adicionarUsuario(usr);
                response.sendRedirect("../cadastrocoordenador.jsp");
            } else if (id != null) {
                controle.alterarUsuario(id, nomecompleto, matricula, senha);
                response.sendRedirect("../relatoriocoordenador.jsp");
-           } else {
+           }*/ else {
                 response.sendRedirect("../../error.jsp");
            }
         %>

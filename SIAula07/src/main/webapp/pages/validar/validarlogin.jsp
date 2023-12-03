@@ -22,13 +22,15 @@
         String senha = request.getParameter("senha");
      
         
-       ControleUsuario controle = ControleUsuario.getInstance();
+       /*ControleUsuario controle = ControleUsuario.getInstance();*/
+       ControleBancoUsuario control = ControleBancoUsuario.getInstance();
     
-       if( controle.buscarUsuario(matricula, senha)){
+        if (control.consultarUsuario(matricula, senha)) {
             response.sendRedirect("../home.jsp");
-        }else{
+        } else {
             response.sendRedirect("../../index.jsp?erro=true");
-       }
+        }
+
         
     %>
 </body>
