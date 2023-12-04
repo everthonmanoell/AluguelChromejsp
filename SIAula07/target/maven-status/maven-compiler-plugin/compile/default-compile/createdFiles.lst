@@ -1,7 +1,6 @@
 control\ControleUsuario.class
 control\ControleBancoChromebook.class
 usuario\ControleAluno.class
-control\ControleAluguel.class
 usuario\Chromebook.class
 com\mycompany\siaula07\resources\JakartaEE10Resource.class
 usuario\Aluguel.class
@@ -17,6 +16,7 @@ usuario\ControleUsuario.class
 model\Chromebook.class
 usuario\Aluno.class
 usuario\ControleAluguel.class
+control\ControleBancoAluguel.class
 usuario\ControleChromebook.class
 control\ControleBancoUsuario.class
 model\Conexao.class

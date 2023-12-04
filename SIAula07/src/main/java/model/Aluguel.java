@@ -16,26 +16,25 @@ public class Aluguel {
 
     private String id;
     private String matriculaUsuario;
-    private String matricula;    
+    private String matriculaAluno;    
     private String tombamento;
     private String situacaoChromebook;
-    private String dataAluguel;
+    private String dataInicio;
     private String horaInicio;
     private String dataTermino;
     private String horaTermino;
     
 
-    public Aluguel(String id, String matriculaUsuario, String matricula, String tombamento, String situacaoChromebook, String dataAluguel, String horaInicio, String dataTermino ,String horaTermino ) {
+    public Aluguel( String matriculaUsuario, String matriculaAluno, String tombamento, String situacaoChromebook, String dataInicio, String horaInicio) {
         
-        this.id = id;
+       
         this.matriculaUsuario = matriculaUsuario;
-        this.matricula = matricula;
+        this.matriculaAluno = matriculaAluno;
         this.tombamento = tombamento;
         this.situacaoChromebook = situacaoChromebook;
-        this.dataAluguel = dataAluguel;
+        this.dataInicio = dataInicio;
         this.horaInicio = horaInicio;
-        this.dataTermino = dataTermino;
-        this.horaTermino = horaTermino;
+
         
 
     }
@@ -57,15 +56,15 @@ public class Aluguel {
     /**
      * @return the matricula
      */
-    public String getMatricula() {
-        return matricula;
+    public String getMatriculaAluno() {
+        return matriculaAluno;
     }
 
     /*
      * @param matricula the matricula to set
      */
-    public void setMatricula(String matricula) {
-        this.matricula = matricula;
+    public void setMatriculaAluno(String matriculaAluno) {
+        this.matriculaAluno = matriculaAluno;
     }
 
     /*
@@ -113,15 +112,15 @@ public class Aluguel {
     /*
      * @return the dataAluguel
      */
-    public String getDataAluguel() {
-        return dataAluguel;
+    public String getDataInicio() {
+        return dataInicio;
     }
 
     /*
      * @param dataAluguel the dataAluguel to set
      */
-    public void setDataAluguel(String dataAluguel) {
-        this.dataAluguel = dataAluguel;
+    public void setDataIniciol(String dataAluguel) {
+        this.dataInicio = dataAluguel;
     }
 
     /**

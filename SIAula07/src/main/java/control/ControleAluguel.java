@@ -8,7 +8,7 @@ import java.util.LinkedList;
 /**
  * Everthon
  */
-public class ControleAluguel {
+/*public class ControleAluguel {
     //----------------------------------------------------------------------
 
     private LinkedList<Aluguel> alugueis;
@@ -64,7 +64,7 @@ public class ControleAluguel {
             this.alugueis.add(novoAluguel);
         /*} else {
             System.out.println("Usuário, aluno ou Chromebook não encontrado.");
-        }*/
+        }
 
     }
     
@@ -142,4 +142,4 @@ public class ControleAluguel {
     }
 
 //----------------------------------------------------------------------
-}
+}*/
