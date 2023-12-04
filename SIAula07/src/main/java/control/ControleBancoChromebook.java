@@ -18,22 +18,22 @@ import model.Usuario;
  *
  * @author evert
  */
-public class ControleBancoUsuario {
+public class ControleBancoChromebook {
     
         /* ------------- Conexao Usuario --------------------*/
     private Conexao conexao;
     private Connection conn;
     
-    private static ControleBancoUsuario instancia = null;
+    private static ControleBancoChromebook instancia = null;
 
-    private ControleBancoUsuario() {
+    private ControleBancoChromebook() {
         this.conexao = new Conexao();
         this.conn = conexao.getConnection();
     }
 
-    public static ControleBancoUsuario getInstance() {
+    public static ControleBancoChromebook getInstance() {
         if (instancia == null) {
-            instancia = new ControleBancoUsuario();
+            instancia = new ControleBancoChromebook();
         }
         return instancia;
     }

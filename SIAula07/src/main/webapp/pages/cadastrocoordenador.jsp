@@ -39,16 +39,17 @@
                     String nomecompleto = request.getParameter("nomecompleto");
                     String matricula = request.getParameter("matricula");
                     String senha = request.getParameter("senha");
-                    ControleUsuario controle = ControleUsuario.getInstance();
+                    
+                    ControleBancoUsuario control = ControleBancoUsuario.getInstance();
                     Usuario usr = null;
 
                     if (id != null && !id.isEmpty()) {
                         out.println("Editando Coordenador");
-                        usr = controle.getUsuario(id);
+                        usr = control.getUsuario(id);
                     } else {
                         out.println("Cadastro Coordenador");
                         // Ajuste na chamada do construtor:
-                        usr = new Usuario("", "", "", ""); // Substitua pelos valores apropriados
+                        usr = new Usuario( "", "", ""); // Substitua pelos valores apropriados
                     }
                 %>   
                     

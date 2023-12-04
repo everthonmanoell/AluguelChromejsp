@@ -18,8 +18,8 @@
 <%
     String id = request.getParameter("id");
 
-    ControleUsuario controle = ControleUsuario.getInstance();
-    controle.excluirUsuario(id);
+    ControleBancoUsuario control = ControleBancoUsuario.getInstance();
+    control.excluirUsuario(id);
 
     response.sendRedirect("../relatoriocoordenador.jsp");
 %>
