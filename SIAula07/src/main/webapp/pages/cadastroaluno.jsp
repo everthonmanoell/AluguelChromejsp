@@ -68,22 +68,42 @@
                 <form action="validar/validaraluno.jsp<% if (id != null) { out.print("?id=" + usr.getId()); } else { out.print("?op=true"); } %>" method="post">
 
                 <div class="fonteCoordenador">
-                    
-
+                    <% if (id != null) { %>
+                        <label for="ID" class="form-label"><a>ID:</a></label>
+                        <input type="text" value="<% out.print(usr.getId()); %>" class="form-control input" id="ID" placeholder="" name="id" readonly>
+                    <% } else { %>
+                        <label for="ID" class="form-label"><a>ID:</a></label>
+                        <input type="text" value="" class="form-control" id="id" placeholder="" name="id" required>
+                    <% } %>
 
                     
                     <label for="nomecompleto" class="form-label">NOME COMPLETO:</label>
-                    <input type="text" value="<%if(id!=null){out.print(usr.getNome());}%>" class="form-control" id="nomecompleto" placeholder="" name="nome" required>
+                    <input type="text" value="<%if(id!=null){out.print(usr.getNome());}%>" class="form-control" id="nomecompleto" placeholder="Digite o nome completo do aluno" name="nome" required>
                     
                     <label for="matricula" class="form-label">MATRÍCULA:</label>
-                    <input type="text" value="<%if(id!=null){out.print(usr.getMatricula());}%>" maxlength="11" class="form-control" id="cpf" placeholder="" name="matricula" required>
+                    <input type="text" value="<%if(id!=null){out.print(usr.getMatricula());}%>" class="form-control" id="matricula" placeholder="Digite a matrícula" name="matricula" required>
                     
                     <label for="curso" class="form-label">CURSO:</label>
                     <input type="text" value="<%if(id!=null){out.print(usr.getCurso());}%>" maxlength="11" class="form-control" id="curso" placeholder="" name="curso" required> 
-                    
+                   
+                    <label for="CURSO" class="form-label">CURSO:</label>
+                    <select class="form-select" id="CURSO" name="curso" required>
+                    <option  selected disable onlyread>Selecione uma opção</option>
+                    <option value="administração">Adm - Administração</option>
+                    <option value="analise e Desenvolvimento de Sistemas">ADS - Análise e Desenvolvimento de Sistemas</option>
+                    <option value="direito">Dir - Direito</option>
+                    <option value="enfermagem">Enf - Enfermagem</option>
+                    <option value="gestao da qualidade">GQ - Gestão da Qualidade</option>
+                    <option value="gestao de recursos Humanos">GRH - Gestão de Recursos Humanos</option>
+                    <option value="gestao financeira">GF - Gestão Financeira</option>
+                    <option value="gestao publica">GP - Gestão Pública</option>
+                    <option value="psicologia">Psi - Psicologia</option>
+                    <option value="sistemas para Internet">SI - Sistemas para Internet</option>                    
+                    </select>
+     
                     <label for="TURNO" class="form-label">TURNO:</label>
                     <select class="form-select" id="TURNO" name="turno" required>
-                        <option></option>
+                        <option  selected disable onlyread>Selecione uma opção</option>
                         <option value="manha" <%if((id!=null) && (usr.getTurno().equals("manha"))){out.print("selected");}%> >MANHÃ</option>
                         <option value="tarde" <%if((id!=null) && (usr.getTurno().equals("tarde"))){out.print("selected");}%> >TARDE</option>
                         <option value="noite" <%if((id!=null) && (usr.getTurno().equals("noite"))){out.print("selected");}%> >NOITE</option>
@@ -93,7 +113,7 @@
                     
                     <label for="PERIODO" class="form-label">PERÍODO:</label>
                     <select class="form-select" id="PERIODO" name="periodo" required>
-                        <option></option>
+                        <option selected disable onlyread>Selecione uma opção</option>
                         <option value="1" <%if((id!=null) && (usr.getPeriodo().equals("1"))){out.print("selected");}%>  >1º PERÍODO</option>
                         <option value="2" <%if((id!=null) && (usr.getPeriodo().equals("2"))){out.print("selected");}%>  >2º PERÍODO</option>
                         <option value="3" <%if((id!=null) && (usr.getPeriodo().equals("3"))){out.print("selected");}%>  >3º PERÍODO</option>
@@ -128,7 +148,7 @@
                                 else{out.print("onclick=\"exibirMensagem('O cadastro do Aluno foi adicionado com sucesso!');\"");}%>>
                             <%if(id!=null){out.print("Salvar");}else{out.print("Cadastrar");}%>
                         </button>
-                        <button type="reset" class="BotaoSubmit cancelar">Cancelar</button>
+                        <button type="reset" class="BotaoSubmit cancelar" onclick="window.location.href='homecadastro.jsp';">Voltar</button>
                          <script>
                             function exibirMensagem(mensagem) {
                             alert(mensagem);
