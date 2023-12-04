@@ -1,29 +1,20 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package control;
+
 import model.Conexao;
+import model.Chromebook;
+
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.LinkedList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import model.Usuario;
-/**
- *
- * @author evert
- */
+
 public class ControleBancoChromebook {
-    
-        /* ------------- Conexao Usuario --------------------*/
+
     private Conexao conexao;
     private Connection conn;
-    
+
     private static ControleBancoChromebook instancia = null;
 
     private ControleBancoChromebook() {
@@ -37,202 +28,132 @@ public class ControleBancoChromebook {
         }
         return instancia;
     }
-    /*-----------------------------------------------------------*/
-    
-    /*---------------- Métodos ---------------------------------*/
-    
-    
-    
-    
-        public Usuario getUsuario(String id) {
-        Usuario usuario = null;
+
+    public Chromebook getChromebook(String id) {
+        Chromebook chromebook = null;
 
         try {
-            String consulta = "SELECT * FROM coordenador WHERE id = ?";
+            String consulta = "SELECT * FROM chromebook WHERE id = ?";
             PreparedStatement stmt = conn.prepareStatement(consulta);
             stmt.setString(1, id);
 
             ResultSet resultado = stmt.executeQuery();
 
             if (resultado.next()) {
-                usuario = new Usuario(
-                    resultado.getString("matricula"),
-                    resultado.getString("nome"),
-                    resultado.getString("senha")
+                chromebook = new Chromebook(
+                        resultado.getString("tombamento"),
+                        resultado.getString("situacao"),
+                        resultado.getString("descricao")
                 );
-                usuario.setId(resultado.getString("id"));
+                chromebook.setId(resultado.getString("id"));
             }
 
             stmt.close();
         } catch (SQLException ex) {
-            System.out.println("Não conseguiu consultar os dados do coordenador.");
+            System.out.println("Não conseguiu consultar os dados do Chromebook.");
         }
 
-        return usuario;
+        return chromebook;
     }
 
-        public void alterarUsuario(String id, String nomecompleto, String matricula, String senha) {
+    public void alterarChromebook(String id, String tombamento, String situacao, String descricao) {
         try {
-            String sql = "UPDATE coordenador SET nome = ?, matricula = ?, senha = ? WHERE id = ?";
+            String sql = "UPDATE chromebook SET tombamento = ?, situacao = ?, descricao = ? WHERE id = ?";
             PreparedStatement stmt = conn.prepareStatement(sql);
 
-            stmt.setString(1, nomecompleto);
-            stmt.setString(2, matricula);
-            stmt.setString(3, senha);
+            stmt.setString(1, tombamento);
+            stmt.setString(2, situacao);
+            stmt.setString(3, descricao);
             stmt.setString(4, id);
 
             stmt.executeUpdate();
             stmt.close();
         } catch (SQLException ex) {
-            System.out.println("Não conseguiu alterar os dados do coordenador.");
+            System.out.println("Não conseguiu alterar os dados do Chromebook.");
         }
     }
 
-    
-        public String listarDadosUsuarios() {
-        String texto = "";
+    public String listarDadosChromebook() {
+        StringBuilder texto = new StringBuilder();
 
         try {
-            String consulta = "SELECT * FROM coordenador";
+            String consulta = "SELECT * FROM chromebook";
             Statement stm = conn.createStatement();
             ResultSet resultado = stm.executeQuery(consulta);
 
             while (resultado.next()) {
-                Usuario usuario = new Usuario(
-                    resultado.getString("matricula"),
-                    resultado.getString("nome"),
-                    resultado.getString("senha")
+                Chromebook chromebook = new Chromebook(
+                        resultado.getString("tombamento"),
+                        resultado.getString("situacao"),
+                        resultado.getString("descricao")
                 );
-                usuario.setId(resultado.getString("id"));
+                chromebook.setId(resultado.getString("id"));
 
-                texto = texto
-                    + "<tr>"
-                    + "<td>" + usuario.getId() + "</td>"
-                    + "<td>" + usuario.getNomecompleto() + "</td>"
-                    + "<td>" + usuario.getMatricula() + "</td>"
-                    + "<td>"
-                    + "<a href=\"cadastrocoordenador.jsp?id=" + usuario.getId() + "\" class=\"btn btn-outline-primary btn-sm\">Alterar</a>"
-                    + "<a href=\"validar/excluircoordenador.jsp?id=" + usuario.getId() + "\" class=\"btn btn-outline-danger btn-sm\" onclick=\"return confirm('Tem certeza que deseja excluir?')\">Excluir</a>\n"
-                    + "</td>"
-                    + "</tr>";
+                texto.append("<tr>")
+                        .append("<td>").append(chromebook.getId()).append("</td>")
+                        .append("<td>").append(chromebook.getTombamento()).append("</td>")
+                        .append("<td>").append(chromebook.getSituacao()).append("</td>")
+                        .append("<td>").append(chromebook.getDescricao()).append("</td>")
+                        .append("<td>")
+                        .append("<a href=\"cadastrochromebook.jsp?id=").append(chromebook.getId()).append("\" class=\"btn btn-outline-primary btn-sm\">Alterar</a>")
+                        .append("<a href=\"validar/excluirchromebook.jsp?id=").append(chromebook.getId()).append("\" class=\"btn btn-outline-danger btn-sm\" onclick=\"return confirm('Tem certeza que deseja excluir?')\">Excluir</a>\n")
+                        .append("</td>")
+                        .append("</tr>");
             }
 
             stm.close();
         } catch (SQLException ex) {
-            System.out.println("Não conseguiu consultar os dados dos coordenadores.");
+            System.out.println("Não conseguiu consultar os dados dos Chromebooks.");
         }
 
-        return texto;
+        return texto.toString();
     }
-        
-    
 
-        public int listarQuantidadeUsuarios() {
+    public int listarQuantidadeChromebook() {
         int qtd = 0;
 
         try {
-            String consulta = "SELECT * FROM coordenador";
+            String consulta = "SELECT * FROM chromebook";
             Statement stm = conn.createStatement();
             ResultSet resultado = stm.executeQuery(consulta);
 
             while (resultado.next()) {
-                Usuario usuario = new Usuario(
-                    resultado.getString("matricula"),
-                    resultado.getString("nome"),
-                    resultado.getString("senha")
-                );
-                usuario.setId(resultado.getString("id"));
-
                 qtd++;
             }
 
             stm.close();
         } catch (SQLException ex) {
-            System.out.println("Não conseguiu consultar os dados dos coordenadores.");
+            System.out.println("Não conseguiu consultar a quantidade de Chromebooks.");
         }
 
         return qtd;
     }
 
-    
-    
-    public boolean consultarUsuario(String matricula, String senha) {
-        Usuario usuario = null;
-
-        try {
-            String consulta = "SELECT * FROM coordenador WHERE matricula = ? ";
-
-            PreparedStatement stmt = conn.prepareStatement(consulta);
-            stmt.setString(1, matricula);
-
-            ResultSet resultado = stmt.executeQuery();
-
-            if (resultado.next()) {
-                
-                usuario = new Usuario(
-                    resultado.getString("matricula"),
-                    resultado.getString("nome"),
-                    resultado.getString("senha")
-                );
-                usuario.setId(resultado.getString("id"));
-
-                
-                if (senha.equals(usuario.getSenha())) {
-                    stmt.close();
-                    return true;
-                }
-            }
-
-            stmt.close();
-        } catch (SQLException ex) {
-            System.out.println("Não conseguiu consultar os dados do coordenador.");
-        }
-
-        return false;
-    }
-
-
-
-
-
-    
-    public void adicionar(Usuario usuario) {
-        String sql = "insert into coordenador "
-                + "(matricula,nome,senha)"
-                + " values (?,?,?)";
+    public void adicionarChromebook(Chromebook chromebook) {
+        String sql = "INSERT INTO chromebook (tombamento, situacao, descricao) VALUES (?, ?, ?)";
         try {
             PreparedStatement stmt = conn.prepareStatement(sql);
 
-            stmt.setString(1, usuario.getMatricula());
-            stmt.setString(2, usuario.getNomecompleto());
-            stmt.setString(3, usuario.getSenha());
+            stmt.setString(1, chromebook.getTombamento());
+            stmt.setString(2, chromebook.getSituacao());
+            stmt.setString(3, chromebook.getDescricao());
             stmt.execute();
             stmt.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
-    
-    
-        public void excluirUsuario(String id) {
+
+    public void excluirChromebook(String id) {
         try {
-            String sql = "DELETE FROM coordenador WHERE id = ?";
+            String sql = "DELETE FROM chromebook WHERE id = ?";
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, id);
 
             stmt.executeUpdate();
             stmt.close();
         } catch (SQLException ex) {
-            System.out.println("Não conseguiu excluir o coordenador.");
+            System.out.println("Não conseguiu excluir o Chromebook.");
         }
     }
-
-
-
-  
-
-    
-    
-    /*-------------------------------------------------------*/
-    
 }

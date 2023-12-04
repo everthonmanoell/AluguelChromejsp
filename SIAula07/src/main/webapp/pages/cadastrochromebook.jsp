@@ -38,16 +38,16 @@
                     String id = request.getParameter("id");   
                     String tombamento = request.getParameter("tombamento");
                     String situacao = request.getParameter("situacao");
-                    ControleChromebook controle = ControleChromebook.getInstance();
+                    ControleBancoChromebook control = ControleBancoChromebook.getInstance();
                     Chromebook usr = null;
 
                     if (id != null && !id.isEmpty()) {
                         out.println("Editando Chromebook");
-                        usr = controle.getChromebook(id);
+                        usr = control.getChromebook(id);
                     } else {
                         out.println("Cadastro Chromebook");
                         // Ajuste na chamada do construtor:
-                        usr = new Chromebook("", "", "", ""); // Substitua pelos valores apropriados
+                        usr = new Chromebook("", "", ""); // Substitua pelos valores apropriados
                     }
                 %>
 
@@ -55,15 +55,9 @@
 
             </p>
         </div>
-        <form action="validar/validarchromebook.jsp<%if(id!=null){out.print("?op=E");}%>" method="post">
+        <form action="validar/validarchromebook.jsp<%if(id!=null){out.print("?id=" + usr.getId());}%>" method="post">
             <div class="fonteCoordenador">
-                <% if (id != null) { %>
-                    <label for="ID" class="form-label"><a>ID:</a></label>
-                    <input type="text" value="<% out.print(usr.getId()); %>" class="form-control input" id="ID" placeholder="" name="id" readonly>
-                <% } else { %>
-                    <label for="ID" class="form-label"><a>ID:</a></label>
-                    <input type="text" value="" class="form-control" id="ID" placeholder="" name="id" required>
-                <% } %>
+
 
                 
                 

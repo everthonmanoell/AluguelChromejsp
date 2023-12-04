@@ -1,4 +1,5 @@
 control\ControleUsuario.class
+control\ControleBancoChromebook.class
 usuario\ControleAluno.class
 control\ControleAluguel.class
 usuario\Chromebook.class

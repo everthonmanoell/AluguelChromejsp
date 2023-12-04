@@ -17,8 +17,8 @@
 <%
     String id = request.getParameter("id");
 
-    ControleChromebook controle = ControleChromebook.getInstance();
-    controle.excluirChromebook(id);
+    ControleBancoChromebook control = ControleBancoChromebook.getInstance();
+    control.excluirChromebook(id);
 
     response.sendRedirect("../relatoriochromebook.jsp");
 %>

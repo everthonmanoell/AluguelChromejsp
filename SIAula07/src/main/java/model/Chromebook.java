@@ -17,8 +17,7 @@ public class Chromebook {
     private String descricao;
     
     
-    public Chromebook (String id, String tombamento, String situacao, String descricao){
-        this.id = id;
+    public Chromebook ( String tombamento, String situacao, String descricao){
         this.tombamento = tombamento;
         this.situacao = situacao;
         this.descricao = descricao;
