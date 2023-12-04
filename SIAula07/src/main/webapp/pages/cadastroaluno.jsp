@@ -3,12 +3,6 @@
     Created on : 26 de out. de 2023, 09:35:35
     Author     : felipe
 --%>
-
-<%-- 
-    Document   : CADASTROALUNO
-    Created on : 26 de out. de 2023, 09:35:35
-    Author     : felipe
---%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="control.*"%>
 <%@page import="model.*"%>
