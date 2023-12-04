@@ -17,8 +17,8 @@
 <%
     String id = request.getParameter("id");
 
-    ControleAluno controle = ControleAluno.getInstance();
-    controle.excluirAluno(id);
+    ControleBancoAluno control = ControleBancoAluno.getInstance();
+    control.excluirAluno(id);
 
     response.sendRedirect("../relatorioaluno.jsp");
 %>

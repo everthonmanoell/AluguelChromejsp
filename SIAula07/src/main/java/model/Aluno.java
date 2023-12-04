@@ -15,15 +15,16 @@ public class Aluno {
     private String turno;
     private String periodo;
     private String turma;
+    private String curso;
     
     
-    public Aluno (String id, String nome, String matricula, String turno, String periodo, String turma){
-        this.id = id;
+    public Aluno ( String nome, String matricula, String turno, String periodo, String turma, String curso){
         this.nome = nome;
         this.matricula = matricula;
         this.turno = turno;
         this.periodo = periodo;
         this.turma = turma;
+        this.curso = curso;
     }
 
     public String getId() {
@@ -72,6 +73,20 @@ public class Aluno {
     
     public void setTurma(String turma){
         this.turma = turma;
+    }
+
+    /**
+     * @return the curso
+     */
+    public String getCurso() {
+        return curso;
+    }
+
+    /**
+     * @param curso the curso to set
+     */
+    public void setCurso(String curso) {
+        this.curso = curso;
     }
     
         

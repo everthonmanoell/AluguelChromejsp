@@ -52,7 +52,7 @@
         
         
         <%
-            ControleAluno controle = ControleAluno.getInstance();
+            ControleBancoAluno control = ControleBancoAluno.getInstance();
         %>
             
             <main>
@@ -60,7 +60,7 @@
                         <th scope="col"><input type="search" class="form-control w-255" placeholder="Pesquisar" id="pesquisar">
                         <th scope="col"><button onclick="searchData()" class="btn btn-primary"><i class='bx bx-search'></i></i></th></th></button>
                         
-                        <th scope="col" id="totalemuso" style=" float:inline-end;">TOTAL CADASTRADOS: <%out.print(controle.contarAluno());%></th>
+                        <th scope="col" id="totalemuso" style=" float:inline-end;">TOTAL CADASTRADOS: <%out.print(control.listarQuantidadeAluno());%></th>
             </table>
             </main>
                 <table class="table table-striped table-sm table-hover">
@@ -72,12 +72,13 @@
                         <th scope="col" class="tabela">Turno</th>
                         <th scope="col" class="tabela">Período</th>
                         <th scope="col" class="tabela">Turma</th>
+                        <th scope="col" class="tabela">Curso</th>
                       </tr>
                     </thead>
                     
                         <%
-                           if(controle.listarDadosAluno() != null){
-                                out.println(controle.listarDadosAluno());
+                           if(control.listarDadosAluno() != null){
+                                out.println(control.listarDadosAluno());
                            }else{
                                 out.println("Aluno não cadastrado");
                            } 
