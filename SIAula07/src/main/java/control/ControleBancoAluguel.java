@@ -49,11 +49,12 @@ public class ControleBancoAluguel {
     public String getDataAtual() {
         // Obtém a data atual
         Date agora = new Date();
-        // Define o formato desejado para a data (formato brasileiro)
-        SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy", new Locale("pt", "BR"));
+        // Define o formato desejado para a data (formato ISO)
+        SimpleDateFormat formatoData = new SimpleDateFormat("yyyy-MM-dd", new Locale("pt", "BR"));
         // Retorna a data formatada
         return formatoData.format(agora);
     }
+
     
     /*---------------------------------------------------------------------------------------------*/
 
@@ -334,28 +335,6 @@ public class ControleBancoAluguel {
     }
 
 
-    /*private String buscarNomeAluno(String matriculaAluno) {
-        String nomeAluno = "";
-
-        try {
-            String consulta = "SELECT nome FROM aluno WHERE matricula = ?";
-            PreparedStatement stmt = conn.prepareStatement(consulta);
-            stmt.setString(1, matriculaAluno);
-
-            ResultSet resultado = stmt.executeQuery();
-
-            if (resultado.next()) {
-                nomeAluno = resultado.getString("nome");
-            }
-
-            stmt.close();
-        } catch (SQLException ex) {
-            System.out.println("Não conseguiu buscar o nome do aluno.");
-            ex.printStackTrace();
-        }
-
-        return nomeAluno;
-    }*/
 
     public int contarAlugueisSemDevolucao() {
         int contador = 0;
@@ -378,25 +357,5 @@ public class ControleBancoAluguel {
         return contador;
     }
 
-    /*public int contarAlugueisNaTabela() {
-        int totalAlugueis = 0;
 
-        try {
-            String consulta = "SELECT COUNT(*) FROM aluguel";
-            Statement stm = conn.createStatement();
-            ResultSet resultado = stm.executeQuery(consulta);
-
-            if (resultado.next()) {
-                totalAlugueis = resultado.getInt(1);
-            }
-
-            stm.close();
-        } catch (SQLException ex) {
-            System.out.println("Não conseguiu contar os registros na tabela de Alugueis.");
-            ex.printStackTrace();
-        }
-
-        return totalAlugueis;
-    }*/
-    // Outros métodos conforme necessário...
 }
