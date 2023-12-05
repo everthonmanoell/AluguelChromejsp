@@ -25,7 +25,7 @@
                 ControleBancoAluguel control = ControleBancoAluguel.getInstance();
                 
                 String id = request.getParameter("id");
-                String devolver = request.getParameter("devolver");
+                
                 
                 
                 String matriculaCoordenador = request.getParameter("matriculaCoordenador");
@@ -36,16 +36,17 @@
                 String horainicio = request.getParameter("horainicio");
                 String datatermino = request.getParameter("datatermino");
                 String horatermino = request.getParameter("horatermino");
+                String nomealuno = request.getParameter("nomealuno");
                 
     
-            if (devolver != null) {
-                /*control.alterarAluguel(id, situacaochromebook, horatermino, datatermino);
-                response.sendRedirect("../devolucao.jsp");*/
+            if (id != null) {
+                control.alterarAluguel(id, situacaochromebook, horatermino, datatermino);
+                response.sendRedirect("../devolucao.jsp");
 
 
             } else if (matriculaCoordenador != null){
             
-                Aluguel aluguel = new Aluguel(matriculaCoordenador, matriculaAluno, tombamento, situacaochromebook, datainicio, horainicio );
+                Aluguel aluguel = new Aluguel(nomealuno, matriculaCoordenador, matriculaAluno, tombamento, situacaochromebook, datainicio, horainicio );
                 control.adicionarAluguel(aluguel);
                 response.sendRedirect("../aluguel.jsp");
                 

@@ -15,6 +15,7 @@ public class Aluguel {
 
 
     private String id;
+    private String nomealuno;
     private String matriculaUsuario;
     private String matriculaAluno;    
     private String tombamento;
@@ -25,9 +26,10 @@ public class Aluguel {
     private String horaTermino;
     
 
-    public Aluguel( String matriculaUsuario, String matriculaAluno, String tombamento, String situacaoChromebook, String dataInicio, String horaInicio) {
+    public Aluguel( String nomeAluno, String matriculaUsuario, String matriculaAluno, String tombamento, String situacaoChromebook, String dataInicio, String horaInicio) {
         
-       
+        
+        this.nomealuno = nomeAluno;
         this.matriculaUsuario = matriculaUsuario;
         this.matriculaAluno = matriculaAluno;
         this.tombamento = tombamento;
@@ -51,6 +53,21 @@ public class Aluguel {
      */
     public void setId(String id) {
         this.id = id;
+    }
+    
+    
+        /*
+     * @return the nomeAluno
+     */
+    public String getNomeAluno() {
+        return nomealuno;
+    }
+
+    /*
+     * @param id the NnomeAluno to set
+     */
+    public void setNomeAluno(String nomealuno) {
+        this.nomealuno = nomealuno;
     }
 
     /**

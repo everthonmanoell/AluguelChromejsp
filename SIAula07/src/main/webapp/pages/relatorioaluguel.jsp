@@ -19,7 +19,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Kanit:wght@100;400;700&display=swap" rel="stylesheet">
     <title>Relatório de Aluguel</title>
 </head>
-<% ControleAluguel controle = ControleAluguel.getInstance();  %>
+<% ControleBancoAluguel control = ControleBancoAluguel.getInstance();  %>
 
     <div class="bordaDoTopo">
         <div class="container-fluid">     
@@ -52,27 +52,29 @@
                         <th scope="col"><input type="search" class="form-control w-255" placeholder="Pesquisar" id="pesquisar">
                         <th scope="col"><button onclick="searchData()" class="btn btn-primary"><i class='bx bx-search'></i></i></th></th></button>
                         
-                        <th scope="col" id="totalemuso" style=" float:inline-end;">TOTAL CADASTRADOS: <%out.print(controle.contarAlugados());%></th>
+                        <th scope="col" id="totalemuso" style=" float:inline-end;">TOTAL ALUGADOS: <%out.print(control.contarAlugueisComDevolucao());%></th>
             </table>
             </main>
                 <table class="table table-striped table-sm table-hover">
                     <thead>
                       <tr>
                         <th scope="col"  class="tabela">Id</th>
-                        <th scope="col"  class="tabela">Matrícula</th>
+                        <th scope="col"  class="tabela">Aluno</th>
+                        <th scope="col"  class="tabela">M.Aluno</th>
+                        <th scope="col"  class="tabela">M.Coordenador</th>
                         <th scope="col"  class="tabela">Tombamento</th>     
-                        <th scope="col"  class="tabela">Situação Chromebook</th> 
-                        <th scope="col"  class="tabela">Data de Aluguel</th> 
-                        <th scope="col"  class="tabela">Situação Chromebook</th> 
-                        <th scope="col"  class="tabela">Hora início</th> 
-                        <th scope="col"  class="tabela">Hora término</th> 
-                        <th scope="col"  class="tabela">Data de Aluguel</th> 
+                        <th scope="col"  class="tabela">Sit.Chromebook</th> 
+                        <th scope="col"  class="tabela">Dat.Aluguel</th> 
+                        <th scope="col"  class="tabela">Ho.Início</th> 
+                        <th scope="col"  class="tabela">Dat.Término</th> 
+                        <th scope="col"  class="tabela">Ho.Término</th> 
+                        
                       </tr>
                     </thead>
                     <tbody>
                     <%
-                    if(controle.listarDadosAlugados() != null ){
-                        out.println(controle.listarDadosAlugados());
+                    if(control.listarDadosAlugueisComDevolucao() != null ){
+                        out.println(control.listarDadosAlugueisComDevolucao());
                     }else{
                         out.println("<p>Nenhum chromebook foi cadastrado! :( </p>");
                     }

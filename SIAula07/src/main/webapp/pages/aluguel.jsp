@@ -48,16 +48,16 @@
                         
 
 
-                        ControleAluguel controle = ControleAluguel.getInstance();
+                        ControleBancoAluguel control = ControleBancoAluguel.getInstance();
                         Aluguel usr = null;
 
                         if (id != null) {
                             out.println("Devolução de Chromebook");
-                            usr = controle.getAluguel(id);
+                            usr = control.getAluguel(id);
                         } else {
                             out.println("Aluguel de Chromebook");
                             // Ajuste na chamada do construtor:
-                            usr = new Aluguel("", "", "", "", "", ""); // Substitua pelos valores apropriados
+                            usr = new Aluguel("", "", "", "", "", "", ""); // Substitua pelos valores apropriados
                         }
                     %>
 
@@ -65,7 +65,7 @@
                 </p>
 
             </div>
-            <form action="validar/validaraluguel.jsp<%if(id != null){out.print("?devolver=true");}%>" method="post">
+            <form action="validar/validaraluguel.jsp<%if(id != null){out.print("?id=" + id);}%>" method="post">
                 <div class="fonteCoordenador">
 
 
@@ -73,12 +73,21 @@
                     <div class="mb-3 mt-3">
                         <label for="matricula" class="form-label"><a>Matrícula do Coordenador:</a></label>
                         <input type="text" value="<%if(id!=null){out.print(usr.getMatriculaUsuario());}%>" <%if(id!=null){out.print("readonly ");}%> class="form-control <%if(id != null){out.print(" input");}%>" id="matricula" placeholder="Digite a matrícula do coordenador" name="matriculaCoordenador" required>
+
+                        <label for="nomealuno" class="form-label"><a>Nome do Aluno:</a></label>
+                        <input type="text" value="<%if(id!=null){out.print(usr.getNomeAluno());}%>" <%if(id!=null){out.print("readonly ");}%> class="form-control <%if(id != null){out.print(" input");}%>" id="nomealuno" placeholder="" name="nomealuno" required>
                     </div>
                     
                     <div class="mb-3 mt-3">
                         <label for="matricula" class="form-label"><a>Matrícula do Aluno:</a></label>
                         <input type="text" value="<%if(id!=null){out.print(usr.getMatriculaAluno());}%>" <%if(id!=null){out.print("readonly ");}%> class="form-control <%if(id != null){out.print(" input");}%>" id="matricula" placeholder="Digite a matrícula do aluno" name="matriculaAluno" required>
                     </div>
+                    
+                    <div class="mb-3 mt-3">
+                        <label for="matricula" class="form-label"><a>Matrícula do Coordenador:</a></label>
+                        <input type="text" value="<%if(id!=null){out.print(usr.getMatriculaUsuario());}%>" <%if(id!=null){out.print("readonly ");}%> class="form-control <%if(id != null){out.print(" input");}%>" id="matricula" placeholder="" name="matriculaCoordenador" required>
+                    </div>
+                    
                     
                     <div class="mb-3 mt-3">
                         <label for="tombamento" class="form-label"><a>Tombamento:</a></label>
@@ -94,28 +103,23 @@
                     </div>
                     <div class="mb-3 mt-3">
                         <label for="datalugu" class="form-label"><a>Data de Aluguel:</a></label>
-                        <input type="date" value="<%if(id!=null){out.print(usr.getDataInicio());}%>" <%if(id!=null){out.print("readonly ");}%> class="form-control <%if(id != null){out.print(" input");}%>" id="datalugu" placeholder="" name="datainicio" required>
+                        <input type="date" value="   <%if(id!=null){out.print(usr.getDataInicio());}%>" <%if(id!=null){out.print("readonly ");}%> class="form-control <%if(id != null){out.print(" input");}%>" id="datalugu" placeholder="" name="datainicio" required>
                     </div>
                     <div class="mb-3 mt-3">
                         <label for="hora" class="form-label"><a>Hora início:</a></label>
-                        <input type="time" value="<%if(id!=null){out.print(usr.getHoraInicio());}%>" <%if(id!=null){out.print("readonly ");}%> class="form-control w-25 <%if(id != null){out.print(" input");}%>" id="hora" placeholder="" name="horainicio" required>
+                        <input type="time" value="<   <%if(id!=null){out.print(usr.getHoraInicio());}%>" <%if(id!=null){out.print("readonly ");}%> class="form-control w-25 <%if(id != null){out.print(" input");}%>" id="hora" placeholder="" name="horainicio" required>
                     </div>
 
                     <% if (id != null) { %>
                         <div class="mb-3 mt-3">
                             <label for="datatermino" class="form-label"><a>Data término:</a></label>
-                            <input type="date" value="<%= usr.getDataTermino() %>" class="form-control" id="datatermino" placeholder="" name="datatermino">
+                            <input type="date" value="   <%= usr.getDataTermino() %>" class="form-control" id="datatermino" placeholder="" name="datatermino">
                         </div>
 
                         <div class="mb-3 mt-3">
                             <label for="termino" class="form-label"><a>Hora término:</a></label>
                             <input type="time" value="<%= usr.getHoraTermino() %>" class="form-control w-25" id="termino" placeholder="" name="horatermino">
                         </div>
-                    <% } %>
-
-
-
-
 
                     <div class="row justify-content-md-center">
                         <button type="submit" class="BotaoSubmit" 
@@ -124,8 +128,6 @@
                             <%if(id!=null){out.print("Devolver");}else{out.print("Alugar");}%>
                         </button>
                         <button type="reset" class="BotaoSubmit">Cancelar</button>
-                        
-                        
                         
                         <script>
                             function exibirMensagem(mensagem) {

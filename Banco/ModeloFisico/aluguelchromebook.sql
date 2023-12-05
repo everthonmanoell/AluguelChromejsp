@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 04/12/2023 às 15:17
+-- Tempo de geração: 05/12/2023 às 01:27
 -- Versão do servidor: 10.4.28-MariaDB
 -- Versão do PHP: 8.0.28
 
@@ -32,6 +32,7 @@ CREATE TABLE `aluguel` (
   `id_aluno` int(11) DEFAULT NULL,
   `id_chromebook` int(11) DEFAULT NULL,
   `id_coordenador` int(11) DEFAULT NULL,
+  `nome_aluno` varchar(50) NOT NULL,
   `data_inicio` date NOT NULL,
   `hora_inicio` time NOT NULL,
   `hora_termino` time DEFAULT NULL,
@@ -46,8 +47,9 @@ CREATE TABLE `aluguel` (
 -- Despejando dados para a tabela `aluguel`
 --
 
-INSERT INTO `aluguel` (`id`, `id_aluno`, `id_chromebook`, `id_coordenador`, `data_inicio`, `hora_inicio`, `hora_termino`, `data_termino`, `matricula_usuario`, `matricula_aluno`, `tombamento`, `situacao_chromebook`) VALUES
-(1, NULL, NULL, NULL, '2023-12-29', '14:56:00', NULL, NULL, '321', '333', '222', 'inoperante');
+INSERT INTO `aluguel` (`id`, `id_aluno`, `id_chromebook`, `id_coordenador`, `nome_aluno`, `data_inicio`, `hora_inicio`, `hora_termino`, `data_termino`, `matricula_usuario`, `matricula_aluno`, `tombamento`, `situacao_chromebook`) VALUES
+(2, NULL, NULL, NULL, 'Manoel', '2023-12-29', '01:10:00', '11:11:00', '1111-11-11', '321', '333', '222', 'operante'),
+(3, NULL, NULL, NULL, 'Wilson', '2023-12-15', '02:08:00', NULL, NULL, '321', '0404', '222', 'operante');
 
 -- --------------------------------------------------------
 
@@ -70,7 +72,8 @@ CREATE TABLE `aluno` (
 --
 
 INSERT INTO `aluno` (`id`, `matricula`, `nome`, `curso`, `periodo`, `turno`, `turma`) VALUES
-(2, '333', 'Everthon', 'SI', '3', 'noite', 'a');
+(2, '333', 'Everthon', 'SI', '3', 'noite', 'a'),
+(3, '0404', 'Wilson', 'SI', '3', 'noite', 'a');
 
 -- --------------------------------------------------------
 
@@ -151,13 +154,13 @@ ALTER TABLE `coordenador`
 -- AUTO_INCREMENT de tabela `aluguel`
 --
 ALTER TABLE `aluguel`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `aluno`
 --
 ALTER TABLE `aluno`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `chromebook`
