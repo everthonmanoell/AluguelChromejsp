@@ -29,7 +29,7 @@
     <div class="container">
         <div class="middle">
             <h1>Bem vindo ao sistema de aluguel de Chromebook.</h1>
-            <p>Nesse sistema você pode fazer o cadastro de alunos, coordenadores e o próprio Chromebook, além de poder observar o status e quem possui o Chromebook, tudo em um único sistema. Basta entrar nas abas específicas e escolher o que fazer.</p>
+            <p>Nesse sistema você pode fazer o cadastro de alunos, coordenadores e o próprio Chromebook, além de poder observar o status e quem possui o Chromebook, tudo em um único lugar. Basta entrar nas abas específicas e escolher o que fazer.</p>
         </div>
     </div>
 </body>
