@@ -96,6 +96,7 @@
                         <input type="text" value="<%if(id!=null){out.print(usr.getTombamento());}%>" <%if(id!=null){out.print("readonly ");}%> class="form-control <%if(id != null){out.print(" input");}%>" id="tombamento" placeholder="Digite o tombamento do chormebook" name="tombamento" required>
                     </div>
                     <div class="mb-3 mt-3">
+                    <div class="mb-3 mt-3">
                         <label for="sit-chro" class="form-label"><a>Situação Chromebook:</a></label>
                         <select class="form-select" id="sit-chro" name="situacaochromebook" required>
                             <option value="Clique para escolher opção"></option>
