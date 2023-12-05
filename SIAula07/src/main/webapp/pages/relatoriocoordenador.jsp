@@ -70,7 +70,7 @@
                         <th scope="col" class="tabela">Matrícula</th>                      
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="conteudo">
                     <%
                         if(control.listarDadosUsuarios() != null ){
                             out.println(control.listarDadosUsuarios());
@@ -97,6 +97,57 @@
             buttonCadastro.classList.add("pressionado");
         }
     });
+    
+    var conteudoOriginal = document.getElementById('conteudo').innerHTML;
+
+    document.getElementById('pesquisar').addEventListener('input', function() {
+    var termoPesquisa = this.value.toLowerCase();
+    var conteudo = conteudoOriginal.toLowerCase();
+
+    if (termoPesquisa !== '') {
+        if (conteudo.includes(termoPesquisa)) {
+            // Resetar o destaque anterior
+            document.getElementById('conteudo').innerHTML = conteudoOriginal;
+
+            // Destacar o termo correspondente apenas no texto visível
+            destacarTextoVisivel(document.getElementById('conteudo'), termoPesquisa);
+        } else {
+            document.getElementById('conteudo').style.display = 'none';
+        }
+    } else {
+        // Resetar o destaque se o termo de pesquisa estiver vazio
+        document.getElementById('conteudo').innerHTML = conteudoOriginal;
+        document.getElementById('conteudo').style.display = 'block';
+
+        // Verificar se o campo de pesquisa está vazio
+        if (this.value === '') {
+            // Recarregar a página ao limpar o campo de pesquisa
+            location.reload();
+        }
+    }
+});
+
+function destacarTextoVisivel(elemento, termo) {
+    var nós = elemento.childNodes;
+
+    nós.forEach(function(nó) {
+        if (nó.nodeType === 3) { // Nó de texto
+            var conteudo = nó.nodeValue.toLowerCase();
+            if (conteudo.includes(termo)) {
+                var regex = new RegExp('(' + termo + ')', 'gi');
+                var conteudoDestacado = conteudo.replace(regex, '<span style="background-color: #0ca7fe;">$1</span>');
+                var span = document.createElement('span');
+                span.innerHTML = conteudoDestacado;
+                nó.replaceWith(span);
+            }
+        } else if (nó.nodeType === 1) { // Nó de elemento
+            destacarTextoVisivel(nó, termo);
+        }
+    });
+}
+
+
 </script>
+
 </body>
 </html>

@@ -5,6 +5,7 @@
 --%>
 <%@page import="control.*"%>
 <%@page import="model.*"%>
+<%@ page import="java.sql.*" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="pt-br">
