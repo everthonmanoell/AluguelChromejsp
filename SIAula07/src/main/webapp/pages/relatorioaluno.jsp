@@ -14,10 +14,10 @@
     <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="../icons/css/boxicons.min.css" />
     <link rel="stylesheet" type="text/css" href="../css/style.css" />
-    <link rel="stylesheet" href="js/send.js">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Kanit:wght@100;400;700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="../images/title 1.png" type="image/x-icon" />
     <title>Relatório de Aluno</title>
 </head>
     <div class="bordaDoTopo">
