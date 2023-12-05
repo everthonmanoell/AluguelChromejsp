@@ -8,7 +8,7 @@
 <%@page import="model.*"%>
 <!DOCTYPE html>
 <html lang="pt-br">
-    <%ControleAluguel controle = ControleAluguel.getInstance();%>
+    <%ControleBancoAluguel control = ControleBancoAluguel.getInstance();%>
    
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -53,16 +53,17 @@
             <table class="table">
                         <th scope="col"><input type="search" class="form-control w-255" placeholder="Pesquisar" id="pesquisar">
                         <th scope="col"><button onclick="searchData()" class="btn btn-primary"><i class='bx bx-search'></i></i></th></th></button>                        
-                        <th scope="col" id="totalemuso" style=" float:inline-end;">TOTAL CADASTRADOS: <% out.print(controle.contarAlugueis());%></th>
+                        <th scope="col" id="totalemuso" style=" float:inline-end;">TOTAL ALUGADOS: <% out.print(control.contarAlugueisSemDevolucao());%></th>
             </table>
             </main>
                 <table class="table table-striped table-sm table-hover">
                 <thead>
                     <tr>
                         <th scope="col" class="tabela">ID</th>
-                        <th scope="col" class="tabela">M. Coordenador</th>
+                        <th scope="col" class="tabela">Aluno</th>
                         <th scope="col" class="tabela">M. Aluno</th>
-                        <th scope="col" class="tabela">Tombamento</th>
+                        <th scope="col" class="tabela">M. Coordenador</th>
+                        <th scope="col" class="tabela">Tombamento Chromebok</th>
                         <th scope="col" class="tabela">Situação Chromebook</th>
                         <th scope="col" class="tabela">Data aluguel</th>
                         <th scope="col" class="tabela">Hora aluguel</th>
@@ -70,11 +71,11 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <%out.println(controle.listarDadosAlugueis());%>
+                    
+                        <%out.println(control.listarDadosAlugueisSemDevolucao());%>
                         
 
-                    </tr>
+                   
 
                 </tbody>
             </table>
