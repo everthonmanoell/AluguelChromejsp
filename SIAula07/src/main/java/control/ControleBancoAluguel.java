@@ -11,6 +11,9 @@ import java.sql.Statement;
 import java.util.LinkedList;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 
 public class ControleBancoAluguel {
@@ -31,6 +34,28 @@ public class ControleBancoAluguel {
         }
         return instancia;
     }
+    
+    
+    /*------------------- Hora e data atual do sistema ------------------------*/
+    public String getHoraAtual() {
+        // Obtém a hora atual
+        Date agora = new Date();
+        // Define o formato desejado para a hora
+        SimpleDateFormat formatoHora = new SimpleDateFormat("HH:mm:ss");
+        // Retorna a hora formatada
+        return formatoHora.format(agora);
+    }
+
+    public String getDataAtual() {
+        // Obtém a data atual
+        Date agora = new Date();
+        // Define o formato desejado para a data (formato brasileiro)
+        SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy", new Locale("pt", "BR"));
+        // Retorna a data formatada
+        return formatoData.format(agora);
+    }
+    
+    /*---------------------------------------------------------------------------------------------*/
 
     /*------------------------- ADICIONAR ALUGUEL --------------------------------------*/
     public void adicionarAluguel(Aluguel aluguel) {

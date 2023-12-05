@@ -19,11 +19,22 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Kanit:wght@100;400;700&display=swap" rel="stylesheet">
     <title>CADASTRO DE ALUNO</title>
 </head>
+
+    <%
+            String id = request.getParameter("id");
+            String nome = request.getParameter("nome");
+            String matricula = request.getParameter("matricula");
+            String turno = request.getParameter("turno");
+            String periodo = request.getParameter("periodo");
+            String turma = request.getParameter("turma");
+    %>
+
+
 <body>
     <div class="bordaDoTopo">
         <div class="container-fluid">     
             <a href="home.jsp"><button class="botoesDoTopo">ÍNICIO</button></a>
-            <a href="homecadastro.jsp"><button class="botoesDoTopo pressionado" id="cadastro">CADASTRO</button></a>
+            <a href="homecadastro.jsp"><button class="botoesDoTopo pressionado" id="cadastro"><%if(id != null){out.print("EDITANDO");}else{out.print("CADASTRO");}%></button></a>
             <a href="aluguel.jsp"><button class="botoesDoTopo" id="aluguel">ALUGUEL</button></a>
             <a href="devolucao.jsp"><button class="botoesDoTopo" id="devolucao">DEVOLUÇÃO</button></a>
             <a href="relatorio.jsp"><button class="botoesDoTopo" id="relatorio">RELATÓRIO</button></a>
@@ -36,12 +47,7 @@
                 <p>
                     
                     <%
-                        String id = request.getParameter("id");
-                        String nome = request.getParameter("nome");
-                        String matricula = request.getParameter("matricula");
-                        String turno = request.getParameter("turno");
-                        String periodo = request.getParameter("periodo");
-                        String turma = request.getParameter("turma");
+      
                         
                         
                         ControleBancoAluno control = ControleBancoAluno.getInstance();
