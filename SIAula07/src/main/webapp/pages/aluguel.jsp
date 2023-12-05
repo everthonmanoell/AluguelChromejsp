@@ -77,24 +77,29 @@
 
                     <div class="mb-3 mt-3">
                         <label for="nomealuno" class="form-label"><a>Nome do Aluno:</a></label>
-                        <input type="text" value="<%if(id!=null){out.print(usr.getNomeAluno());}%>" <%if(id!=null){out.print("readonly ");}%> class="form-control <%if(id != null){out.print(" input");}%>" id="nomealuno" placeholder="" name="nomealuno" required>
+
+                        <input type="text" value="<%if(id!=null){out.print(usr.getNomeAluno());}%>" <%if(id!=null){out.print("readonly ");}%> class="form-control <%if(id != null){out.print(" input");}%>" id="nomealuno" placeholder="Digite o nome do aluno" name="nomealuno" required>
+
                     </div>
                     
                     <div class="mb-3 mt-3">
                         <label for="matricula" class="form-label"><a>Matrícula do Aluno:</a></label>
-                        <input type="text" value="<%if(id!=null){out.print(usr.getMatriculaAluno());}%>" <%if(id!=null){out.print("readonly ");}%> class="form-control <%if(id != null){out.print(" input");}%>" id="matricula" placeholder="" name="matriculaAluno" required>
+                        <input type="text" value="<%if(id!=null){out.print(usr.getMatriculaAluno());}%>" <%if(id!=null){out.print("readonly ");}%> class="form-control <%if(id != null){out.print(" input");}%>" id="matricula" placeholder="Digite a matrícula do aluno" name="matriculaAluno" required>
                     </div>
                     
                     <div class="mb-3 mt-3">
                         <label for="matricula" class="form-label"><a>Matrícula do Coordenador:</a></label>
-                        <input type="text" value="<%if(id!=null){out.print(usr.getMatriculaUsuario());}%>" <%if(id!=null){out.print("readonly ");}%> class="form-control <%if(id != null){out.print(" input");}%>" id="matricula" placeholder="" name="matriculaCoordenador" required>
+
+                        <input type="text" value="<%if(id!=null){out.print(usr.getMatriculaUsuario());}%>" <%if(id!=null){out.print("readonly ");}%> class="form-control <%if(id != null){out.print(" input");}%>" id="matricula" placeholder="Digite a matrícula do coordenador" name="matriculaCoordenador" required>
+
                     </div>
                     
                     
                     <div class="mb-3 mt-3">
                         <label for="tombamento" class="form-label"><a>Tombamento:</a></label>
-                        <input type="text" value="<%if(id!=null){out.print(usr.getTombamento());}%>" <%if(id!=null){out.print("readonly ");}%> class="form-control <%if(id != null){out.print(" input");}%>" id="tombamento" placeholder="" name="tombamento" required>
+                        <input type="text" value="<%if(id!=null){out.print(usr.getTombamento());}%>" <%if(id!=null){out.print("readonly ");}%> class="form-control <%if(id != null){out.print(" input");}%>" id="tombamento" placeholder="Digite o tombamento do chormebook" name="tombamento" required>
                     </div>
+                    <div class="mb-3 mt-3">
                     <div class="mb-3 mt-3">
                         <label for="sit-chro" class="form-label"><a>Situação Chromebook:</a></label>
                         <select class="form-select" id="sit-chro" name="situacaochromebook" required>
@@ -120,7 +125,9 @@
 
                         <div class="mb-3 mt-3">
                             <label for="termino" class="form-label"><a>Hora término:</a></label>
-                            <input type="text" readonly value=" <%out.print(control.getHoraAtual());%>  " class="form-control" id="termino" placeholder="" name="horatermino">
+
+                            <input type="text" readonly value=" <%out.print(control.getHoraAtual());%>  " class="form-control w-25" id="termino" placeholder="" name="horatermino">
+
                         </div>
                     <% } %>
 
@@ -135,8 +142,6 @@
                             <%if(id!=null){out.print("Devolver");}else{out.print("Alugar");}%>
                         </button>
                         <button type="reset" class="BotaoSubmit">Cancelar</button>
-                        
-                        
                         
                         <script>
                             function exibirMensagem(mensagem) {
@@ -161,6 +166,7 @@
         }
     });
 </script>
+
 
 
 
