@@ -19,11 +19,28 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Kanit:wght@100;400;700&display=swap" rel="stylesheet">
     <title>ALUGUEL DE CHROMEBOOK</title>
 </head>
+
+        <%
+
+                String id = request.getParameter("id");
+                String matriculaCoordenador = request.getParameter("matriculaCoordenador");
+                String matriculaAluno = request.getParameter("matriculaAluno");
+                String tombamento = request.getParameter("tombamento");
+                String situacaochromebook = request.getParameter("situacaochromebook");
+                String dataaluguel = request.getParameter("dataaluguel");
+                String horainicio = request.getParameter("horainicio");
+                String datatermino = request.getParameter("datatermino");
+                String horatermino = request.getParameter("horatermino");
+                
+                ControleBancoAluguel control = ControleBancoAluguel.getInstance();
+                Aluguel usr = null;
+
+        %>
     <div class="bordaDoTopo">
         <div class="container-fluid">     
             <a href="home.jsp"><button class="botoesDoTopo">ÍNICIO</button></a>
             <a href="homecadastro.jsp"><button class="botoesDoTopo" id="cadastro">CADASTRO</button></a>
-            <a href="aluguel.jsp"><button class="botoesDoTopo" id="aluguel">ALUGUEL</button></a>
+            <a href="aluguel.jsp"><button class="botoesDoTopo" id="aluguel"><%if(id != null){out.print("DEVOLVER");}else{out.print("ALUGUEL");}%></button></a>
             <a href="devolucao.jsp"><button class="botoesDoTopo" id="devolucao">DEVOLUÇÃO</button></a>
             <a href="relatorio.jsp"><button class="botoesDoTopo" id="relatorio">RELATÓRIO</button></a>
             <a href="sair.jsp"><button class="power"><img src="../images/power.png" class="power" style="height: 30px;"></button></a>
@@ -36,20 +53,8 @@
                 <p>
 
                     <%
-                        String id = request.getParameter("id");
-                        String matriculaCoordenador = request.getParameter("matriculaCoordenador");
-                        String matriculaAluno = request.getParameter("matriculaAluno");
-                        String tombamento = request.getParameter("tombamento");
-                        String situacaochromebook = request.getParameter("situacaochromebook");
-                        String dataaluguel = request.getParameter("dataaluguel");
-                        String horainicio = request.getParameter("horainicio");
-                        String datatermino = request.getParameter("datatermino");
-                        String horatermino = request.getParameter("horatermino");
-                        
 
-
-                        ControleBancoAluguel control = ControleBancoAluguel.getInstance();
-                        Aluguel usr = null;
+                       
 
                         if (id != null) {
                             out.println("Devolução de Chromebook");
@@ -95,27 +100,27 @@
                         <select class="form-select" id="sit-chro" name="situacaochromebook" required>
                             <option value="Clique para escolher opção"></option>
                             <option value="inoperante" <%if((id!=null) && (usr.getSituacaoChromebook().equals("inoperante"))){out.print("selected");}%> >Inoperante</option>
-                            <option value="operante"   <%if((id!=null) && (usr.getSituacaoChromebook().equals("inoperante"))){out.print("selected");}%> >Operante</option>
+                            <option value="operante"   <%if((id!=null) && (usr.getSituacaoChromebook().equals("operante"))){out.print("selected");}%> >Operante</option>
                         </select>
                     </div>
                     <div class="mb-3 mt-3">
                         <label for="datalugu" class="form-label"><a>Data de Aluguel:</a></label>
-                        <input type="date" value="   <%if(id!=null){out.print(usr.getDataInicio());}%>" <%if(id!=null){out.print("readonly ");}%> class="form-control <%if(id != null){out.print(" input");}%>" id="datalugu" placeholder="" name="datainicio" required>
+                        <input type="text" readonly value="   <%if(id!=null){out.print(usr.getDataInicio());}else{out.print(control.getDataAtual());}%>"   class="form-control <%if(id != null){out.print(" input");}%>" id="datalugu" placeholder="" name="datainicio" required>
                     </div>
                     <div class="mb-3 mt-3">
                         <label for="hora" class="form-label"><a>Hora início:</a></label>
-                        <input type="time" value="<   <%if(id!=null){out.print(usr.getHoraInicio());}%>" <%if(id!=null){out.print("readonly ");}%> class="form-control w-25 <%if(id != null){out.print(" input");}%>" id="hora" placeholder="" name="horainicio" required>
+                        <input type="text" readonly value="   <%if(id!=null){out.print(usr.getHoraInicio());}else{out.print(control.getHoraAtual());}%>"  class="form-control w-25 <%if(id != null){out.print(" input");}%>" id="hora" placeholder="" name="horainicio" required>
                     </div>
 
                     <% if (id != null) { %>
                         <div class="mb-3 mt-3">
                             <label for="datatermino" class="form-label"><a>Data término:</a></label>
-                            <input type="date" value="   <%= usr.getDataTermino() %>" class="form-control" id="datatermino" placeholder="" name="datatermino">
+                            <input type="text" readonly value=" <%out.print(control.getDataAtual());%>  " class="form-control" id="datatermino" placeholder="" name="datatermino">
                         </div>
 
                         <div class="mb-3 mt-3">
                             <label for="termino" class="form-label"><a>Hora término:</a></label>
-                            <input type="time" value="   <%= usr.getHoraTermino() %>" class="form-control" id="termino" placeholder="" name="horatermino">
+                            <input type="text" readonly value=" <%out.print(control.getHoraAtual());%>  " class="form-control" id="termino" placeholder="" name="horatermino">
                         </div>
                     <% } %>
 
@@ -156,5 +161,8 @@
         }
     });
 </script>
+
+
+
 </body>
 </html>
