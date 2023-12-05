@@ -5,7 +5,8 @@
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<%@page import="usuario.*"%>
+<%@page import="control.*"%>
+<%@page import="model.*"%>
 
 <!DOCTYPE html>
 <html>
@@ -28,19 +29,24 @@
            String senha = request.getParameter("senha");
              
            // Instanciamento de objeto de ControleUsuario        
-           ControleUsuario controle = ControleUsuario.getInstance();
+           
+           ControleBancoUsuario control = ControleBancoUsuario.getInstance(); 
            
            
            if (iniid != null){
-                Usuario usr = new Usuario(iniid, nomecompleto, matricula, senha);
-                controle.adicionarUsuario(usr);
+                /*Usuario usr = new Usuario(iniid, nomecompleto, matricula, senha);
+                controle.adicionarUsuario(usr);*/
+                
+                Usuario us = new Usuario(matricula, nomecompleto, senha);
+                control.adicionar(us);
+                
                 response.sendRedirect("../../index.jsp");
             }else if (cad != null) {
-               Usuario usr = new Usuario(id, nomecompleto, matricula, senha);
-               controle.adicionarUsuario(usr);
+                Usuario us = new Usuario(matricula, nomecompleto, senha);
+                control.adicionar(us);
                response.sendRedirect("../cadastrocoordenador.jsp");
            } else if (id != null) {
-               controle.alterarUsuario(id, nomecompleto, matricula, senha);
+               control.alterarUsuario(id, nomecompleto, matricula, senha);
                response.sendRedirect("../relatoriocoordenador.jsp");
            } else {
                 response.sendRedirect("../../error.jsp");

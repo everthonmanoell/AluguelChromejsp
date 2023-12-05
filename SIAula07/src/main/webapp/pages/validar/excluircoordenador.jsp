@@ -11,14 +11,15 @@
 </head>
 <body>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="usuario.*"%>
-<%@page import="usuario.ControleUsuario"%>
+
+<%@page import="control.*"%>
+<%@page import="model.*"%>
 
 <%
     String id = request.getParameter("id");
 
-    ControleUsuario controle = ControleUsuario.getInstance();
-    controle.excluirUsuario(id);
+    ControleBancoUsuario control = ControleBancoUsuario.getInstance();
+    control.excluirUsuario(id);
 
     response.sendRedirect("../relatoriocoordenador.jsp");
 %>

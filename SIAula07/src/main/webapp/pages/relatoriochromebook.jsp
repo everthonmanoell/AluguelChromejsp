@@ -3,7 +3,8 @@
     Created on : 18 de nov. de 2023, 00:37:09
     Author     : felipe
 --%>
-<%@page import="usuario.*"%>
+<%@page import="control.*"%>
+<%@page import="model.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -60,14 +61,14 @@
         </div>
             
         <%
-            ControleUsuario controle = ControleUsuario.getInstance();
+            ControleBancoChromebook control = ControleBancoChromebook.getInstance();
         %>
              <main>
             <table class="table">
                         <th scope="col"><input type="search" class="form-control w-255" placeholder="Pesquisar" id="pesquisar">
                         <th scope="col"><button onclick="searchData()" class="btn btn-primary"><i class='bx bx-search'></i></i></th></th></button>
                         
-                        <th scope="col" id="totalemuso" style="float:inline-end;">TOTAL CADASTRADOS: <%out.print(controle.contarChromebook());%></th>
+                        <th scope="col" id="totalemuso" style="float:inline-end;">TOTAL CADASTRADOS: <%out.print(control.listarQuantidadeChromebook());%></th>
             </table>
             </main>
                 <table class="table table-striped table-sm table-hover">
@@ -82,8 +83,8 @@
                     <tbody>
                         
                     <%
-                    if(controle.listarDadosChromebook() != null ){
-                        out.println(controle.listarDadosChromebook());
+                    if(control.listarDadosChromebook() != null ){
+                        out.println(control.listarDadosChromebook());
                     }else{
                         out.println("<p>Nenhum chromebook foi cadastrado! :( </p>");
                     }

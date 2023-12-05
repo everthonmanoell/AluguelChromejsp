@@ -5,7 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="usuario.*"%>
+<%@page import="control.*"%>
+<%@page import="model.*"%>
 
 
 <!DOCTYPE html>
@@ -18,34 +19,35 @@
 
 
 
-        <%@page import="usuario.ControleAluguel"%>
+        
 
         <%
-                ControleAluguel controle = ControleAluguel.getInstance();
+                ControleBancoAluguel control = ControleBancoAluguel.getInstance();
                 
                 String id = request.getParameter("id");
-                String devolver = request.getParameter("devolver");
+                
                 
                 
                 String matriculaCoordenador = request.getParameter("matriculaCoordenador");
                 String matriculaAluno = request.getParameter("matriculaAluno");
                 String tombamento = request.getParameter("tombamento");
                 String situacaochromebook = request.getParameter("situacaochromebook");
-                String dataaluguel = request.getParameter("dataaluguel");
+                String datainicio = request.getParameter("datainicio");
                 String horainicio = request.getParameter("horainicio");
                 String datatermino = request.getParameter("datatermino");
                 String horatermino = request.getParameter("horatermino");
+                String nomealuno = request.getParameter("nomealuno");
                 
     
-            if (devolver != null) {
-                controle.alterarAluguel(id, situacaochromebook, horatermino, datatermino);
+            if (id != null) {
+                control.alterarAluguel(id, situacaochromebook, horatermino, datatermino);
                 response.sendRedirect("../devolucao.jsp");
 
 
-            } else if (id != null){
+            } else if (matriculaCoordenador != null){
             
-                Aluguel aluguel = new Aluguel(id, matriculaCoordenador, matriculaAluno, tombamento, situacaochromebook, dataaluguel, horainicio, datatermino, horatermino);
-                controle.adicionarAluguel(aluguel);
+                Aluguel aluguel = new Aluguel(nomealuno, matriculaCoordenador, matriculaAluno, tombamento, situacaochromebook, datainicio, horainicio );
+                control.adicionarAluguel(aluguel);
                 response.sendRedirect("../aluguel.jsp");
                 
             }else{

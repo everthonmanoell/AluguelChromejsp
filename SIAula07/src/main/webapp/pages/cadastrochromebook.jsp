@@ -4,7 +4,8 @@
     Author     : Everthon Manoel
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="usuario.*"%>
+<%@page import="control.*"%>
+<%@page import="model.*"%>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -18,10 +19,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Kanit:wght@100;400;700&display=swap" rel="stylesheet">
     <title>CADASTRO DE CHROMEBOOK</title>
 </head>
+
+    <%
+            String id = request.getParameter("id");   
+            String tombamento = request.getParameter("tombamento");
+            String situacao = request.getParameter("situacao");
+            ControleBancoChromebook control = ControleBancoChromebook.getInstance();
+            Chromebook usr = null;
+    %>
+
     <div class="bordaDoTopo">
         <div class="container-fluid">     
             <a href="home.jsp"><button class="botoesDoTopo">ÍNICIO</button></a>
-            <a href="homecadastro.jsp"><button class="botoesDoTopo pressionado" id="cadastro">CADASTRO</button></a>
+            <a href="homecadastro.jsp"><button class="botoesDoTopo pressionado" id="cadastro"><%if(id != null){out.print("EDITANDO");}else{out.print("CADASTRO");}%></button></a>
             <a href="aluguel.jsp"><button class="botoesDoTopo" id="aluguel">ALUGUEL</button></a>
             <a href="devolucao.jsp"><button class="botoesDoTopo" id="devolucao">DEVOLUÇÃO</button></a>
             <a href="relatorio.jsp"><button class="botoesDoTopo" id="relatorio">RELATÓRIO</button></a>
@@ -34,19 +44,15 @@
             <p>
                 
                 <%
-                    String id = request.getParameter("id");   
-                    String tombamento = request.getParameter("tombamento");
-                    String situacao = request.getParameter("situacao");
-                    ControleUsuario controle = ControleUsuario.getInstance();
-                    Chromebook usr = null;
+
 
                     if (id != null && !id.isEmpty()) {
                         out.println("Editando Chromebook");
-                        usr = controle.getChromebook(id);
+                        usr = control.getChromebook(id);
                     } else {
                         out.println("Cadastro Chromebook");
                         // Ajuste na chamada do construtor:
-                        usr = new Chromebook("", "", "", ""); // Substitua pelos valores apropriados
+                        usr = new Chromebook("", "", ""); // Substitua pelos valores apropriados
                     }
                 %>
 
@@ -54,15 +60,9 @@
 
             </p>
         </div>
-        <form action="validar/validarchromebook.jsp<%if(id!=null){out.print("?op=E");}%>" method="post">
+        <form action="validar/validarchromebook.jsp<%if(id!=null){out.print("?id=" + usr.getId());}%>" method="post">
             <div class="fonteCoordenador">
-                <% if (id != null) { %>
-                    <label for="ID" class="form-label"><a>ID:</a></label>
-                    <input type="text" value="<% out.print(usr.getId()); %>" class="form-control input" id="ID" placeholder="" name="id" readonly>
-                <% } else { %>
-                    <label for="ID" class="form-label"><a>ID:</a></label>
-                    <input type="text" value="" class="form-control" id="ID" placeholder="" name="id" required>
-                <% } %>
+
 
                 
                 

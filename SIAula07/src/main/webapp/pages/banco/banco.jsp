@@ -12,10 +12,17 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
-        <h1>Hello World!</h1>
+    
+        <h1>Exemplo banco!</h1>
         <%
             Banco banco = new  Banco();
             out.println(banco.consulta());
+            Usuario usuario = new Usuario(3, "Teste", "teste", "123", "usr");
+            banco.adicionar(usuario);
+            usuario.setTipo("usr");
+            banco.alterar(usuario);
+            usuario.setId(4);
+            banco.remover(usuario);
         %>
     </body>
 </html>

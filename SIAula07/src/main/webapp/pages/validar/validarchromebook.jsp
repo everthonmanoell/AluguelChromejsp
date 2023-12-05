@@ -5,8 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="usuario.*"%>
-<%@page import="usuario.ControleUsuario"%>
+<%@page import="control.*"%>
+<%@page import="model.*"%>
 
 <!DOCTYPE html>
 <html>
@@ -23,16 +23,16 @@
             String tombamento = request.getParameter("tombamento");
             String situacao = request.getParameter("situacao");
             String descricao = request.getParameter("descricao");
-            String op = request.getParameter("op");
+            
 
-            ControleUsuario controle = ControleUsuario.getInstance();
+            ControleBancoChromebook control = ControleBancoChromebook.getInstance();
 
-            if (op != null) {
-                controle.alterarChromebook(id, tombamento, situacao, descricao);
+            if (id != null) {
+                control.alterarChromebook(id, tombamento, situacao, descricao);
                 response.sendRedirect("../relatoriochromebook.jsp");
             } else if (tombamento != null && situacao != null){
-                Chromebook chromebook = new Chromebook(id, tombamento, situacao, descricao);
-                controle.adicionarChromebook(chromebook);
+                Chromebook chromebook = new Chromebook(tombamento, situacao, descricao);
+                control.adicionarChromebook(chromebook);
                 response.sendRedirect("../cadastrochromebook.jsp");
             } else {
                 response.sendRedirect("../../error.jsp");

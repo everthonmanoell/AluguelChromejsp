@@ -11,14 +11,14 @@
 </head>
 <body>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="usuario.*"%>
-<%@page import="usuario.ControleUsuario"%>
+<%@page import="control.*"%>
+<%@page import="model.*"%>
 
 <%
     String id = request.getParameter("id");
 
-    ControleUsuario controle = ControleUsuario.getInstance();
-    controle.excluirChromebook(id);
+    ControleBancoChromebook control = ControleBancoChromebook.getInstance();
+    control.excluirChromebook(id);
 
     response.sendRedirect("../relatoriochromebook.jsp");
 %>
