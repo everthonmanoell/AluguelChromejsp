@@ -99,8 +99,8 @@
                         <label for="sit-chro" class="form-label"><a>Situação Chromebook:</a></label>
                         <select class="form-select" id="sit-chro" name="situacaochromebook" required>
                             <option value="Clique para escolher opção"></option>
-                            <option value="inoperante" selected <%if((id!=null) && (usr.getSituacaoChromebook().equals("inoperante"))){out.print("selected");}%> >Inoperante</option>
-                            <option value="operante"  selected <%if((id!=null) && (usr.getSituacaoChromebook().equals("operante"))){out.print("selected");}%> >Operante</option>
+                            <option value="inoperante"  <%if((id!=null) && (usr.getSituacaoChromebook().equals("inoperante"))){out.print("selected");}%> >Inoperante</option>
+                            <option value="operante"  <%if(id!=null){out.print("");}else{out.print("selected");} %> <%if((id!=null) && (usr.getSituacaoChromebook().equals("operante"))){out.print("selected");}%> >Operante</option>
                         </select>
                     </div>
                     <div class="mb-3 mt-3">
