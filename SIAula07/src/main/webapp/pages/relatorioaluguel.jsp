@@ -20,7 +20,10 @@
     <link rel="shortcut icon" href="../images/title 1.png" type="image/x-icon" />
     <title>Relatório de Aluguel</title>
 </head>
-<% ControleBancoAluguel control = ControleBancoAluguel.getInstance();  %>
+<%
+    ControleBancoAluguel control = ControleBancoAluguel.getInstance();
+    String pesquisa = request.getParameter("pesquisa");
+%>
 
     <div class="bordaDoTopo">
         <div class="container-fluid">     
@@ -53,7 +56,14 @@
                         <form action="pesquisa/pesquisaralugueis.jsp?relatorio=true" method="get">
                             <th scope="col"><input type="search" class="form-control w-255" placeholder="Pesquisar" id="pesquisar" name="pesquisa">
                             <th scope="col"><button onclick="searchData()" class="btn btn-primary"><i class='bx bx-search'></i></i></th></th></button>
-                            <th scope="col" id="totalemuso" style=" float:inline-end;">TOTAL ALUGADOS: <%out.print(control.contarAlugueisComDevolucao());%></th>
+                            <th scope="col" id="totalemuso" style="float:inline-end;">
+                    TOTAL ALUGADOS:
+                    <% if(pesquisa != null && !pesquisa.isEmpty()) {
+                        out.print(control.contarAlugueisComPesquisa(pesquisa));
+                    } else {
+                        out.print(control.contarAlugueisComDevolucao());
+                    } %>
+                </th>
                         </form>
             </table>
             </main>
@@ -76,20 +86,13 @@
                     <tbody>
                         <%
                             
-                            
-
-                            String pesquisa = request.getParameter("pesquisa");
-
-                            if(pesquisa == null || pesquisa.isEmpty()){
-
+                             if(pesquisa == null || pesquisa.isEmpty()){
                             out.println(control.listarDadosAlugueisComDevolucao());
-
                             }else{
-
                             out.println(control.listarPesquisaAlugueisComDevolucao(pesquisa));
                         
-                            }
-                          
+                            }  
+
                         %>
                         
                         
