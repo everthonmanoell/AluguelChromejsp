@@ -50,10 +50,11 @@
              </div>   
             <main>
             <table class="table">
-                        <th scope="col"><input type="search" class="form-control w-255" placeholder="Pesquisar" id="pesquisar">
-                        <th scope="col"><button onclick="searchData()" class="btn btn-primary"><i class='bx bx-search'></i></i></th></th></button>
-                        
-                        <th scope="col" id="totalemuso" style=" float:inline-end;">TOTAL ALUGADOS: <%out.print(control.contarAlugueisComDevolucao());%></th>
+                        <form action="pesquisa/pesquisaralugueis.jsp?relatorio=true" method="get">
+                            <th scope="col"><input type="search" class="form-control w-255" placeholder="Pesquisar" id="pesquisar" name="pesquisa">
+                            <th scope="col"><button onclick="searchData()" class="btn btn-primary"><i class='bx bx-search'></i></i></th></th></button>
+                            <th scope="col" id="totalemuso" style=" float:inline-end;">TOTAL ALUGADOS: <%out.print(control.contarAlugueisComDevolucao());%></th>
+                        </form>
             </table>
             </main>
                 <table class="table table-striped table-sm table-hover">
@@ -73,13 +74,24 @@
                       </tr>
                     </thead>
                     <tbody>
-                    <%
-                    if(control.listarDadosAlugueisComDevolucao() != null ){
-                        out.println(control.listarDadosAlugueisComDevolucao());
-                    }else{
-                        out.println("<p>Nenhum chromebook foi cadastrado! :( </p>");
-                    }
-                    %>
+                        <%
+                            
+                            
+
+                            String pesquisa = request.getParameter("pesquisa");
+
+                            if(pesquisa == null || pesquisa.isEmpty()){
+
+                            out.println(control.listarDadosAlugueisComDevolucao());
+
+                            }else{
+
+                            out.println(control.listarPesquisaAlugueisComDevolucao(pesquisa));
+                        
+                            }
+                          
+                        %>
+                        
                         
                     </tbody>
                   </table>
