@@ -5,10 +5,15 @@
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="control.*"%>
-
+<%@page import="model.*"%>
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
+        <%
+                ControleBancoUsuario control = ControleBancoUsuario.getInstance();
+                                    String pesquisa = request.getParameter("pesquisa");
+
+            %>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" />
@@ -60,11 +65,6 @@
                     <a>RELATÓRIO DE COORDERNADORES</a>
                 </div>
             </div>
-
-            <%
-                ControleBancoUsuario control = ControleBancoUsuario.getInstance();
-            %>
-
             <main>
             <table class="table">
                 
@@ -72,8 +72,13 @@
                         
                         <th scope="col"><input type="search" class="form-control w-255" placeholder="Pesquisa por nome ou matricula" id="pesquisar" name="pesquisa">
                         <th scope="col"><button onclick="searchData()" class="btn btn-primary"><i class='bx bx-search'></i></i></th></th></button>
-                        <th scope="col" id="totalemuso" style=" float:inline-end;">TOTAL CADASTRADOS: <% out.print(control.listarQuantidadeUsuarios()); %> </th>
-                    
+                        <th scope="col" id="totalemuso" style="float:inline-end;">TOTAL: 
+                    <% if(pesquisa != null && !pesquisa.isEmpty()) {
+                        out.print(control.contarCoordenadoresComPesquisa(pesquisa));
+                    } else {
+                        out.print(control.listarQuantidadeUsuarios());
+                    } %>
+                </th>
                     </form>
             </table>
             </main>            
@@ -87,7 +92,6 @@
                 </thead>
                 <tbody id="conteudo">
                     <%
-                        String pesquisa = request.getParameter("pesquisa");
                         
                         if(pesquisa == null || pesquisa.isEmpty()){
                         

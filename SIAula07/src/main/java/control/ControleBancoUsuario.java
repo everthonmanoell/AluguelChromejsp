@@ -125,8 +125,35 @@ public class ControleBancoUsuario {
 
         return texto;
     }
-        
-        
+        public int contarCoordenadoresComPesquisa(String parametro) {
+    int contador = 0;
+
+    if (!parametro.isEmpty()) {
+        try {
+            String consulta = "SELECT COUNT(*) FROM coordenador " +
+                              "WHERE nome LIKE ? OR matricula LIKE ? OR turno LIKE ? OR periodo LIKE ? OR turma LIKE ? OR curso LIKE ?";
+            
+            PreparedStatement stmt = conn.prepareStatement(consulta);
+            for (int i = 1; i <= 6; i++) {
+                stmt.setString(i, "%" + parametro + "%");
+            }
+            
+            ResultSet resultado = stmt.executeQuery();
+
+            if (resultado.next()) {
+                contador = resultado.getInt(1);
+            }
+
+            stmt.close();
+        } catch (SQLException ex) {
+            System.out.println("Não conseguiu contar os coordenadores com pesquisa.");
+            ex.printStackTrace();
+        }
+    }
+
+    return contador;
+}
+
         public String listarPesquisaUsuarios(String pesquisa) {
         StringBuilder texto = new StringBuilder();
 

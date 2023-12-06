@@ -60,7 +60,7 @@
                         <form action="pesquisa/pesquisaraluno.jsp" method="get">
                             <th scope="col"><input type="search" class="form-control w-255" placeholder="Pesquisar nome, matricula, turno, periodo ou curso" id="pesquisar" name="pesquisa">
                             <th scope="col"><button onclick="searchData()" class="btn btn-primary"><i class='bx bx-search'></i></i></th></th></button>
-                        <th scope="col" id="totalemuso" style="float:inline-end;">TOTAL ALUGADOS:
+                        <th scope="col" id="totalemuso" style="float:inline-end;">TOTAL:
                     <% if(pesquisa != null && !pesquisa.isEmpty()) {
                         out.print(control.contarAlunosComPesquisa(pesquisa));
                     } else {

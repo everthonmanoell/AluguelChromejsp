@@ -1,5 +1,5 @@
 <%-- 
-    Document   : PERFIL
+    Document   : relatoriochromebook
     Created on : 18 de nov. de 2023, 00:37:09
     Author     : felipe
 --%>
@@ -21,6 +21,11 @@
     <link rel="shortcut icon" href="../images/title 1.png" type="image/x-icon" />
     <title>Relatório de Chromebook</title>
 </head>
+<%
+            ControleBancoChromebook control = ControleBancoChromebook.getInstance();
+            String pesquisa = request.getParameter("pesquisa");
+
+        %>
     <div class="bordaDoTopo">
         <div class="container-fluid">     
             <a href="home.jsp"><button class="botoesDoTopo">ÍNICIO</button></a>
@@ -59,18 +64,18 @@
             <div class="titulo">
                 <a>RELATÓRIO DE CHROMEBOOK </a>
             </div>
-        </div>
-            
-        <%
-            ControleBancoChromebook control = ControleBancoChromebook.getInstance();
-        %>
+        </div>           
              <main>
             <table class="table">
                         <form action="pesquisa/pesquisarchromebook.jsp" method="get">
                             <th scope="col"><input type="search" class="form-control w-255" placeholder="Pesquisar" id="Pesquisa por tombamento ou situação" name="pesquisa">
                             <th scope="col"><button onclick="searchData()" class="btn btn-primary"><i class='bx bx-search'></i></i></th></th></button>
-
-                            <th scope="col" id="totalemuso" style="float:inline-end;">TOTAL CADASTRADOS: <%out.print(control.listarQuantidadeChromebook());%></th>
+                            <th scope="col" id="totalemuso" style="float:inline-end;">TOTAL:
+                    <% if(pesquisa != null && !pesquisa.isEmpty()) {
+                        out.print(control.contarChromebooksComPesquisa(pesquisa));
+                    } else {
+                        out.print(control.listarQuantidadeChromebook());
+                    } %>
                         </form>
             </table>
             </main>
@@ -87,17 +92,13 @@
                         
                     
                     <%
-                        String pesquisa = request.getParameter("pesquisa");
                         
                         if(pesquisa == null || pesquisa.isEmpty()){
+                            out.println(control.listarDadosChromebook());
+                            }else{
+                            out.println(control.listarPesquisaChromebook(pesquisa));
                         
-                        out.println(control.listarDadosChromebook());
-                        
-                        }else{
-                        
-                        out.println(control.listarPesquisaChromebook(pesquisa));
-                        
-                        }
+                            }        
                                          
                     %>
                         

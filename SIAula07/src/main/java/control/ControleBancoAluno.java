@@ -178,9 +178,9 @@ public class ControleBancoAluno {
 
     if (!parametro.isEmpty()) {
         try {
-            // Use o parâmetro para construir a condição da pesquisa
             String consulta = "SELECT COUNT(*) FROM aluno " +
                               "WHERE nome LIKE ? OR matricula LIKE ? OR turno LIKE ? OR periodo LIKE ? OR turma LIKE ? OR curso LIKE ?";
+            
             PreparedStatement stmt = conn.prepareStatement(consulta);
             for (int i = 1; i <= 6; i++) {
                 stmt.setString(i, "%" + parametro + "%");

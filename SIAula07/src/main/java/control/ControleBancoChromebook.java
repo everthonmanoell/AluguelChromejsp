@@ -108,7 +108,37 @@ public class ControleBancoChromebook {
 
         return texto.toString();
     }
+    
+    public int contarChromebooksComPesquisa(String parametro) {
+    int contador = 0;
 
+    if (!parametro.isEmpty()) {
+        try {
+            String consulta = "SELECT COUNT(*) FROM chromebook " +
+                              "WHERE tombamento LIKE ? OR situacao LIKE ? OR descricao LIKE ?";
+            PreparedStatement stmt = conn.prepareStatement(consulta);
+            for (int i = 1; i <= 4; i++) {
+                stmt.setString(i, "%" + parametro + "%");
+            }
+
+            ResultSet resultado = stmt.executeQuery();
+
+            if (resultado.next()) {
+                contador = resultado.getInt(1);
+            }
+
+            stmt.close();
+        } catch (SQLException ex) {
+            System.out.println("Não conseguiu contar os chromebooks com pesquisa.");
+            ex.printStackTrace();
+        }
+    }
+
+    return contador;
+}
+
+
+ 
     public String listarPesquisaChromebook(String pesquisa) {
         StringBuilder texto = new StringBuilder();
 
