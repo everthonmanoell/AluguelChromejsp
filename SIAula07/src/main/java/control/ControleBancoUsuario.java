@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package control;
+import static java.lang.System.out;
 import model.Conexao;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -124,6 +125,51 @@ public class ControleBancoUsuario {
 
         return texto;
     }
+        
+        
+        public String listarPesquisaUsuarios(String pesquisa) {
+        StringBuilder texto = new StringBuilder();
+
+        try {
+            String consulta = "SELECT * FROM coordenador";
+            Statement stm = conn.createStatement();
+            ResultSet resultado = stm.executeQuery(consulta);
+
+            while (resultado.next()) {
+                String nomeCompleto = resultado.getString("nome");
+                String matricula = resultado.getString("matricula");
+
+                // Verifica se a pesquisa está presente no nome (case-insensitive)
+                if (nomeCompleto.toLowerCase().indexOf(pesquisa.toLowerCase()) != -1 || matricula.toLowerCase().indexOf(pesquisa.toLowerCase()) != -1) {
+
+                    Usuario usuario = new Usuario(
+                            resultado.getString("matricula"),
+                            nomeCompleto,
+                            resultado.getString("senha")
+                    );
+                    usuario.setId(resultado.getString("id"));
+
+                    texto.append("<tr>")
+                            .append("<td>").append(usuario.getId()).append("</td>")
+                            .append("<td>").append(usuario.getNomecompleto()).append("</td>")
+                            .append("<td>").append(usuario.getMatricula()).append("</td>")
+                            .append("<td>")
+                            .append("<a href=\"cadastrocoordenador.jsp?id=").append(usuario.getId()).append("\" class=\"btn btn-outline-primary btn-sm\">Alterar</a>")
+                            .append("<a href=\"validar/excluircoordenador.jsp?id=").append(usuario.getId()).append("\" class=\"btn btn-outline-danger btn-sm\" onclick=\"return confirm('Tem certeza que deseja excluir?')\">Excluir</a>\n")
+                            .append("</td>")
+                            .append("</tr>");
+                }
+            }
+
+            stm.close();
+        } catch (SQLException ex) {
+            
+            System.out.println("Não conseguiu consultar os dados dos coordenadores.");
+        }
+
+        return texto.toString();
+    }
+
         
     
 

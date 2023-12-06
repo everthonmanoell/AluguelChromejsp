@@ -56,10 +56,14 @@
 
             <main>
             <table class="table">
-                        <th scope="col"><input type="search" class="form-control w-255" placeholder="Pesquisar" id="pesquisar">
-                        <th scope="col"><button onclick="searchData()" class="btn btn-primary"><i class='bx bx-search'></i></i></th></th></button>
+                
+                    <form action="pesquisa/pesquisarusuario.jsp" method="get">
                         
+                        <th scope="col"><input type="search" class="form-control w-255" placeholder="Pesquisa por nome ou matricula" id="pesquisar" name="pesquisa">
+                        <th scope="col"><button onclick="searchData()" class="btn btn-primary"><i class='bx bx-search'></i></i></th></th></button>
                         <th scope="col" id="totalemuso" style=" float:inline-end;">TOTAL CADASTRADOS: <% out.print(control.listarQuantidadeUsuarios()); %> </th>
+                    
+                    </form>
             </table>
             </main>            
             <table class="table table-striped table-sm table-hover">
@@ -72,11 +76,18 @@
                 </thead>
                 <tbody id="conteudo">
                     <%
-                        if(control.listarDadosUsuarios() != null ){
-                            out.println(control.listarDadosUsuarios());
+                        String pesquisa = request.getParameter("pesquisa");
+                        
+                        if(pesquisa == null || pesquisa.isEmpty()){
+                        
+                        out.println(control.listarDadosUsuarios());
+                        
                         }else{
-                            out.println("<p>Nenhum chromebook foi cadastrado! :( </p>");
+                        
+                        out.println(control.listarPesquisaUsuarios(pesquisa));
+                        
                         }
+                        
                     %>
                 </tbody>
             </table>
@@ -85,69 +96,6 @@
 </div>
 
 </div> 
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        var currentPage = window.location.pathname;
-
-
-        var buttonCadastro = document.getElementById("coordenador");
-        var buttonLink = buttonCadastro.closest("a").getAttribute("href");
-
-        if (currentPage.endsWith(buttonLink)) {
-            buttonCadastro.classList.add("pressionado");
-        }
-    });
-    
-    var conteudoOriginal = document.getElementById('conteudo').innerHTML;
-
-    document.getElementById('pesquisar').addEventListener('input', function() {
-    var termoPesquisa = this.value.toLowerCase();
-    var conteudo = conteudoOriginal.toLowerCase();
-
-    if (termoPesquisa !== '') {
-        if (conteudo.includes(termoPesquisa)) {
-            // Resetar o destaque anterior
-            document.getElementById('conteudo').innerHTML = conteudoOriginal;
-
-            // Destacar o termo correspondente apenas no texto visível
-            destacarTextoVisivel(document.getElementById('conteudo'), termoPesquisa);
-        } else {
-            document.getElementById('conteudo').style.display = 'none';
-        }
-    } else {
-        // Resetar o destaque se o termo de pesquisa estiver vazio
-        document.getElementById('conteudo').innerHTML = conteudoOriginal;
-        document.getElementById('conteudo').style.display = 'block';
-
-        // Verificar se o campo de pesquisa está vazio
-        if (this.value === '') {
-            // Recarregar a página ao limpar o campo de pesquisa
-            location.reload();
-        }
-    }
-});
-
-function destacarTextoVisivel(elemento, termo) {
-    var nós = elemento.childNodes;
-
-    nós.forEach(function(nó) {
-        if (nó.nodeType === 3) { // Nó de texto
-            var conteudo = nó.nodeValue.toLowerCase();
-            if (conteudo.includes(termo)) {
-                var regex = new RegExp('(' + termo + ')', 'gi');
-                var conteudoDestacado = conteudo.replace(regex, '<span style="background-color: #0ca7fe;">$1</span>');
-                var span = document.createElement('span');
-                span.innerHTML = conteudoDestacado;
-                nó.replaceWith(span);
-            }
-        } else if (nó.nodeType === 1) { // Nó de elemento
-            destacarTextoVisivel(nó, termo);
-        }
-    });
-}
-
-
-</script>
 
 </body>
 </html>

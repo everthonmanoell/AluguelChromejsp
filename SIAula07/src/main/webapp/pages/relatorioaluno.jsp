@@ -57,10 +57,11 @@
             
             <main>
             <table class="table">
-                        <th scope="col"><input type="search" class="form-control w-255" placeholder="Pesquisar" id="pesquisar">
-                        <th scope="col"><button onclick="searchData()" class="btn btn-primary"><i class='bx bx-search'></i></i></th></th></button>
-                        
-                        <th scope="col" id="totalemuso" style=" float:inline-end;">TOTAL CADASTRADOS: <%out.print(control.listarQuantidadeAluno());%></th>
+                        <form action="pesquisa/pesquisaraluno.jsp" method="get">
+                            <th scope="col"><input type="search" class="form-control w-255" placeholder="Pesquisar nome, matricula, turno, periodo ou curso" id="pesquisar" name="pesquisa">
+                            <th scope="col"><button onclick="searchData()" class="btn btn-primary"><i class='bx bx-search'></i></i></th></th></button>
+                            <th scope="col" id="totalemuso" style=" float:inline-end;">TOTAL CADASTRADOS: <%out.print(control.listarQuantidadeAluno());%></th>
+                        </form>
             </table>
             </main>
                 <table class="table table-striped table-sm table-hover">
@@ -76,15 +77,22 @@
                       </tr>
                     </thead>
                     
-                        <%
-                           if(control.listarDadosAluno() != null){
-                                out.println(control.listarDadosAluno());
-                           }else{
-                                out.println("Aluno não cadastrado");
-                           } 
-                            
-
-                        %>
+                    <%
+                      
+                        
+                        String pesquisa = request.getParameter("pesquisa");
+                        
+                        if(pesquisa == null || pesquisa.isEmpty()){
+                        
+                        out.println(control.listarDadosAluno());
+                        
+                        }else{
+                        
+                        out.println(control.listarPesquisaAluno(pesquisa));
+                        
+                        }
+                                         
+                    %>
 
                     
                   </table>

@@ -120,6 +120,58 @@ public class ControleBancoAluno {
 
         return texto.toString();
     }
+    
+    
+    
+        public String listarPesquisaAluno(String pesquisa) {
+        StringBuilder texto = new StringBuilder();
+
+        try {
+            String consulta = "SELECT * FROM aluno";
+            Statement stm = conn.createStatement();
+            ResultSet resultado = stm.executeQuery(consulta);
+
+            while (resultado.next()) {
+            String nome = resultado.getString("nome");
+            String matricula = resultado.getString("matricula");
+            String turno = resultado.getString("turno");
+            String periodo = resultado.getString("periodo");
+            String turma = resultado.getString("turma");
+            String curso = resultado.getString("curso");
+            
+                if (nome.toLowerCase().indexOf(pesquisa.toLowerCase()) != -1 || matricula.toLowerCase().indexOf(pesquisa.toLowerCase()) != -1 || turno.toLowerCase().indexOf(pesquisa.toLowerCase()) != -1 || periodo.toLowerCase().indexOf(pesquisa.toLowerCase()) != -1 || turma.toLowerCase().indexOf(pesquisa.toLowerCase()) != -1 || curso.toLowerCase().indexOf(pesquisa.toLowerCase()) != -1) {    
+                    Aluno aluno = new Aluno(
+                            resultado.getString("nome"),
+                            resultado.getString("matricula"),
+                            resultado.getString("turno"),
+                            resultado.getString("periodo"),
+                            resultado.getString("turma"),
+                            resultado.getString("curso")
+                    );
+                    aluno.setId(resultado.getString("id"));
+
+                    texto.append("<tr>")
+                            .append("<td>").append(aluno.getId()).append("</td>")
+                            .append("<td>").append(aluno.getNome()).append("</td>")
+                            .append("<td>").append(aluno.getMatricula()).append("</td>")
+                            .append("<td>").append(aluno.getTurno()).append("</td>")
+                            .append("<td>").append(aluno.getPeriodo()).append("</td>")
+                            .append("<td>").append(aluno.getTurma()).append("</td>")
+                            .append("<td>").append(aluno.getCurso()).append("</td>")
+                            .append("<td>")
+                            .append("<a href=\"cadastroaluno.jsp?id=").append(aluno.getId()).append("\" class=\"btn btn-outline-primary btn-sm\">Alterar</a>")
+                            .append("<a href=\"validar/excluiraluno.jsp?id=").append(aluno.getId()).append("\" class=\"btn btn-outline-danger btn-sm\" onclick=\"return confirm('Tem certeza que deseja excluir?')\">Excluir</a>\n")
+                            .append("</td>")
+                            .append("</tr>");
+                    }
+            }
+            stm.close();
+        } catch (SQLException ex) {
+            System.out.println("Não conseguiu consultar os dados dos Alunos.");
+        }
+
+        return texto.toString();
+    }
 
     public int listarQuantidadeAluno() {
         int qtd = 0;
