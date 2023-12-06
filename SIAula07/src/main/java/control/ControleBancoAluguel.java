@@ -423,9 +423,9 @@ public class ControleBancoAluguel {
                                     .append("<td>").append(aluguel.getSituacaoChromebook()).append("</td>")
                                     .append("<td>").append(aluguel.getDataInicio()).append("</td>")
                                     .append("<td>").append(aluguel.getHoraInicio()).append("</td>")
-                                    .append("<td>")
-                                        .append("<a href=\"aluguel.jsp?id=").append(aluguel.getId()).append("\" class=\"btn btn-outline-primary btn-sm\">Devolver</a>")
-                                    .append("</td>")
+                                    .append("<td>").append(aluguel.getDataTermino()).append("</td>")
+                                    .append("<td>").append(aluguel.getHoraTermino()).append("</td>")
+                                    
                                     .append("</tr>");
 
                     
