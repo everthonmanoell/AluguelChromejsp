@@ -4,8 +4,8 @@
     Author     : Ev
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="control.*"%>
 <%@page import="model.*"%>
+<%@page import="control.ControleBancoAluguel"%>
 <!DOCTYPE html>
 <html lang="pt-br">
     <%
@@ -54,14 +54,24 @@
                 <a>DEVOLUÇÃO</a>
             </div>
             <br>
-            <table class="table">
-                        <form action="pesquisa/devolucaopesquisaralugueis.jsp" method="get">
-                            <th scope="col"><input type="search" class="form-control w-255" placeholder="Pesquisar " id="pesquisar" name="pesquisa">
-                            <th scope="col"><button onclick="searchData()" class="btn btn-primary"><i class='bx bx-search'></i></i></th></th></button>                        
-                            <th scope="col" id="totalemuso" style=" float:inline-end;">TOTAL ALUGADOS: <% if(pesquisa != null){out.print(control.contarAlugueisComPesquisa(pesquisa)); }else{ out.print(control.contarAlugueisSemDevolucao());}%></th>
-                        </form>
-            </table>
-            </main>
+        <table class="table">
+            <form action="pesquisa/devolucaopesquisaralugueis.jsp" method="get">
+                <th scope="col">
+                    <input type="search" class="form-control w-255" placeholder="Pesquisar " id="pesquisar" name="pesquisa">
+                </th>
+                <th scope="col">
+                    <button class="btn btn-primary"><i class='bx bx-search'></i></button>
+                </th>
+                <th scope="col" id="totalemuso" style="float:inline-end;">
+                    TOTAL ALUGADOS:
+                    <% if(pesquisa != null && !pesquisa.isEmpty()) {
+                        out.print(control.contarAlugueisComPesquisa(pesquisa));
+                    } else {
+                        out.print(control.contarAlugueisSemDevolucao());
+                    } %>
+                </th>
+            </form>
+        </table>
                 <table class="table table-striped table-sm table-hover">
                 <thead>
                     <tr>
@@ -79,24 +89,14 @@
                 <tbody>
                     
                         <%
-                            
-                            
-
-                            
-
+                    
                             if(pesquisa == null || pesquisa.isEmpty()){
-
                             out.println(control.listarDadosAlugueisSemDevolucao());
-
                             }else{
-
                             out.println(control.listarPesquisaAlugueisSemDevolucao(pesquisa));
                         
-                            }
-                            
+                            }                            
 
-
-                          
                         %>
                         
 

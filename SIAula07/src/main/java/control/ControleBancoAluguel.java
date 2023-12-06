@@ -489,39 +489,36 @@ public class ControleBancoAluguel {
         return contador;
     }
     
-   
-        public int contarAlugueisComPesquisa(String parametro) {
-        int contador = 0;
+   public int contarAlugueisComPesquisa(String parametro) {
+    int contador = 0;
 
-        if (!parametro.isEmpty()) {
-            try {
-                // Use o parâmetro para construir a condição da pesquisa
-                String consulta = "SELECT COUNT(*) FROM aluguel " +
-                                  "WHERE data_termino IS NULL OR data_termino = '' " +
-                                  "AND (nome_aluno LIKE ? OR matricula_usuario LIKE ? OR tombamento LIKE ? OR matricula_aluno LIKE ? OR situacao_chromebook LIKE ? OR data_inicio LIKE ?)";
-                PreparedStatement stmt = conn.prepareStatement(consulta);
+    if (!parametro.isEmpty()) {
+        try {
+            // Use o parâmetro para construir a condição da pesquisa
+            String consulta = "SELECT COUNT(*) FROM aluguel " +
+                              "WHERE (data_termino IS NULL OR data_termino = '') " +
+                              "AND (nome_aluno LIKE ? OR matricula_usuario LIKE ? OR tombamento LIKE ? OR matricula_aluno LIKE ? OR situacao_chromebook LIKE ? OR data_inicio LIKE ?)";
+            PreparedStatement stmt = conn.prepareStatement(consulta);
 
-                // Configurar os parâmetros para a pesquisa
-                for (int i = 1; i <= 6; i++) {
-                    stmt.setString(i, "%" + parametro + "%");
-                }
-
-                ResultSet resultado = stmt.executeQuery();
-
-                if (resultado.next()) {
-                    contador = resultado.getInt(1);
-                }
-
-                stmt.close();
-            } catch (SQLException ex) {
-                System.out.println("Não conseguiu contar os aluguéis com pesquisa.");
-                ex.printStackTrace();
+            // Configurar os parâmetros para a pesquisa
+            for (int i = 1; i <= 6; i++) {
+                stmt.setString(i, "%" + parametro + "%");
             }
-        }
 
-        return contador;
+            ResultSet resultado = stmt.executeQuery();
+
+            if (resultado.next()) {
+                contador = resultado.getInt(1);
+            }
+
+            stmt.close();
+        } catch (SQLException ex) {
+            System.out.println("Não conseguiu contar os aluguéis com pesquisa.");
+            ex.printStackTrace();
+        }
     }
 
-
+    return contador;
+}
 
 }
