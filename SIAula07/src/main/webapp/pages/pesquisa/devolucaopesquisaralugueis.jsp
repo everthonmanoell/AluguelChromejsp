@@ -24,6 +24,9 @@
            response.sendRedirect("../devolucao.jsp");
            }else{
            response.sendRedirect("../devolucao.jsp?pesquisa=" + pesquisa);
+           /*request.setAttribute("pesquisa", pesquisa);
+           request.getRequestDispatcher("../devolucao.jsp").forward(request, response);*/
+
            }
            
            
