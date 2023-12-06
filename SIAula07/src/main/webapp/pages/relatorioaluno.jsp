@@ -20,6 +20,12 @@
     <link rel="shortcut icon" href="../images/title 1.png" type="image/x-icon" />
     <title>Relatório de Aluno</title>
 </head>
+
+        <%
+            ControleBancoAluno control = ControleBancoAluno.getInstance();
+                    String pesquisa = request.getParameter("pesquisa");
+
+        %>
     <div class="bordaDoTopo">
         <div class="container-fluid">     
             <a href="home.jsp"><button class="botoesDoTopo">ÍNICIO</button></a>
@@ -49,18 +55,18 @@
             </div>
              </div>
         
-        
-        
-        <%
-            ControleBancoAluno control = ControleBancoAluno.getInstance();
-        %>
-            
             <main>
             <table class="table">
                         <form action="pesquisa/pesquisaraluno.jsp" method="get">
                             <th scope="col"><input type="search" class="form-control w-255" placeholder="Pesquisar nome, matricula, turno, periodo ou curso" id="pesquisar" name="pesquisa">
                             <th scope="col"><button onclick="searchData()" class="btn btn-primary"><i class='bx bx-search'></i></i></th></th></button>
-                            <th scope="col" id="totalemuso" style=" float:inline-end;">TOTAL CADASTRADOS: <%out.print(control.listarQuantidadeAluno());%></th>
+                        <th scope="col" id="totalemuso" style="float:inline-end;">TOTAL ALUGADOS:
+                    <% if(pesquisa != null && !pesquisa.isEmpty()) {
+                        out.print(control.contarAlunosComPesquisa(pesquisa));
+                    } else {
+                        out.print(control.listarQuantidadeAluno());
+                    } %>
+                </th>
                         </form>
             </table>
             </main>
@@ -77,20 +83,13 @@
                       </tr>
                     </thead>
                     
-                    <%
-                      
+                    <%   
+                         if(pesquisa == null || pesquisa.isEmpty()){
+                            out.println(control.listarDadosAluno());
+                            }else{
+                            out.println(control.listarPesquisaAluno(pesquisa));
                         
-                        String pesquisa = request.getParameter("pesquisa");
-                        
-                        if(pesquisa == null || pesquisa.isEmpty()){
-                        
-                        out.println(control.listarDadosAluno());
-                        
-                        }else{
-                        
-                        out.println(control.listarPesquisaAluno(pesquisa));
-                        
-                        }
+                            }           
                                          
                     %>
 

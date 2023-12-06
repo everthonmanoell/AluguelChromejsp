@@ -28,7 +28,7 @@ public class ControleBancoAluno {
         }
         return instancia;
     }
-
+    
     public Aluno getAluno(String id) {
         Aluno aluno = null;
 
@@ -172,6 +172,34 @@ public class ControleBancoAluno {
 
         return texto.toString();
     }
+        
+ public int contarAlunosComPesquisa(String parametro) {
+    int contador = 0;
+
+    if (!parametro.isEmpty()) {
+        try {
+            // Use o parâmetro para construir a condição da pesquisa
+            String consulta = "SELECT COUNT(*) FROM aluno " +
+                              "WHERE nome LIKE ? OR matricula LIKE ? OR turno LIKE ? OR periodo LIKE ? OR turma LIKE ? OR curso LIKE ?";
+            PreparedStatement stmt = conn.prepareStatement(consulta);
+            for (int i = 1; i <= 6; i++) {
+                stmt.setString(i, "%" + parametro + "%");
+            }
+            ResultSet resultado = stmt.executeQuery();
+
+            if (resultado.next()) {
+                contador = resultado.getInt(1);
+            }
+
+            stmt.close();
+        } catch (SQLException ex) {
+            System.out.println("Não conseguiu contar os Alunos com pesquisa.");
+            ex.printStackTrace();
+        }
+    }
+
+    return contador;
+}
 
     public int listarQuantidadeAluno() {
         int qtd = 0;
@@ -223,4 +251,5 @@ public class ControleBancoAluno {
             System.out.println("Não conseguiu excluir o Aluno.");
         }
     }
+    
 }
