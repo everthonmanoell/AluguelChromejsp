@@ -14,7 +14,7 @@
 - Passo 1 - Clique no o íncone "New Project"
 <p align="center"><img src="https://github.com/everthonmanoell/AluguelChromejsp/blob/main/SIAula07/imgTutorial/s1.jpg"><p>
 
-     - Passo 2 - CSelecione o na barra de "'Categorias' - Java with Maven" e depois na barra de 'Projects:' Selecione o 'Web Aplpication'" e clique em 'Next" 
+- Passo 2 - CSelecione o na barra de "'Categorias' - Java with Maven" e depois na barra de 'Projects:' Selecione o 'Web Aplpication'" e clique em 'Next" 
      - ![exemplo](/SIAula07/imgTutorial/s2.jpg)
 
      - Passo 3 - Escolha o nome do seu projeto e depois clique em 'Next'
