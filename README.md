@@ -48,60 +48,81 @@ Link do repositório: [Repositório] (https://github.com/everthonmanoell/Aluguel
 # 5 - Como usar o banco de dados do projeto
 #### Obs, caso tenha instalado o xampp vá para o passo 5.<br>
 
-1- Baixe a versão mais recentes do xampp ex:
+- Passo 1- Baixe a versão mais recentes do xampp ex:
 https://www.apachefriends.org/pt_br/download.html
 
-2- Escolha o sistema operacional e clique em 'Baixar (64bit)'<br>
+- Passo 2- Escolha o sistema operacional e clique em 'Baixar (64bit)'<br>
 ![exemplo](/SIAula07/imgTutorial/download1.png)
+<br>
 
-3- Se o arquivo não for baixado clique no botão 'click aqui...'<br>
+- Passo 3- Se o arquivo não for baixado clique no botão 'click aqui...'<br>
 ![exemplo](/SIAula07/imgTutorial/download2.png)<br>
+<br>
 
-4- Click no arquivo do instalador que você acabou de baixar e instale o xampp no seu computador, seguindo os proximos passos.<br>
-4.1- Se aparecer esse aviso clique em 'sim'.<br>
+- Passo 4- Click no arquivo do instalador que você acabou de baixar e instale o xampp no seu computador, seguindo os proximos passos.<br>
+- Passo 4.1- Se aparecer esse aviso clique em 'sim'.<br>
 ![exemplo](/SIAula07/imgTutorial/instalacao%20(1).png)<br>
-4.2- Se aparecer esse aviso clique em 'ok'.<br>
+<br>
+- Passo 4.2- Se aparecer esse aviso clique em 'ok'.<br>
 ![exemplo](/SIAula07/imgTutorial/instalacao%20(2).png)<br>
-4.3- Nessa tela click em 'Next'<br>
+<br>
+- Passo 4.3- Nessa tela click em 'Next'<br>
 ![exemplo](/SIAula07/imgTutorial/instalacao%20(3).png)<br>
-4.4- Nessa tela click em 'Next'<br>
+<br>
+- Passo 4.4- Nessa tela click em 'Next'<br>
 ![exemplo](/SIAula07/imgTutorial/instalacao%20(4).png)<br>
-4.5- Nessa tela click em 'Next'<br>
+<br>
+- Passo 4.5- Nessa tela click em 'Next'<br>
 ![exemplo](/SIAula07/imgTutorial/instalacao%20(5).png)<br>
-4.6- Nessa tela click em 'Next'<br>
+<br>
+- Passo 4.6- Nessa tela click em 'Next'<br>
 ![exemplo](/SIAula07/imgTutorial/instalacao%20(6).png)<br>
-4.7- Nessa tela click em 'Next'<br>
+<br>
+- Passo 4.7- Nessa tela click em 'Next'<br>
 ![exemplo](/SIAula07/imgTutorial/instalacao%20(7).png)<br>
-4.8- Aguarde o XAMPP terminar de instalar<br>
+<br>
+- Passo 4.8- Aguarde o XAMPP terminar de instalar<br>
 ![exemplo](/SIAula07/imgTutorial/instalacao%20(8).png)<br>
-4.9- Deixe marcado o quandro 'Do you want to start the Control Painel now?' e clique em Finish<br>
+<br>
+- Passo 4.9- Deixe marcado o quandro 'Do you want to start the Control Painel now?' e clique em Finish<br>
 ![exemplo](/SIAula07/imgTutorial/instalacao%20(9).png)<br>
+<br>
 
-5- Assim que abrir o XAMPP aperte no start do "Apache" e do "MySQL"<br>
-xamp1 img
-5.1 - O XAMPP tem que ficar dessa forma, com essas respectivas portas:
-xamp2 img
-5.2 - Caso o XAMPP não inicie os dois servidores tente desistalar, apagar a pasta c:/xampp, reiniciar o pc e reinstalar o XAMPP conforme passos 4.<br> 
-xamp3 img
+- Passo 5- Assim que abrir o XAMPP aperte no start do "Apache" e do "MySQL"<br>
+![exemplo](/SIAula07/imgTutorial/xamp1.png)<br>
+<br>
+- Passo 5.1 - O XAMPP tem que ficar dessa forma, com essas respectivas portas:<br>
+![exemplo](/SIAula07/imgTutorial/xamp2.png)<br>
+<br>
+- Passo 5.2 - Caso o XAMPP não inicie os dois servidores tente desistalar, apagar a pasta c:/xampp, reiniciar o pc e reinstalar o XAMPP conforme passos 4.<br> <br>
 
-6- Do lado do start do MySQL tem um botão chamado admin que te leva para o phpmyadmin onde você pode criar o banco de dados.
-phpadmin
-6.1 - Ao abrir o PHPMYADMIN uma pagina de internet abrira com o endereço 'localhost/phpmyadmin/' clique no botão 'novo' para criarmos o banco.
-img 1
-6.2 - Insrina o nome do banco no nosso caso 'aluguelchromebook' no campo 'nome do banco de dados'
-img 2
-6.3 - Após inserido clique em 'criar'
-img 3
-6.4 - Depois de criado vamos importar o banco de acordo com o arquivo, clicando em importar
-img 4
-6.5 - Clique em 'escolher o arquivo' 
-img 6
-6.6 - Navegue até o arquivo que deve estar na pasta '..\AluguelChromejsp\Banco\ModeloFisico' clique no arquivo e depois em 'Abrir'
-img 9
-6.7 - Role a barra de rolagem até o fim e clique em 'importar' no lado esquerdo da tela
-img 10
-6.8 - Ao fazer a importação o PHPMYADMIN mostrará uma tela com as querys executadas.
-img 11
+- Passo 6- Do lado do botão 'stop' do MySQL tem um botão chamado admin que te leva para o phpmyadmin onde você pode criar o banco de dados.<br>
+![exemplo](/SIAula07/imgTutorial/phpadmin.png)<br>
+<br>
+- Passo 6.1 - Ao abrir o PHPMYADMIN uma pagina de internet abrira com o endereço 'localhost/phpmyadmin/' clique no botão 'novo' para criarmos o banco.<br>
+![exemplo](/SIAula07/imgTutorial/phpadmin%20(1).png)<br>
+<br>
+- Passo 6.2 - Insrina o nome do banco no nosso caso 'aluguelchromebook' no campo 'nome do banco de dados'<br>
+![exemplo](/SIAula07/imgTutorial/phpadmin%20(1).png)<br>
+<br>
+- Passo 6.3 - Após inserido clique em 'criar'
+![exemplo](/SIAula07/imgTutorial/phpadmin%20(3).png)<br>
+<br>
+- Passo 6.4 - Depois de criado vamos importar o banco de acordo com o arquivo, clicando em importar<br>
+![exemplo](/SIAula07/imgTutorial/phpadmin%20(4).png)<br>
+<br>
+- Passo 6.5 - Clique em 'escolher o arquivo' 
+![exemplo](/SIAula07/imgTutorial/phpadmin%20(6).png)<br>
+<br>
+- Passo 6.6 - Navegue até o arquivo que deve estar na pasta '..\AluguelChromejsp\Banco\ModeloFisico' clique no arquivo e depois em 'Abrir'<br>
+![exemplo](/SIAula07/imgTutorial/phpadmin%20(9).png)<br>
+<br>
+- Passo 6.7 - Role a barra de rolagem até o fim e clique em 'importar' no lado esquerdo da tela<br>
+![exemplo](/SIAula07/imgTutorial/phpadmin%20(10).png)<br>
+<br>
+- Passo 6.8 - Ao fazer a importação o PHPMYADMIN mostrará uma tela com as querys executadas.<br>
+![exemplo](/SIAula07/imgTutorial/phpadmin%20(11).png)<br>
+<br>
 
 
 
