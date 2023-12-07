@@ -122,19 +122,7 @@ https://www.apachefriends.org/pt_br/download.html
 #### 5.6.8 - Ao fazer a importação o PHPMYADMIN mostrará uma tela com as querys executadas.<br>
  ![exemplo](/SIAula07/imgTutorial/phpadmin%20(11).png)<br>
 <br>
-
-
-
-
-
-5- Encontre o arquivo SQL do banco de dados na pasta banco e em modelo físico tem o arquivo que você precisa.  
-
-6- Com o arquivo SQL do projeto e o xampp ligado crie um banco de dados com o mesmo nome do arquivo e importe ele para o phpmyadmin.
-
-7- Assim que o banco for feito a conexão já foi criada no código e você já pode usar a aplicação sem preocupação. 
-
-
-
+<br>
 # 6 - Como usar a aplicação
 
 1- Assim que for instalado o xampp e netbeans se pode dar start nas pages para usar a aplicação.
