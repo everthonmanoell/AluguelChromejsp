@@ -12,7 +12,7 @@
      - Passo 3 - Siga clicando em 'Next' até instalar a IDE.
 # 3 - Escolha do servidor que roda a aplicação
      - Passo 1 - Clique no o íncone "New Project"
-     - <img src="[/assets/img/arquivo.gif](https://github.com/everthonmanoell/AluguelChromejsp/blob/main/SIAula07/imgTutorial/s1.jpg)">
+     - <img src="https://github.com/everthonmanoell/AluguelChromejsp/blob/main/SIAula07/imgTutorial/s1.jpg">
 
      - Passo 2 - CSelecione o na barra de "'Categorias' - Java with Maven" e depois na barra de 'Projects:' Selecione o 'Web Aplpication'" e clique em 'Next" 
      - ![exemplo](/SIAula07/imgTutorial/s2.jpg)
