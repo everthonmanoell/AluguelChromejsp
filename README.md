@@ -40,10 +40,28 @@ Link do repositório: [Repositório] (https://github.com/everthonmanoell/Aluguel
 ![exemplo](/SIAula07/imgTutorial/s7.jpg)
 
 # 4 - Importando o zip no NetBeans
+### 4.1 - Com o Apache Netbeans ainda aberto depois de você ter escolhido e instalado o GlassFish server clique em 'file' selecione o 'import project' e clique em 'From ZIP...'
+![exemplo](/SIAula07/imgTutorial/import%20(1).png)
+<br>
+### 4.2 - Na janela seguinte clique no 1º botão 'Browse..' e procure o arquivo zip que você baixou do projeto.
+![exemplo](/SIAula07/imgTutorial/import%20(2).png)
+<br>
+### 4.3 - Quando achar o arquivo zip 'AluguelChromejsp-main' clique nele e depois no botão 'Open'
+![exemplo](/SIAula07/imgTutorial/import%20(3).png)
+<br>
+### 4.4 - Agora escolha o lugar onde sera importado seu projeto, clique no 2º 'Browse..' e clique na pasta destino.
+![exemplo](/SIAula07/imgTutorial/import%20(4).png)
+<br>
+### 4.5 - Ao selecionar a pasta clique no botão 'Save'
+![exemplo](/SIAula07/imgTutorial/import%20(5).png)
+<br>
+### 4.6 - Na tela seguinte clique em 'Import'
+![exemplo](/SIAula07/imgTutorial/import%20(6).png)
+<br>
+### 4.7 - Aguarde o Netbeans carregar e você terá a seguinte tela, depois disso instale o banco antes de rodar a aplicação.
+![exemplo](/SIAula07/imgTutorial/import%20(7).png)
+<br>
 
-     - Passo 1 - Clique em "File" > "Import Project" > "From Zip..."
-     - Passo  2 - No campo " ZIP File:" Clique em "Browse..." 
-     - Passo 3 - Encontre o zip do projeto no seu diretório e clique em "Open"
 <br><br><br>
 # 5 - Como usar o banco de dados do projeto<br>
 #### Obs, caso tenha instalado o xampp vá para o passo 5.<br>
