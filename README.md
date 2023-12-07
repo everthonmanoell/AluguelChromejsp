@@ -144,19 +144,19 @@ https://www.apachefriends.org/pt_br/download.html
 <br><br><br>
 # 6 - Como usar a aplicação
 
-1- Assim que for instalado o xampp e netbeans se pode dar start nas pages para usar a aplicação.
-2- A primeira página será a de login onde se pode cadastrar e logar para entrar na home do projeto.
+1. Após a instalação do XAMPP e do NetBeans, é possível iniciar as páginas para utilizar a aplicação.
 
-3- No home tem uma breve explicação do projeto e botões de acesso ao cadastro, aluguel e relatório de todos os itens da aplicação.
+2. A primeira página consiste no processo de login, permitindo o cadastro e acesso para entrar na página inicial do projeto.
 
-4- Na tela de cadastro você tem a opção de cadastrar aluno, coordenador e chromebook para a aplicação
+3. Na página inicial, há uma breve explicação sobre o projeto, bem como botões que direcionam para as seções de cadastro, aluguel e relatório de todos os itens da aplicação.
 
-5- Aluguel é página onde você pode fazer o aluguel do chromebook mas é necessário já ter a matrícula do aluno e coordenador e o tombamento do chromebook para poder alugar o chromebook.
+4. Na tela de cadastro, oferece-se a opção de registrar informações sobre alunos, coordenadores e Chromebooks para a aplicação.
 
-6- Também se é possível devolver o chromebook no aluguel e colocar a data de retorno e hora e fica salvo no relatório.
+5. A página de aluguel possibilita o aluguel de Chromebooks, exigindo a prévia inclusão da matrícula do aluno, do coordenador e o tombamento do Chromebook para efetuar a locação.
 
-7- Relatório é a parte da aplicação onde se pode ver os dados do aluno coordenador e chromebook na página tem um sub menu onde você escolher uma dessas opções.
+6. Além disso, há a funcionalidade de devolução do Chromebook na seção de aluguel, onde é possível registrar a data e hora de retorno, mantendo essas informações armazenadas no relatório.
 
+7. O relatório é a seção da aplicação destinada à visualização de dados sobre alunos, coordenadores e Chromebooks. Nesta página, um submenu permite a escolha específica entre essas opções.
   
 # 7 - Rodando o sistema
      - Passo 1 - Procure o ícone de "Run Project" no menu de ferramentas do NetBeans.
