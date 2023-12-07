@@ -17,6 +17,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Kanit:wght@100;400;700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="../images/title 1.png" type="image/x-icon" />
     <title>CADASTRO DE COORDENADOR</title>
 </head>
 
@@ -67,14 +68,14 @@
                     
                     
                     <label for="nomecompleto" class="form-label"><a>NOME COMPLETO:</a></label>
-                    <input type="text" value="<%if(id!=null){out.print(usr.getNomecompleto());}%>" class="form-control" id="nomecompleto" placeholder="Nome completo" name="nomecompleto" required>
+                    <input type="text" value="<%if(id!=null){out.print(usr.getNomecompleto());}%>" class="form-control" id="nomecompleto" placeholder="Nome completo do coordenador" name="nomecompleto" required>
                     
                     <label for="matricula" class="form-label"><a>Matricula:</a></label>
-                    <input type="text" value="<%if(id!=null){out.print(usr.getMatricula());}%>" name="matricula" class="form-control" id="CPF" aria-describedby="CPF" placeholder="Matricula">
+                    <input type="text" value="<%if(id!=null){out.print(usr.getMatricula());}%>" name="matricula" class="form-control" id="matricula" aria-describedby="matricula" placeholder="Digite a matricula do coordenador">
                     <label for="password" class="form-label"><a>ESCOLHA UMA SENHA:</a></label>
                     
-                    <input type="password" value="<%if(id!=null){out.print(usr.getSenha());}%>" name="senha" class="form-control" placeholder="Senha" id="password"  required style="margin-bottom: 10px" >
-                    <input type="password" value="<%if(id!=null){out.print(usr.getSenha());}%>" name="senha2" class="form-control" placeholder="Confirme Senha" id="confirm_password" required style="margin-bottom: 10px">
+                    <input type="password" value="<%if(id!=null){out.print(usr.getSenha());}%>" name="senha" class="form-control" placeholder="Escolha uma senha" id="password"  required style="margin-bottom: 10px" >
+                    <input type="password" value="<%if(id!=null){out.print(usr.getSenha());}%>" name="senha2" class="form-control" placeholder="Confirme a senha escolhida" id="confirm_password" required style="margin-bottom: 10px">
                     <br>
                     <div class="row justify-content-md-center">
                         <button type="submit" class="BotaoSubmit" 
@@ -82,7 +83,7 @@
                             <% if(id != null){out.print("Salvar");} else {out.print("Cadastrar");} %>
                         </button>
 
-                        <button type="reset" class="BotaoSubmit cancelar">Cancelar</button>
+                <button type="reset" class="BotaoSubmit cancelar" onclick="window.location.href='homecadastro.jsp';">Voltar</button>
                         <script>
                             function exibirMensagem(mensagem) {
                             alert(mensagem);

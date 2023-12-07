@@ -5,19 +5,24 @@
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="control.*"%>
-
+<%@page import="model.*"%>
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
+        <%
+                ControleBancoUsuario control = ControleBancoUsuario.getInstance();
+                                    String pesquisa = request.getParameter("pesquisa");
+
+            %>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" />
         <link rel="stylesheet" type="text/css" href="../icons/css/boxicons.min.css" />
-        <link rel="stylesheet" type="text/css" href="../css/style.css" />
-        <link rel="stylesheet" href="js/send.js">
+        <link rel="stylesheet" type="text/css" href="../css/style.css" />        
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter&family=Kanit:wght@100;400;700&display=swap" rel="stylesheet">
+        <link rel="shortcut icon" href="../images/title 1.png" type="image/x-icon" />
         <title>Relatório de Coordenadores</title>
     </head>
     <div class="bordaDoTopo">
@@ -41,7 +46,18 @@
                     <a href="relatorioaluguel.jsp"><button class="botoesDoRelatorio" id="alugados">ALUGADOS</button></a>
                 </div>
 
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var currentPage = window.location.pathname;
 
+        var buttonCadastro = document.getElementById("coordenador");
+        var buttonLink = buttonCadastro.closest("a").getAttribute("href");
+
+        if (currentPage.endsWith(buttonLink)) {
+            buttonCadastro.classList.add("pressionado");
+        }
+    });
+</script>
             </div>
 
             <div class="container containerDevolucao">
@@ -49,17 +65,21 @@
                     <a>RELATÓRIO DE COORDERNADORES</a>
                 </div>
             </div>
-
-            <%
-                ControleBancoUsuario control = ControleBancoUsuario.getInstance();
-            %>
-
             <main>
             <table class="table">
-                        <th scope="col"><input type="search" class="form-control w-255" placeholder="Pesquisar" id="pesquisar">
-                        <th scope="col"><button onclick="searchData()" class="btn btn-primary"><i class='bx bx-search'></i></i></th></th></button>
+                
+                    <form action="pesquisa/pesquisarusuario.jsp" method="get">
                         
-                        <th scope="col" id="totalemuso" style=" float:inline-end;">TOTAL CADASTRADOS: <% out.print(control.listarQuantidadeUsuarios()); %> </th>
+                        <th scope="col"><input type="search" class="form-control w-255" placeholder="Pesquisa por nome ou matricula" id="pesquisar" name="pesquisa">
+                        <th scope="col"><button onclick="searchData()" class="btn btn-primary"><i class='bx bx-search'></i></i></th></th></button>
+                        <th scope="col" id="totalemuso" style="float:inline-end;">TOTAL: 
+                    <% if(pesquisa != null && !pesquisa.isEmpty()) {
+                        out.print(control.contarCoordenadoresComPesquisa(pesquisa));
+                    } else {
+                        out.print(control.listarQuantidadeUsuarios());
+                    } %>
+                </th>
+                    </form>
             </table>
             </main>            
             <table class="table table-striped table-sm table-hover">
@@ -70,13 +90,19 @@
                         <th scope="col" class="tabela">Matrícula</th>                      
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="conteudo">
                     <%
-                        if(control.listarDadosUsuarios() != null ){
-                            out.println(control.listarDadosUsuarios());
+                        
+                        if(pesquisa == null || pesquisa.isEmpty()){
+                        
+                        out.println(control.listarDadosUsuarios());
+                        
                         }else{
-                            out.println("<p>Nenhum chromebook foi cadastrado! :( </p>");
+                        
+                        out.println(control.listarPesquisaUsuarios(pesquisa));
+                        
                         }
+                        
                     %>
                 </tbody>
             </table>
@@ -85,18 +111,6 @@
 </div>
 
 </div> 
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        var currentPage = window.location.pathname;
 
-
-        var buttonCadastro = document.getElementById("coordenador");
-        var buttonLink = buttonCadastro.closest("a").getAttribute("href");
-
-        if (currentPage.endsWith(buttonLink)) {
-            buttonCadastro.classList.add("pressionado");
-        }
-    });
-</script>
 </body>
 </html>

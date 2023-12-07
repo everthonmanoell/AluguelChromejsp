@@ -14,12 +14,18 @@
     <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="../icons/css/boxicons.min.css" />
     <link rel="stylesheet" type="text/css" href="../css/style.css" />
-    <link rel="stylesheet" href="js/send.js">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Kanit:wght@100;400;700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="../images/title 1.png" type="image/x-icon" />
     <title>Relatório de Aluno</title>
 </head>
+
+        <%
+            ControleBancoAluno control = ControleBancoAluno.getInstance();
+                    String pesquisa = request.getParameter("pesquisa");
+
+        %>
     <div class="bordaDoTopo">
         <div class="container-fluid">     
             <a href="home.jsp"><button class="botoesDoTopo">ÍNICIO</button></a>
@@ -49,18 +55,19 @@
             </div>
              </div>
         
-        
-        
-        <%
-            ControleBancoAluno control = ControleBancoAluno.getInstance();
-        %>
-            
             <main>
             <table class="table">
-                        <th scope="col"><input type="search" class="form-control w-255" placeholder="Pesquisar" id="pesquisar">
-                        <th scope="col"><button onclick="searchData()" class="btn btn-primary"><i class='bx bx-search'></i></i></th></th></button>
-                        
-                        <th scope="col" id="totalemuso" style=" float:inline-end;">TOTAL CADASTRADOS: <%out.print(control.listarQuantidadeAluno());%></th>
+                        <form action="pesquisa/pesquisaraluno.jsp" method="get">
+                            <th scope="col"><input type="search" class="form-control w-255" placeholder="Pesquisar nome, matricula, turno, periodo ou curso" id="pesquisar" name="pesquisa">
+                            <th scope="col"><button onclick="searchData()" class="btn btn-primary"><i class='bx bx-search'></i></i></th></th></button>
+                        <th scope="col" id="totalemuso" style="float:inline-end;">TOTAL:
+                    <% if(pesquisa != null && !pesquisa.isEmpty()) {
+                        out.print(control.contarAlunosComPesquisa(pesquisa));
+                    } else {
+                        out.print(control.listarQuantidadeAluno());
+                    } %>
+                </th>
+                        </form>
             </table>
             </main>
                 <table class="table table-striped table-sm table-hover">
@@ -76,15 +83,15 @@
                       </tr>
                     </thead>
                     
-                        <%
-                           if(control.listarDadosAluno() != null){
-                                out.println(control.listarDadosAluno());
-                           }else{
-                                out.println("Aluno não cadastrado");
-                           } 
-                            
-
-                        %>
+                    <%   
+                         if(pesquisa == null || pesquisa.isEmpty()){
+                            out.println(control.listarDadosAluno());
+                            }else{
+                            out.println(control.listarPesquisaAluno(pesquisa));
+                        
+                            }           
+                                         
+                    %>
 
                     
                   </table>

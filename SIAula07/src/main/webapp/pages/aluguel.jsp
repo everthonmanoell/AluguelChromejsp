@@ -17,6 +17,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Kanit:wght@100;400;700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="../images/title 1.png" type="image/x-icon" />
     <title>ALUGUEL DE CHROMEBOOK</title>
 </head>
 
@@ -77,30 +78,35 @@
 
                     <div class="mb-3 mt-3">
                         <label for="nomealuno" class="form-label"><a>Nome do Aluno:</a></label>
-                        <input type="text" value="<%if(id!=null){out.print(usr.getNomeAluno());}%>" <%if(id!=null){out.print("readonly ");}%> class="form-control <%if(id != null){out.print(" input");}%>" id="nomealuno" placeholder="" name="nomealuno" required>
+
+                        <input type="text" value="<%if(id!=null){out.print(usr.getNomeAluno());}%>" <%if(id!=null){out.print("readonly ");}%> class="form-control <%if(id != null){out.print(" input");}%>" id="nomealuno" placeholder="Digite o nome do aluno" name="nomealuno" required>
+
                     </div>
                     
                     <div class="mb-3 mt-3">
                         <label for="matricula" class="form-label"><a>Matrícula do Aluno:</a></label>
-                        <input type="text" value="<%if(id!=null){out.print(usr.getMatriculaAluno());}%>" <%if(id!=null){out.print("readonly ");}%> class="form-control <%if(id != null){out.print(" input");}%>" id="matricula" placeholder="" name="matriculaAluno" required>
+                        <input type="text" value="<%if(id!=null){out.print(usr.getMatriculaAluno());}%>" <%if(id!=null){out.print("readonly ");}%> class="form-control <%if(id != null){out.print(" input");}%>" id="matricula" placeholder="Digite a matrícula do aluno" name="matriculaAluno" required>
                     </div>
                     
                     <div class="mb-3 mt-3">
                         <label for="matricula" class="form-label"><a>Matrícula do Coordenador:</a></label>
-                        <input type="text" value="<%if(id!=null){out.print(usr.getMatriculaUsuario());}%>" <%if(id!=null){out.print("readonly ");}%> class="form-control <%if(id != null){out.print(" input");}%>" id="matricula" placeholder="" name="matriculaCoordenador" required>
+
+                        <input type="text" value="<%if(id!=null){out.print(usr.getMatriculaUsuario());}%>" <%if(id!=null){out.print("readonly ");}%> class="form-control <%if(id != null){out.print(" input");}%>" id="matricula" placeholder="Digite a matrícula do coordenador" name="matriculaCoordenador" required>
+
                     </div>
                     
                     
                     <div class="mb-3 mt-3">
                         <label for="tombamento" class="form-label"><a>Tombamento:</a></label>
-                        <input type="text" value="<%if(id!=null){out.print(usr.getTombamento());}%>" <%if(id!=null){out.print("readonly ");}%> class="form-control <%if(id != null){out.print(" input");}%>" id="tombamento" placeholder="" name="tombamento" required>
+                        <input type="text" value="<%if(id!=null){out.print(usr.getTombamento());}%>" <%if(id!=null){out.print("readonly ");}%> class="form-control <%if(id != null){out.print(" input");}%>" id="tombamento" placeholder="Digite o tombamento do chormebook" name="tombamento" required>
                     </div>
+                    <div class="mb-3 mt-3">
                     <div class="mb-3 mt-3">
                         <label for="sit-chro" class="form-label"><a>Situação Chromebook:</a></label>
                         <select class="form-select" id="sit-chro" name="situacaochromebook" required>
                             <option value="Clique para escolher opção"></option>
-                            <option value="inoperante" selected <%if((id!=null) && (usr.getSituacaoChromebook().equals("inoperante"))){out.print("selected");}%> >Inoperante</option>
-                            <option value="operante"  selected <%if((id!=null) && (usr.getSituacaoChromebook().equals("operante"))){out.print("selected");}%> >Operante</option>
+                            <option value="inoperante"  <%if((id!=null) && (usr.getSituacaoChromebook().equals("inoperante"))){out.print("selected");}%> >Inoperante</option>
+                            <option value="operante"  <%if(id!=null){out.print("");}else{out.print("selected");} %> <%if((id!=null) && (usr.getSituacaoChromebook().equals("operante"))){out.print("selected");}%> >Operante</option>
                         </select>
                     </div>
                     <div class="mb-3 mt-3">
@@ -120,7 +126,9 @@
 
                         <div class="mb-3 mt-3">
                             <label for="termino" class="form-label"><a>Hora término:</a></label>
-                            <input type="text" readonly value=" <%out.print(control.getHoraAtual());%>  " class="form-control" id="termino" placeholder="" name="horatermino">
+
+                            <input type="text" readonly value=" <%out.print(control.getHoraAtual());%>  " class="form-control w-25" id="termino" placeholder="" name="horatermino">
+
                         </div>
                     <% } %>
 
@@ -135,8 +143,6 @@
                             <%if(id!=null){out.print("Devolver");}else{out.print("Alugar");}%>
                         </button>
                         <button type="reset" class="BotaoSubmit">Cancelar</button>
-                        
-                        
                         
                         <script>
                             function exibirMensagem(mensagem) {
@@ -161,6 +167,7 @@
         }
     });
 </script>
+
 
 
 

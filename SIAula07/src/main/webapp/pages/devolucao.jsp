@@ -1,14 +1,17 @@
 <%-- 
     Document   : devolucao
     Created on : 1 de nov. de 2023, 23:29:08
-    Author     : Ev
+    Author     : Felipe
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="control.*"%>
 <%@page import="model.*"%>
+<%@page import="control.ControleBancoAluguel"%>
 <!DOCTYPE html>
 <html lang="pt-br">
-    <%ControleBancoAluguel control = ControleBancoAluguel.getInstance();%>
+    <%
+        ControleBancoAluguel control = ControleBancoAluguel.getInstance();
+        String pesquisa = request.getParameter("pesquisa");
+    %>
    
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -20,6 +23,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Kanit:wght@100;400;700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="../images/title 1.png" type="image/x-icon" />
     <title>DEVOLUÇÃO</title>
 </head>
     <div class="bordaDoTopo">
@@ -50,12 +54,24 @@
                 <a>DEVOLUÇÃO</a>
             </div>
             <br>
-            <table class="table">
-                        <th scope="col"><input type="search" class="form-control w-255" placeholder="Pesquisar" id="pesquisar">
-                        <th scope="col"><button onclick="searchData()" class="btn btn-primary"><i class='bx bx-search'></i></i></th></th></button>                        
-                        <th scope="col" id="totalemuso" style=" float:inline-end;">TOTAL ALUGADOS: <% out.print(control.contarAlugueisSemDevolucao());%></th>
-            </table>
-            </main>
+        <table class="table">
+            <form action="pesquisa/devolucaopesquisaralugueis.jsp" method="get">
+                <th scope="col">
+                    <input type="search" class="form-control w-255" placeholder="Pesquisar " id="pesquisar" name="pesquisa">
+                </th>
+                <th scope="col">
+                    <button class="btn btn-primary"><i class='bx bx-search'></i></button>
+                </th>
+                <th scope="col" id="totalemuso" style="float:inline-end;">
+                    TOTAL ALUGADOS:
+                    <% if(pesquisa != null && !pesquisa.isEmpty()) {
+                        out.print(control.contarAlugueisComPesquisa(pesquisa));
+                    } else {
+                        out.print(control.contarAlugueisSemDevolucao());
+                    } %>
+                </th>
+            </form>
+        </table>
                 <table class="table table-striped table-sm table-hover">
                 <thead>
                     <tr>
@@ -72,7 +88,16 @@
                 </thead>
                 <tbody>
                     
-                        <%out.println(control.listarDadosAlugueisSemDevolucao());%>
+                        <%
+                    
+                            if(pesquisa == null || pesquisa.isEmpty()){
+                            out.println(control.listarDadosAlugueisSemDevolucao());
+                            }else{
+                            out.println(control.listarPesquisaAlugueisSemDevolucao(pesquisa));
+                        
+                            }                            
+
+                        %>
                         
 
                    

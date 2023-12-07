@@ -72,7 +72,7 @@ public class ControleBancoChromebook {
             System.out.println("Não conseguiu alterar os dados do Chromebook.");
         }
     }
-
+    
     public String listarDadosChromebook() {
         StringBuilder texto = new StringBuilder();
 
@@ -100,6 +100,78 @@ public class ControleBancoChromebook {
                         .append("</td>")
                         .append("</tr>");
             }
+
+            stm.close();
+        } catch (SQLException ex) {
+            System.out.println("Não conseguiu consultar os dados dos Chromebooks.");
+        }
+
+        return texto.toString();
+    }
+    
+    public int contarChromebooksComPesquisa(String parametro) {
+    int contador = 0;
+
+    if (!parametro.isEmpty()) {
+        try {
+            String consulta = "SELECT COUNT(*) FROM chromebook " +
+                              "WHERE tombamento LIKE ? OR situacao LIKE ? OR descricao LIKE ?";
+            PreparedStatement stmt = conn.prepareStatement(consulta);
+            for (int i = 1; i <= 4; i++) {
+                stmt.setString(i, "%" + parametro + "%");
+            }
+
+            ResultSet resultado = stmt.executeQuery();
+
+            if (resultado.next()) {
+                contador = resultado.getInt(1);
+            }
+
+            stmt.close();
+        } catch (SQLException ex) {
+            System.out.println("Não conseguiu contar os chromebooks com pesquisa.");
+            ex.printStackTrace();
+        }
+    }
+
+    return contador;
+}
+
+
+ 
+    public String listarPesquisaChromebook(String pesquisa) {
+        StringBuilder texto = new StringBuilder();
+
+        try {
+            String consulta = "SELECT * FROM chromebook";
+            Statement stm = conn.createStatement();
+            ResultSet resultado = stm.executeQuery(consulta);
+
+            while (resultado.next()) {
+            String tombamento = resultado.getString("tombamento");
+            String situacao = resultado.getString("situacao");
+            
+            
+                if (tombamento.toLowerCase().indexOf(pesquisa.toLowerCase()) != -1 || situacao.toLowerCase().indexOf(pesquisa.toLowerCase()) != -1) {
+                    Chromebook chromebook = new Chromebook(
+                            resultado.getString("tombamento"),
+                            resultado.getString("situacao"),
+                            resultado.getString("descricao")
+                    );
+                    chromebook.setId(resultado.getString("id"));
+
+                    texto.append("<tr>")
+                            .append("<td>").append(chromebook.getId()).append("</td>")
+                            .append("<td>").append(chromebook.getTombamento()).append("</td>")
+                            .append("<td>").append(chromebook.getSituacao()).append("</td>")
+                            .append("<td>").append(chromebook.getDescricao()).append("</td>")
+                            .append("<td>")
+                            .append("<a href=\"cadastrochromebook.jsp?id=").append(chromebook.getId()).append("\" class=\"btn btn-outline-primary btn-sm\">Alterar</a>")
+                            .append("<a href=\"validar/excluirchromebook.jsp?id=").append(chromebook.getId()).append("\" class=\"btn btn-outline-danger btn-sm\" onclick=\"return confirm('Tem certeza que deseja excluir?')\">Excluir</a>\n")
+                            .append("</td>")
+                            .append("</tr>");
+                }
+            }    
 
             stm.close();
         } catch (SQLException ex) {

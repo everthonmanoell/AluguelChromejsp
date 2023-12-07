@@ -17,9 +17,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Kanit:wght@100;400;700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="../images/title 1.png" type="image/x-icon" />
     <title>Relatório de Aluguel</title>
 </head>
-<% ControleBancoAluguel control = ControleBancoAluguel.getInstance();  %>
+<%
+    ControleBancoAluguel control = ControleBancoAluguel.getInstance();
+    String pesquisa = request.getParameter("pesquisa");
+%>
 
     <div class="bordaDoTopo">
         <div class="container-fluid">     
@@ -49,10 +53,18 @@
              </div>   
             <main>
             <table class="table">
-                        <th scope="col"><input type="search" class="form-control w-255" placeholder="Pesquisar" id="pesquisar">
-                        <th scope="col"><button onclick="searchData()" class="btn btn-primary"><i class='bx bx-search'></i></i></th></th></button>
-                        
-                        <th scope="col" id="totalemuso" style=" float:inline-end;">TOTAL ALUGADOS: <%out.print(control.contarAlugueisComDevolucao());%></th>
+                        <form action="pesquisa/pesquisaralugueis.jsp?relatorio=true" method="get">
+                            <th scope="col"><input type="search" class="form-control w-255" placeholder="Pesquisar" id="pesquisar" name="pesquisa">
+                            <th scope="col"><button onclick="searchData()" class="btn btn-primary"><i class='bx bx-search'></i></i></th></th></button>
+                            <th scope="col" id="totalemuso" style="float:inline-end;">
+                    TOTAL ALUGADOS:
+                    <% if(pesquisa != null && !pesquisa.isEmpty()) {
+                        out.print(control.contarAlugueisComPesquisaTudo(pesquisa));
+                    } else {
+                        out.print(control.contarAlugueisComDevolucao());
+                    } %>
+                </th>
+                        </form>
             </table>
             </main>
                 <table class="table table-striped table-sm table-hover">
@@ -72,13 +84,17 @@
                       </tr>
                     </thead>
                     <tbody>
-                    <%
-                    if(control.listarDadosAlugueisComDevolucao() != null ){
-                        out.println(control.listarDadosAlugueisComDevolucao());
-                    }else{
-                        out.println("<p>Nenhum chromebook foi cadastrado! :( </p>");
-                    }
-                    %>
+                        <%
+                            
+                             if(pesquisa == null || pesquisa.isEmpty()){
+                            out.println(control.listarDadosAlugueisComDevolucao());
+                            }else{
+                            out.println(control.listarPesquisaAlugueisComDevolucao(pesquisa));
+                        
+                            }  
+
+                        %>
+                        
                         
                     </tbody>
                   </table>

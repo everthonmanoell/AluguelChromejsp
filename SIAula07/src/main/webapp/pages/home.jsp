@@ -16,6 +16,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Kanit:wght@100;400;700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="../images/title 1.png" type="image/x-icon" />
     <title>HOME</title> 
 </head>
 <body class="topo">
@@ -29,7 +30,7 @@
     <div class="container">
         <div class="middle">
             <h1>Bem vindo ao sistema de aluguel de Chromebook.</h1>
-            <p>Nesse sistema você pode fazer o cadastro de alunos, coordenadores e o próprio Chromebook, além de poder observar o status e quem possui o Chromebook, tudo em um único sistema. Basta entrar nas abas específicas e escolher o que fazer.</p>
+            <p>Nesse sistema você pode fazer o cadastro de alunos, coordenadores e o próprio Chromebook, além de poder observar o status e quem possui o Chromebook, tudo em um único lugar. Basta entrar nas abas específicas e escolher o que fazer.</p>
         </div>
     </div>
 </body>

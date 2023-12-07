@@ -17,6 +17,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Kanit:wght@100;400;700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="../images/title 1.png" type="image/x-icon" />
     <title>CADASTRO DE CHROMEBOOK</title>
 </head>
 
@@ -67,15 +68,15 @@
                 
                 
                 <label for="TOMBAMENTO" class="form-label"><a>TOMBAMENTO:</a></label>
-                <input type="text" value="<%if(id!=null){out.print(usr.getTombamento());}%>" class="form-control" id="TOMBAMENTO" placeholder="" name="tombamento">
+                <input type="text" value="<%if(id!=null){out.print(usr.getTombamento());}%>" class="form-control" id="TOMBAMENTO" placeholder="Digite o tombamento" name="tombamento">
                 <label for="SITUACAO"  class="form-label"><a>SITUAÇÃO:</a></label>
                 <select class="form-select"  id="SITUACAO" name="situacao" required>
-                    <option></option>
+                    <option value="" selected disable onlyread> Selecione uma opção</option>
                       <option value="Operante" <%if((id!=null) && (usr.getSituacao().equals("Operante"))){out.print("selected");}%>>OPERANTE</option>
                       <option value="Inoperante" <%if((id!=null) && (usr.getSituacao().equals("Inoperante"))){out.print("selected");}%>>INOPERANTE</option>
                 </select>
                 <label for="DESCRICAO" class="form-label"><a>DESCRIÇÃO:</a></label>
-                <textarea class="form-control" rows="2" maxlength="100" style="resize: none" id="DESCRICAO"
+                <textarea class="form-control" rows="2" maxlength="100" style="resize: none" id="DESCRICAO" placeholder="Descreva o chromebook"
                     name="descricao"><%if(id!=null){out.print(usr.getDescricao());}%></textarea>
                 <br>
                 <button type="submit" class="BotaoSubmit" 
@@ -83,7 +84,7 @@
                        else{out.print("onclick=\"exibirMensagem('O ChromeBook foi adicionado com sucesso!');\"");}%>>
                     <%if(id!=null){out.print("Salvar");}else{out.print("Cadastrar");}%>
                 </button>
-                <button type="reset" class="BotaoSubmit cancelar">Cancelar</button>
+                <button type="reset" class="BotaoSubmit cancelar" onclick="window.location.href='homecadastro.jsp';">Voltar</button>
                 <script>
                     function exibirMensagem(mensagem) {
                         alert(mensagem);
