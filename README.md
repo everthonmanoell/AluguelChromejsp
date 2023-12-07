@@ -17,19 +17,19 @@
 - Passo 2 - CSelecione o na barra de "'Categorias' - Java with Maven" e depois na barra de 'Projects:' Selecione o 'Web Aplpication'" e clique em 'Next" 
      - ![exemplo](/SIAula07/imgTutorial/s2.jpg)
 
-     - Passo 3 - Escolha o nome do seu projeto e depois clique em 'Next'
+- Passo 3 - Escolha o nome do seu projeto e depois clique em 'Next'
      - ![exemplo](/SIAula07/imgTutorial/s3.jpg)
     
-     - Passo 4 - O campo 'Server' estará '<No Server Selected>', com isso clique no botão da direita 'Add...'
+- Passo 4 - O campo 'Server' estará '<No Server Selected>', com isso clique no botão da direita 'Add...'
      - ![exemplo](/SIAula07/imgTutorial/s4.jpg)
 
-     - Passo 5 - Selecione o Server 'GlassGish Server' e logo ems seguida clique no botão 'Next >'
+- Passo 5 - Selecione o Server 'GlassGish Server' e logo ems seguida clique no botão 'Next >'
      - ![exemplo](/SIAula07/imgTutorial/s5.jpg)
   
-     - Passo 6 - Marque a caixa com o texto 'I have read and accpt the license  agreement... (click)', depois clique no botão 'Download Now...', espere baixar e em seguida, clique no botão 'Next >' 
+- Passo 6 - Marque a caixa com o texto 'I have read and accpt the license  agreement... (click)', depois clique no botão 'Download Now...', espere baixar e em seguida, clique no botão 'Next >' 
      - ![exemplo](/SIAula07/imgTutorial/s6.jpg)
 
-     - Passo 7 - ![Clique no o íncone "New Project"](/SIAula07/imgTutorial/s7.jpg)
+- Passo 7 - ![Clique no o íncone "New Project"](/SIAula07/imgTutorial/s7.jpg)
 
 # 4 - Importando o zip no NetBeans
      - Passo 1 - Clique em "File" > "Import Project" > "From Zip..."
