@@ -11,7 +11,7 @@
 
      - Passo 3 - Siga clicando em 'Next' até instalar a IDE.
 ## 3 - Escolha do servidor que roda a aplicação
-Passo 1 - Clique no o íncone "New Project"
+- Passo 1 - Clique no o íncone "New Project"
 <p align="center"><img src="https://github.com/everthonmanoell/AluguelChromejsp/blob/main/SIAula07/imgTutorial/s1.jpg"><p>
 
      - Passo 2 - CSelecione o na barra de "'Categorias' - Java with Maven" e depois na barra de 'Projects:' Selecione o 'Web Aplpication'" e clique em 'Next" 
