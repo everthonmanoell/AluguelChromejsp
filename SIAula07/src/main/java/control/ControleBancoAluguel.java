@@ -489,13 +489,45 @@ public class ControleBancoAluguel {
         return contador;
     }
     
-   public int contarAlugueisComPesquisa(String parametro) {
+    public int contarAlugueisComPesquisa(String parametro) {
     int contador = 0;
 
     if (!parametro.isEmpty()) {
         try {
             String consulta = "SELECT COUNT(*) FROM aluguel " +
                               "WHERE (data_termino IS NULL OR data_termino = '') " +
+                              "AND (nome_aluno LIKE ? OR matricula_usuario LIKE ? OR tombamento LIKE ? OR matricula_aluno LIKE ? OR situacao_chromebook LIKE ? OR data_inicio LIKE ?)";
+            PreparedStatement stmt = conn.prepareStatement(consulta);
+
+            for (int i = 1; i <= 6; i++) {
+                stmt.setString(i, "%" + parametro + "%");
+            }
+
+            ResultSet resultado = stmt.executeQuery();
+
+            if (resultado.next()) {
+                contador = resultado.getInt(1);
+            }
+
+            stmt.close();
+        } catch (SQLException ex) {
+            System.out.println("Não conseguiu contar os aluguéis com pesquisa.");
+            ex.printStackTrace();
+        }
+    }
+
+    return contador;
+}
+    
+    
+    
+    
+    public int contarAlugueisComPesquisaTudo(String parametro) {
+    int contador = 0;
+
+    if (!parametro.isEmpty()) {
+        try {
+            String consulta = "SELECT COUNT(*) FROM aluguel " +
                               "AND (nome_aluno LIKE ? OR matricula_usuario LIKE ? OR tombamento LIKE ? OR matricula_aluno LIKE ? OR situacao_chromebook LIKE ? OR data_inicio LIKE ?)";
             PreparedStatement stmt = conn.prepareStatement(consulta);
 

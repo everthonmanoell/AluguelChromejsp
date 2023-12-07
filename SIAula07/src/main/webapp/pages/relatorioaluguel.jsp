@@ -59,7 +59,7 @@
                             <th scope="col" id="totalemuso" style="float:inline-end;">
                     TOTAL ALUGADOS:
                     <% if(pesquisa != null && !pesquisa.isEmpty()) {
-                        out.print(control.contarAlugueisComPesquisa(pesquisa));
+                        out.print(control.contarAlugueisComPesquisaTudo(pesquisa));
                     } else {
                         out.print(control.contarAlugueisComDevolucao());
                     } %>
