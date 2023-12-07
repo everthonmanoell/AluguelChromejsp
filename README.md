@@ -1,7 +1,7 @@
 # 1 - Baixando o zip do repositório GitHub
 Link do repositório: [Repositório] (https://github.com/everthonmanoell/AluguelChromejsp.git)
 ### 1.1 - Clique em "<> Code" e baixe o o projeto zipado.
-
+<br><br><br>
 
 # 2 - Instalação da IDE que roda a aplicação
 ### 2.1 - Instalar o NetBeans:
@@ -11,6 +11,7 @@ Link do repositório: [Repositório] (https://github.com/everthonmanoell/Aluguel
 
 ###  2.3 - Siga clicando em 'Next' até instalar a IDE.
 
+<br><br><br>
 # 3 - Escolha do servidor que roda a aplicação
 ### 3.1 - Clique no o ícone "New Project"
 ![exemplo](/SIAula07/imgTutorial/s1.jpg)
@@ -38,7 +39,7 @@ Link do repositório: [Repositório] (https://github.com/everthonmanoell/Aluguel
 ### 3.7 - Depois de instalado selecione o Server: GlassFish Server e clique em Finish.
 
 ![exemplo](/SIAula07/imgTutorial/s7.jpg)
-
+<br><br><br>
 # 4 - Importando o zip no NetBeans
 ### 4.1 - Com o Apache Netbeans ainda aberto depois de você ter escolhido e instalado o GlassFish server clique em 'file' selecione o 'import project' e clique em 'From ZIP...'
 ![exemplo](/SIAula07/imgTutorial/import%20(1).png)
@@ -140,7 +141,7 @@ https://www.apachefriends.org/pt_br/download.html
 #### 5.6.8 - Ao fazer a importação o PHPMYADMIN mostrará uma tela com as querys executadas.<br>
  ![exemplo](/SIAula07/imgTutorial/phpadmin%20(11).png)<br>
 <br>
-<br>
+<br><br><br>
 # 6 - Como usar a aplicação
 
 1- Assim que for instalado o xampp e netbeans se pode dar start nas pages para usar a aplicação.
