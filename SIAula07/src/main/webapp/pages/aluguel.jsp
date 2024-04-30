@@ -143,7 +143,7 @@
                                 else{out.print("onclick=\"exibirMensagem('O Aluguel foi adicionado com sucesso!');\"");}%>>
                             <%if(id!=null){out.print("Devolver");}else{out.print("Alugar");}%>
                         </button>
-                        <button type="reset" class="BotaoSubmit">Cancelar</button>
+                        <button type="reset" class="reseBotaoSubmit cancelart">Cancelar</button>
                         
                         <script>
                             function exibirMensagem(mensagem) {

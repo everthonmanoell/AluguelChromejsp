@@ -48,7 +48,9 @@
             
         %>
         <a href="pages/inicialcadastro.jsp">Cadastre-se</a>
-    <br>
+        <br>
+        <a href="pages/cadastraragendamento.jsp">Agendar retirada</a>
+        <br>
         <button type="submit" class="btn btn-primary" value="enviar" id="send">Entrar</button></a>
     </form>
 </body>
