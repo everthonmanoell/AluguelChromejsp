@@ -44,6 +44,7 @@
             <a href="aluguel.jsp"><button class="botoesDoTopo" id="aluguel"><%if(id != null){out.print("DEVOLVER");}else{out.print("ALUGUEL");}%></button></a>
             <a href="devolucao.jsp"><button class="botoesDoTopo" id="devolucao">DEVOLUÇÃO</button></a>
             <a href="relatorio.jsp"><button class="botoesDoTopo" id="relatorio">RELATÓRIO</button></a>
+            <a href="agendamentos.jsp"><button class="botoesDoTopo" id="agendamentos">AGENDAMENTOS</button></a>
             <a href="sair.jsp"><button class="power"><img src="../images/power.png" class="power" style="height: 30px;"></button></a>
        </div>
     </div>
