@@ -23,7 +23,7 @@ CREATE TABLE usuario (
 CREATE TABLE chromebook (
   id_chromebook VARCHAR(30) PRIMARY KEY NOT NULL,
   tombo VARCHAR(50) NOT NULL,
-  SituacaoParaEmprestimo VARCHAR(15) NOT NULL DEFAULT 'Disponível',
+  SituacaoParaAgendamento VARCHAR(15) NOT NULL DEFAULT 'Disponível',
   estadoDoChromeobok VARCHAR(15) NOT NULL DEFAULT 'Operante',
   descricao VARCHAR(255) DEFAULT NULL,
   status_agendamento BOOLEAN DEFAULT FALSE
@@ -76,7 +76,7 @@ BEFORE INSERT ON registro
 FOR EACH ROW
 BEGIN
   UPDATE chromebook
-  SET SituacaoParaEmprestimo = 'Emprestado',
+  SET SituacaoParaAgendamento = 'Emprestado',
   WHERE id_chromebook = NEW.fk_chromebook_id;
 END;
 
@@ -86,7 +86,7 @@ FOR EACH ROW
 BEGIN
   IF NEW.data_fim IS NOT NULL AND OLD.data_fim IS NULL THEN
     UPDATE chromebook
-    SET SituacaoParaEmprestimo = 'Disponível'
+    SET SituacaoParaAgendamento = 'Disponível'
     WHERE id_chromebook = NEW.fk_chromebook_id;
   END IF;
 END;

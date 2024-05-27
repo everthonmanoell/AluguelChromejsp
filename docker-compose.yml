@@ -1,0 +1,27 @@
+version: '3.1'
+
+services:
+  app:
+    image: tomcat:9.0
+    container_name: jsp_app
+    volumes:
+      - SiAula07/target/SiAula07-1.0-SNAPSHOT:/usr/local/tomcat/webapps/SiAula07
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
+
+  db:
+    image: mysql:8.0
+    restart: aways
+    container_name: mysql_db
+    environment:
+      MYSQL_ROOT_PASSWORD: ""
+      MYSQL_DATABASE: aluguelchromebook
+      MYSQL_USER: "root"
+      MYSQL_PASSWORD: ""
+    ports: 
+      - 3306:3306
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./Banco/ModeloFisico/aluguelchromebook.sql:/docker-entrypoint-initdb.d/aluguelchromebook.sql
