@@ -1,28 +1,32 @@
-version: '3.1'
+version: '3.8'
 
 services:
   app:
     image: tomcat:9.0
     container_name: jsp_app
     volumes:
-      - ./SiAula07/target/SiAula07-1.0-SNAPSHOT:/usr/local/tomcat/webapps/SiAula07
+      - ./SiAula07/target/SiAula07-1.0-SNAPSHOT.war:/usr/local/tomcat/webapps/SiAula07.war
     ports:
       - 8080:8080
     depends_on:
       - db
+    environment:
+      - JAVA_OPTS=-Dspring.datasource.url=jdbc:mysql://db:3306/aluguelchromebook -Dspring.datasource.username=root -Dspring.datasource.password=
 
   db:
     image: mysql:8.0
     restart: always
     container_name: mysql_db
     environment:
-      MYSQL_ROOT_PASSWORD: "" 
+      MYSQL_ROOT_PASSWORD: rootpassword
       MYSQL_DATABASE: aluguelchromebook
+      MYSQL_USER: root
+      MYSQL_PASSWORD: rootpassword
     ports: 
       - 3306:3306
     volumes:
       - db_data:/var/lib/mysql
-      - ./Banco/ModeloFisico/aluguelchromebook.sql:/docker-entrypoint-initdb.d/aluguelchromebook.sql
+      - ./banco/modeloFisico/aluguelchromebook.sql:/docker-entrypoint-initdb.d/aluguelchromebook.sql
 
 volumes:
   db_data:
