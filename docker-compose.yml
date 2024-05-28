@@ -7,7 +7,7 @@ services:
     volumes:
       - ./SiAula07/target/SiAula07-1.0-SNAPSHOT.war:/usr/local/tomcat/webapps/SiAula07.war
     ports:
-      - 8080:8080
+      - 80:8080
     depends_on:
       - db
     environment:
