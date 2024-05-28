@@ -1,11 +1,11 @@
-version: '3.8'
+version: '3.3'
 
 services:
   app:
     image: tomcat:9.0
     container_name: jsp_app
     volumes:
-      - ./SiAula07/target/SiAula07-1.0-SNAPSHOT.war:/usr/local/tomcat/webapps/SiAula07.war
+      - ./SIAula07/target/SIAula07-1.0-SNAPSHOT.war:/usr/local/tomcat/webapps/SIAula07.war
     ports:
       - 80:8080
     depends_on:
