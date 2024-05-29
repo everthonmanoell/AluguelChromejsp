@@ -1,15 +1,24 @@
 version: '3.3'
 
 services:
+
+  maven:
+    image: maven
+    working_dir: /home/maven
+    volumes:
+      - ./SIAula07/home/maven
+    command: mvn package
+
   app:
     image: tomcat:9.0
     container_name: jsp_app
     volumes:
-      - ./SIAula07/target/SIAula07-1.0-SNAPSHOT.war:/usr/local/tomcat/webapps/SIAula07.war
+      - ./SIAula07/target/SIAula07-1.0-SNAPSHOT.war:/usr/local/tomcat/webapps/ROOT.war
     ports:
       - 80:8080
     depends_on:
       - db
+      - maven
     environment:
       - JAVA_OPTS=-Dspring.datasource.url=jdbc:mysql://db:3306/aluguelchromebook -Dspring.datasource.username=root -Dspring.datasource.password=
 
@@ -20,12 +29,13 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: rootpassword
       MYSQL_DATABASE: aluguelchromebook
-      MYSQL_USER: root
+      MYSQL_USER: teste
       MYSQL_PASSWORD: rootpassword
     ports: 
       - 3306:3306
+    
     volumes:
-      - db_data:/var/lib/mysql
+      - ./db_data:/var/lib/mysql
       - ./banco/modeloFisico/aluguelchromebook.sql:/docker-entrypoint-initdb.d/aluguelchromebook.sql
 
 volumes:
