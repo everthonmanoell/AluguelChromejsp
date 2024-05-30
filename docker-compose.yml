@@ -3,20 +3,19 @@ version: '3.3'
 services:
 
   maven:
-    image: maven
+    image: maven:3.9.7-sapmachine-22
     working_dir: /home/maven
     volumes:
-      - ./SIAula07/home/maven
+      - ./SIAula07:/home/maven #Copio a pasta SIAula07 para dentro do /home/maven
     command: mvn package
+    
 
   app:
     image: tomcat:9.0
     container_name: jsp_app
     volumes:
-      # Adicione o volume do serviço maven ao serviço app
-      - ./SIAula07/home/maven:/maven
-      # Agora o arquivo war gerado pelo maven estará disponível em /maven/target/SIAula07-1.0-SNAPSHOT.war
-      - /maven/target/SIAula07-1.0-SNAPSHOT.war:/usr/local/tomcat/webapps/ROOT.war
+      - ./home/maven/SIAula07/target/SIAula07-1.0-SNAPSHOT.war:/usr/local/tomcat/webapps/ROOT.war 
+      #Copio o war gerado pelo maven para dentro do tomcat
     ports:
       - 80:8080
     depends_on:
@@ -40,6 +39,7 @@ services:
     volumes:
       - ./db_data:/var/lib/mysql
       - ./banco/modeloFisico/aluguelchromebook.sql:/docker-entrypoint-initdb.d/aluguelchromebook.sql
+
 
 volumes:
   db_data:
