@@ -38,7 +38,7 @@ public class Conexao {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             return DriverManager.getConnection(
-                    "jdbc:mysql://localhost/aluguelchromebook", "root", "");
+                    "jdbc:mysql://localhost/aluguelchromebook", "teste", "");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (ClassNotFoundException ex) {

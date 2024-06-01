@@ -31,7 +31,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: rootpassword
       MYSQL_DATABASE: aluguelchromebook
-      MYSQL_USER: root
+      MYSQL_USER: teste
       MYSQL_PASSWORD: rootpassword
     ports: 
       - 3306:3306
