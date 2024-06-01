@@ -15,7 +15,7 @@ services:
     container_name: jsp_app
     volumes:
       - ./SIAula07/target/mavenproject1-1.0-SNAPSHOT.war:/usr/local/tomcat/webapps/ROOT.war 
-        #Copio o war gerado pelo maven para dentro do tomcat
+        #Copio o war gerado pelo maven para dentro do tomcat .
     ports:
       - 80:8080
     depends_on:
