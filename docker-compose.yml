@@ -8,7 +8,7 @@ services:
     volumes:
       - ./SIAula07:/home/maven #Copio a pasta SIAula07 para dentro do /home/maven
       - ./m2:/root/.m2
-    command: mvn package
+    command: mvn clean package
 
   app:
     image: tomcat:9.0
@@ -37,7 +37,7 @@ services:
       - 3306:3306
     volumes:
       - ./db_data:/var/lib/mysql
-      - ./banco/modeloFisico/aluguelchromebook.sql:/docker-entrypoint-initdb.d/aluguelchromebook.sql
+      - ./Banco/modeloFisico/aluguelchromebook.sql:/docker-entrypoint-initdb.d/aluguelchromebook.sql
 
 volumes:
   db_data:
