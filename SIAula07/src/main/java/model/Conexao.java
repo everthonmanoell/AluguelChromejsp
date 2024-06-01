@@ -26,17 +26,24 @@ import java.util.logging.Logger;
  * @author root
  */
 public class Conexao {
-    private static final String URL = "jdbc:mysql://db:3306/aluguelchromebook";
-    private static final String USER = "root";
-    private static final String PASSWORD = "rootpassword";
 
-    public static Connection getConnection() {
+    private Connection con;
+
+    public Conexao() {
+        this.con = getConnection();
+        System.out.println("OK");
+    }
+
+    public Connection getConnection() {
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            return DriverManager.getConnection(URL, USER, PASSWORD);
-        } catch (ClassNotFoundException | SQLException e) {
-            throw new RuntimeException("Erro na conexão com o banco de dados", e);
+            Class.forName("com.mysql.jdbc.Driver");
+            return DriverManager.getConnection(
+                    "jdbc:mysql://localhost/aluguelchromebook", "root", "");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return null;
     }
 }
-
