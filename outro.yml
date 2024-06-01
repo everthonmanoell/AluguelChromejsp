@@ -1,70 +1,27 @@
 version: '3.3'
 
 services:
-
   maven:
-    image: maven:3.6.3-jdk-8
-    container_name: maven
+    image: maven:3.9.7-sapmachine-22
+    working_dir: /home/maven
     volumes:
-      - ./home/maven:/maven
-      - ./maven/SIAula07:/SIAula07
-    working_dir: /SIAula07
-    command: mvn clean install
-
-  app:
-    image: tomcat:9.0
-    container_name: app
-    ports:
-      - 8080:8080
-    volumes:
-      - ./target/SIAula07.war:/usr/local/tomcat/webapps/ROOT.war
-
-  db:
-    image: mysql:8.0
-    restart: always
-    container_name: mysql_db
-    environment:
-      MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_DATABASE: aluguelchromebook
-      MYSQL_USER: teste
-      MYSQL_PASSWORD: rootpassword
-    ports: 
-      - 3306:3306
-    
-    volumes:
-      - ./db_data:/var/lib/mysql
-      - ./banco/modeloFisico/aluguelchromebook.sql:/docker-entrypoint-initdb.d/aluguelchromebook.sql
-
-volumes:
-  db_data:
-
-
-#------------------------------------------
-
-
-version: '3.8'
-
-services:
-
-  maven:
-    image: maven:3.8.5-jdk-11
-    working_dir: /usr/src/app
-    volumes:
-      - ./:/usr/src/app
-      - maven-repo:/root/.m2
-      - app-build:/usr/src/app/SiAula07/target
-    command: mvn clean package
+      - ./SIAula07:/home/maven  # Copia a pasta SIAula07 para dentro do /home/maven
+      - maven-out:/home/maven/SIAula07/target  # Novo volume para saída do Maven
+    command: mvn package
+    depends_on:
+      - db
 
   app:
     image: tomcat:9.0
     container_name: jsp_app
     volumes:
-      - app-build:/usr/local/tomcat/webapps
+      - maven-out:/usr/local/tomcat/webapps/ROOT.war  # Mapeia o volume de saída do Maven
+      - ./logs:/usr/local/tomcat/logs  # Novo volume para logs do Tomcat
     ports:
-      - "80:8080"
+      - 80:8080
     depends_on:
-      - maven
       - db
+      - maven
     environment:
       - JAVA_OPTS=-Dspring.datasource.url=jdbc:mysql://db:3306/aluguelchromebook -Dspring.datasource.username=root -Dspring.datasource.password=
 
@@ -78,14 +35,12 @@ services:
       MYSQL_USER: teste
       MYSQL_PASSWORD: rootpassword
     ports:
-      - "3306:3306"
+      - 3306:3306
     volumes:
       - db_data:/var/lib/mysql
       - ./banco/modeloFisico/aluguelchromebook.sql:/docker-entrypoint-initdb.d/aluguelchromebook.sql
 
 volumes:
+  maven-out:
   db_data:
-  maven-repo:
-  app-build:
-
-
+  logs:
