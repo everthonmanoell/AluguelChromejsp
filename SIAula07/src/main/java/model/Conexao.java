@@ -23,7 +23,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author root
+ * @author everthon
  */
 public class Conexao {
 
@@ -38,7 +38,7 @@ public class Conexao {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             return DriverManager.getConnection(
-                    "jdbc:mysql://localhost/aluguelchromebook", "root", "");
+                    "jdbc:mysql://db:3306/aluguelchromebook", "teste", "rootpassword");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (ClassNotFoundException ex) {
@@ -46,6 +46,4 @@ public class Conexao {
         }
         return null;
     }
-
-
 }

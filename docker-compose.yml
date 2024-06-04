@@ -1,4 +1,4 @@
-version: '3.3'
+version: '3.7'
 
 services:
 
@@ -7,22 +7,22 @@ services:
     working_dir: /home/maven
     volumes:
       - ./SIAula07:/home/maven #Copio a pasta SIAula07 para dentro do /home/maven
-      - ./m2:/root/.m2
+      - ./m2:/root/.m2  
     command: mvn package
 
   app:
     image: tomcat:9.0
+    restart: always
     container_name: jsp_app
     volumes:
       - ./SIAula07/target/mavenproject1-1.0-SNAPSHOT.war:/usr/local/tomcat/webapps/ROOT.war 
-        #Copio o war gerado pelo maven para dentro do tomcat
+        #Copio o war gerado pelo maven para dentro do tomcat .
     ports:
-      - 8080:8080
+      - 80:8080
     depends_on:
       - db
-      - maven
     environment:
-      - JAVA_OPTS=-Dspring.datasource.url=jdbc:mysql://db:3306/aluguelchromebook -Dspring.datasource.username=root -Dspring.datasource.password=
+      - JAVA_OPTS=-Dspring.datasource.url=jdbc:mysql://db:3306/aluguelchromebook -Dspring.datasource.username=root -Dspring.datasource.password=rootpassword
 
   db:
     image: mysql:8.0.36
@@ -33,12 +33,14 @@ services:
       MYSQL_DATABASE: aluguelchromebook
       MYSQL_USER: teste
       MYSQL_PASSWORD: rootpassword
+    
+      
     ports: 
       - 3306:3306
     volumes:
       - ./db_data:/var/lib/mysql
       - ./Banco/modeloFisico/aluguelchromebook.sql:/docker-entrypoint-initdb.d/aluguelchromebook.sql
-
-
 volumes:
   db_data:
+
+
