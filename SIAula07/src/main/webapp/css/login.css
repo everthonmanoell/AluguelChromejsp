@@ -1,0 +1,71 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 26 de out. de 2023, 09:15:10
+    Author     : evert
+*/
+
+body {
+    background-color: #ffffff;
+    font-family: 'Kanit', sans-serif;
+}
+
+.borda-esquerda {
+    float: left; 
+    width: 50%; 
+    background-color: #003B95; 
+    height: 100vh; 
+    padding: 20px; 
+    box-sizing: border-box; 
+    color: white; 
+    text-align: left;
+    padding: 180px;
+    padding-left: 40px;
+    font-size: large;
+}
+
+.borda-direita {
+    float: right; 
+    width: 50%; 
+    padding: 20px; 
+    box-sizing: border-box;
+    text-align: center;
+    padding: 180px;
+}
+
+.cpf1 {
+    padding: 12px;
+    margin-bottom: 10px;
+}
+
+.senha1 {
+    padding: 12px;
+    margin-bottom: 10px;
+}
+
+.btn-primary {
+    background-color: #003B95;
+    color: #ffffff; 
+    font-size: 18px; 
+    width: 50%;
+    text-align: center; 
+    cursor: pointer; 
+    height: 40px;
+    width: 100px;
+    border: 1px;
+    text-decoration: none;
+}
+
+.btn-primary:hover {
+    opacity: 60%;
+    transition: all .55s;
+}
+
+a {
+    text-decoration: none;
+    font-size: 12px;
+}
+
+
