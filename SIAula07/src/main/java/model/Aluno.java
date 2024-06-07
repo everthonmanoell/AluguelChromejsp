@@ -1,13 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package model;
 
-/**
- *
- * @author evert
- */
 public class Aluno {
     private String id;
     private String nome;
@@ -16,9 +8,8 @@ public class Aluno {
     private String periodo;
     private String turma;
     private String curso;
-    
-    
-    public Aluno ( String nome, String matricula, String turno, String periodo, String turma, String curso){
+
+    public Aluno(String nome, String matricula, String turno, String periodo, String turma, String curso) {
         this.nome = nome;
         this.matricula = matricula;
         this.turno = turno;
@@ -34,7 +25,7 @@ public class Aluno {
     public void setId(String id) {
         this.id = id;
     }
-    
+
     public String getNome() {
         return nome;
     }
@@ -66,29 +57,20 @@ public class Aluno {
     public void setPeriodo(String periodo) {
         this.periodo = periodo;
     }
-    
-    public String getTurma(){
+
+    public String getTurma() {
         return turma;
     }
-    
-    public void setTurma(String turma){
+
+    public void setTurma(String turma) {
         this.turma = turma;
     }
 
-    /**
-     * @return the curso
-     */
     public String getCurso() {
         return curso;
     }
 
-    /**
-     * @param curso the curso to set
-     */
     public void setCurso(String curso) {
         this.curso = curso;
     }
-    
-        
-    
 }
