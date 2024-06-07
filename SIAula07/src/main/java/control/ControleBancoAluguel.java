@@ -1,6 +1,6 @@
 package control;
 
-import model.Aluguel;
+import model.Registro;
 import model.Conexao;
 
 import java.sql.Connection;
@@ -59,19 +59,19 @@ public class ControleBancoAluguel {
     /*---------------------------------------------------------------------------------------------*/
 
     /*------------------------- ADICIONAR ALUGUEL --------------------------------------*/
-    public void adicionarAluguel(Aluguel aluguel) {
+    public void adicionarAluguel(Registro aluguel) {
         // Verificar se o coordenador existe
-        if (!existeCoordenador(aluguel.getMatriculaUsuario())) {
+        if (!existeCoordenador(aluguel.getFkMatUsuario())) {
             throw new RuntimeException("Coordenador não encontrado.");
         }
 
         // Verificar se o aluno existe
-        if (!existeAluno(aluguel.getMatriculaAluno())) {
+        if (!existeAluno(aluguel.getFkMatAluno())) {
             throw new RuntimeException("Aluno não encontrado.");
         }
 
         // Verificar se o chromebook existe
-        if (!existeChromebook(aluguel.getTombamento())) {
+        if (!existeChromebook(aluguel.getFkTombamento())) {
             throw new RuntimeException("Chromebook não encontrado.");
         }
 
@@ -80,20 +80,20 @@ public class ControleBancoAluguel {
         try {
             PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
-            stmt.setString(1, aluguel.getMatriculaUsuario());
-            stmt.setString(2, aluguel.getMatriculaAluno());
-            stmt.setString(3, aluguel.getTombamento());
-            stmt.setString(4, aluguel.getDataInicio());
-            stmt.setString(5, aluguel.getHoraInicio());
-            stmt.setString(6, aluguel.getSituacaoChromebook());
-            stmt.setString(7, aluguel.getNomeAluno());
+            stmt.setString(1, aluguel.getFkMatUsuario());
+            stmt.setString(2, aluguel.getFkMatAluno());
+            stmt.setString(3, aluguel.getFkTombamento());
+            stmt.setString(4, aluguel.getDataHoraRetirada());
+            stmt.setString(5, aluguel.getDataHoraDevolucao());
+            stmt.setString(6, aluguel.getFkTombamento());
+            stmt.setString(7, aluguel.getFkNomeAluno());
 
             int affectedRows = stmt.executeUpdate();
 
             if (affectedRows > 0) {
                 ResultSet generatedKeys = stmt.getGeneratedKeys();
                 if (generatedKeys.next()) {
-                    aluguel.setId(generatedKeys.getString(1));
+                    aluguel.setIdRegistro(generatedKeys.getString(1));
                 } else {
                     throw new SQLException("Não foi possível obter o ID do aluguel.");
                 }
@@ -146,8 +146,8 @@ public class ControleBancoAluguel {
 
     /*---------------------------------------------------------------*/
 
-    public Aluguel getAluguel(String id) {
-       Aluguel aluguel = null;
+    public Registro getAluguel(String id) {
+       Registro aluguel = null;
 
        try {
            String consulta = "SELECT * FROM aluguel WHERE id = ?";
@@ -157,7 +157,7 @@ public class ControleBancoAluguel {
            ResultSet resultado = stmt.executeQuery();
 
            if (resultado.next()) {
-               aluguel = new Aluguel(
+               aluguel = new Registro(
                        resultado.getString("nome_aluno"),
                        resultado.getString("matricula_usuario"),
                        resultado.getString("matricula_aluno"),
@@ -167,9 +167,9 @@ public class ControleBancoAluguel {
                        resultado.getString("hora_inicio")
                );
 
-               aluguel.setId(resultado.getString("id"));
-               aluguel.setDataTermino(resultado.getString("data_termino"));
-               aluguel.setHoraTermino(resultado.getString("hora_termino"));
+               aluguel.setIdRegistro(resultado.getString("id"));
+               aluguel.setDataHoraRetirada(resultado.getString("data_termino"));
+               aluguel.setDataHoraDevolucao(resultado.getString("hora_termino"));
            }
 
            stmt.close();
@@ -212,8 +212,8 @@ public class ControleBancoAluguel {
         ResultSet resultado = stm.executeQuery(consulta);
 
         while (resultado.next()) {
-            Aluguel aluguel = new Aluguel(
-                    resultado.getString("nome_aluno"),
+            Registro aluguel = new Registro(
+                    resultado.getString("nomeAluno"),
                     resultado.getString("matricula_usuario"),
                     resultado.getString("matricula_aluno"),
                     resultado.getString("tombamento"),
@@ -223,23 +223,23 @@ public class ControleBancoAluguel {
                     resultado.getString("hora_inicio")
             );
 
-            aluguel.setId(resultado.getString("id"));
-            aluguel.setDataTermino(resultado.getString("data_termino"));
-            aluguel.setHoraTermino(resultado.getString("hora_termino"));
+            aluguel.setIdRegistro(resultado.getString("id"));
+               aluguel.setDataHoraRetirada(resultado.getString("data_termino"));
+               aluguel.setDataHoraDevolucao(resultado.getString("hora_termino"));
 
             // Condição similar à do método sem banco
              
                 texto.append("<tr>")
-                            .append("<td>").append(aluguel.getId()).append("</td>")
-                            .append("<td>").append(aluguel.getNomeAluno()).append("</td>")
-                            .append("<td>").append(aluguel.getMatriculaAluno()).append("</td>")
-                            .append("<td>").append(aluguel.getMatriculaUsuario()).append("</td>")
-                            .append("<td>").append(aluguel.getTombamento()).append("</td>")
-                            .append("<td>").append(aluguel.getSituacaoChromebook()).append("</td>")
-                            .append("<td>").append(aluguel.getDataInicio()).append("</td>")
-                            .append("<td>").append(aluguel.getHoraInicio()).append("</td>")
-                            .append("<td>").append(aluguel.getDataTermino()).append("</td>")
-                            .append("<td>").append(aluguel.getHoraTermino()).append("</td>")
+                            .append("<td>").append(aluguel.getIdRegistro()).append("</td>")
+                            .append("<td>").append(aluguel.getFkNomeAluno()).append("</td>")
+                            .append("<td>").append(aluguel.getFkMatAluno()).append("</td>")
+                            .append("<td>").append(aluguel.getFkMatUsuario()).append("</td>")
+                            .append("<td>").append(aluguel.getFkTombamento()).append("</td>")
+                            .append("<td>").append(aluguel.getFkTombamento()).append("</td>")
+                            .append("<td>").append(aluguel.getDataHoraRetirada()).append("</td>")
+                            .append("<td>").append(aluguel.getDataHoraAgendamento()).append("</td>")
+                            .append("<td>").append(aluguel.getDataHoraDevolucao()).append("</td>")
+                            .append("<td>").append(aluguel.getDataHoraDevolucao()).append("</td>")
                     .append("</tr>");
             
         }
@@ -267,7 +267,7 @@ public class ControleBancoAluguel {
         ResultSet resultado = stm.executeQuery(consulta);
 
         while (resultado.next()) {
-            Aluguel aluguel = new Aluguel(
+            Registro aluguel = new Registro(
                     resultado.getString("nome_aluno"),
                     resultado.getString("matricula_usuario"),
                     resultado.getString("matricula_aluno"),
@@ -278,23 +278,23 @@ public class ControleBancoAluguel {
                     resultado.getString("hora_inicio")
             );
 
-            aluguel.setId(resultado.getString("id"));
-            aluguel.setDataTermino(resultado.getString("data_termino"));
-            aluguel.setHoraTermino(resultado.getString("hora_termino"));
+            aluguel.setIdRegistro(resultado.getString("id"));
+               aluguel.setDataHoraRetirada(resultado.getString("data_termino"));
+               aluguel.setDataHoraDevolucao(resultado.getString("hora_termino"));
 
             // Condição similar à do método sem banco
-            if(aluguel.getDataTermino() == null || aluguel.getDataTermino().isEmpty() ){ 
+            if(aluguel.getDataHoraDevolucao() == null || aluguel.getDataHoraDevolucao().isEmpty() ){ 
                 texto.append("<tr>")
-                            .append("<td>").append(aluguel.getId()).append("</td>")
-                            .append("<td>").append(aluguel.getNomeAluno()).append("</td>")
-                            .append("<td>").append(aluguel.getMatriculaAluno()).append("</td>")
-                            .append("<td>").append(aluguel.getMatriculaUsuario()).append("</td>")
-                            .append("<td>").append(aluguel.getTombamento()).append("</td>")
-                            .append("<td>").append(aluguel.getSituacaoChromebook()).append("</td>")
-                            .append("<td>").append(aluguel.getDataInicio()).append("</td>")
-                            .append("<td>").append(aluguel.getHoraInicio()).append("</td>")
+                            .append("<td>").append(aluguel.getIdRegistro()).append("</td>")
+                            .append("<td>").append(aluguel.getFkNomeAluno()).append("</td>")
+                            .append("<td>").append(aluguel.getFkMatAluno()).append("</td>")
+                            .append("<td>").append(aluguel.getFkMatUsuario()).append("</td>")
+                            .append("<td>").append(aluguel.getFkTombamento()).append("</td>")
+                            .append("<td>").append(aluguel.getFkTombamento()).append("</td>")
+                            .append("<td>").append(aluguel.getDataHoraRetirada()).append("</td>")
+                            .append("<td>").append(aluguel.getDataHoraRetirada()).append("</td>")
                             .append("<td>")
-                                .append("<a href=\"aluguel.jsp?id=").append(aluguel.getId()).append("\" class=\"btn btn-outline-primary btn-sm\">Devolver</a>")
+                                .append("<a href=\"aluguel.jsp?id=").append(aluguel.getIdRegistro()).append("\" class=\"btn btn-outline-primary btn-sm\">Devolver</a>")
                             .append("</td>")
                             .append("</tr>");
                     
@@ -331,7 +331,7 @@ public class ControleBancoAluguel {
 
                 
                 if (nome_aluno.toLowerCase().indexOf(pesquisa.toLowerCase()) != -1 || matricula_usuario.toLowerCase().indexOf(pesquisa.toLowerCase()) != -1 || tombamento.toLowerCase().indexOf(pesquisa.toLowerCase()) != -1 || matricula_aluno.toLowerCase().indexOf(pesquisa.toLowerCase()) != -1 || situacao_chromeboook.toLowerCase().indexOf(pesquisa.toLowerCase()) != -1 || data_inicio.toLowerCase().indexOf(pesquisa.toLowerCase()) != -1) {
-                    Aluguel aluguel = new Aluguel(
+                    Registro aluguel = new Registro(
                             resultado.getString("nome_aluno"),
                             resultado.getString("matricula_usuario"),
                             resultado.getString("matricula_aluno"),
@@ -342,25 +342,25 @@ public class ControleBancoAluguel {
                             resultado.getString("hora_inicio")
                     );
 
-                    aluguel.setId(resultado.getString("id"));
-                    aluguel.setDataTermino(resultado.getString("data_termino"));
-                    aluguel.setHoraTermino(resultado.getString("hora_termino"));
+                    aluguel.setIdRegistro(resultado.getString("id"));
+                    aluguel.setDataHoraRetirada(resultado.getString("data_termino"));
+                    aluguel.setDataHoraDevolucao(resultado.getString("hora_termino"));     
 
                     // Condição similar à do método sem banco
-                    if(aluguel.getDataTermino() == null || aluguel.getDataTermino().isEmpty() ){ 
-                        texto.append("<tr>")
-                                    .append("<td>").append(aluguel.getId()).append("</td>")
-                                    .append("<td>").append(aluguel.getNomeAluno()).append("</td>")
-                                    .append("<td>").append(aluguel.getMatriculaAluno()).append("</td>")
-                                    .append("<td>").append(aluguel.getMatriculaUsuario()).append("</td>")
-                                    .append("<td>").append(aluguel.getTombamento()).append("</td>")
-                                    .append("<td>").append(aluguel.getSituacaoChromebook()).append("</td>")
-                                    .append("<td>").append(aluguel.getDataInicio()).append("</td>")
-                                    .append("<td>").append(aluguel.getHoraInicio()).append("</td>")
-                                    .append("<td>")
-                                        .append("<a href=\"aluguel.jsp?id=").append(aluguel.getId()).append("\" class=\"btn btn-outline-primary btn-sm\">Devolver</a>")
-                                    .append("</td>")
-                                    .append("</tr>");
+                    if(aluguel.getDataHoraDevolucao() == null || aluguel.getDataHoraDevolucao().isEmpty() ){ 
+                texto.append("<tr>")
+                            .append("<td>").append(aluguel.getIdRegistro()).append("</td>")
+                            .append("<td>").append(aluguel.getFkNomeAluno()).append("</td>")
+                            .append("<td>").append(aluguel.getFkMatAluno()).append("</td>")
+                            .append("<td>").append(aluguel.getFkMatUsuario()).append("</td>")
+                            .append("<td>").append(aluguel.getFkTombamento()).append("</td>")
+                            .append("<td>").append(aluguel.getFkTombamento()).append("</td>")
+                            .append("<td>").append(aluguel.getDataHoraRetirada()).append("</td>")
+                            .append("<td>").append(aluguel.getDataHoraRetirada()).append("</td>")
+                            .append("<td>")
+                                .append("<a href=\"aluguel.jsp?id=").append(aluguel.getIdRegistro()).append("\" class=\"btn btn-outline-primary btn-sm\">Devolver</a>")
+                            .append("</td>")
+                            .append("</tr>");
 
                     }
                 }
@@ -397,7 +397,7 @@ public class ControleBancoAluguel {
 
                 
                 if (nome_aluno.toLowerCase().indexOf(pesquisa.toLowerCase()) != -1 || matricula_usuario.toLowerCase().indexOf(pesquisa.toLowerCase()) != -1 || tombamento.toLowerCase().indexOf(pesquisa.toLowerCase()) != -1 || matricula_aluno.toLowerCase().indexOf(pesquisa.toLowerCase()) != -1 || situacao_chromeboook.toLowerCase().indexOf(pesquisa.toLowerCase()) != -1 || data_inicio.toLowerCase().indexOf(pesquisa.toLowerCase()) != -1) {
-                    Aluguel aluguel = new Aluguel(
+                    Registro aluguel = new Registro(
                             resultado.getString("nome_aluno"),
                             resultado.getString("matricula_usuario"),
                             resultado.getString("matricula_aluno"),
@@ -408,23 +408,23 @@ public class ControleBancoAluguel {
                             resultado.getString("hora_inicio")
                     );
 
-                    aluguel.setId(resultado.getString("id"));
-                    aluguel.setDataTermino(resultado.getString("data_termino"));
-                    aluguel.setHoraTermino(resultado.getString("hora_termino"));
+                    aluguel.setIdRegistro(consulta);(resultado.getString("idRegistro"));
+                    aluguel.setDataHoraDevolucao(resultado.getString("data_termino"));
+                    aluguel.setDataHoraRetirada(resultado.getString("hora_termino"));
 
                    
                      
                         texto.append("<tr>")
-                                    .append("<td>").append(aluguel.getId()).append("</td>")
-                                    .append("<td>").append(aluguel.getNomeAluno()).append("</td>")
-                                    .append("<td>").append(aluguel.getMatriculaAluno()).append("</td>")
-                                    .append("<td>").append(aluguel.getMatriculaUsuario()).append("</td>")
-                                    .append("<td>").append(aluguel.getTombamento()).append("</td>")
-                                    .append("<td>").append(aluguel.getSituacaoChromebook()).append("</td>")
-                                    .append("<td>").append(aluguel.getDataInicio()).append("</td>")
-                                    .append("<td>").append(aluguel.getHoraInicio()).append("</td>")
-                                    .append("<td>").append(aluguel.getDataTermino()).append("</td>")
-                                    .append("<td>").append(aluguel.getHoraTermino()).append("</td>")
+                                    .append("<td>").append(aluguel.getIdRegistro()).append("</td>")
+                                    .append("<td>").append(aluguel.getFkNomeAluno()).append("</td>")
+                                    .append("<td>").append(aluguel.getFkMatAluno()).append("</td>")
+                                    .append("<td>").append(aluguel.getFkMatUsuario()).append("</td>")
+                                    .append("<td>").append(aluguel.getFkTombamento()).append("</td>")
+                                    .append("<td>").append(aluguel.getFkTombamento()).append("</td>")
+                                    .append("<td>").append(aluguel.getDataHoraRetirada()).append("</td>")
+                                    .append("<td>").append(aluguel.getDataHoraAgendamento()).append("</td>")
+                                    .append("<td>").append(aluguel.getDataHoraDevolucao()).append("</td>")
+                                    .append("<td>").append(aluguel.getDataHoraDevolucao()).append("</td>")
                                     
                                     .append("</tr>");
 
