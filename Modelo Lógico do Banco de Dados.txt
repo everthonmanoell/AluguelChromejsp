@@ -1,0 +1,75 @@
+Modelo Lógico do Banco de Dados
+Tabela aluguel
+id (PK): int(11), NOT NULL, AUTO_INCREMENT
+id_aluno (FK): int(11), DEFAULT NULL
+id_chromebook (FK): int(11), DEFAULT NULL
+id_coordenador (FK): int(11), DEFAULT NULL
+nome_aluno: varchar(50), NOT NULL
+data_inicio: date, NOT NULL
+hora_inicio: time, NOT NULL
+hora_termino: time, DEFAULT NULL
+data_termino: date, DEFAULT NULL
+matricula_usuario: varchar(30), NOT NULL
+matricula_aluno: varchar(30), NOT NULL
+tombamento: varchar(30), NOT NULL
+situacao_chromebook: varchar(30), NOT NULL
+Índices e Restrições:
+
+PK: id
+FK: id_aluno → aluno(id)
+FK: id_chromebook → chromebook(id)
+FK: id_coordenador → coordenador(id)
+Tabela aluno
+id (PK): int(11), NOT NULL, AUTO_INCREMENT
+matricula: varchar(50), NOT NULL
+nome: varchar(50), NOT NULL
+curso: varchar(70), NOT NULL
+periodo: char(1), NOT NULL
+turno: varchar(10), NOT NULL
+turma: char(1), NOT NULL
+Índices e Restrições:
+
+PK: id
+Tabela chromebook
+id (PK): int(11), NOT NULL, AUTO_INCREMENT
+tombamento: varchar(50), NOT NULL
+situacao: varchar(15), NOT NULL
+descricao: varchar(255), DEFAULT NULL
+Índices e Restrições:
+
+PK: id
+Tabela coordenador
+id (PK): int(11), NOT NULL, AUTO_INCREMENT
+matricula: varchar(50), NOT NULL
+nome: varchar(50), NOT NULL
+senha: varchar(50), NOT NULL
+Índices e Restrições:
+
+PK: id
+Relacionamentos Entre Tabelas
+A tabela aluguel possui chaves estrangeiras que referenciam:
+id_aluno → aluno(id)
+id_chromebook → chromebook(id)
+id_coordenador → coordenador(id)
+Diagrama Entidade-Relacionamento (ERD)
+Você pode visualizar este modelo lógico usando um software de diagramação como MySQL Workbench, Lucidchart ou outro que suporte a criação de diagramas ERD.
+
+Aqui está uma descrição textual dos relacionamentos:
+
+aluguel - (N) → aluno (1)
+aluguel - (N) → chromebook (1)
+aluguel - (N) → coordenador (1)
+Em termos visuais, os relacionamentos podem ser representados assim:
+
+scss
+Copiar código
+aluno (1) <----- (N) aluguel (N) -----> (1) chromebook
+                          |
+                          |
+                          v
+                       (N) coordenador
+Explicação dos Relacionamentos
+Um aluno pode ter múltiplos registros na tabela aluguel.
+Um chromebook pode estar associado a múltiplos registros na tabela aluguel.
+Um coordenador pode ter múltiplos registros na tabela aluguel.
+Com essas informações, você pode estruturar seu banco de dados para garantir integridade referencial e organizar os dados de maneira eficiente.

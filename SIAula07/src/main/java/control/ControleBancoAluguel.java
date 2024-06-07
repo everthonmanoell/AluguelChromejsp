@@ -15,7 +15,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-
 public class ControleBancoAluguel {
 
     private Conexao conexao;
@@ -34,8 +33,7 @@ public class ControleBancoAluguel {
         }
         return instancia;
     }
-    
-    
+
     /*------------------- Hora e data atual do sistema ------------------------*/
     public String getHoraAtual() {
         // Obtém a hora atual
@@ -55,7 +53,6 @@ public class ControleBancoAluguel {
         return formatoData.format(agora);
     }
 
-    
     /*---------------------------------------------------------------------------------------------*/
 
     /*------------------------- ADICIONAR ALUGUEL --------------------------------------*/
@@ -105,6 +102,9 @@ public class ControleBancoAluguel {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+
+        ControleBancoChromebook.getInstance().alterarEstadoChromebook(aluguel.getTombamento(), "alugado");
+        //ControleBancoAgendar.getInstance().alterarSituacaoAgendamento(aluguel.getMatriculaAluno());
     }
 
     /*----------------------------- Existe no sistema? ---------------------------*/
@@ -147,40 +147,38 @@ public class ControleBancoAluguel {
     /*---------------------------------------------------------------*/
 
     public Aluguel getAluguel(String id) {
-       Aluguel aluguel = null;
+        Aluguel aluguel = null;
 
-       try {
-           String consulta = "SELECT * FROM aluguel WHERE id = ?";
-           PreparedStatement stmt = conn.prepareStatement(consulta);
-           stmt.setString(1, id);
+        try {
+            String consulta = "SELECT * FROM aluguel WHERE id = ?";
+            PreparedStatement stmt = conn.prepareStatement(consulta);
+            stmt.setString(1, id);
 
-           ResultSet resultado = stmt.executeQuery();
+            ResultSet resultado = stmt.executeQuery();
 
-           if (resultado.next()) {
-               aluguel = new Aluguel(
-                       resultado.getString("nome_aluno"),
-                       resultado.getString("matricula_usuario"),
-                       resultado.getString("matricula_aluno"),
-                       resultado.getString("tombamento"),
-                       resultado.getString("situacao_chromebook"),
-                       resultado.getString("data_inicio"),
-                       resultado.getString("hora_inicio")
-               );
+            if (resultado.next()) {
+                aluguel = new Aluguel(
+                        resultado.getString("nome_aluno"),
+                        resultado.getString("matricula_usuario"),
+                        resultado.getString("matricula_aluno"),
+                        resultado.getString("tombamento"),
+                        resultado.getString("situacao_chromebook"),
+                        resultado.getString("data_inicio"),
+                        resultado.getString("hora_inicio"));
 
-               aluguel.setId(resultado.getString("id"));
-               aluguel.setDataTermino(resultado.getString("data_termino"));
-               aluguel.setHoraTermino(resultado.getString("hora_termino"));
-           }
+                aluguel.setId(resultado.getString("id"));
+                aluguel.setDataTermino(resultado.getString("data_termino"));
+                aluguel.setHoraTermino(resultado.getString("hora_termino"));
+            }
 
-           stmt.close();
-       } catch (SQLException ex) {
-           System.out.println("Não conseguiu consultar os dados do Aluguel.");
-           ex.printStackTrace();
-       }
+            stmt.close();
+        } catch (SQLException ex) {
+            System.out.println("Não conseguiu consultar os dados do Aluguel.");
+            ex.printStackTrace();
+        }
 
-       return aluguel;
-   }
-
+        return aluguel;
+    }
 
     public void alterarAluguel(String id, String situacaoChromebook, String horaTermino, String dataTermino) {
         try {
@@ -192,99 +190,93 @@ public class ControleBancoAluguel {
             stmt.setString(3, dataTermino);
             stmt.setString(4, id);
 
+            ControleBancoChromebook.getInstance().alterarEstadoChromebook(getAluguel(id).getTombamento(), "disponível");
+            ControleBancoAgendar.getInstance().alterarSituacaoAgendamento(getAluguel(id).getMatriculaAluno());
+
             stmt.executeUpdate();
             stmt.close();
         } catch (SQLException ex) {
             System.out.println("Não conseguiu alterar os dados do Aluguel.");
         }
     }
-    
-    
-    
-/*--------------------- LISTAR ALUGUEIS E CONT ALUGUEIS ---------------------*/
-    
-        public String listarDadosAlugueisComDevolucao() {
-    StringBuilder texto = new StringBuilder();
 
-    try {
-        String consulta = "SELECT * FROM aluguel";
-        Statement stm = conn.createStatement();
-        ResultSet resultado = stm.executeQuery(consulta);
+    /*--------------------- LISTAR ALUGUEIS E CONT ALUGUEIS ---------------------*/
 
-        while (resultado.next()) {
-            Aluguel aluguel = new Aluguel(
-                    resultado.getString("nome_aluno"),
-                    resultado.getString("matricula_usuario"),
-                    resultado.getString("matricula_aluno"),
-                    resultado.getString("tombamento"),
-                    resultado.getString("situacao_chromebook"),
-                    resultado.getString("data_inicio"),
-                    
-                    resultado.getString("hora_inicio")
-            );
+    public String listarDadosAlugueisComDevolucao() {
+        StringBuilder texto = new StringBuilder();
 
-            aluguel.setId(resultado.getString("id"));
-            aluguel.setDataTermino(resultado.getString("data_termino"));
-            aluguel.setHoraTermino(resultado.getString("hora_termino"));
+        try {
+            String consulta = "SELECT * FROM aluguel";
+            Statement stm = conn.createStatement();
+            ResultSet resultado = stm.executeQuery(consulta);
 
-            // Condição similar à do método sem banco
-             
+            while (resultado.next()) {
+                Aluguel aluguel = new Aluguel(
+                        resultado.getString("nome_aluno"),
+                        resultado.getString("matricula_usuario"),
+                        resultado.getString("matricula_aluno"),
+                        resultado.getString("tombamento"),
+                        resultado.getString("situacao_chromebook"),
+                        resultado.getString("data_inicio"),
+
+                        resultado.getString("hora_inicio"));
+
+                aluguel.setId(resultado.getString("id"));
+                aluguel.setDataTermino(resultado.getString("data_termino"));
+                aluguel.setHoraTermino(resultado.getString("hora_termino"));
+
+                // Condição similar à do método sem banco
+
                 texto.append("<tr>")
-                            .append("<td>").append(aluguel.getId()).append("</td>")
-                            .append("<td>").append(aluguel.getNomeAluno()).append("</td>")
-                            .append("<td>").append(aluguel.getMatriculaAluno()).append("</td>")
-                            .append("<td>").append(aluguel.getMatriculaUsuario()).append("</td>")
-                            .append("<td>").append(aluguel.getTombamento()).append("</td>")
-                            .append("<td>").append(aluguel.getSituacaoChromebook()).append("</td>")
-                            .append("<td>").append(aluguel.getDataInicio()).append("</td>")
-                            .append("<td>").append(aluguel.getHoraInicio()).append("</td>")
-                            .append("<td>").append(aluguel.getDataTermino()).append("</td>")
-                            .append("<td>").append(aluguel.getHoraTermino()).append("</td>")
-                    .append("</tr>");
-            
+                        .append("<td>").append(aluguel.getId()).append("</td>")
+                        .append("<td>").append(aluguel.getNomeAluno()).append("</td>")
+                        .append("<td>").append(aluguel.getMatriculaAluno()).append("</td>")
+                        .append("<td>").append(aluguel.getMatriculaUsuario()).append("</td>")
+                        .append("<td>").append(aluguel.getTombamento()).append("</td>")
+                        .append("<td>").append(aluguel.getSituacaoChromebook()).append("</td>")
+                        .append("<td>").append(aluguel.getDataInicio()).append("</td>")
+                        .append("<td>").append(aluguel.getHoraInicio()).append("</td>")
+                        .append("<td>").append(aluguel.getDataTermino()).append("</td>")
+                        .append("<td>").append(aluguel.getHoraTermino()).append("</td>")
+                        .append("</tr>");
+
+            }
+
+            stm.close();
+        } catch (SQLException ex) {
+            System.out.println("Não conseguiu consultar os dados dos Alugueis.");
+            ex.printStackTrace();
         }
 
-        stm.close();
-    } catch (SQLException ex) {
-        System.out.println("Não conseguiu consultar os dados dos Alugueis.");
-        ex.printStackTrace();
+        return texto.toString();
     }
-    
-    
-    
 
-    return texto.toString();
-}
-    
-    
-    
     public String listarDadosAlugueisSemDevolucao() {
-    StringBuilder texto = new StringBuilder();
+        StringBuilder texto = new StringBuilder();
 
-    try {
-        String consulta = "SELECT * FROM aluguel";
-        Statement stm = conn.createStatement();
-        ResultSet resultado = stm.executeQuery(consulta);
+        try {
+            String consulta = "SELECT * FROM aluguel";
+            Statement stm = conn.createStatement();
+            ResultSet resultado = stm.executeQuery(consulta);
 
-        while (resultado.next()) {
-            Aluguel aluguel = new Aluguel(
-                    resultado.getString("nome_aluno"),
-                    resultado.getString("matricula_usuario"),
-                    resultado.getString("matricula_aluno"),
-                    resultado.getString("tombamento"),
-                    resultado.getString("situacao_chromebook"),
-                    resultado.getString("data_inicio"),
-                    
-                    resultado.getString("hora_inicio")
-            );
+            while (resultado.next()) {
+                Aluguel aluguel = new Aluguel(
+                        resultado.getString("nome_aluno"),
+                        resultado.getString("matricula_usuario"),
+                        resultado.getString("matricula_aluno"),
+                        resultado.getString("tombamento"),
+                        resultado.getString("situacao_chromebook"),
+                        resultado.getString("data_inicio"),
 
-            aluguel.setId(resultado.getString("id"));
-            aluguel.setDataTermino(resultado.getString("data_termino"));
-            aluguel.setHoraTermino(resultado.getString("hora_termino"));
+                        resultado.getString("hora_inicio"));
 
-            // Condição similar à do método sem banco
-            if(aluguel.getDataTermino() == null || aluguel.getDataTermino().isEmpty() ){ 
-                texto.append("<tr>")
+                aluguel.setId(resultado.getString("id"));
+                aluguel.setDataTermino(resultado.getString("data_termino"));
+                aluguel.setHoraTermino(resultado.getString("hora_termino"));
+
+                // Condição similar à do método sem banco
+                if (aluguel.getDataTermino() == null || aluguel.getDataTermino().isEmpty()) {
+                    texto.append("<tr>")
                             .append("<td>").append(aluguel.getId()).append("</td>")
                             .append("<td>").append(aluguel.getNomeAluno()).append("</td>")
                             .append("<td>").append(aluguel.getMatriculaAluno()).append("</td>")
@@ -294,25 +286,24 @@ public class ControleBancoAluguel {
                             .append("<td>").append(aluguel.getDataInicio()).append("</td>")
                             .append("<td>").append(aluguel.getHoraInicio()).append("</td>")
                             .append("<td>")
-                                .append("<a href=\"aluguel.jsp?id=").append(aluguel.getId()).append("\" class=\"btn btn-outline-primary btn-sm\">Devolver</a>")
+                            .append("<a href=\"aluguel.jsp?id=").append(aluguel.getId())
+                            .append("\" class=\"btn btn-outline-primary btn-sm\">Devolver</a>")
                             .append("</td>")
                             .append("</tr>");
-                    
+
+                }
             }
+
+            stm.close();
+        } catch (SQLException ex) {
+            System.out.println("Não conseguiu consultar os dados dos Alugueis.");
+            ex.printStackTrace();
         }
 
-        stm.close();
-    } catch (SQLException ex) {
-        System.out.println("Não conseguiu consultar os dados dos Alugueis.");
-        ex.printStackTrace();
+        return texto.toString();
     }
-       
-    return texto.toString();
-}
-    
-    
-    
-        public String listarPesquisaAlugueisSemDevolucao(String pesquisa) {
+
+    public String listarPesquisaAlugueisSemDevolucao(String pesquisa) {
         StringBuilder texto = new StringBuilder();
 
         try {
@@ -327,10 +318,13 @@ public class ControleBancoAluguel {
                 String matricula_aluno = resultado.getString("matricula_aluno");
                 String situacao_chromeboook = resultado.getString("situacao_chromebook");
                 String data_inicio = resultado.getString("data_inicio");
-                
 
-                
-                if (nome_aluno.toLowerCase().indexOf(pesquisa.toLowerCase()) != -1 || matricula_usuario.toLowerCase().indexOf(pesquisa.toLowerCase()) != -1 || tombamento.toLowerCase().indexOf(pesquisa.toLowerCase()) != -1 || matricula_aluno.toLowerCase().indexOf(pesquisa.toLowerCase()) != -1 || situacao_chromeboook.toLowerCase().indexOf(pesquisa.toLowerCase()) != -1 || data_inicio.toLowerCase().indexOf(pesquisa.toLowerCase()) != -1) {
+                if (nome_aluno.toLowerCase().indexOf(pesquisa.toLowerCase()) != -1
+                        || matricula_usuario.toLowerCase().indexOf(pesquisa.toLowerCase()) != -1
+                        || tombamento.toLowerCase().indexOf(pesquisa.toLowerCase()) != -1
+                        || matricula_aluno.toLowerCase().indexOf(pesquisa.toLowerCase()) != -1
+                        || situacao_chromeboook.toLowerCase().indexOf(pesquisa.toLowerCase()) != -1
+                        || data_inicio.toLowerCase().indexOf(pesquisa.toLowerCase()) != -1) {
                     Aluguel aluguel = new Aluguel(
                             resultado.getString("nome_aluno"),
                             resultado.getString("matricula_usuario"),
@@ -339,28 +333,28 @@ public class ControleBancoAluguel {
                             resultado.getString("situacao_chromebook"),
                             resultado.getString("data_inicio"),
 
-                            resultado.getString("hora_inicio")
-                    );
+                            resultado.getString("hora_inicio"));
 
                     aluguel.setId(resultado.getString("id"));
                     aluguel.setDataTermino(resultado.getString("data_termino"));
                     aluguel.setHoraTermino(resultado.getString("hora_termino"));
 
                     // Condição similar à do método sem banco
-                    if(aluguel.getDataTermino() == null || aluguel.getDataTermino().isEmpty() ){ 
+                    if (aluguel.getDataTermino() == null || aluguel.getDataTermino().isEmpty()) {
                         texto.append("<tr>")
-                                    .append("<td>").append(aluguel.getId()).append("</td>")
-                                    .append("<td>").append(aluguel.getNomeAluno()).append("</td>")
-                                    .append("<td>").append(aluguel.getMatriculaAluno()).append("</td>")
-                                    .append("<td>").append(aluguel.getMatriculaUsuario()).append("</td>")
-                                    .append("<td>").append(aluguel.getTombamento()).append("</td>")
-                                    .append("<td>").append(aluguel.getSituacaoChromebook()).append("</td>")
-                                    .append("<td>").append(aluguel.getDataInicio()).append("</td>")
-                                    .append("<td>").append(aluguel.getHoraInicio()).append("</td>")
-                                    .append("<td>")
-                                        .append("<a href=\"aluguel.jsp?id=").append(aluguel.getId()).append("\" class=\"btn btn-outline-primary btn-sm\">Devolver</a>")
-                                    .append("</td>")
-                                    .append("</tr>");
+                                .append("<td>").append(aluguel.getId()).append("</td>")
+                                .append("<td>").append(aluguel.getNomeAluno()).append("</td>")
+                                .append("<td>").append(aluguel.getMatriculaAluno()).append("</td>")
+                                .append("<td>").append(aluguel.getMatriculaUsuario()).append("</td>")
+                                .append("<td>").append(aluguel.getTombamento()).append("</td>")
+                                .append("<td>").append(aluguel.getSituacaoChromebook()).append("</td>")
+                                .append("<td>").append(aluguel.getDataInicio()).append("</td>")
+                                .append("<td>").append(aluguel.getHoraInicio()).append("</td>")
+                                .append("<td>")
+                                .append("<a href=\"aluguel.jsp?id=").append(aluguel.getId())
+                                .append("\" class=\"btn btn-outline-primary btn-sm\">Devolver</a>")
+                                .append("</td>")
+                                .append("</tr>");
 
                     }
                 }
@@ -374,11 +368,8 @@ public class ControleBancoAluguel {
 
         return texto.toString();
     }
-        
-        
-        
-        
-        public String listarPesquisaAlugueisComDevolucao(String pesquisa) {
+
+    public String listarPesquisaAlugueisComDevolucao(String pesquisa) {
         StringBuilder texto = new StringBuilder();
 
         try {
@@ -393,10 +384,13 @@ public class ControleBancoAluguel {
                 String matricula_aluno = resultado.getString("matricula_aluno");
                 String situacao_chromeboook = resultado.getString("situacao_chromebook");
                 String data_inicio = resultado.getString("data_inicio");
-                
 
-                
-                if (nome_aluno.toLowerCase().indexOf(pesquisa.toLowerCase()) != -1 || matricula_usuario.toLowerCase().indexOf(pesquisa.toLowerCase()) != -1 || tombamento.toLowerCase().indexOf(pesquisa.toLowerCase()) != -1 || matricula_aluno.toLowerCase().indexOf(pesquisa.toLowerCase()) != -1 || situacao_chromeboook.toLowerCase().indexOf(pesquisa.toLowerCase()) != -1 || data_inicio.toLowerCase().indexOf(pesquisa.toLowerCase()) != -1) {
+                if (nome_aluno.toLowerCase().indexOf(pesquisa.toLowerCase()) != -1
+                        || matricula_usuario.toLowerCase().indexOf(pesquisa.toLowerCase()) != -1
+                        || tombamento.toLowerCase().indexOf(pesquisa.toLowerCase()) != -1
+                        || matricula_aluno.toLowerCase().indexOf(pesquisa.toLowerCase()) != -1
+                        || situacao_chromeboook.toLowerCase().indexOf(pesquisa.toLowerCase()) != -1
+                        || data_inicio.toLowerCase().indexOf(pesquisa.toLowerCase()) != -1) {
                     Aluguel aluguel = new Aluguel(
                             resultado.getString("nome_aluno"),
                             resultado.getString("matricula_usuario"),
@@ -405,30 +399,26 @@ public class ControleBancoAluguel {
                             resultado.getString("situacao_chromebook"),
                             resultado.getString("data_inicio"),
 
-                            resultado.getString("hora_inicio")
-                    );
+                            resultado.getString("hora_inicio"));
 
                     aluguel.setId(resultado.getString("id"));
                     aluguel.setDataTermino(resultado.getString("data_termino"));
                     aluguel.setHoraTermino(resultado.getString("hora_termino"));
 
-                   
-                     
-                        texto.append("<tr>")
-                                    .append("<td>").append(aluguel.getId()).append("</td>")
-                                    .append("<td>").append(aluguel.getNomeAluno()).append("</td>")
-                                    .append("<td>").append(aluguel.getMatriculaAluno()).append("</td>")
-                                    .append("<td>").append(aluguel.getMatriculaUsuario()).append("</td>")
-                                    .append("<td>").append(aluguel.getTombamento()).append("</td>")
-                                    .append("<td>").append(aluguel.getSituacaoChromebook()).append("</td>")
-                                    .append("<td>").append(aluguel.getDataInicio()).append("</td>")
-                                    .append("<td>").append(aluguel.getHoraInicio()).append("</td>")
-                                    .append("<td>").append(aluguel.getDataTermino()).append("</td>")
-                                    .append("<td>").append(aluguel.getHoraTermino()).append("</td>")
-                                    
-                                    .append("</tr>");
+                    texto.append("<tr>")
+                            .append("<td>").append(aluguel.getId()).append("</td>")
+                            .append("<td>").append(aluguel.getNomeAluno()).append("</td>")
+                            .append("<td>").append(aluguel.getMatriculaAluno()).append("</td>")
+                            .append("<td>").append(aluguel.getMatriculaUsuario()).append("</td>")
+                            .append("<td>").append(aluguel.getTombamento()).append("</td>")
+                            .append("<td>").append(aluguel.getSituacaoChromebook()).append("</td>")
+                            .append("<td>").append(aluguel.getDataInicio()).append("</td>")
+                            .append("<td>").append(aluguel.getHoraInicio()).append("</td>")
+                            .append("<td>").append(aluguel.getDataTermino()).append("</td>")
+                            .append("<td>").append(aluguel.getHoraTermino()).append("</td>")
 
-                    
+                            .append("</tr>");
+
                 }
             }
 
@@ -440,12 +430,8 @@ public class ControleBancoAluguel {
 
         return texto.toString();
     }
-    
-    
-    
-    
-    
-        public int contarAlugueisComDevolucao() {
+
+    public int contarAlugueisComDevolucao() {
         int contador = 0;
 
         try {
@@ -465,8 +451,6 @@ public class ControleBancoAluguel {
 
         return contador;
     }
-
-
 
     public int contarAlugueisSemDevolucao() {
         int contador = 0;
@@ -488,96 +472,93 @@ public class ControleBancoAluguel {
 
         return contador;
     }
-    
+
     public int contarAlugueisComPesquisa(String parametro) {
-    int contador = 0;
+        int contador = 0;
 
-    if (!parametro.isEmpty()) {
-        try {
-            String consulta = "SELECT COUNT(*) FROM aluguel " +
-                              "WHERE (data_termino IS NULL OR data_termino = '') " +
-                              "AND (nome_aluno LIKE ? OR matricula_usuario LIKE ? OR tombamento LIKE ? OR matricula_aluno LIKE ? OR situacao_chromebook LIKE ? OR data_inicio LIKE ?)";
-            PreparedStatement stmt = conn.prepareStatement(consulta);
+        if (!parametro.isEmpty()) {
+            try {
+                String consulta = "SELECT COUNT(*) FROM aluguel " +
+                        "WHERE (data_termino IS NULL OR data_termino = '') " +
+                        "AND (nome_aluno LIKE ? OR matricula_usuario LIKE ? OR tombamento LIKE ? OR matricula_aluno LIKE ? OR situacao_chromebook LIKE ? OR data_inicio LIKE ?)";
+                PreparedStatement stmt = conn.prepareStatement(consulta);
 
-            for (int i = 1; i <= 6; i++) {
-                stmt.setString(i, "%" + parametro + "%");
+                for (int i = 1; i <= 6; i++) {
+                    stmt.setString(i, "%" + parametro + "%");
+                }
+
+                ResultSet resultado = stmt.executeQuery();
+
+                if (resultado.next()) {
+                    contador = resultado.getInt(1);
+                }
+
+                stmt.close();
+            } catch (SQLException ex) {
+                System.out.println("Não conseguiu contar os aluguéis com pesquisa.");
+                ex.printStackTrace();
             }
-
-            ResultSet resultado = stmt.executeQuery();
-
-            if (resultado.next()) {
-                contador = resultado.getInt(1);
-            }
-
-            stmt.close();
-        } catch (SQLException ex) {
-            System.out.println("Não conseguiu contar os aluguéis com pesquisa.");
-            ex.printStackTrace();
         }
+
+        return contador;
     }
 
-    return contador;
-}
-    
-    
-    
-    
     public int contarAlugueisComPesquisaTudo(String parametro) {
-    int contador = 0;
+        int contador = 0;
 
-    if (!parametro.isEmpty()) {
-        try {
-            String consulta = "SELECT COUNT(*) FROM aluguel " +
-                              "AND (nome_aluno LIKE ? OR matricula_usuario LIKE ? OR tombamento LIKE ? OR matricula_aluno LIKE ? OR situacao_chromebook LIKE ? OR data_inicio LIKE ?)";
-            PreparedStatement stmt = conn.prepareStatement(consulta);
+        if (!parametro.isEmpty()) {
+            try {
+                String consulta = "SELECT COUNT(*) FROM aluguel " +
+                        "AND (nome_aluno LIKE ? OR matricula_usuario LIKE ? OR tombamento LIKE ? OR matricula_aluno LIKE ? OR situacao_chromebook LIKE ? OR data_inicio LIKE ?)";
+                PreparedStatement stmt = conn.prepareStatement(consulta);
 
-            for (int i = 1; i <= 6; i++) {
-                stmt.setString(i, "%" + parametro + "%");
+                for (int i = 1; i <= 6; i++) {
+                    stmt.setString(i, "%" + parametro + "%");
+                }
+
+                ResultSet resultado = stmt.executeQuery();
+
+                if (resultado.next()) {
+                    contador = resultado.getInt(1);
+                }
+
+                stmt.close();
+            } catch (SQLException ex) {
+                System.out.println("Não conseguiu contar os aluguéis com pesquisa.");
+                ex.printStackTrace();
             }
-
-            ResultSet resultado = stmt.executeQuery();
-
-            if (resultado.next()) {
-                contador = resultado.getInt(1);
-            }
-
-            stmt.close();
-        } catch (SQLException ex) {
-            System.out.println("Não conseguiu contar os aluguéis com pesquisa.");
-            ex.printStackTrace();
         }
+
+        return contador;
     }
 
-    return contador;
-}
+    public int contarAlugueisDevolvidosComPesquisa(String parametro) {
+        int contador = 0;
 
-   public int contarAlugueisDevolvidosComPesquisa(String parametro) {
-    int contador = 0;
+        if (!parametro.isEmpty()) {
+            try {
+                String consulta = "SELECT COUNT(*) FROM aluguel " +
+                        "WHERE (data_termino IS NULL OR data_termino = '') " +
+                        "AND (nome_aluno LIKE ? OR matricula_usuario LIKE ? OR tombamento LIKE ? OR matricula_aluno LIKE ? OR situacao_chromebook LIKE ? OR data_inicio LIKE ?)";
+                PreparedStatement stmt = conn.prepareStatement(consulta);
 
-    if (!parametro.isEmpty()) {
-        try {
-            String consulta = "SELECT COUNT(*) FROM aluguel " +
-                              "WHERE (data_termino IS NULL OR data_termino = '') " +
-                              "AND (nome_aluno LIKE ? OR matricula_usuario LIKE ? OR tombamento LIKE ? OR matricula_aluno LIKE ? OR situacao_chromebook LIKE ? OR data_inicio LIKE ?)";
-            PreparedStatement stmt = conn.prepareStatement(consulta);
+                for (int i = 1; i <= 6; i++) {
+                    stmt.setString(i, "%" + parametro + "%");
+                }
 
-            for (int i = 1; i <= 6; i++) {
-                stmt.setString(i, "%" + parametro + "%");
+                ResultSet resultado = stmt.executeQuery();
+
+                if (resultado.next()) {
+                    contador = resultado.getInt(1);
+                }
+
+                stmt.close();
+            } catch (SQLException ex) {
+                System.out.println("Não conseguiu contar os aluguéis com pesquisa.");
+                ex.printStackTrace();
             }
-
-            ResultSet resultado = stmt.executeQuery();
-
-            if (resultado.next()) {
-                contador = resultado.getInt(1);
-            }
-
-            stmt.close();
-        } catch (SQLException ex) {
-            System.out.println("Não conseguiu contar os aluguéis com pesquisa.");
-            ex.printStackTrace();
         }
-    }
 
-    return contador;
-}
+        return contador;
+    }
 }

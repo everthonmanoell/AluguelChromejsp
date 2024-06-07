@@ -14,13 +14,15 @@ public class Chromebook {
     private String id;
     private String tombamento;
     private String situacao;
+    private String estadoChromebook;
     private String descricao;
     
     
-    public Chromebook ( String tombamento, String situacao, String descricao){
+    public Chromebook ( String tombamento, String situacao, String descricao, String estadoChromebook){
         this.tombamento = tombamento;
         this.situacao = situacao;
         this.descricao = descricao;
+        this.estadoChromebook = estadoChromebook;
     }
     
     public String getId() {
@@ -53,6 +55,14 @@ public class Chromebook {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    public String getEstadoChromebook() {
+        return estadoChromebook;
+    }
+
+    public void setEstadoChromebook(String estadoChromebook) {
+        this.estadoChromebook = estadoChromebook;
     }
     
         
