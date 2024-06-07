@@ -408,7 +408,7 @@ public class ControleBancoAluguel {
                             resultado.getString("hora_inicio")
                     );
 
-                    aluguel.setIdRegistro(consulta);(resultado.getString("idRegistro"));
+                    aluguel.setIdRegistro(resultado.getString("id_Registro"));
                     aluguel.setDataHoraDevolucao(resultado.getString("data_termino"));
                     aluguel.setDataHoraRetirada(resultado.getString("hora_termino"));
 
