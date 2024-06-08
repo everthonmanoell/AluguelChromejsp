@@ -3,6 +3,7 @@ package control;
 import java.sql.Connection;
 import model.Conexao;
 import model.Agendar;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -85,21 +86,22 @@ public class ControleBancoAgendar {
 
     public String consultarAgendamentos() {
         String texto = "";
-    
+
         try {
             String consulta = "SELECT * FROM agendamento WHERE situacao_agendamento = 'agendado'";
             Statement stm = conn.createStatement();
             ResultSet resultado = stm.executeQuery(consulta);
-    
+
             while (resultado.next()) {
                 Agendar agendar = new Agendar(
                     resultado.getString("id"),
-                    resultado.getString("matricula_aluno")
+                    resultado.getString("matricula_aluno"),
+                    resultado.getString("dataAgendada"),
+                    resultado.getString("horaAgendada"),
+                    resultado.getString("dataParaOAluguel"),
+                    resultado.getString("situacao_agendamento")
                 );
-                agendar.setDataAgendada(resultado.getString("dataAgendada"));
-                agendar.setHoraAgendada(resultado.getString("horaAgendada"));
-                agendar.setDataParaOAluguel(resultado.getString("dataParaOAluguel"));
-    
+
                 texto = texto
                     + "<tr>"
                     + "<td>" + agendar.getMatricula_aluno() + "</td>"
@@ -108,16 +110,14 @@ public class ControleBancoAgendar {
                     + "<td>" + agendar.getDataParaOAluguel() + "</td>"
                     + "</tr>";
             }
-    
+
             stm.close();
         } catch (SQLException ex) {
             System.out.println("Não conseguiu consultar os dados de Agendamento.");
         }
-    
+
         return texto;
     }
-    
-    
 
     public int quantidadeAgendamentos() {
         int qtd = 0;
@@ -174,26 +174,25 @@ public class ControleBancoAgendar {
         StringBuilder texto = new StringBuilder();
         PreparedStatement stmt = null;
         ResultSet resultado = null;
-    
+
         try {
-            String consulta = "SELECT * FROM agendamento WHERE matricula_aluno LIKE ? OR dataAgendada LIKE ? OR horaAgendada LIKE ? OR dataParaOAluguel LIKE ? AND situacao_agendamento = 'agendado'";
+            String consulta = "SELECT * FROM agendamento WHERE (matricula_aluno LIKE ? OR dataAgendada LIKE ? OR horaAgendada LIKE ? OR dataParaOAluguel LIKE ?) AND situacao_agendamento = 'agendado'";
             stmt = conn.prepareStatement(consulta);
-            String searchPattern = "%" + pesquisa + "%";
-            stmt.setString(1, searchPattern);
-            stmt.setString(2, searchPattern);
-            stmt.setString(3, searchPattern);
-            stmt.setString(4, searchPattern);
+            for (int i = 1; i <= 4; i++) {
+                stmt.setString(i, "%" + pesquisa + "%");
+            }
             resultado = stmt.executeQuery();
-    
+
             while (resultado.next()) {
                 Agendar agendar = new Agendar(
                     resultado.getString("id"),
-                    resultado.getString("matricula_aluno")
+                    resultado.getString("matricula_aluno"),
+                    resultado.getString("dataAgendada"),
+                    resultado.getString("horaAgendada"),
+                    resultado.getString("dataParaOAluguel"),
+                    resultado.getString("situacao_agendamento")
                 );
-                agendar.setDataAgendada(resultado.getString("dataAgendada"));
-                agendar.setHoraAgendada(resultado.getString("horaAgendada"));
-                agendar.setDataParaOAluguel(resultado.getString("dataParaOAluguel"));
-    
+
                 texto.append("<tr>")
                     .append("<td>").append(agendar.getMatricula_aluno()).append("</td>")
                     .append("<td>").append(agendar.getDataAgendada()).append("</td>")
@@ -201,6 +200,7 @@ public class ControleBancoAgendar {
                     .append("<td>").append(agendar.getDataParaOAluguel()).append("</td>")
                     .append("</tr>");
             }
+
         } catch (SQLException ex) {
             System.out.println("Não conseguiu consultar os dados de Agendamento.");
             ex.printStackTrace();
@@ -212,8 +212,39 @@ public class ControleBancoAgendar {
                 e.printStackTrace();
             }
         }
-    
+
         return texto.toString();
     }
-    
+
+    public int contarAgendamentosComPesquisa(String pesquisa) {
+        int count = 0;
+        PreparedStatement stmt = null;
+        ResultSet resultado = null;
+
+        try {
+            String consulta = "SELECT COUNT(*) AS total FROM agendamento WHERE (matricula_aluno LIKE ? OR dataAgendada LIKE ? OR horaAgendada LIKE ? OR dataParaOAluguel LIKE ?) AND situacao_agendamento = 'agendado'";
+            stmt = conn.prepareStatement(consulta);
+            for (int i = 1; i <= 4; i++) {
+                stmt.setString(i, "%" + pesquisa + "%");
+            }
+            resultado = stmt.executeQuery();
+
+            if (resultado.next()) {
+                count = resultado.getInt("total");
+            }
+
+        } catch (SQLException ex) {
+            System.out.println("Erro ao contar agendamentos com pesquisa.");
+            ex.printStackTrace();
+        } finally {
+            try {
+                if (resultado != null) resultado.close();
+                if (stmt != null) stmt.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return count;
+    }
 }

@@ -20,7 +20,7 @@ public class DataHora {
         // Obtém a data atual
         Date agora = new Date();
         // Define o formato desejado para a data (formato ISO)
-        SimpleDateFormat formatoData = new SimpleDateFormat("yyyy-MM-dd", new Locale("pt", "BR"));
+        SimpleDateFormat formatoData = new SimpleDateFormat("yyyy-MM-dd", new Locale.Builder().setLanguage("pt").setRegion("BR").build());
         // Retorna a data formatada
         return formatoData.format(agora);
     }

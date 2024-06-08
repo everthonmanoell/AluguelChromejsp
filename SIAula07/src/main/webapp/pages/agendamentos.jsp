@@ -1,8 +1,3 @@
-<%-- 
-    Document   : agendamentos
-    Created on : 1 de nov. de 2023, 23:29:08
-    Author     : Felipe
---%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="model.*"%>
 <%@page import="control.*"%>
@@ -33,7 +28,7 @@
             <a href="aluguel.jsp"><button class="botoesDoTopo" id="aluguel">ALUGUEL</button></a>
             <a href="devolucao.jsp"><button class="botoesDoTopo" id="devolucao">DEVOLUÇÃO</button></a>
             <a href="relatorio.jsp"><button class="botoesDoTopo" id="relatorio">RELATÓRIO</button></a>
-            <a href="agendamentos.jsp"><button class="botoesDoTopo" id="agendamentos">AGENDAMENTOS</button></a>
+            <a href="agendamentos.jsp"><button class="botoesDoTopo pressionado" id="agendamentos">AGENDAMENTOS</button></a>
             <a href="sair.jsp"><button class="power"><img src="../images/power.png" class="power" style="height: 30px;"></button></a>
        </div>
     </div>
@@ -56,21 +51,20 @@
         </div>
         <br>
         <table class="table">
-            <form action="pesquisa/devolucaopesquisaralugueis.jsp" method="get">
+            <form action="pesquisa/pesquisarAgendados.jsp" method="get">
                 <th scope="col">
-                    <input type="search" class="form-control w-255" placeholder="Digite a matricula " id="pesquisar" name="pesquisa">
+                    <input type="search" class="form-control w-255" placeholder="Digite a matricula, data, hora ou data para o aluguel" id="pesquisar" name="pesquisa">
                 </th>
                 <th scope="col">
-                    <button class="btn btn-primary"><i class='bx bx-search'></i></button>
+                    <button onclick="searchData()" class="btn btn-primary"><i class='bx bx-search'></i></button>
                 </th>
                 <th scope="col" id="totalemuso" style="float:inline-end;">
                     TOTAL AGENDADOS:
                     <% 
-                    int totalAgendados = control.quantidadeAgendamentos();
-                    if(totalAgendados > 0){
-                        out.println(totalAgendados);
+                    if(pesquisa != null && !pesquisa.isEmpty()) {
+                        out.print(control.contarAgendamentosComPesquisa(pesquisa));
                     } else {
-                        out.println("0");
+                        out.print(control.quantidadeAgendamentos());
                     }
                     %>
                 </th>
@@ -87,8 +81,11 @@
             </thead>
             <tbody>
                 <%
-                String agendamentos = control.consultarAgendamentos();
-                out.println(agendamentos);
+                if(pesquisa == null || pesquisa.isEmpty()){
+                    out.println(control.consultarAgendamentos());
+                } else {
+                    out.println(control.listarPesquisaAgendamentos(pesquisa));
+                }
                 %>
             </tbody>
         </table>

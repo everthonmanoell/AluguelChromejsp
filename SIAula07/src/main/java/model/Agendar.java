@@ -20,6 +20,16 @@ public class Agendar {
         this.situacao_agendamento = "agendado";        
     }
 
+    public Agendar(String id, String matricula_aluno, String dataAgendada, String horaAgendada, String dataParaOAluguel, String situacao_agendamento) {
+        this.id = id;
+        this.matricula_aluno = matricula_aluno;
+        this.dataAgendada = dataAgendada;
+        this.horaAgendada = horaAgendada;
+        this.dataParaOAluguel = dataParaOAluguel;
+        this.situacao_agendamento = situacao_agendamento;
+    }
+
+
     public String getId() {
         return id;
     }
