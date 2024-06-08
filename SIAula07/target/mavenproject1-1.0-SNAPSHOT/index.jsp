@@ -21,6 +21,12 @@
     <title>Login</title>
 </head>
 <body>
+    
+    
+    <div class="top-right">
+        <a href="pages/cadastraragendamento.jsp" class="btn btn-primary">Agendar</a>
+    </div>
+    
     <div class="borda-esquerda">
         <div class="container-esquerda">
             <h1 class="titulo1">Bem Vindo de Volta!</h1>
@@ -49,8 +55,7 @@
         %>
         <a href="pages/inicialcadastro.jsp">Cadastre-se</a>
         <br>
-        <a href="pages/cadastraragendamento.jsp">Agendar retirada</a>
-        <br>
+        
         <button type="submit" class="btn btn-primary" value="enviar" id="send">Entrar</button></a>
     </form>
 </body>
