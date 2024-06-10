@@ -46,6 +46,7 @@
                 <a href="relatoriocoordenador.jsp"><button class="botoesDoRelatorio" id="coordenador">COORDENADOR</button></a>
                 <a href="relatoriochromebook.jsp"><button class="botoesDoRelatorio" id="chromebook">CHROMEBOOK</button></a>
                 <a href="relatorioaluguel.jsp"><button class="botoesDoRelatorio" id="alugados">ALUGADOS</button></a>
+                <a href="relatorioagendados.jsp"><button class="botoesDoRelatorio" id="agendados">AGENDADOS</button></a>
                 </div>
             </div>  
     <script>

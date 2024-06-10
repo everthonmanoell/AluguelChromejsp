@@ -1,6 +1,6 @@
 <%-- 
-    Document   : RELATORIOALUNO
-    Created on : 18 de nov. de 2023, 00:37:09
+    Document   : RELATORIOCOORDENADOR
+    Created on : 10 de junho de 2024, 09:37:09
     Author     : felipe
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -18,21 +18,20 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Kanit:wght@100;400;700&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="../images/title 1.png" type="image/x-icon" />
-    <title>Relatório de Aluno</title>
+    <title>Relatório Dos Agendamentos Conclúidos</title>
 </head>
+<%
+    ControleBancoAluguel control = ControleBancoAluguel.getInstance();
+    String pesquisa = request.getParameter("pesquisa");
+%>
 
-        <%
-            ControleBancoAluno control = ControleBancoAluno.getInstance();
-                    String pesquisa = request.getParameter("pesquisa");
-
-        %>
     <div class="bordaDoTopo">
         <div class="container-fluid">     
             <a href="home.jsp"><button class="botoesDoTopo">ÍNICIO</button></a>
             <a href="homecadastro.jsp"><button class="botoesDoTopo" id="cadastro">CADASTRO</button></a>
             <a href="aluguel.jsp"><button class="botoesDoTopo" id="aluguel">ALUGUEL</button></a>
             <a href="devolucao.jsp"><button class="botoesDoTopo" id="devolucao">DEVOLUÇÃO</button></a>
-            <a href="relatorio.jsp"><button class="botoesDoTopo pressionado" id="relatorio">RELATÓRIO</button></a> 
+            <a href="relatorio.jsp"><button class="botoesDoTopo pressionado" id="relatorio">RELATÓRIO</button></a>
             <a href="agendamentos.jsp"><button class="botoesDoTopo" id="agendamentos">AGENDAMENTOS</button></a>
             <a href="sair.jsp"><button class="power"><img src="../images/power.png" class="power" style="height: 30px;"></button></a>
        </div>
@@ -45,28 +44,26 @@
                 <a href="relatorioaluno.jsp"><button class="botoesDoRelatorio" id="alunos">ALUNOS</button></a>
                 <a href="relatoriocoordenador.jsp"><button class="botoesDoRelatorio" id="coordenador">COORDENADOR</button></a>
                 <a href="relatoriochromebook.jsp"><button class="botoesDoRelatorio" id="chromebook">CHROMEBOOK</button></a>
-                <a href="relatorioaluguel.jsp"><button class="botoesDoRelatorio" id="alugados">ALUGADOS</button></a>           
+                <a href="relatorioaluguel.jsp"><button class="botoesDoRelatorio" id="alugados">ALUGADOS</button></a>
                 <a href="relatorioagendados.jsp"><button class="botoesDoRelatorio" id="agendados">AGENDADOS</button></a>
                 </div>
-            </div>  
-        
-   
+            </div>      
         <div class="container containerDevolucao">
             <div class="titulo">
-                <a>RELATÓRIO DE ALUNOS </a>
+                <a>RELATÓRIO DOS AGENDAMENTOS CONCLUÍDOS</a>
             </div>
-             </div>
-        
+             </div>   
             <main>
             <table class="table">
-                        <form action="pesquisa/pesquisaraluno.jsp" method="get">
-                            <th scope="col"><input type="search" class="form-control w-255" placeholder="Pesquisar nome, matricula, turno, periodo ou curso" id="pesquisar" name="pesquisa">
+                        <form action="pesquisa/pesquisaralugueis.jsp?relatorio=true" method="get">
+                            <th scope="col"><input type="search" class="form-control w-255" placeholder="Pesquisar" id="pesquisar" name="pesquisa">
                             <th scope="col"><button onclick="searchData()" class="btn btn-primary"><i class='bx bx-search'></i></i></th></th></button>
-                        <th scope="col" id="totalemuso" style="float:inline-end;">TOTAL:
+                            <th scope="col" id="totalemuso" style="float:inline-end;">
+                    TOTAL CONCLUÍDOS:
                     <% if(pesquisa != null && !pesquisa.isEmpty()) {
-                        out.print(control.contarAlunosComPesquisa(pesquisa));
+                        out.print(control.contarAlugueisComPesquisaTudo(pesquisa));
                     } else {
-                        out.print(control.listarQuantidadeAluno());
+                        out.print(control.contarAlugueisComDevolucao());
                     } %>
                 </th>
                         </form>
@@ -75,37 +72,43 @@
                 <table class="table table-striped table-sm table-hover">
                     <thead>
                       <tr>
-                        <th scope="col" class="tabela">ID</th>
-                        <th scope="col" class="tabela">Nome Completo</th>
-                        <th scope="col" class="tabela">Matrícula</th>
-                        <th scope="col" class="tabela">Turno</th>
-                        <th scope="col" class="tabela">Período</th>
-                        <th scope="col" class="tabela">Turma</th>
-                        <th scope="col" class="tabela">Curso</th>
+                        <th scope="col"  class="tabela">Id</th>
+                        <th scope="col"  class="tabela">Aluno</th>
+                        <th scope="col"  class="tabela">M.Aluno</th>
+                        <th scope="col"  class="tabela">M.Coordenador</th>
+                        <th scope="col"  class="tabela">Tombamento</th>     
+                        <th scope="col"  class="tabela">Sit.Chromebook</th> 
+                        <th scope="col"  class="tabela">Dat.Aluguel</th> 
+                        <th scope="col"  class="tabela">Ho.Início</th> 
+                        <th scope="col"  class="tabela">Dat.Término</th> 
+                        <th scope="col"  class="tabela">Ho.Término</th> 
+                        
                       </tr>
                     </thead>
-                    
-                    <%   
-                         if(pesquisa == null || pesquisa.isEmpty()){
-                            out.println(control.listarDadosAluno());
+                    <tbody>
+                        <%
+                            
+                            if(pesquisa == null || pesquisa.isEmpty()){
+                            out.println(control.listarDadosAlugueisComDevolucao());
                             }else{
-                            out.println(control.listarPesquisaAluno(pesquisa));
+                            out.println(control.listarPesquisaAlugueisComDevolucao(pesquisa));
                         
-                            }           
-                                         
-                    %>
+                            }  
 
-                    
+                        %>
+                        
+                        
+                    </tbody>
                   </table>
                 </div>
             </div>
         </div>
-    </div>    
-    <script>
+    </div>
+     <script>
     document.addEventListener("DOMContentLoaded", function() {
         var currentPage = window.location.pathname;
 
-        var buttonCadastro = document.getElementById("alunos");
+        var buttonCadastro = document.getElementById("agendados");
         var buttonLink = buttonCadastro.closest("a").getAttribute("href");
 
         if (currentPage.endsWith(buttonLink)) {

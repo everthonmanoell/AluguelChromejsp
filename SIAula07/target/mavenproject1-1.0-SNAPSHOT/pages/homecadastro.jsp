@@ -18,7 +18,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Kanit:wght@100;400;700&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="../images/title 1.png" type="image/x-icon" />
-    <title>QUAL O TIPO DE CADASTRO</title>
+    <title>Menu Cadastro</title>
 </head>
     <div class="bordaDoTopo">
         <div class="container-fluid">     

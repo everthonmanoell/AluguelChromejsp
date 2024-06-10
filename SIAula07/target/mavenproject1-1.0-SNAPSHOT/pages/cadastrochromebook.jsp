@@ -18,15 +18,21 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Kanit:wght@100;400;700&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="../images/title 1.png" type="image/x-icon" />
-    <title>CADASTRO DE CHROMEBOOK</title>
+    <title>Cadastro De Chromebook</title>
 </head>
 
     <%
-            String id = request.getParameter("id");   
-            String tombamento = request.getParameter("tombamento");
-            String situacao = request.getParameter("situacao");
-            ControleBancoChromebook control = ControleBancoChromebook.getInstance();
-            Chromebook usr = null;
+        String id = request.getParameter("id");   
+        String tombamento = request.getParameter("tombamento");
+        String situacao = request.getParameter("situacao");
+        ControleBancoChromebook control = ControleBancoChromebook.getInstance();
+        Chromebook usr = null;
+        
+        if (id != null && !id.isEmpty()) {
+            usr = control.getChromebook(id);
+        } else {
+            usr = new Chromebook("", "", "", "");
+        }
     %>
 
     <div class="bordaDoTopo">
@@ -54,7 +60,7 @@
                     } else {
                         out.println("Cadastro Chromebook");
                         // Ajuste na chamada do construtor:
-                        usr = new Chromebook("", "", ""); // Substitua pelos valores apropriados
+                        usr = new Chromebook("", "", "", ""); 
                     }
                 %>
 

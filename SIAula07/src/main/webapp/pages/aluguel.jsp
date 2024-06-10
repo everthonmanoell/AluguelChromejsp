@@ -18,7 +18,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Kanit:wght@100;400;700&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="../images/title 1.png" type="image/x-icon" />
-    <title>ALUGUEL DE CHROMEBOOK</title>
+    <title>Aluguel De Chromebook</title>
 </head>
 
         <%
@@ -143,7 +143,7 @@
                                 else{out.print("onclick=\"exibirMensagem('O Aluguel foi adicionado com sucesso!');\"");}%>>
                             <%if(id!=null){out.print("Devolver");}else{out.print("Alugar");}%>
                         </button>
-                        <button type="reset" class="reseBotaoSubmit cancelart">Cancelar</button>
+                        <button type="reset" class="BotaoSubmit cancelar">Cancelar</button>
                         
                         <script>
                             function exibirMensagem(mensagem) {

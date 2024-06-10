@@ -18,7 +18,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Kanit:wght@100;400;700&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="../images/title 1.png" type="image/x-icon" />
-    <title>AGENDAMENTOS</title>
+    <title>Agendamentos</title>
 </head>
 <body>
     <div class="bordaDoTopo">
@@ -59,7 +59,7 @@
                     <button onclick="searchData()" class="btn btn-primary"><i class='bx bx-search'></i></button>
                 </th>
                 <th scope="col" id="totalemuso" style="float:inline-end;">
-                    TOTAL AGENDADOS:
+                    TOTAL AGENDADOS PARA RETIRADA:
                     <% 
                     if(pesquisa != null && !pesquisa.isEmpty()) {
                         out.print(control.contarAgendamentosComPesquisa(pesquisa));
