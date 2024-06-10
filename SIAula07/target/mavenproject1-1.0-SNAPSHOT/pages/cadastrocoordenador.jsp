@@ -18,7 +18,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Kanit:wght@100;400;700&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="../images/title 1.png" type="image/x-icon" />
-    <title>CADASTRO DE COORDENADOR</title>
+    <title>Cadastro De Coordenador</title>
 </head>
 
 <%
@@ -51,10 +51,10 @@
                     Usuario usr = null;
 
                     if (id != null && !id.isEmpty()) {
-                        out.println("Editando Coordenador");
+                        out.println("Editando Perfil De Coordenador");
                         usr = control.getUsuario(id);
                     } else {
-                        out.println("Cadastro Coordenador");
+                        out.println("Cadastro De Coordenador");
                         // Ajuste na chamada do construtor:
                         usr = new Usuario( "", "", ""); // Substitua pelos valores apropriados
                     }
