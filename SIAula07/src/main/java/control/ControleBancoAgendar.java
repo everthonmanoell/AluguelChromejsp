@@ -247,4 +247,40 @@ public class ControleBancoAgendar {
 
         return count;
     }
+
+public String listarAgendamentosConcluidos() {
+    StringBuilder texto = new StringBuilder();
+
+    try {
+        // Consulta para selecionar agendamentos com situação "concluído"
+        String consulta = "SELECT * FROM agendamento WHERE situacao_agendamento = 'concluido'";
+        Statement stm = conn.createStatement();
+        ResultSet resultado = stm.executeQuery(consulta);
+
+        // Processamento dos resultados
+        while (resultado.next()) {
+            texto.append("<tr>")
+                    .append("<td>").append(resultado.getInt("id")).append("</td>")
+                    .append("<td>").append(resultado.getString("matricula_aluno")).append("</td>")
+                    .append("<td>").append(resultado.getDate("dataAgendada")).append("</td>")
+                    .append("<td>").append(resultado.getTime("horaAgendada")).append("</td>")
+                    .append("<td>").append(resultado.getString("situacao_agendamento")).append("</td>")
+                    .append("<td>").append(resultado.getString("dataParaOAluguel")).append("</td>")
+                    .append("<td>")
+                    .append("<a href=\"cadastroagendamento.jsp?id=").append(resultado.getInt("id"))
+                    .append("\" class=\"btn btn-outline-primary btn-sm\">Alterar</a>")
+                    .append("<a href=\"validar/excluiragendamento.jsp?id=").append(resultado.getInt("id"))
+                    .append("\" class=\"btn btn-outline-danger btn-sm\" onclick=\"return confirm('Tem certeza que deseja excluir?')\">Excluir</a>\n")
+                    .append("</td>")
+                    .append("</tr>");
+        }
+
+        // Fechamento do statement
+        stm.close();
+    } catch (SQLException ex) {
+        System.out.println("Não conseguiu consultar os dados dos agendamentos.");
+    }
+
+    return texto.toString();
+    }
 }
