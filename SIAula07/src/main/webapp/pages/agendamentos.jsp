@@ -59,7 +59,7 @@
                     <button onclick="searchData()" class="btn btn-primary"><i class='bx bx-search'></i></button>
                 </th>
                 <th scope="col" id="totalemuso" style="float:inline-end;">
-                    TOTAL AGENDADOS:
+                    TOTAL AGENDADOS PARA RETIRADA:
                     <% 
                     if(pesquisa != null && !pesquisa.isEmpty()) {
                         out.print(control.contarAgendamentosComPesquisa(pesquisa));
