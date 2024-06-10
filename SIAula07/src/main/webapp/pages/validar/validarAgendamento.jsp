@@ -23,15 +23,19 @@
                 String matricula = request.getParameter("matricula");
                 String data = request.getParameter("data");
 
+                
+
                 if (matricula != null) {
                     if(control.verificarAgendamento(matricula) > 0){
-                        out.println("<script>alert('O aluno já possui um agendamento!');</script>");
+                        out.println("<script>alert('O aluno já possui um agendamento, tente novamente!');</script>");
                         
                         response.sendRedirect("../cadastraragendamento.jsp");
                     }else{
 
                         Agendar agendar = new Agendar(matricula, data);
                         control.inserirAgendamento(agendar);
+
+                        
                         out.println("<script>alert('Agendamento realizado com sucesso!');</script>");
                         response.sendRedirect("../cadastraragendamento.jsp");
                     }

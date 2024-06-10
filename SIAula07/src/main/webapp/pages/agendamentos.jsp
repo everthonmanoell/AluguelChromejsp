@@ -1,18 +1,12 @@
-<%-- 
-    Document   : devolucao
-    Created on : 1 de nov. de 2023, 23:29:08
-    Author     : Felipe
---%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="model.*"%>
-<%@page import="control.ControleBancoAluguel"%>
+<%@page import="control.*"%>
 <!DOCTYPE html>
 <html lang="pt-br">
     <%
-        ControleBancoAluguel control = ControleBancoAluguel.getInstance();
+        ControleBancoAgendar control = ControleBancoAgendar.getInstance();
         String pesquisa = request.getParameter("pesquisa");
     %>
-   
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,6 +20,7 @@
     <link rel="shortcut icon" href="../images/title 1.png" type="image/x-icon" />
     <title>AGENDAMENTOS</title>
 </head>
+<body>
     <div class="bordaDoTopo">
         <div class="container-fluid">     
             <a href="home.jsp"><button class="botoesDoTopo">ÍNICIO</button></a>
@@ -33,7 +28,7 @@
             <a href="aluguel.jsp"><button class="botoesDoTopo" id="aluguel">ALUGUEL</button></a>
             <a href="devolucao.jsp"><button class="botoesDoTopo" id="devolucao">DEVOLUÇÃO</button></a>
             <a href="relatorio.jsp"><button class="botoesDoTopo" id="relatorio">RELATÓRIO</button></a>
-            <a href="agendamentos.jsp"><button class="botoesDoTopo" id="agendamentos">AGENDAMENTOS</button></a>
+            <a href="agendamentos.jsp"><button class="botoesDoTopo pressionado" id="agendamentos">AGENDAMENTOS</button></a>
             <a href="sair.jsp"><button class="power"><img src="../images/power.png" class="power" style="height: 30px;"></button></a>
        </div>
     </div>
@@ -48,70 +43,52 @@
             buttonCadastro.classList.add("pressionado");
         }
     });
-</script>
+    </script>
     <br>
-        <div class="container containerDevolucao">
-            <div class="titulo">
-                <a>AGENDAMENTOS</a>
-            </div>
-            <br>
+    <div class="container containerDevolucao">
+        <div class="titulo">
+            <a>AGENDAMENTOS</a>
+        </div>
+        <br>
         <table class="table">
-            <form action="pesquisa/devolucaopesquisaralugueis.jsp" method="get">
+            <form action="pesquisa/pesquisarAgendados.jsp" method="get">
                 <th scope="col">
-                    <input type="search" class="form-control w-255" placeholder="Pesquisar " id="pesquisar" name="pesquisa">
+                    <input type="search" class="form-control w-255" placeholder="Digite a matricula, data, hora ou data para o aluguel" id="pesquisar" name="pesquisa">
                 </th>
                 <th scope="col">
-                    <button class="btn btn-primary"><i class='bx bx-search'></i></button>
+                    <button onclick="searchData()" class="btn btn-primary"><i class='bx bx-search'></i></button>
                 </th>
                 <th scope="col" id="totalemuso" style="float:inline-end;">
                     TOTAL AGENDADOS:
-                    <%-- 
-                    
-                    <% if(pesquisa != null && !pesquisa.isEmpty()) {
-                        out.print(control.contarAlugueisComPesquisa(pesquisa));
+                    <% 
+                    if(pesquisa != null && !pesquisa.isEmpty()) {
+                        out.print(control.contarAgendamentosComPesquisa(pesquisa));
                     } else {
-                        out.print(control.contarAlugueisSemDevolucao());
-                    } %>
-                    
-                    --%>
+                        out.print(control.quantidadeAgendamentos());
+                    }
+                    %>
                 </th>
             </form>
         </table>
-                <table class="table table-striped table-sm table-hover">
-                <thead>
-                    <tr>
-                        <th scope="col" class="tabela">ID</th>
-                        <th scope="col" class="tabela">Aluno</th>
-                        <th scope="col" class="tabela">M. Aluno</th>
-                        <th scope="col" class="tabela">Data Do Agendamento</th>
-                        <th scope="col" class="tabela">Hora Do Agendamento</th>
-                        <th scope="col" class="tabela"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                    <%--
-                    
-                        <%
-                    
-                            if(pesquisa == null || pesquisa.isEmpty()){
-                            out.println(control.listarDadosAlugueisSemDevolucao());
-                            }else{
-                            out.println(control.listarPesquisaAlugueisSemDevolucao(pesquisa));
-                        
-                            }                            
-
-                        %>
-                        --%>
-
-                   
-
-                </tbody>
-            </table>
-
-        </div>
+        <table class="table table-striped table-sm table-hover">
+            <thead>
+                <tr>
+                    <th scope="col" class="tabela">Matricula do aluno</th>
+                    <th scope="col" class="tabela">Data do Agendamento</th>
+                    <th scope="col" class="tabela">Hora do Agendamento</th>
+                    <th scope="col" class="tabela">Data pedida no aluguel</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%
+                if(pesquisa == null || pesquisa.isEmpty()){
+                    out.println(control.consultarAgendamentos());
+                } else {
+                    out.println(control.listarPesquisaAgendamentos(pesquisa));
+                }
+                %>
+            </tbody>
+        </table>
     </div>
-</div>
-</div>
 </body>
 </html>

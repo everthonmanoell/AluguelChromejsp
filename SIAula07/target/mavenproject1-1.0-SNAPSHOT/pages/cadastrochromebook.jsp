@@ -22,11 +22,17 @@
 </head>
 
     <%
-            String id = request.getParameter("id");   
-            String tombamento = request.getParameter("tombamento");
-            String situacao = request.getParameter("situacao");
-            ControleBancoChromebook control = ControleBancoChromebook.getInstance();
-            Chromebook usr = null;
+        String id = request.getParameter("id");   
+        String tombamento = request.getParameter("tombamento");
+        String situacao = request.getParameter("situacao");
+        ControleBancoChromebook control = ControleBancoChromebook.getInstance();
+        Chromebook usr = null;
+        
+        if (id != null && !id.isEmpty()) {
+            usr = control.getChromebook(id);
+        } else {
+            usr = new Chromebook("", "", "", "");
+        }
     %>
 
     <div class="bordaDoTopo">
@@ -54,7 +60,7 @@
                     } else {
                         out.println("Cadastro Chromebook");
                         // Ajuste na chamada do construtor:
-                        usr = new Chromebook("", "", ""); // Substitua pelos valores apropriados
+                        usr = new Chromebook("", "", "", ""); 
                     }
                 %>
 

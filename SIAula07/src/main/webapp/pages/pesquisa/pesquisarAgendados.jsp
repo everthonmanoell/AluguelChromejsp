@@ -1,7 +1,7 @@
 <%--
-    Document   : pesquisarchromebook
-    Created on : 1 de nov. de 2023, 21:15:11
-    Author     : jose.serafim
+    Document   : pesquisarAgendados
+    Created on : 08 de julh. de 2024, 08:09:11
+    Author     : Everthon Manoel
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
@@ -21,9 +21,9 @@
            String pesquisa = request.getParameter("pesquisa");
            
            if(pesquisa == null || pesquisa.isEmpty()){
-           response.sendRedirect("../relatoriochromebook.jsp");
+           response.sendRedirect("../agendamentos.jsp");
            }else{
-           response.sendRedirect("../relatoriochromebook.jsp?pesquisa=" + pesquisa);
+           response.sendRedirect("../agendamentos.jsp?pesquisa=" + pesquisa);
            }
            
            

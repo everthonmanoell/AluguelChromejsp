@@ -6,6 +6,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="model.*"%>
 <%@page import="control.ControleBancoAluguel"%>
+<%@page import="control.*"%>
 <!DOCTYPE html>
 <html lang="pt-br">
     <%
