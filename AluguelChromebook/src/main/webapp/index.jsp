@@ -10,13 +10,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text css" href="../icons/css/boxicons.min.css" />
+    <link rel="stylesheet" type="text/css" href="../icons/css/boxicons.min.css" />
     <link rel="stylesheet" href="js/send.js">
     <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/login.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter&family=Kanit:wght@100;400;700&display=swap"        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter&family=Kanit:wght@100;400;700&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="images/title 1.png" type="image/x-icon" />
     <title>Login</title>
 </head>
@@ -24,7 +24,7 @@
     
     
     <div class="top-right">
-        <a href="pages/cadastraragendamento.jsp" class="btn btn-primary">Agendar</a>
+        <a href="pages/cadastraragendamento.jsp" class="btn btn-primary" target="_blank">Agendar</a>
     </div>
     
     <div class="borda-esquerda">
@@ -40,7 +40,7 @@
 
         <h1 class="titulo2">Login</h1>
         <div class="form-group">
-        <input type="text" name="matricula" class="form-control cpf1" id="matricula" aria-describedby="Matricula" placeholder="Matrícula"  required>
+            <input type="text" name="matricula" class="form-control cpf1" id="matricula" aria-describedby="Matricula" placeholder="Matrícula"  required>
         </div>
         <div class="form-group">
             <input type="password" name="senha" class="form-control senha1" id="exampleInputPassword1" placeholder="Senha" required>
@@ -51,13 +51,13 @@
             if(erro != null){
                 out.println("<spam>Login ou Senha errados!</spam><br>");
             }
-            
         %>
         <a href="pages/inicialcadastro.jsp">Cadastre-se</a>
         <br>
         
-        <button type="submit" class="btn btn-primary" value="enviar" id="send">Entrar</button></a>
+        <button type="submit" class="btn btn-primary" value="enviar" id="send">Entrar</button>
     </form>
 </body>
-
 </html>
+
+
