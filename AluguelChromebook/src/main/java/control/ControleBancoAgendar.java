@@ -147,6 +147,34 @@ public class ControleBancoAgendar {
         return qtd;
     }
 
+    public int quantidadeAgendamentosConcluidos() {
+        int qtd = 0;
+        Statement stm = null;
+        ResultSet resultado = null;
+    
+        try {
+            String consulta = "SELECT * FROM agendamento WHERE situacao_agendamento = 'concluido'";
+            stm = conn.createStatement();
+            resultado = stm.executeQuery(consulta);
+    
+            while (resultado.next()) {
+                qtd++;
+            }
+        } catch (SQLException ex) {
+            System.out.println("Não conseguiu consultar a quantidade de Agendamentos concluídos.");
+            return -1;
+        } finally {
+            try {
+                if (resultado != null) resultado.close();
+                if (stm != null) stm.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    
+        return qtd;
+    }
+    
     public void alterarSituacaoAgendamento(String matricula_aluno) {
         PreparedStatement stmt = null;
         try {
@@ -248,39 +276,48 @@ public class ControleBancoAgendar {
         return count;
     }
 
-public String listarAgendamentosConcluidos() {
-    StringBuilder texto = new StringBuilder();
-
-    try {
-        // Consulta para selecionar agendamentos com situação "concluído"
-        String consulta = "SELECT * FROM agendamento WHERE situacao_agendamento = 'concluido'";
-        Statement stm = conn.createStatement();
-        ResultSet resultado = stm.executeQuery(consulta);
-
-        // Processamento dos resultados
-        while (resultado.next()) {
-            texto.append("<tr>")
-                    .append("<td>").append(resultado.getInt("id")).append("</td>")
+    public String listarAgendamentosConcluidos() {
+        StringBuilder texto = new StringBuilder();
+    
+        try {
+            String consulta = "SELECT * FROM agendamento WHERE situacao_agendamento = 'concluido'";
+            Statement stm = conn.createStatement();
+            ResultSet resultado = stm.executeQuery(consulta);
+    
+            while (resultado.next()) {
+                texto.append("<tr>")
                     .append("<td>").append(resultado.getString("matricula_aluno")).append("</td>")
-                    .append("<td>").append(resultado.getDate("dataAgendada")).append("</td>")
-                    .append("<td>").append(resultado.getTime("horaAgendada")).append("</td>")
+                    .append("<td>").append(resultado.getString("dataAgendada")).append("</td>")
+                    .append("<td>").append(resultado.getString("horaAgendada")).append("</td>")
                     .append("<td>").append(resultado.getString("situacao_agendamento")).append("</td>")
                     .append("<td>").append(resultado.getString("dataParaOAluguel")).append("</td>")
-                    .append("<td>")
-                    .append("<a href=\"cadastroagendamento.jsp?id=").append(resultado.getInt("id"))
-                    .append("\" class=\"btn btn-outline-primary btn-sm\">Alterar</a>")
-                    .append("<a href=\"validar/excluiragendamento.jsp?id=").append(resultado.getInt("id"))
-                    .append("\" class=\"btn btn-outline-danger btn-sm\" onclick=\"return confirm('Tem certeza que deseja excluir?')\">Excluir</a>\n")
-                    .append("</td>")
                     .append("</tr>");
+            }
+    
+            stm.close();
+        } catch (SQLException ex) {
+            System.out.println("Não conseguiu consultar os dados dos agendamentos.");
         }
+    
+        return texto.toString();
+    } 
 
-        // Fechamento do statement
-        stm.close();
-    } catch (SQLException ex) {
-        System.out.println("Não conseguiu consultar os dados dos agendamentos.");
-    }
+    public int contarChromebooksDisponiveis() {
+        int quantidade = 0;
+        try {
+            String consulta = "SELECT COUNT(*) AS total FROM chromebook WHERE situacao = 'Operante'";
+            PreparedStatement stm = conn.prepareStatement(consulta);
+            ResultSet resultado = stm.executeQuery();
 
-    return texto.toString();
+            if (resultado.next()) {
+                quantidade = resultado.getInt("total");
+            }
+
+            resultado.close();
+            stm.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return quantidade;
     }
 }
