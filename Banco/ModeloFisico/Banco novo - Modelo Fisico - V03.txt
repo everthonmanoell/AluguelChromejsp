@@ -1,0 +1,83 @@
+-- Tabela Agendamento
+CREATE TABLE Agendamento (
+    id_agendamento CHAR(9) PRIMARY KEY,
+    mat_aluno CHAR(9) NOT NULL,
+    nome_aluno VARCHAR(50),
+    data_hora_agendamento DATETIME,
+    situacao_agendamento VARCHAR(20),
+    FOREIGN KEY (mat_aluno) REFERENCES Aluno(mat_aluno)
+);
+
+-- Tabela Chromebook
+CREATE TABLE Chromebook (
+    tombamento CHAR(9) PRIMARY KEY,
+    descricao VARCHAR(500),
+    estado_chromebook VARCHAR(50),
+    situacao_chromebook VARCHAR(20)
+);
+
+-- Tabela Check
+CREATE TABLE Check (
+    id_check CHAR(9) PRIMARY KEY,
+    fk_tombamento CHAR(9) NOT NULL,
+    fk_mat_usuario CHAR(9) NOT NULL,
+    descricao VARCHAR(500),
+    situacao VARCHAR(50),
+    FOREIGN KEY (fk_tombamento) REFERENCES Chromebook(tombamento),
+    FOREIGN KEY (fk_mat_usuario) REFERENCES Usuario(mat_usuario)
+);
+
+-- Tabela Usuario
+CREATE TABLE Usuario (
+    mat_usuario CHAR(9) PRIMARY KEY,
+    nome_usuario VARCHAR(50),
+    senha VARCHAR(50)
+);
+
+-- Tabela Aluno
+CREATE TABLE Aluno (
+    mat_aluno CHAR(9) PRIMARY KEY,
+    turno CHAR(10),
+    senha VARCHAR(50),
+    periodo CHAR(1),
+    turma VARCHAR(50),
+    curso VARCHAR(50),
+    nome_aluno VARCHAR(50)
+);
+
+-- Tabela Registro
+CREATE TABLE Registro (
+    id_registro CHAR(9) PRIMARY KEY,
+    fk_tombamento CHAR(9) NOT NULL,
+    fk_id_agendamento CHAR(9) NOT NULL,
+    fk_mat_aluno CHAR(9) NOT NULL,
+    fk_mat_usuario CHAR(9) NOT NULL,
+    data_hora_retirada DATETIME,
+    data_hora_devolucao DATETIME,
+    data_hora_agendamento DATETIME,
+    FOREIGN KEY (fk_tombamento) REFERENCES Chromebook(tombamento),
+    FOREIGN KEY (fk_id_agendamento) REFERENCES Agendamento(id_agendamento),
+    FOREIGN KEY (fk_mat_aluno) REFERENCES Aluno(mat_aluno),
+    FOREIGN KEY (fk_mat_usuario) REFERENCES Usuario(mat_usuario)
+);
+
+-- Relações adicionais
+CREATE TABLE Efetua (
+    mat_usuario CHAR(9),
+    id_registro CHAR(9),
+    mat_aluno CHAR(9),
+    PRIMARY KEY(mat_usuario, id_registro, mat_aluno),
+    FOREIGN KEY (mat_usuario) REFERENCES Usuario(mat_usuario),
+    FOREIGN KEY (id_registro) REFERENCES Registro(id_registro),
+    FOREIGN KEY (mat_aluno) REFERENCES Aluno(mat_aluno)
+);
+
+CREATE TABLE verifica (
+    tombamento CHAR(9),
+    id_registro CHAR(9),
+    id_agendamento CHAR(9),
+    PRIMARY KEY(tombamento, id_registro, id_agendamento),
+    FOREIGN KEY (tombamento) REFERENCES Chromebook(tombamento),
+    FOREIGN KEY (id_registro) REFERENCES Registro(id_registro),
+    FOREIGN KEY (id_agendamento) REFERENCES Agendamento(id_agendamento)
+);
