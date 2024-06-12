@@ -8,6 +8,7 @@
 <%@page import="model.*"%>
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,65 +22,48 @@
     <title>Cadastrar Agendamento</title>
 </head>
 
-
-    <br>
-        <div class="container containerMeio">
-            <div class="titulo">
-                <p>AGENDAMENTO</p>
-            </div>
-            <form action="validar/validarAgendamento.jsp" method="post">
-                <div class="fonteCoordenador">
-
-
-
-                                        
-                    <div class="mb-3 mt-3">
-                        <label for="matricula" class="form-label"><a>Matrícula do aluno:</a></label>
-                        <input type="text" value="" name="matricula"  required class="form-control" id="matricula" aria-describedby="matricula" placeholder="Digite a matricula do aluno">
-                    </div>
-                                        
-                    
-                    <div class="mb-3 mt-3">
-                        <label for="data" class="form-label"><a>Data </a></label>
-                        <input type="date"  value="" class="form-control"  id="data" placeholder="" name="data" required/>
-                    </div>
-                    
-</div>
-
-
-
-
-                    <div class="row justify-content-md-center">
-                        <button type="submit" class="BotaoSubmit"> Confirmar                         
-                        </button>
-                        <button type="reset" class="BotaoSubmit cancelar">Cancelar</button>
-                        
-                        <script>
-                            function exibirMensagem(mensagem) {
-                            alert(mensagem);
-                            }
-                        </script>
-                    </div>
-            </form>
+<body>
+    <div class="container containerMeio">
+        <div class="titulo">
+            <p>AGENDAMENTO</p>
         </div>
+        <form action="validar/validarAgendamento.jsp" method="post">
+            <div class="fonteCoordenador">
+                <div class="mb-3 mt-3">
+                    <label for="matricula" class="form-label"><a>Matrícula do aluno:</a></label>
+                    <input type="text" value="" name="matricula" required class="form-control" id="matricula" aria-describedby="matricula" placeholder="Digite a matricula do aluno">
+                </div>
+
+                <div class="mb-3 mt-3">
+                    <label for="data" class="form-label"><a>Data</a></label>
+                    <input type="date" value="" class="form-control" id="data" placeholder="" name="data" required />
+                </div>
+                
+                <%-- Texto exibindo o número de chromebooks disponíveis --%>
+                <p>
+                    <% 
+                    // Chame um método do controle para obter o número de chromebooks disponíveis
+                    ControleBancoAgendar control = ControleBancoAgendar.getInstance();
+                    int chromebooksDisponiveis = control.contarChromebooksDisponiveis();
+                    
+                    // Exiba a mensagem com o número de chromebooks disponíveis
+                    out.print("Chromebooks disponíveis: " + chromebooksDisponiveis);
+                    %>
+                </p>
+            </div>
+
+            <div class="row justify-content-md-center">
+                <button type="submit" class="BotaoSubmit"> Confirmar </button>
+                <button type="reset" class="BotaoSubmit cancelar">Cancelar</button>
+
+                <script>
+                    function exibirMensagem(mensagem) {
+                        alert(mensagem);
+                    }
+                </script>
+            </div>
+        </form>
     </div>
-</div>
-
-    <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        var currentPage = window.location.pathname;
-
-        var buttonCadastro = document.getElementById("aluguel");
-        var buttonLink = buttonCadastro.closest("a").getAttribute("href");
-
-        if (currentPage.endsWith(buttonLink)) {
-            buttonCadastro.classList.add("pressionado");
-        }
-    });
-</script>
-
-
-
-
 </body>
+
 </html>
